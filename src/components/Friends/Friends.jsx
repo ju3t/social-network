@@ -5,11 +5,11 @@ import { Input } from 'antd'
 import styled from 'styled-components'
 import SingleFriend from './SingleFriend'
 import SearchIcon from './../../img/icons/search.svg';
+import { uniqueId } from 'lodash'
 
 const FriendsWrapper = styled.div`
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
     background: #FFFFFF;
-    font-family: Montserrat;
     font-family: 'Montserrat', sans-serif;
     border-radius: 15px 15px 0px 0px;
     padding: 114px 114px 114px 91px;
@@ -67,6 +67,26 @@ const SearchInpit = styled(Input)`
     
 `
 
+const users = [{
+    firstname: 'Firstname 1',
+    lastname: 'Lastname 1',
+    profesion: 'profeson 1',
+    avatarurl: 'https://dummyimage.com/600x400/000/fff'
+},
+{
+    firstname: 'Firstname 2',
+    lastname: 'Lastname 2',
+    profesion: 'profeson 2',
+    avatarurl: 'https://dummyimage.com/600x400/000/fff'
+},
+{
+    firstname: 'Firstname 3',
+    lastname: 'Lastname 3',
+    profesion: 'profeson 3',
+    avatarurl: 'https://dummyimage.com/600x400/000/fff'
+}
+]
+
 const Friends = (props) => {
     return (
         <FriendsWrapper>
@@ -74,6 +94,15 @@ const Friends = (props) => {
             <SearchBlock>
                 <SearchInpit placeholder='Начните поиск друзей...' nostyle='true' />
             </SearchBlock>
+            <div>
+                {users.map((item)=> <SingleFriend
+                    key={uniqueId()}
+                    firstname={item.firstname}
+                    lastname={item.lastname}
+                    profesion={item.profesion}
+                    avatarurl={item.avatarurl}
+                />)}
+            </div>
         </FriendsWrapper>
     )
 }
