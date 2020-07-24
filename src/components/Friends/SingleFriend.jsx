@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'antd';
 import styled from 'styled-components';
 import DeleteIcon from '../../img/icons/delete.svg';
 import MessageIcon from '../../img/icons/message.svg';
@@ -29,7 +28,7 @@ const FriendAvatarWrapper = styled.div`
     margin-right: 37px;
 `;
 
-const BaseButtonStyle = styled(Button)`
+const BaseButtonStyle = `
     transition: background-color 0.2s;
     height: 28px;
     width: 28px;
@@ -39,15 +38,17 @@ const BaseButtonStyle = styled(Button)`
     justify-self: flex-end;
     &:hover{
         background-color: #111;
-    }
+    };
 `;
 
-const DeleteButton = styled(BaseButtonStyle)`
+const DeleteButton = styled.button`
+    ${BaseButtonStyle}
     mask-image: url(${DeleteIcon});
     margin-left: 69px;
 `;
 
-const MessageButton = styled(BaseButtonStyle)`
+const MessageButton = styled.button`
+    ${BaseButtonStyle}
     mask-image: url(${MessageIcon});
 `;
 
@@ -79,13 +80,13 @@ const Placer = styled.div`
 
 const SingleFriend = (props) => {
   const {
-    firstname, lastname, profesion, avatarurl, deleteButtonHandler, messegeButtonHandler,
+    firstname, lastname, profesion, avatarka, deleteButtonHandler, messegeButtonHandler,
   } = props;
   return (
     <SingleFriendWrapper>
       <Placer>
         <FriendAvatarWrapper>
-          <FriendAvatar src={avatarurl} alt="name" />
+          <FriendAvatar src={avatarka} alt="there should be avatarka" />
         </FriendAvatarWrapper>
         <FriendInfo>
           <FriendFullName>
@@ -98,7 +99,7 @@ const SingleFriend = (props) => {
       </Placer>
       <Placer>
         <MessageButton onClick={messegeButtonHandler} />
-        <DeleteButton onClick={deleteButtonHandler} />
+        <DeleteButton onClick={deleteButtonHandler}  />
       </Placer>
     </SingleFriendWrapper>
   );
@@ -108,7 +109,7 @@ SingleFriend.defaultProps = {
   firstname: '',
   lastname: '',
   profesion: '',
-  avatarurl: '',
+  avatarka: '',
   deleteButtonHandler: () => {},
   messegeButtonHandler: () => {},
 };
@@ -117,7 +118,7 @@ SingleFriend.propTypes = {
   firstname: PropTypes.string,
   lastname: PropTypes.string,
   profesion: PropTypes.string,
-  avatarurl: PropTypes.string,
+  avatarka: PropTypes.string,
   deleteButtonHandler: PropTypes.func,
   messegeButtonHandler: PropTypes.func,
 };

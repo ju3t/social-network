@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 // import { connect } from 'react-redux';
 // import PropTypes from 'prop-types';
-import { Input } from 'antd';
 import styled from 'styled-components';
 import { uniqueId } from 'lodash';
 import SingleFriend from './SingleFriend';
@@ -53,7 +52,7 @@ const SearchBlock = styled.div`
     }
 `;
 
-const SearchInpit = styled(Input)`
+const SearchInpit = styled.input`
     color: #515151;
     min-width: 100%;
     padding-right: 30px;
@@ -70,21 +69,21 @@ const friendsArr = [{
   first_name: 'Firstname1',
   last_name: 'Lastname1',
   profesion: 'profeson 1',
-  avatarurl: 'https://dummyimage.com/600x400/000/fff',
+  avatarka: 'https://dummyimage.com/600x400/000/fff',
   id: 1,
 },
 {
   first_name: 'Firstname2',
   last_name: 'Lastname2',
   profesion: 'profeson 2',
-  avatarurl: 'https://dummyimage.com/600x400/000/fff',
+  avatarka: 'https://dummyimage.com/600x400/000/fff',
   id: 2,
 },
 {
   first_name: 'Firstname3',
   last_name: 'Lastname3',
   profesion: 'profeson 3',
-  avatarurl: 'https://dummyimage.com/600x400/000/fff',
+  avatarka: 'https://dummyimage.com/600x400/000/fff',
   id: 3,
 },
 ];
@@ -92,12 +91,12 @@ const friendsArr = [{
 const Friends = () => {
   const [filterString, setfilterString] = useState('');
 
-  const filterInputHandler = (event) => setfilterString(event.target.value);
+  const filterInputHandler = (event) => setfilterString(event.target.value.toLowerCase());
 
   const userFiltered = () => {
     if (filterString.length > 0) {
-      return friendsArr.filter(({ firstname, lastname }) => {
-        const fullName = `${firstname} ${lastname}`.toLowerCase();
+      return friendsArr.filter(({ first_name, last_name }) => {
+        const fullName = `${first_name} ${last_name}`.toLowerCase();
         return fullName.includes(filterString);
       });
     }
@@ -127,7 +126,7 @@ const Friends = () => {
             firstname={item.first_name}
             lastname={item.last_name}
             profesion={item.profesion}
-            avatarurl={item.avatarurl}
+            avatarka={item.avatarka}
           />
         ))}
       </div>
