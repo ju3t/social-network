@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Input } from 'antd'
@@ -8,7 +8,7 @@ import SearchIcon from './../../img/icons/search.svg';
 import { uniqueId } from 'lodash'
 
 const FriendsWrapper = styled.div`
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
     background: #FFFFFF;
     font-family: 'Montserrat', sans-serif;
     border-radius: 15px 15px 0px 0px;
@@ -16,7 +16,6 @@ const FriendsWrapper = styled.div`
     margin-top: 100px;
     position: relative;
 `
-//убрать маргин-топ при переводе на реальную страницу
 
 const PageMarker = styled.h2`
     margin: 0;
@@ -67,35 +66,52 @@ const SearchInpit = styled(Input)`
     
 `
 
-const users = [{
-    firstname: 'Firstname 1',
-    lastname: 'Lastname 1',
+const friendsArr = [{
+    firstname: 'Firstname1',
+    lastname: 'Lastname1',
     profesion: 'profeson 1',
     avatarurl: 'https://dummyimage.com/600x400/000/fff'
 },
 {
-    firstname: 'Firstname 2',
-    lastname: 'Lastname 2',
+    firstname: 'Firstname2',
+    lastname: 'Lastname2',
     profesion: 'profeson 2',
     avatarurl: 'https://dummyimage.com/600x400/000/fff'
 },
 {
-    firstname: 'Firstname 3',
-    lastname: 'Lastname 3',
+    firstname: 'Firstname3',
+    lastname: 'Lastname3',
     profesion: 'profeson 3',
     avatarurl: 'https://dummyimage.com/600x400/000/fff'
 }
 ]
 
 const Friends = (props) => {
+
+    const [filterString, setfilterString] = useState('');
+
+    const filterInputHandler = (e) => setfilterString(e.target.value);
+    
+    const userFiltered = () => {
+        if(filterString.length > 0) {
+            return friendsArr.filter(({firstname, lastname}) => {
+                const fullName = `${firstname} ${lastname}`.toLowerCase();
+                // console.log()
+                // `${firstname} ${lastname}`.includes(filterString)
+                return fullName.includes(filterString)
+            })
+        }
+        return friendsArr;
+    }
+    
     return (
         <FriendsWrapper>
             <PageMarker>Друзья</PageMarker>
             <SearchBlock>
-                <SearchInpit placeholder='Начните поиск друзей...' nostyle='true' />
+                <SearchInpit defaultValue='' placeholder='Начните поиск друзей...' onChange={filterInputHandler} nostyle='true' />
             </SearchBlock>
             <div>
-                {users.map((item)=> <SingleFriend
+                {userFiltered().map((item)=> <SingleFriend
                     key={uniqueId()}
                     firstname={item.firstname}
                     lastname={item.lastname}
