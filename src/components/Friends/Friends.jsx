@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { Input } from 'antd'
-import styled from 'styled-components'
-import SingleFriend from './SingleFriend'
-import SearchIcon from './../../img/icons/search.svg';
-import { uniqueId } from 'lodash'
+import React, { useState } from 'react';
+// import { connect } from 'react-redux';
+// import PropTypes from 'prop-types';
+import { Input } from 'antd';
+import styled from 'styled-components';
+import { uniqueId } from 'lodash';
+import SingleFriend from './SingleFriend';
+import SearchIcon from '../../img/icons/search.svg';
 
 const FriendsWrapper = styled.div`
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
@@ -15,7 +15,7 @@ const FriendsWrapper = styled.div`
     padding: 114px 114px 114px 91px;
     margin-top: 100px;
     position: relative;
-`
+`;
 
 const PageMarker = styled.h2`
     margin: 0;
@@ -28,7 +28,7 @@ const PageMarker = styled.h2`
     font-size: 32px;
     line-height: 39px;
     background: #FFB11B;
-`
+`;
 
 const SearchBlock = styled.div`
     display: flex;
@@ -51,7 +51,7 @@ const SearchBlock = styled.div`
         mask-size: cover;
         content: '';
     }
-`
+`;
 
 const SearchInpit = styled(Input)`
     color: #515151;
@@ -64,63 +64,75 @@ const SearchInpit = styled(Input)`
     line-height: 20px;
     position: relative;
     
-`
+`;
 
 const friendsArr = [{
-    firstname: 'Firstname1',
-    lastname: 'Lastname1',
-    profesion: 'profeson 1',
-    avatarurl: 'https://dummyimage.com/600x400/000/fff'
+  first_name: 'Firstname1',
+  last_name: 'Lastname1',
+  profesion: 'profeson 1',
+  avatarurl: 'https://dummyimage.com/600x400/000/fff',
+  id: 1,
 },
 {
-    firstname: 'Firstname2',
-    lastname: 'Lastname2',
-    profesion: 'profeson 2',
-    avatarurl: 'https://dummyimage.com/600x400/000/fff'
+  first_name: 'Firstname2',
+  last_name: 'Lastname2',
+  profesion: 'profeson 2',
+  avatarurl: 'https://dummyimage.com/600x400/000/fff',
+  id: 2,
 },
 {
-    firstname: 'Firstname3',
-    lastname: 'Lastname3',
-    profesion: 'profeson 3',
-    avatarurl: 'https://dummyimage.com/600x400/000/fff'
-}
-]
+  first_name: 'Firstname3',
+  last_name: 'Lastname3',
+  profesion: 'profeson 3',
+  avatarurl: 'https://dummyimage.com/600x400/000/fff',
+  id: 3,
+},
+];
 
-const Friends = (props) => {
+const Friends = () => {
+  const [filterString, setfilterString] = useState('');
 
-    const [filterString, setfilterString] = useState('');
+  const filterInputHandler = (event) => setfilterString(event.target.value);
 
-    const filterInputHandler = (e) => setfilterString(e.target.value);
-    
-    const userFiltered = () => {
-        if(filterString.length > 0) {
-            return friendsArr.filter(({firstname, lastname}) => {
-                const fullName = `${firstname} ${lastname}`.toLowerCase();
-                // console.log()
-                // `${firstname} ${lastname}`.includes(filterString)
-                return fullName.includes(filterString)
-            })
-        }
-        return friendsArr;
+  const userFiltered = () => {
+    if (filterString.length > 0) {
+      return friendsArr.filter(({ firstname, lastname }) => {
+        const fullName = `${firstname} ${lastname}`.toLowerCase();
+        return fullName.includes(filterString);
+      });
     }
-    
-    return (
-        <FriendsWrapper>
-            <PageMarker>Друзья</PageMarker>
-            <SearchBlock>
-                <SearchInpit defaultValue='' placeholder='Начните поиск друзей...' onChange={filterInputHandler} nostyle='true' />
-            </SearchBlock>
-            <div>
-                {userFiltered().map((item)=> <SingleFriend
-                    key={uniqueId()}
-                    firstname={item.firstname}
-                    lastname={item.lastname}
-                    profesion={item.profesion}
-                    avatarurl={item.avatarurl}
-                />)}
-            </div>
-        </FriendsWrapper>
-    )
-}
+    return friendsArr;
+  };
+
+  const deleteButtonHandler = (id) => () => {
+    console.log(`delete ${id}`);
+  };
+
+  const messegeButtonHandler = (id) => () => {
+    console.log(`message ${id}`);
+  };
+
+  return (
+    <FriendsWrapper>
+      <PageMarker>Друзья</PageMarker>
+      <SearchBlock>
+        <SearchInpit defaultValue="" placeholder="Начните поиск друзей..." onChange={filterInputHandler} nostyle="true" />
+      </SearchBlock>
+      <div>
+        {userFiltered().map((item) => (
+          <SingleFriend
+            key={uniqueId()}
+            deleteButtonHandler={deleteButtonHandler(item.id)}
+            messegeButtonHandler={messegeButtonHandler(item.id)}
+            firstname={item.first_name}
+            lastname={item.last_name}
+            profesion={item.profesion}
+            avatarurl={item.avatarurl}
+          />
+        ))}
+      </div>
+    </FriendsWrapper>
+  );
+};
 
 export default Friends;
