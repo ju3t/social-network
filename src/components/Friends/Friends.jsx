@@ -12,7 +12,7 @@ const FriendsWrapper = styled.div`
   font-family: 'Montserrat', sans-serif;
   border-radius: 15px 15px 0px 0px;
   padding: 114px 114px 114px 91px;
-  margin-top: 100px;
+  margin-top: 275px;
   position: relative;
 `;
 
