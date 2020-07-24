@@ -5,27 +5,27 @@ import DeleteIcon from '../../img/icons/delete.svg';
 import MessageIcon from '../../img/icons/message.svg';
 
 const SingleFriendWrapper = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-    align-items: center;
-    padding: 51px 0px;
-    border-bottom: 1px solid #B2B2B2;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding: 51px 0px;
+  border-bottom: 1px solid #b2b2b2;
 `;
 
 const FriendAvatar = styled.img`
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 const FriendAvatarWrapper = styled.div`
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-right: 37px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 37px;
 `;
 
 const BaseButtonStyle = `
@@ -53,34 +53,39 @@ const MessageButton = styled.button`
 `;
 
 const FriendInfo = styled.div`
-    display: flex;
-    flex-direction: column;
-    text-align: left;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 `;
 
 const FriendFullName = styled.span`
-    color: #000000;
-    margin-bottom: 8px;
-    font-weight: 500;
-    font-size: 18px;
+  color: #000000;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 18px;
 `;
 
 const FriendProfession = styled.span`
-    color: #515151;
-    font-size: 16px;
+  color: #515151;
+  font-size: 16px;
 `;
 
 const Placer = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-items: center;
 `;
 
 const SingleFriend = (props) => {
   const {
-    firstname, lastname, profesion, avatarka, deleteButtonHandler, messegeButtonHandler,
+    firstname,
+    lastname,
+    profesion,
+    avatarka,
+    deleteButtonHandler,
+    messegeButtonHandler,
   } = props;
   return (
     <SingleFriendWrapper>
@@ -90,16 +95,14 @@ const SingleFriend = (props) => {
         </FriendAvatarWrapper>
         <FriendInfo>
           <FriendFullName>
-            {firstname}
-            {' '}
-            {lastname}
+            {firstname} {lastname}
           </FriendFullName>
           <FriendProfession>{profesion}</FriendProfession>
         </FriendInfo>
       </Placer>
       <Placer>
         <MessageButton onClick={messegeButtonHandler} />
-        <DeleteButton onClick={deleteButtonHandler}  />
+        <DeleteButton onClick={deleteButtonHandler} />
       </Placer>
     </SingleFriendWrapper>
   );
