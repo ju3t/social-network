@@ -4,7 +4,6 @@ import sn from './SN.svg';
 import logo from './logo.svg';
 import { Input } from 'antd';
 import styled from 'styled-components';
-import {NavLink} from "react-router-dom";
 
 
 const Wrapper = styled.div`

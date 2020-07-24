@@ -7,7 +7,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './redux/reducers';
 import * as serviceWorker from './serviceWorker';
-import App from './App';
+import App from './App.jsx';
 
 const store = createStore(
   reducers,
