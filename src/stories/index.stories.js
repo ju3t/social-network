@@ -6,6 +6,7 @@ export default { title: 'Button' };
 
 export const withText = () => <Button>Hello Button</Button>;
 
+
 export const FriendsPage = () => <Friends />;
 
 export const withEmoji = () => (
