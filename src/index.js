@@ -7,7 +7,8 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './redux/reducers';
 import * as serviceWorker from './serviceWorker';
-import App from './App';
+import App from './App.jsx';
+import {BrowserRouter} from "react-router-dom";
 
 const store = createStore(
   reducers,
@@ -17,11 +18,13 @@ const store = createStore(
 );
 
 ReactDOM.render(
+  <BrowserRouter>
   <Provider store={store}>
     <React.StrictMode>
       <App />
     </React.StrictMode>
-  </Provider>,
+  </Provider>
+  </BrowserRouter>,
   document.getElementById('root'),
 );
 
