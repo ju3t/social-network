@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import SearchIcon from '../../../img/icons/search.svg';
+import SearchIcon from './../../img/icons/search.svg';
 import PropTypes from 'prop-types';
 import React from 'react';
 
