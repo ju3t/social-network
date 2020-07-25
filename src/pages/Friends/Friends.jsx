@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { uniqueId } from 'lodash';
-import SingleFriend from './SingleFriend';
-import SearchIcon from '../../img/icons/search.svg';
+import SingleFriend from '../../components/SingleFriend';
+import PageSearchInput from '../../components/Inputs/PageSearchInput';
 
 const FriendsWrapper = styled.div`
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
@@ -27,41 +27,6 @@ const PageMarker = styled.h2`
   font-size: 32px;
   line-height: 39px;
   background: #ffb11b;
-`;
-
-const SearchBlock = styled.div`
-  display: flex;
-  font-size: 16px;
-  line-height: 20px;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  min-width: 100%;
-  border-top: 1px solid #b3b3b3;
-  border-bottom: 1px solid #b3b3b3;
-  &::after {
-    top: 49px;
-    right: 0;
-    position: absolute;
-    height: 30px;
-    width: 30px;
-    background-color: #515151;
-    mask-image: url(${SearchIcon});
-    mask-size: cover;
-    content: '';
-  }
-`;
-
-const SearchInpit = styled.input`
-  color: #515151;
-  min-width: 100%;
-  padding-right: 30px;
-  margin: 53px 0px 57px 0px;
-  border: none;
-  outline: none;
-  font-size: 16px;
-  line-height: 20px;
-  position: relative;
 `;
 
 const friendsArr = [
@@ -114,14 +79,7 @@ const Friends = () => {
   return (
     <FriendsWrapper>
       <PageMarker>Друзья</PageMarker>
-      <SearchBlock>
-        <SearchInpit
-          defaultValue=""
-          placeholder="Начните поиск друзей..."
-          onChange={filterInputHandler}
-          nostyle="true"
-        />
-      </SearchBlock>
+      <PageSearchInput action={filterInputHandler} placeholder="Начните поиск друзей..." />
       <div>
         {userFiltered().map((item) => (
           <SingleFriend

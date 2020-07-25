@@ -78,15 +78,14 @@ const Placer = styled.div`
   align-items: center;
 `;
 
-const SingleFriend = (props) => {
-  const {
-    firstname,
-    lastname,
-    profesion,
-    avatarka,
-    deleteButtonHandler,
-    messegeButtonHandler,
-  } = props;
+const SingleFriend = ({
+  firstname,
+  lastname,
+  profesion,
+  avatarka,
+  deleteButtonHandler,
+  messegeButtonHandler,
+}) => {
   return (
     <SingleFriendWrapper>
       <Placer>
