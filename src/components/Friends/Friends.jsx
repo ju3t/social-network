@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { uniqueId } from 'lodash';
-import SingleFriend from '../../components/SingleFriend';
-import PageSearchInput from '../../components/Inputs/PageSearchInput';
+import SingleFriend from './SingleFriend';
+import PageSearchInput from '../../common/Inputs/PageSearchInput';
 
 const FriendsWrapper = styled.div`
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');

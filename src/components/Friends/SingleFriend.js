@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import DeleteIcon from '../../img/icons/delete.svg';
-import MessageIcon from '../../img/icons/message.svg';
+import DeleteIcon from '../../common/img/icons/delete.svg';
+import MessageIcon from '../../common/img/icons/message.svg';
 
 const SingleFriendWrapper = styled.div`
   display: flex;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@storybook/react/demo';
-import Friends from '../pages/Friends';
+import Friends from '../components/Friends';
 
 export default { title: 'Button' };
 
