@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import jm from './JM.svg';
-import sn from './SN.svg';
-import logo from './logo.svg';
+import jm from '../../common/JM.svg';
+import sn from '../../common/SN.svg';
+import logo from '../../common/logo.svg';
 import { Input } from 'antd';
 import styled from 'styled-components';
 
