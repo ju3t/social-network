@@ -5,10 +5,10 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import reducers from './redux/reducers';
 import * as serviceWorker from './serviceWorker';
 import App from './App.jsx';
-import {BrowserRouter} from "react-router-dom";
 
 const store = createStore(
   reducers,
@@ -19,11 +19,11 @@ const store = createStore(
 
 ReactDOM.render(
   <BrowserRouter>
-  <Provider store={store}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </Provider>
+    <Provider store={store}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </Provider>
   </BrowserRouter>,
   document.getElementById('root'),
 );
