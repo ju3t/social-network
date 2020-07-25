@@ -5,7 +5,7 @@ import { Button } from 'antd';
 import Author from './message-author';
 import Messages from '../chat/messages';
 import SubmitMessage from '../chat/submit-message';
-import OpenModalSrc from '../../../img/icons/modal-message-open.svg';
+import OpenModalSrc from '../../img/icons/modal-message-open.svg';
 
 const ModalChatWrapper = styled.div`
   position: relative;

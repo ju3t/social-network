@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Input } from 'antd';
 import { useFormik } from 'formik';
-import sendMessageSrc from '../../../img/icons/send-message.svg';
-import addFileSrc from '../../../img/icons/add-file.svg';
+import sendMessageSrc from '../../img/icons/send-message.svg';
+import addFileSrc from '../../img/icons/add-file.svg';
 
 const { TextArea } = Input;
 const Wrap = styled.div`
