@@ -20,7 +20,8 @@ const FriendAvatar = styled.img`
   object-fit: cover;
 `;
 
-const FriendAvatarWrapper = styled.div`
+const FriendAvatarWrapper = styled.a`
+  cursor: pointer;
   width: 90px;
   height: 90px;
   border-radius: 50%;
@@ -87,7 +88,7 @@ const SingleFriend = ({
 }) => (
   <SingleFriendWrapper>
     <Placer>
-      <FriendAvatarWrapper>
+      <FriendAvatarWrapper href="#">
         <FriendAvatar src={avatarka} alt="there should be avatarka" />
       </FriendAvatarWrapper>
       <FriendInfo>

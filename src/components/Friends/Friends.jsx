@@ -4,13 +4,13 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { uniqueId } from 'lodash';
 import SingleFriend from './SingleFriend';
-import PageSearchInput from '../../common/Inputs/PageSearchInput';
+import PageSearchInput from '../../common/Inputs/PageSearch';
 
 const FriendsWrapper = styled.div`
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
   background: #ffffff;
   font-family: 'Montserrat', sans-serif;
-  border-radius: 15px 15px 0px 0px;
+  border-radius: 15px;
   padding: 114px 114px 114px 91px;
   margin-top: 275px;
   position: relative;
