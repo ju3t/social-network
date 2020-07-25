@@ -35,7 +35,6 @@ const BaseButtonStyle = `
     border: none;
     background-color: #515151;
     mask-size: cover;
-    justify-self: flex-end;
     &:hover{
         background-color: #111;
     };
@@ -85,27 +84,25 @@ const SingleFriend = ({
   avatarka,
   deleteButtonHandler,
   messegeButtonHandler,
-}) => {
-  return (
-    <SingleFriendWrapper>
-      <Placer>
-        <FriendAvatarWrapper>
-          <FriendAvatar src={avatarka} alt="there should be avatarka" />
-        </FriendAvatarWrapper>
-        <FriendInfo>
-          <FriendFullName>
-            {firstname} {lastname}
-          </FriendFullName>
-          <FriendProfession>{profesion}</FriendProfession>
-        </FriendInfo>
-      </Placer>
-      <Placer>
-        <MessageButton onClick={messegeButtonHandler} />
-        <DeleteButton onClick={deleteButtonHandler} />
-      </Placer>
-    </SingleFriendWrapper>
-  );
-};
+}) => (
+  <SingleFriendWrapper>
+    <Placer>
+      <FriendAvatarWrapper>
+        <FriendAvatar src={avatarka} alt="there should be avatarka" />
+      </FriendAvatarWrapper>
+      <FriendInfo>
+        <FriendFullName>
+          {firstname} {lastname}
+        </FriendFullName>
+        <FriendProfession>{profesion}</FriendProfession>
+      </FriendInfo>
+    </Placer>
+    <Placer>
+      <MessageButton onClick={messegeButtonHandler} />
+      <DeleteButton onClick={deleteButtonHandler} />
+    </Placer>
+  </SingleFriendWrapper>
+);
 
 SingleFriend.defaultProps = {
   firstname: '',
