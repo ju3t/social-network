@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@storybook/react/demo';
-import { Модальный_Чат } from './modal-chat/index.stories';
+import { МодальныйЧат } from './modal-chat/index.stories';
 
 export default { title: 'Button' };
 
@@ -14,7 +14,4 @@ export const withEmoji = () => (
   </Button>
 );
 
-export const ModalChat = () => <Модальный_Чат />;
-
-
-
+export const ModalChat = () => <МодальныйЧат />;
