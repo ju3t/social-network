@@ -1,14 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { RightBlockContainer } from '../styledComponents';
-import UserInfoHeader from '../../components/Main/UserInfoHeader';
-import Wall from '../../components/Main/Wall';
 
-const RightBlock = () => (
-  <RightBlockContainer>
-    <UserInfoHeader />
-    <Wall />
-  </RightBlockContainer>
-);
+const RightBlock = (props) => {
+  const { children } = props;
+  return <RightBlockContainer>{children}</RightBlockContainer>;
+};
+
+RightBlock.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default RightBlock;
