@@ -85,35 +85,33 @@ const CountAction = styled.span`
   color: black;
 `;
 
-const UserNote = () => {
-  return (
-    <Wrapper>
-      <UserInfo>
-        <Avatar src={userFoto} />
-        <TitleWrap>
-          <Title>Богдан Леста</Title>
-          <SubtitleTime>07.07.2020 в 00:07</SubtitleTime>
-        </TitleWrap>
-      </UserInfo>
-      <UserActions>
-        <Action>
-          <ActionAddNote />
-          <CountAction>7</CountAction>
-        </Action>
-        <Action>
-          <ActionLike />
-          <CountAction>15</CountAction>
-        </Action>
-        <Action>
-          <ActionComment />
-          <CountAction>1</CountAction>
-        </Action>
-        <Action>
-          <ActionRepost />
-          <CountAction>4</CountAction>
-        </Action>
-      </UserActions>
-    </Wrapper>
-  );
-};
+const UserNote = () => (
+  <Wrapper>
+    <UserInfo>
+      <Avatar src={userFoto} />
+      <TitleWrap>
+        <Title>Богдан Леста</Title>
+        <SubtitleTime>07.07.2020 в 00:07</SubtitleTime>
+      </TitleWrap>
+    </UserInfo>
+    <UserActions>
+      <Action>
+        <ActionAddNote />
+        <CountAction>7</CountAction>
+      </Action>
+      <Action>
+        <ActionLike />
+        <CountAction>15</CountAction>
+      </Action>
+      <Action>
+        <ActionComment />
+        <CountAction>1</CountAction>
+      </Action>
+      <Action>
+        <ActionRepost />
+        <CountAction>4</CountAction>
+      </Action>
+    </UserActions>
+  </Wrapper>
+);
 export default UserNote;

@@ -78,20 +78,18 @@ const BtnOpenNote = styled.button`
   }
 `;
 
-const renderFullNoteText = () => {
-  return (
-    <>
-      <TitleText>Aliquam erat volutpat</TitleText>
-      <Text>{TextTwo}</Text>
-      <TitleText>Nunc eget venenatis justo</TitleText>
-      <NotesList>
-        {arrayNotes.map((item) => (
-          <NoteItem key={item.id}>{item.note}</NoteItem>
-        ))}
-      </NotesList>
-    </>
-  );
-};
+const renderFullNoteText = () => (
+  <>
+    <TitleText>Aliquam erat volutpat</TitleText>
+    <Text>{TextTwo}</Text>
+    <TitleText>Nunc eget venenatis justo</TitleText>
+    <NotesList>
+      {arrayNotes.map((item) => (
+        <NoteItem key={item.id}>{item.note}</NoteItem>
+      ))}
+    </NotesList>
+  </>
+);
 
 const Note = () => {
   const [isShowFullNoteText, setIsShowFullNoteText] = useState(false);

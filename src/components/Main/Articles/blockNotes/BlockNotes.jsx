@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   border-bottom: 1px solid #515151;
   margin-left: 106px;
   max-width: 83.6%;
-  font-family: Montserrat,serif;
+  font-family: Montserrat, serif;
   font-style: normal;
 `;
 const MenuWrapper = styled.div`
@@ -94,13 +94,12 @@ const arrayTags = [
 const BlockNotes = () => {
   const [isOpenSearch, setIsOpenSearch] = useState(false);
 
-  const renderSearch = () => {
-    return isOpenSearch ? (
+  const renderSearch = () =>
+    isOpenSearch ? (
       <InputSearch placeholder="Поиск..." />
     ) : (
       <ComponentSearch onClick={() => setIsOpenSearch(!isOpenSearch)} />
     );
-  };
 
   return (
     <Wrapper>
