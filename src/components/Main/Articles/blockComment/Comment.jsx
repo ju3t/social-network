@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Avatar } from 'antd';
+import PropTypes from 'prop-types';
 
 const Wrapper = styled.div``;
 const UserInfo = styled.div`
@@ -58,6 +59,14 @@ const Comment = ({ comment }) => {
       <Text>{text}</Text>
     </Wrapper>
   );
+};
+
+Comment.propTypes = {
+  userName: PropTypes.string.isRequired,
+  userFoto: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  comment: PropTypes.string.isRequired,
 };
 
 export default Comment;
