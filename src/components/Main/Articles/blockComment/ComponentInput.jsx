@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Avatar } from 'antd';
 
@@ -62,16 +62,12 @@ const BtnOpenNote = styled.button`
   }
 `;
 
-const ComponentInput = () => {
-  const [isShowFullNoteText, setIsShowFullNoteText] = useState(false);
-
-  return (
-    <Wrapper>
-      <Avatar src={userFoto} />
-      <Input placeholder="Напишите что-нибудь..." />
-      <BtnSend />
-      <BtnOpenNote />
-    </Wrapper>
-  );
-};
+const ComponentInput = () => (
+  <Wrapper>
+    <Avatar src={userFoto} />
+    <Input placeholder="Напишите что-нибудь..." />
+    <BtnSend />
+    <BtnOpenNote />
+  </Wrapper>
+);
 export default ComponentInput;

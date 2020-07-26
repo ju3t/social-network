@@ -31,7 +31,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "lint": "eslint src/**/*.js",
+    "lint": "eslint src/**/*.{js,jsx}",
     "lint:fix": "eslint src/**/*.js --fix",
     "storybook": "start-storybook"
   },
@@ -73,7 +73,7 @@
     }
   },
   "lint-staged": {
-    "*.{js, jsx}": [
+    "*.{js,jsx}": [
       "npm run lint:fix",
       "prettier --write",
       "git add"
