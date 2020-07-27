@@ -19,6 +19,7 @@ const ModalChatWrapper = styled.div`
 const ContentWrapper = styled.div`
   height: 100%;
   width: 100%;
+  background-color: white;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   transform: ${({ isOpen }) => (isOpen ? 'translateY(0)' : 'translateY(870px)')};
   opacity: ${({ isOpen }) => (isOpen ? '1' : '0')};
