@@ -10,12 +10,7 @@ import reducers from './redux/reducers';
 import * as serviceWorker from './serviceWorker';
 import App from './App.jsx';
 
-const store = createStore(
-  reducers,
-  composeWithDevTools(
-    applyMiddleware(thunk),
-  ),
-);
+const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <BrowserRouter>
@@ -25,7 +20,7 @@ ReactDOM.render(
       </React.StrictMode>
     </Provider>
   </BrowserRouter>,
-  document.getElementById('root'),
+  document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change

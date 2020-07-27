@@ -20,6 +20,7 @@ const ContentWrapper = styled.div`
   height: 100%;
   width: 100%;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: white;
   transform: ${({ isOpen }) => (isOpen ? 'translateY(0)' : 'translateY(870px)')};
   opacity: ${({ isOpen }) => (isOpen ? '1' : '0')};
   transition: transform 1s ease-in-out, opacity 1s ease-in-out;
@@ -193,22 +194,23 @@ const ModalChat = () => {
     setIsOpen(!isOpen);
   };
 
-  const renderMessages = () => groupMessagesByUser.map((el) => {
-    if (el.username === 'bogdan13') {
+  const renderMessages = () =>
+    groupMessagesByUser.map((el) => {
+      if (el.username === 'bogdan13') {
+        return (
+          <ModalChatMessageWrapper>
+            <Messages messages={el.messages} messagesType="our" />
+            <Author img={el.image} name={el.name} />
+          </ModalChatMessageWrapper>
+        );
+      }
       return (
         <ModalChatMessageWrapper>
-          <Messages messages={el.messages} messagesType="our" />
           <Author img={el.image} name={el.name} />
+          <Messages messages={el.messages} messagesType="their" />
         </ModalChatMessageWrapper>
       );
-    }
-    return (
-      <ModalChatMessageWrapper>
-        <Author img={el.image} name={el.name} />
-        <Messages messages={el.messages} messagesType="their" />
-      </ModalChatMessageWrapper>
-    );
-  });
+    });
 
   return (
     <ModalChatWrapper>
