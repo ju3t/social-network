@@ -1,6 +1,6 @@
 import React from 'react';
 import { МодальныйЧат } from './modal-chat/index.stories';
-import { ButtonTF } from './buttons/index.stories';
+import { ButtonTF } from './button/index.stories';
 
 export default { title: 'Button' };
 
