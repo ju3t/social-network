@@ -193,22 +193,23 @@ const ModalChat = () => {
     setIsOpen(!isOpen);
   };
 
-  const renderMessages = () => groupMessagesByUser.map((el) => {
-    if (el.username === 'bogdan13') {
+  const renderMessages = () =>
+    groupMessagesByUser.map((el) => {
+      if (el.username === 'bogdan13') {
+        return (
+          <ModalChatMessageWrapper>
+            <Messages messages={el.messages} messagesType="our" />
+            <Author img={el.image} name={el.name} />
+          </ModalChatMessageWrapper>
+        );
+      }
       return (
         <ModalChatMessageWrapper>
-          <Messages messages={el.messages} messagesType="our" />
           <Author img={el.image} name={el.name} />
+          <Messages messages={el.messages} messagesType="their" />
         </ModalChatMessageWrapper>
       );
-    }
-    return (
-      <ModalChatMessageWrapper>
-        <Author img={el.image} name={el.name} />
-        <Messages messages={el.messages} messagesType="their" />
-      </ModalChatMessageWrapper>
-    );
-  });
+    });
 
   return (
     <ModalChatWrapper>
