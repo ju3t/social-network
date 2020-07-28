@@ -20,3 +20,10 @@
 ```
 <Button small>label</Button>
 ```
+
+
+## props:
+> wide (bool) ==> width: 100%
+>
+> small true | false ==> Кнопочка | Кнопище
+

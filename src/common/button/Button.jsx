@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
+  display: block;
   background: #ffb11b;
-  /* border-radius: 5px; */
   border-radius: ${(props) => (props.small ? '5px' : '15px')};
+  width: ${(props) => (props.wide ? '100%' : null)};
   border: none;
   font-family: 'Montserrat';
 
@@ -13,7 +14,6 @@ const StyledButton = styled.button`
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
-  /* padding: 15px 40px; */
   padding: ${(props) => (props.small ? '15px 40px' : '19px 66px')};
 
   &:hover {
@@ -30,6 +30,5 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   children: PropTypes.string,
 };
