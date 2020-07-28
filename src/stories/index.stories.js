@@ -1,8 +1,8 @@
 import React from 'react';
 import { МодальныйЧат } from './modal-chat/index.stories';
-import { ButtonTF } from './button/index.stories';
+import { ButtonTF, ContentBoxSt, SliderSt, PhotoAlbumsItemSt } from './common/index.stories';
 
-export default { title: 'Button' };
+export default { title: 'Common' };
 
 export const withText = () => <ButtonTF>Hello Button</ButtonTF>;
 
@@ -20,4 +20,19 @@ export const ButtonSmall = () => (
     ButtonLabel
   </ButtonTF>
 );
+
 export const Button = () => <ButtonTF type="button">ButtonLabel</ButtonTF>;
+
+export const ButtonWide = () => (
+  <ButtonTF type="button" wide>
+    ButtonLabel
+  </ButtonTF>
+);
+
+export const ContentBox = () => (
+  <ContentBoxSt headline="Заголовок">Содержимое контейнера</ContentBoxSt>
+);
+
+export const PhotoSlider = () => <SliderSt headline="Альбомы" />;
+
+export const PhotoAlbumsItem = () => <PhotoAlbumsItemSt />;
