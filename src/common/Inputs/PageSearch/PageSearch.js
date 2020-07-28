@@ -54,13 +54,13 @@ const PageSearchInput = ({
 PageSearchInput.defaultProps = {
   defaultValue: '',
   placeholder: '',
-  onChange: () => {},
+  action: () => {},
 };
 
 PageSearchInput.propTypes = {
   defaultValue: PropTypes.string,
   placeholder: PropTypes.string,
-  onChange: PropTypes.func,
+  action: PropTypes.func,
 };
 
 export default PageSearchInput;
