@@ -4,6 +4,7 @@ import ScrollBar from 'react-scrollbars-custom';
 import moreOptionSrc from '../../img/icons/chat-more-options.svg';
 import Messages from '../../common/chat/messages';
 import SubmitMessage from '../../common/chat/submit-message';
+import PageSearchInput from '../../common/Inputs/PageSearch';
 
 const Wrapper = styled.div`
   max-width: 1456px;
@@ -19,6 +20,7 @@ const SelectChat = styled.div`
   background-color: white;
   position: relative;
   display: flex;
+  flex-direction: column;
   flex-basis: 39%;
   
   &::before {
@@ -38,6 +40,11 @@ const SelectChat = styled.div`
     left: 56px;
     top: -90px;
   }
+`;
+
+const PageSearchInputWrapper = styled.div`
+  margin-top: 119px;
+  padding: 0 85px;
 `;
 
 const SelectChatElementsWrapper = styled.div`
@@ -216,7 +223,7 @@ const testData = [
     messages: 'Pellentesque blandit nibh at leo venenatis, in semper ipsum dictum',
     dateSend: '05/06/20',
     timeSend: '12:58',
-    image: 'https://www.meme-arsenal.com/memes/b5397c380e660b6e60fd9b86f0a18709.jpg',
+    image: 'https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg',
   },
   {
     username: 'kirill22',
@@ -240,7 +247,7 @@ const testData = [
     messages: 'Pellentesque blandit nibh at leo venenatis, in semper ipsum dictum',
     dateSend: '05/06/20',
     timeSend: '12:58',
-    image: 'https://www.meme-arsenal.com/memes/b5397c380e660b6e60fd9b86f0a18709.jpg',
+    image: 'https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg',
   },
   {
     username: 'kirill22',
@@ -264,79 +271,7 @@ const testData = [
     messages: 'Pellentesque blandit nibh at leo venenatis, in semper ipsum dictum',
     dateSend: '05/06/20',
     timeSend: '12:58',
-    image: 'https://www.meme-arsenal.com/memes/b5397c380e660b6e60fd9b86f0a18709.jpg',
-  },
-  {
-    username: 'kirill22',
-    name: 'Кирилл',
-    messages: 'Lorem! Aliquam erat volutpat?',
-    dateSend: '05/06/20',
-    timeSend: '13:40',
-    image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
-  },
-  {
-    username: 'kirill22',
-    name: 'Кирилл',
-    messages: 'Lorem! Aliquam erat volutpat?',
-    dateSend: '05/06/20',
-    timeSend: '12:55',
-    image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
-  },
-  {
-    username: 'bogdan13',
-    name: 'Богдан',
-    messages: 'Pellentesque blandit nibh at leo venenatis, in semper ipsum dictum',
-    dateSend: '05/06/20',
-    timeSend: '12:58',
-    image: 'https://www.meme-arsenal.com/memes/b5397c380e660b6e60fd9b86f0a18709.jpg',
-  },
-  {
-    username: 'kirill22',
-    name: 'Кирилл',
-    messages: 'Nulla porttitor ligula quam, quis auctor felis consectetur non',
-    dateSend: '05/06/20',
-    timeSend: '12:59',
-    image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
-  },
-  {
-    username: 'kirill22',
-    name: 'Кирилл',
-    messages: 'Nulla porttitor ligula quam, quis auctor felis consectetur non',
-    dateSend: '05/06/20',
-    timeSend: '12:59',
-    image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
-  },
-  {
-    username: 'bogdan13',
-    name: 'Богдан',
-    messages: 'Pellentesque blandit nibh at leo venenatis, in semper ipsum dictum',
-    dateSend: '05/06/20',
-    timeSend: '12:58',
-    image: 'https://www.meme-arsenal.com/memes/b5397c380e660b6e60fd9b86f0a18709.jpg',
-  },
-  {
-    username: 'kirill22',
-    name: 'Кирилл',
-    messages: 'Nulla porttitor ligula quam, quis auctor felis consectetur non',
-    dateSend: '05/06/20',
-    timeSend: '12:59',
-    image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
-  },
-  {
-    username: 'kirill22',
-    name: 'Кирилл',
-    messages: 'Lorem! Aliquam erat volutpat?',
-    dateSend: '05/06/20',
-    timeSend: '13:40',
-    image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
-  },
-  {
-    username: 'bogdan13',
-    name: 'Богдан',
-    messages: 'Pellentesque blandit nibh at leo venenatis, in semper ipsum dictum',
-    dateSend: '05/06/20',
-    timeSend: '12:58',
-    image: 'https://www.meme-arsenal.com/memes/b5397c380e660b6e60fd9b86f0a18709.jpg',
+    image: 'https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg',
   },
   {
     username: 'kirill22',
@@ -360,7 +295,7 @@ const testData = [
     messages: 'Pellentesque blandit nibh at leo venenatis, in semper ipsum dictum',
     dateSend: '05/06/20',
     timeSend: '12:58',
-    image: 'https://www.meme-arsenal.com/memes/b5397c380e660b6e60fd9b86f0a18709.jpg',
+    image: 'https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg',
   },
   {
     username: 'kirill22',
@@ -384,7 +319,7 @@ const testData = [
     messages: 'Pellentesque blandit nibh at leo venenatis, in semper ipsum dictum',
     dateSend: '05/06/20',
     timeSend: '12:58',
-    image: 'https://www.meme-arsenal.com/memes/b5397c380e660b6e60fd9b86f0a18709.jpg',
+    image: 'https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg',
   },
   {
     username: 'kirill22',
@@ -408,7 +343,79 @@ const testData = [
     messages: 'Pellentesque blandit nibh at leo venenatis, in semper ipsum dictum',
     dateSend: '05/06/20',
     timeSend: '12:58',
-    image: 'https://www.meme-arsenal.com/memes/b5397c380e660b6e60fd9b86f0a18709.jpg',
+    image: 'https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg',
+  },
+  {
+    username: 'kirill22',
+    name: 'Кирилл',
+    messages: 'Lorem! Aliquam erat volutpat?',
+    dateSend: '05/06/20',
+    timeSend: '13:40',
+    image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
+  },
+  {
+    username: 'kirill22',
+    name: 'Кирилл',
+    messages: 'Lorem! Aliquam erat volutpat?',
+    dateSend: '05/06/20',
+    timeSend: '12:55',
+    image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
+  },
+  {
+    username: 'bogdan13',
+    name: 'Богдан',
+    messages: 'Pellentesque blandit nibh at leo venenatis, in semper ipsum dictum',
+    dateSend: '05/06/20',
+    timeSend: '12:58',
+    image: 'https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg',
+  },
+  {
+    username: 'kirill22',
+    name: 'Кирилл',
+    messages: 'Nulla porttitor ligula quam, quis auctor felis consectetur non',
+    dateSend: '05/06/20',
+    timeSend: '12:59',
+    image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
+  },
+  {
+    username: 'kirill22',
+    name: 'Кирилл',
+    messages: 'Nulla porttitor ligula quam, quis auctor felis consectetur non',
+    dateSend: '05/06/20',
+    timeSend: '12:59',
+    image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
+  },
+  {
+    username: 'bogdan13',
+    name: 'Богдан',
+    messages: 'Pellentesque blandit nibh at leo venenatis, in semper ipsum dictum',
+    dateSend: '05/06/20',
+    timeSend: '12:58',
+    image: 'https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg',
+  },
+  {
+    username: 'kirill22',
+    name: 'Кирилл',
+    messages: 'Nulla porttitor ligula quam, quis auctor felis consectetur non',
+    dateSend: '05/06/20',
+    timeSend: '12:59',
+    image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
+  },
+  {
+    username: 'kirill22',
+    name: 'Кирилл',
+    messages: 'Lorem! Aliquam erat volutpat?',
+    dateSend: '05/06/20',
+    timeSend: '13:40',
+    image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
+  },
+  {
+    username: 'bogdan13',
+    name: 'Богдан',
+    messages: 'Pellentesque blandit nibh at leo venenatis, in semper ipsum dictum',
+    dateSend: '05/06/20',
+    timeSend: '12:58',
+    image: 'https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg',
   },
   {
     username: 'kirill22',
@@ -462,6 +469,10 @@ const MessagesPage = () => {
   return (
     <Wrapper>
       <SelectChat>
+        <PageSearchInputWrapper>
+          <PageSearchInput placeholder="Поиск..." />
+        </PageSearchInputWrapper>
+
         <SelectChatElementsWrapper>
           <SelectChatElement>
             <SelectChatUserImg src="https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg" />
