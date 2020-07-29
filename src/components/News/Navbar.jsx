@@ -60,7 +60,7 @@ const ButtonActive = styled(Button)`
 `;
 
 const Menu = styled.div`
-  /* align-self: start; */
+  z-index: 1;
 `;
 
 const ButtonSearch = styled.button`
