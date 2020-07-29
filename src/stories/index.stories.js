@@ -1,6 +1,14 @@
 import React from 'react';
 import { МодальныйЧат } from './modal-chat/index.stories';
-import { ButtonTF, ContentBoxSt, SliderSt, PhotoAlbumsItemSt } from './common/index.stories';
+import {
+  ButtonTF,
+  ContentBoxSt,
+  SliderSt,
+  SliderItemSt,
+  PhotoSliderSt,
+} from './common/index.stories';
+
+import data from '../common/mock-data/albums';
 
 export default { title: 'Common' };
 
@@ -33,6 +41,17 @@ export const ContentBox = () => (
   <ContentBoxSt headline="Заголовок">Содержимое контейнера</ContentBoxSt>
 );
 
-export const PhotoSlider = () => <SliderSt headline="Альбомы" />;
+export const SliderItem = () => SliderItemSt(data[0]);
 
-export const PhotoAlbumsItem = () => <PhotoAlbumsItemSt />;
+const sliderItems = data.map((item) => SliderItemSt(item));
+export const Slider = () => (
+  <SliderSt slidesPerView="4" spaceBetween="20">
+    {sliderItems}
+  </SliderSt>
+);
+
+export const PhotoSlider = () => (
+  <PhotoSliderSt slidesPerView="4" spaceBetween="20">
+    {sliderItems}
+  </PhotoSliderSt>
+);
