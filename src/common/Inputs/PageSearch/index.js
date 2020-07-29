@@ -1,3 +1,3 @@
-import PageSearchInput from './PageSearch'
+import PageSearchInput from './PageSearch';
 
-export default PageSearchInput
+export default PageSearchInput;
