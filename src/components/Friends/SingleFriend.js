@@ -93,7 +93,9 @@ const SingleFriend = ({
       </FriendAvatarWrapper>
       <FriendInfo>
         <FriendFullName>
-          {firstname} {lastname}
+          {firstname}
+          {' '}
+          {lastname}
         </FriendFullName>
         <FriendProfession>{profesion}</FriendProfession>
       </FriendInfo>

@@ -94,12 +94,11 @@ const arrayTags = [
 const BlockNotes = () => {
   const [isOpenSearch, setIsOpenSearch] = useState(false);
 
-  const renderSearch = () =>
-    isOpenSearch ? (
-      <InputSearch placeholder="Поиск..." />
-    ) : (
-      <ComponentSearch onClick={() => setIsOpenSearch(!isOpenSearch)} />
-    );
+  const renderSearch = () => (isOpenSearch ? (
+    <InputSearch placeholder="Поиск..." />
+  ) : (
+    <ComponentSearch onClick={() => setIsOpenSearch(!isOpenSearch)} />
+  ));
 
   return (
     <Wrapper>
