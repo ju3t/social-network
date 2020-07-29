@@ -1,24 +1,84 @@
-import React from 'react';
+/* eslint-disable linebreak-style */
+/* eslint-disable react/prop-types */
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import avatar from './avatar.svg';
+import favorite from './favorite.svg';
+import like from './like.svg';
+import comment from './comment.svg';
+import repost from './repost.svg';
+import more from './more.svg';
+import moreUp from './moreUp.svg';
 
 export default function NewsItem(props) {
   const { item } = props;
-  const { title, img, text, tags } = item;
-  const listTags = tags.map((tag) => {
-    return (
-      <LiItem>
-        <TagLink key={tag} href="localhost">
-          {tag}
-        </TagLink>
-      </LiItem>
-    );
-  });
+  const {
+    title,
+    img,
+    text,
+    tags,
+    author,
+    time,
+    favoritesCount,
+    likesCount,
+    commentsCount,
+    repostsCount,
+  } = item;
+
+  const [isFullContent, setFullContent] = useState(false);
+  const height = isFullContent ? '' : '100px';
+
+  const listTags = tags.map((tag) => (
+    <LiItem>
+      <TagLink key={tag} href="http://localhost:3000/social-network">
+        #
+        {tag}
+      </TagLink>
+    </LiItem>
+  ));
   return (
     <Container>
-      <CardHeader>Хедер</CardHeader>
-      <CardTitle>{title}</CardTitle>
-      <CardImage src={img} alt="" />
-      <CardContent>{text}</CardContent>
+      <NewsHeader>
+        <AvatarContainer>
+          <AvatarImg src={avatar} alt="Aватар" />
+        </AvatarContainer>
+        <AuthorContainer>
+          <Author>{author}</Author>
+          <Time>{time}</Time>
+        </AuthorContainer>
+        <ActionsContainer>
+          <ButtonAction>
+            <ActionIcon src={favorite} alt="В избранном" />
+            {favoritesCount}
+          </ButtonAction>
+          <ButtonAction>
+            <ActionIcon src={like} alt="Лайки" />
+            {likesCount}
+          </ButtonAction>
+          <ButtonAction>
+            <ActionIcon src={comment} alt="Комментарии" />
+            {commentsCount}
+          </ButtonAction>
+          <ButtonAction>
+            <ActionIcon src={repost} alt="Репосты" />
+            {repostsCount}
+          </ButtonAction>
+        </ActionsContainer>
+      </NewsHeader>
+      <NewsTitle>{title}</NewsTitle>
+      <div style={{ display: 'flex' }}>
+        <NewsContentContainer style={{ display: 'flex', flexDirection: 'column', width: '735px' }}>
+          <CardImage src={img} alt="" />
+          <CardContent style={{ height }}>{text}</CardContent>
+        </NewsContentContainer>
+        <ButtonMore>
+          <MoreIcon
+            src={isFullContent ? moreUp : more}
+            onClick={() => setFullContent(!isFullContent)}
+          />
+        </ButtonMore>
+      </div>
+
       <CardTags>{listTags}</CardTags>
     </Container>
   );
@@ -30,11 +90,90 @@ const Container = styled.div`
   border-bottom: 1px solid #515151;
 `;
 
-const CardHeader = styled.div`
+const NewsHeader = styled.div`
+  display: flex;
+  width: 100%;
   min-height: 100px;
+  margin-bottom: 50px;
 `;
 
-const CardTitle = styled.div`
+const AvatarContainer = styled.div`
+  align-self: center;
+  width: 85px;
+  border-radius: 50%;
+  margin-right: 25px;
+`;
+
+const AvatarImg = styled.img`
+  display: block;
+  width: 85px;
+  height: 85px;
+  object-fit: cover;
+`;
+
+const AuthorContainer = styled.div`
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Author = styled.span`
+  display: block;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+  text-align: left;
+  margin-bottom: 5px;
+`;
+
+const Time = styled.span`
+  display: block;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  color: #515151;
+`;
+const ActionsContainer = styled.div`
+  align-self: center;
+  margin-left: auto;
+  margin-right: 10px;
+  flex-grow: 2;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const ButtonAction = styled.button`
+  margin-left: 65px;
+  display: flex;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 160.9%;
+  color: #000000;
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+  transition: 0.1s;
+  &:hover {
+    transform: scale(1.05);
+  }
+`;
+
+const ActionIcon = styled.img`
+  margin-right: 10px;
+`;
+
+const NewsTitle = styled.div`
   display: block;
   min-height: 40px;
   margin-bottom: 20px;
@@ -48,21 +187,46 @@ const CardTitle = styled.div`
 const CardImage = styled.img`
   display: block;
   border-radius: 15px;
-  width: 855px;
+  width: 100%;
   object-fit: cover;
   margin-bottom: 45px;
   margin-right: auto;
 `;
 
-const CardContent = styled.span`
-  display: block;
-  overflow: hidden;
-  min-width: 100px;
-  max-width: 1000px;
-  max-height: 100px;
+const NewsContentContainer = styled.div`
+  display: flex;
   margin-bottom: 30px;
+`;
+
+const CardContent = styled.span`
+  overflow: hidden;
+  display: block;
+  min-width: 100px;
+  max-width: 705px;
   font-size: 16px;
   line-height: 165%;
+  margin-right: 20px;
+  text-align: justify;
+`;
+
+const ButtonMore = styled.button`
+  align-self: flex-end;
+  width: 35px;
+  height: 35px;
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 30px;
+  margin-left: 15px;
+`;
+
+const MoreIcon = styled.img`
+  transition: 0.1s;
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 const CardTags = styled.span`
@@ -82,17 +246,3 @@ const LiItem = styled.li`
   list-style-type: none;
   margin-left: 5px;
 `;
-// NewsItem.propTypes = {
-//   item: PropTypes.objectOf(PropTypes.object()).isRequired,
-//   title: PropTypes.string,
-//   img: PropTypes.string,
-//   text: PropTypes.string,
-//   tags: PropTypes.arrayOf(PropTypes.string),
-// };
-
-NewsItem.defaultProps = {
-  title: '',
-  img: '',
-  text: '',
-  tags: [],
-};

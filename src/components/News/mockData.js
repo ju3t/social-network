@@ -1,5 +1,9 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable no-multi-str */
 /* eslint-disable import/prefer-default-export */
+
+/* Тестовые данные из-за отсутствия API */
+
 export const mockData = {
   news: [
     {
@@ -21,6 +25,12 @@ export const mockData = {
       pretium mi. Phasellus a sapien enim. Vivamus turpis odio, posuere ac nunc eget, ultricies mollis tellus. Pellentesque fermentum felis neque, at\
       suscipit nisi dictum nec. Aliquam consequat in lacus at aliquet. Nulla facilisi.',
       tags: ['тег1', 'тег2', 'тег3'],
+      author: 'Николай',
+      time: '07.07.2020 в 00:07',
+      favoritesCount: 0,
+      likesCount: 54,
+      commentsCount: 150,
+      repostsCount: 3,
     },
     {
       id: 2,
@@ -41,6 +51,12 @@ export const mockData = {
       pretium mi. Phasellus a sapien enim. Vivamus turpis odio, posuere ac nunc eget, ultricies mollis tellus. Pellentesque fermentum felis neque, at\
       suscipit nisi dictum nec. Aliquam consequat in lacus at aliquet. Nulla facilisi.',
       tags: ['тег1', 'тег2', 'тег3'],
+      author: 'Елена',
+      time: '07.07.2020 в 00:07',
+      favoritesCount: 6,
+      likesCount: 59,
+      commentsCount: 10,
+      repostsCount: 30,
     },
     {
       id: 3,
@@ -62,6 +78,12 @@ export const mockData = {
       pretium mi. Phasellus a sapien enim. Vivamus turpis odio, posuere ac nunc eget, ultricies mollis tellus. Pellentesque fermentum felis neque, at\
       suscipit nisi dictum nec. Aliquam consequat in lacus at aliquet. Nulla facilisi.',
       tags: ['тег1', 'тег2', 'тег3'],
+      author: 'Александр',
+      time: '07.07.2020 в 00:07',
+      favoritesCount: 24,
+      likesCount: 0,
+      commentsCount: 0,
+      repostsCount: 8,
     },
   ],
 };

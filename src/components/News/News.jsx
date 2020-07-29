@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import React from 'react';
 import styled from 'styled-components';
 import Navbar from './Navbar';
@@ -24,7 +25,7 @@ const Wrapper = styled.div`
 
 const Container = styled.div`
   position: relative;
-  max-width: 1290px;
+  max-width: 775px;
   display: flex;
   flex-direction: column;
   padding-left: 95px;
@@ -40,12 +41,12 @@ const Container = styled.div`
 
 const Label = styled.div`
   position: absolute;
-  width: 300px;
-  height: 95px;
-  top: -70px;
+  width: 250px;
+  height: 75px;
+  top: -60px;
   background: #ffb11b;
   border-radius: 15px;
-  padding-top: 35px;
+  padding-top: 20px;
   font-family: Montserrat;
   font-style: normal;
   font-weight: 600;

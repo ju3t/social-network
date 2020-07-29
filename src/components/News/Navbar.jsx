@@ -1,13 +1,20 @@
+/* eslint-disable linebreak-style */
 import React from 'react';
 import styled from 'styled-components';
+import img from './search.svg';
 
 const Navbar = () => (
   <NavbarWrapper>
     <NavbarContainer>
-      <NavLink>Все</NavLink>
-      <NavLink>Новости</NavLink>
-      <NavLink>Интересные</NavLink>
-      <NavLink>Теги</NavLink>
+      <Menu>
+        <ButtonActive>Все</ButtonActive>
+        <Button>Новости</Button>
+        <Button>Интересные</Button>
+        <Button>Теги</Button>
+      </Menu>
+      <ButtonSearch>
+        <SearchIcon src={img} alt="Поиск" />
+      </ButtonSearch>
     </NavbarContainer>
   </NavbarWrapper>
 );
@@ -24,15 +31,52 @@ const NavbarWrapper = styled.nav`
   display: flex;
 `;
 
-const NavLink = styled.span`
-  font-size: 16px;
-  line-height: 20px;
-  flex: none;
-  order: 0;
-  align-self: center;
-  margin-right: 51px;
+const NavbarContainer = styled.div`
+  width: 100%;
+  padding-top: 70px;
+  display: flex;
+  justify-content: space-between;
 `;
 
-const NavbarContainer = styled.div`
-  display: flex;
+const Button = styled.button`
+  font-family: Montserrat;
+  font-size: 16px;
+  line-height: 20px;
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  margin-right: 50px;
+  padding: 0;
+  padding-bottom: 7px;
+  transition: 0.1s;
+  &:hover {
+    transform: scale(1.05);
+  }
+`;
+
+const ButtonActive = styled(Button)`
+  border-bottom: 3px solid #ffb11b;
+`;
+
+const Menu = styled.div`
+  /* align-self: start; */
+`;
+
+const ButtonSearch = styled.button`
+  width: 35px;
+  height: 35px;
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  transition: 0.1s;
+  &:hover {
+    transform: scale(1.05);
+  }
+`;
+
+const SearchIcon = styled.img`
+  z-index: 1;
 `;
