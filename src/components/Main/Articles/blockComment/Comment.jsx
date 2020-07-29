@@ -47,6 +47,7 @@ const Text = styled.p`
 
 const Comment = ({ comment }) => {
   const { userName, userFoto, date, text } = comment;
+
   return (
     <Wrapper>
       <UserInfo>
@@ -61,12 +62,19 @@ const Comment = ({ comment }) => {
   );
 };
 
+Comment.defaultProps = {
+  userName: null,
+  userFoto: null,
+  date: null,
+  text: null,
+};
+
 Comment.propTypes = {
-  userName: PropTypes.string.isRequired,
-  userFoto: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
-  comment: PropTypes.string.isRequired,
+  userName: PropTypes.string,
+  userFoto: PropTypes.string,
+  date: PropTypes.string,
+  text: PropTypes.string,
+  comment: PropTypes.objectOf(PropTypes.object).isRequired,
 };
 
 export default Comment;
