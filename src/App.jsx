@@ -14,6 +14,7 @@ const App = () => (
     <Route path={routes.login} component={Login} />
     <Route path={routes.friends} component={Friends} />
     <Route path={routes.news} component={News} />
+    <Route path={routes.messages} component={Messages} />
   </Switch>
 );
 
