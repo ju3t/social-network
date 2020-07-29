@@ -12,14 +12,14 @@ const Wrapper = styled.div`
   font-family: Montserrat, serif;
   font-style: normal;
 `;
-const MenuWrapper = styled.div`
+export const MenuWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 50px 0;
   border-bottom: 1px solid #515151;
 `;
-const Menu = styled.ul`
+export const Menu = styled.ul`
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -31,7 +31,7 @@ const Menu = styled.ul`
   color: #515151;
 `;
 
-const MenuItem = styled.li`
+export const MenuItem = styled.li`
   list-style: none;
   cursor: pointer;
   color: black;
@@ -47,7 +47,7 @@ const MenuItem = styled.li`
     color: #ffb11b;
   }
 `;
-const ComponentSearch = styled.div`
+export const ComponentSearch = styled.div`
   width: 30px;
   height: 30px;
   background-image: url(${searchLogo});
@@ -56,7 +56,7 @@ const ComponentSearch = styled.div`
   cursor: pointer;
 `;
 
-const InputSearch = styled.input`
+export const InputSearch = styled.input`
   width: 200px;
   height: 35px;
   background: #ffffff;
