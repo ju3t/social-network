@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import searchLogo from '../icons/search-logo.svg';
 import UserNote from './UserNote';
 import Note from './Note';
+import BlockComments from '../blockComment/BlockComments';
 
 const Wrapper = styled.div`
   border-bottom: 1px solid #515151;
@@ -70,27 +71,6 @@ export const InputSearch = styled.input`
   box-sizing: border-box;
 `;
 
-const TagsList = styled.ul`
-  padding: 0;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 45px 0 55px 0;
-`;
-const TagItem = styled.li`
-  list-style: none;
-  font-size: 16px;
-  color: black;
-  &:not(:last-child) {
-    margin-right: 10px;
-  }
-`;
-
-const arrayTags = [
-  { id: 0, tag: '#nunc' },
-  { id: 1, tag: '#dolor' },
-];
-
 const BlockNotes = () => {
   const [isOpenSearch, setIsOpenSearch] = useState(false);
 
@@ -102,23 +82,21 @@ const BlockNotes = () => {
     );
 
   return (
-    <Wrapper>
-      <MenuWrapper>
-        <Menu>
-          <MenuItem className="active">Все</MenuItem>
-          <MenuItem>Мои заметки</MenuItem>
-          <MenuItem>Рекомендации</MenuItem>
-        </Menu>
-        {renderSearch()}
-      </MenuWrapper>
-      <UserNote />
-      <Note />
-      <TagsList>
-        {arrayTags.map((item) => (
-          <TagItem key={item.id}>{item.tag}</TagItem>
-        ))}
-      </TagsList>
-    </Wrapper>
+    <>
+      <Wrapper>
+        <MenuWrapper>
+          <Menu>
+            <MenuItem className="active">Все</MenuItem>
+            <MenuItem>Мои заметки</MenuItem>
+            <MenuItem>Рекомендации</MenuItem>
+          </Menu>
+          {renderSearch()}
+        </MenuWrapper>
+        <UserNote />
+        <Note />
+      </Wrapper>
+      <BlockComments />
+    </>
   );
 };
 export default BlockNotes;

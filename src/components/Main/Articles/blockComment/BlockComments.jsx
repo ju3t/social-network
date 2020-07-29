@@ -40,6 +40,8 @@ const Wrapper = styled.div`
   align-items: flex-start;
   border-bottom: 1px solid #515151;
   margin-bottom: 50px;
+  z-index: 100;
+  background: white;
 `;
 const Title = styled.div`
   font-weight: 500;

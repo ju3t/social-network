@@ -19,14 +19,6 @@ Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculu
 Praesent congue arcu at accumsan luctus. Nam sed diam nibh. In at lectus sodales, interdum
 turpis at, semper nisl.`;
 
-const arrayNotes = [
-  { id: 0, note: ' Etiam lacus lorem, cursus eget maximus id, vestibulum ac turpis.' },
-  { id: 1, note: 'Maecenas vulputate justo sed elit feugiat, vitae tempus quam euismod.' },
-  { id: 2, note: 'Fusce sapien ante, faucibus eu lectus et, rhoncus varius leo.' },
-  { id: 3, note: 'Nam nec lacus id ipsum eleifend rhoncus ac in elit.' },
-  { id: 4, note: 'Nullam pretium nibh quis sapien aliquam.' },
-];
-
 const Wrapper = styled.div`
   position: relative;
 `;
@@ -39,7 +31,7 @@ const TitleText = styled.p`
   color: #000000;
   text-align: start;
 `;
-const Text = styled.p`
+const Text = styled.div`
   width: 95%;
   font-weight: normal;
   font-size: 16px;
@@ -47,16 +39,10 @@ const Text = styled.p`
   margin: 0 0 40px 0;
   color: #000000;
   text-align: start;
-`;
-
-const NotesList = styled.ul`
-  padding: 0 0 0 20px;
-`;
-const NoteItem = styled.li`
-  list-style-type: decimal;
-  text-align: start;
-  margin: 10px 0 0 0;
-  color: black;
+  //height: 100px;
+  //height: 100%;
+  height: ${(props) => props.height};
+  overflow: hidden;
 `;
 
 const BtnOpenNote = styled.button`
@@ -78,30 +64,45 @@ const BtnOpenNote = styled.button`
   }
 `;
 
-const renderFullNoteText = () => (
-  <>
-    <TitleText>Aliquam erat volutpat</TitleText>
-    <Text>{TextTwo}</Text>
-    <TitleText>Nunc eget venenatis justo</TitleText>
-    <NotesList>
-      {arrayNotes.map((item) => (
-        <NoteItem key={item.id}>{item.note}</NoteItem>
-      ))}
-    </NotesList>
-  </>
-);
+const TagsList = styled.ul`
+  padding: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 45px 0 55px 0;
+  margin-top: 10px;
+`;
+const TagItem = styled.li`
+  list-style: none;
+  font-size: 16px;
+  color: black;
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+`;
+
+const arrayTags = [
+  { id: 0, tag: '#nunc' },
+  { id: 1, tag: '#dolor' },
+];
 
 const Note = () => {
-  const [isShowFullNoteText, setIsShowFullNoteText] = useState(false);
+  const [height, setHeight] = useState(`${100}px`);
+  const minHeight = '100px';
+  const fullHeight = '100%';
   return (
     <Wrapper>
       <TitleText>Lorem ipsum</TitleText>
-      <Text>{TextOne}</Text>
-      {isShowFullNoteText ? renderFullNoteText() : null}
+      <Text height={height}>{TextOne + TextTwo}</Text>
       <BtnOpenNote
-        isOpen={isShowFullNoteText}
-        onClick={() => setIsShowFullNoteText(!isShowFullNoteText)}
+        isOpen={height !== minHeight}
+        onClick={() => (height === minHeight ? setHeight(fullHeight) : setHeight(minHeight))}
       />
+      <TagsList>
+        {arrayTags.map((item) => (
+          <TagItem key={item.id}>{item.tag}</TagItem>
+        ))}
+      </TagsList>
     </Wrapper>
   );
 };

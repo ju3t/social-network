@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FriendsWrapper, PageMarker } from '../../Friends/Friends';
-import {
+import BlockNotes, {
   ComponentSearch,
   InputSearch,
   Menu,
@@ -28,6 +28,7 @@ const BookMarksPage = () => {
         </Menu>
         {renderSearch()}
       </MenuWrapper>
+      <BlockNotes />
     </FriendsWrapper>
   );
 };
