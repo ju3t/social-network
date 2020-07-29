@@ -17,7 +17,8 @@
     "curly": "error",
     "react/jsx-filename-extension": [0],
     "import/extensions": "off",
-    "no-param-reassign": ["error", { "props": false }]
+    "no-param-reassign": ["error", { "props": false }],
+    "linebreak-style": "off"
   },
   "settings": {
     "react": {
