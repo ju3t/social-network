@@ -1,36 +1,24 @@
-import React, { useState } from 'react';
-import { FriendsWrapper, PageMarker } from '../../Friends/Friends';
-import BlockNotes, {
-  ComponentSearch,
-  InputSearch,
-  Menu,
-  MenuItem,
-  MenuWrapper,
-} from '../../Main/Articles/blockNotes/BlockNotes';
+import React from 'react';
+import styled from 'styled-components';
 
-const BookMarksPage = () => {
-  const [isOpenSearch, setIsOpenSearch] = useState(false);
+import { PageMarker } from '../../Friends/Friends';
+import BlockNotes from '../../Main/Articles/blockNotes/BlockNotes';
 
-  const renderSearch = () =>
-    isOpenSearch ? (
-      <InputSearch placeholder="Поиск..." />
-    ) : (
-      <ComponentSearch onClick={() => setIsOpenSearch(!isOpenSearch)} />
-    );
-  return (
-    <FriendsWrapper>
-      <PageMarker>Закладки</PageMarker>
-      <MenuWrapper>
-        <Menu>
-          <MenuItem className="active">Все</MenuItem>
-          <MenuItem>Мои заметки</MenuItem>
-          <MenuItem>Рекомендации</MenuItem>
-        </Menu>
-        {renderSearch()}
-      </MenuWrapper>
-      <BlockNotes />
-    </FriendsWrapper>
-  );
-};
+const Wrapper = styled.div`
+  background: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 15px;
+  padding: 114px 0 114px 0;
+  margin-top: 275px;
+  position: relative;
+  min-height: 1200px;
+`;
+
+const BookMarksPage = () => (
+  <Wrapper>
+    <PageMarker>Закладки</PageMarker>
+    <BlockNotes />
+  </Wrapper>
+);
 
 export default BookMarksPage;

@@ -1,3 +1,12 @@
-import Friends from './Friends';
+import React from 'react';
 
-export default Friends;
+import Friends from './Friends';
+import PageWrapper from '../../common/pageWrapper';
+
+const WrappedFriends = () => (
+  <PageWrapper>
+    <Friends />
+  </PageWrapper>
+);
+
+export default WrappedFriends;
