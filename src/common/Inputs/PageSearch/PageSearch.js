@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import SearchIcon from './../../img/icons/search.svg';
 import PropTypes from 'prop-types';
 import React from 'react';
+import SearchIcon from '../../img/icons/search.svg';
 
 const SearchBlock = styled.div`
   display: flex;
@@ -37,30 +37,28 @@ const SearchInpit = styled.input`
   position: relative;
 `;
 
-const PageSearchInput = ({
-    action, placeholder, defaultValue
-}) => (
-    <SearchBlock>
-        <SearchInpit
-        defaultValue={defaultValue}
-        placeholder={placeholder}
-        onChange={action}
-        nostyle="true"
-        />
-    </SearchBlock>
-)
+const PageSearchInput = ({ action, placeholder, defaultValue }) => (
+  <SearchBlock>
+    <SearchInpit
+      defaultValue={defaultValue}
+      placeholder={placeholder}
+      onChange={action}
+      nostyle="true"
+    />
+  </SearchBlock>
+);
 
 // PageSearchInput
 PageSearchInput.defaultProps = {
   defaultValue: '',
   placeholder: '',
-  onChange: () => {},
+  action: () => {},
 };
 
 PageSearchInput.propTypes = {
   defaultValue: PropTypes.string,
   placeholder: PropTypes.string,
-  onChange: PropTypes.func,
+  action: PropTypes.func,
 };
 
-export default PageSearchInput
+export default PageSearchInput;
