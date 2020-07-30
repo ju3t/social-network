@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import React, { useState } from 'react';
 import ScrollBar from 'react-scrollbars-custom';
 import { Button } from 'antd';
+import { uniqueId } from 'lodash';
 import Author from './message-author';
 import Messages from '../chat/messages';
 import SubmitMessage from '../chat/submit-message';
@@ -89,6 +90,7 @@ const scrollBarStyles = { width: '100%', height: '100%', paddingRight: 35 };
 // отсортировать по дате либо придут отсортированные
 const testData = [
   {
+    id: uniqueId(),
     username: 'kirill22',
     name: 'Кирилл',
     messages: 'Lorem! Aliquam erat volutpat?',
@@ -97,6 +99,7 @@ const testData = [
     image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
   },
   {
+    id: uniqueId(),
     username: 'stefan2233',
     name: 'Стефан',
     messages: 'Nulla in metus dictum, dapibus justo sit amet, tristique purus',
@@ -105,6 +108,7 @@ const testData = [
     image: 'https://stuki-druki.com/biofoto2/stepan-pivkin-01.jpg',
   },
   {
+    id: uniqueId(),
     username: 'bogdan13',
     name: 'Богдан',
     messages: 'Pellentesque blandit nibh at leo venenatis, in semper ipsum dictum',
@@ -113,6 +117,7 @@ const testData = [
     image: 'https://www.meme-arsenal.com/memes/b5397c380e660b6e60fd9b86f0a18709.jpg',
   },
   {
+    id: uniqueId(),
     username: 'kirill22',
     name: 'Кирилл',
     messages: 'Nulla porttitor ligula quam, quis auctor felis consectetur non',
@@ -121,6 +126,7 @@ const testData = [
     image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
   },
   {
+    id: uniqueId(),
     username: 'kirill22',
     name: 'Кирилл',
     messages: 'Nulla porttitor ligula quam, quis auctor felis consectetur non',
@@ -129,6 +135,7 @@ const testData = [
     image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
   },
   {
+    id: uniqueId(),
     username: 'bogdan13',
     name: 'Богдан',
     messages: 'Pellentesque blandit nibh at leo venenatis, in semper ipsum dictum',
@@ -137,6 +144,7 @@ const testData = [
     image: 'https://www.meme-arsenal.com/memes/b5397c380e660b6e60fd9b86f0a18709.jpg',
   },
   {
+    id: uniqueId(),
     username: 'kirill22',
     name: 'Кирилл',
     messages: 'Nulla porttitor ligula quam, quis auctor felis consectetur non',
@@ -145,6 +153,7 @@ const testData = [
     image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
   },
   {
+    id: uniqueId(),
     username: 'kirill22',
     name: 'Кирилл',
     messages: 'Lorem! Aliquam erat volutpat?',
@@ -153,6 +162,7 @@ const testData = [
     image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
   },
   {
+    id: uniqueId(),
     username: 'bogdan13',
     name: 'Богдан',
     messages: 'Pellentesque blandit nibh at leo venenatis, in semper ipsum dictum',
@@ -161,6 +171,7 @@ const testData = [
     image: 'https://www.meme-arsenal.com/memes/b5397c380e660b6e60fd9b86f0a18709.jpg',
   },
   {
+    id: uniqueId(),
     username: 'kirill22',
     name: 'Кирилл',
     messages: 'Lorem! Aliquam erat volutpat?',
@@ -174,13 +185,16 @@ const groupMessagesByUser = testData.reduce((acc, el) => {
   const lastAccElement = acc[acc.length - 1];
   const lastAccIndex = acc.length - 1;
 
-  const initialMessagesArray = { ...el, messages: [el.messages] };
+  const initialMessagesArray = { ...el, messages: [{ title: el.messages, id: uniqueId() }] };
   if (lastAccElement === undefined) return [initialMessagesArray];
 
   if (lastAccElement.username === el.username) {
     const newObject = {
       ...acc[lastAccIndex],
-      messages: [...acc[lastAccIndex].messages, el.messages],
+      messages: [
+        ...acc[lastAccIndex].messages,
+        { title: el.messages, id: uniqueId() },
+      ],
     };
     return [...acc.splice(0, lastAccIndex), newObject];
   }
@@ -197,14 +211,14 @@ const ModalChat = () => {
   const renderMessages = () => groupMessagesByUser.map((el) => {
     if (el.username === 'bogdan13') {
       return (
-        <ModalChatMessageWrapper>
+        <ModalChatMessageWrapper key={el.id}>
           <Messages messages={el.messages} messagesType="our" />
           <Author img={el.image} name={el.name} />
         </ModalChatMessageWrapper>
       );
     }
     return (
-      <ModalChatMessageWrapper>
+      <ModalChatMessageWrapper key={el.id}>
         <Author img={el.image} name={el.name} />
         <Messages messages={el.messages} messagesType="their" />
       </ModalChatMessageWrapper>
@@ -222,7 +236,7 @@ const ModalChat = () => {
           <SubmitMessage />
         </SubmitMessageWrap>
       </ContentWrapper>
-      <ModalChatOpen onClick={switchModalStatus} isOpen={isOpen} />
+      <ModalChatOpen onClick={switchModalStatus} />
     </ModalChatWrapper>
   );
 };
