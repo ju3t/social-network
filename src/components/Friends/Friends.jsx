@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { uniqueId } from 'lodash';
+
 import SingleFriend from './SingleFriend';
 import PageSearchInput from '../../common/Inputs/PageSearch';
 
-const FriendsWrapper = styled.div`
+export const FriendsWrapper = styled.div`
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
   background: #ffffff;
   font-family: 'Montserrat', sans-serif;
@@ -14,9 +15,10 @@ const FriendsWrapper = styled.div`
   padding: 114px 114px 114px 91px;
   margin-top: 275px;
   position: relative;
+  min-height: 1200px;
 `;
 
-const PageMarker = styled.h2`
+export const PageMarker = styled.h2`
   margin: 0;
   left: 90px;
   top: -91px;

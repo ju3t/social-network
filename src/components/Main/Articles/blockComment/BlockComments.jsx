@@ -1,45 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import Comment from './Comment';
 import ComponentInput from './ComponentInput';
-import userFotoComment1 from './userFotoComment1.png';
-
-const arrayComments = [
-  {
-    id: 0,
-    userName: 'Стефан Багдасар',
-    userFoto: userFotoComment1,
-    date: '07.07.2020 в 00:11',
-    text:
-      'Nulla in metus dictum, dapibus '
-      + 'justo sit amet, tristique purus. '
-      + 'Pellentesque blandit nibh at leo '
-      + 'venenatis, in semper ipsum dictum. '
-      + 'Nulla porttitor ligula quam, quis '
-      + 'auctor felis consectetur non. Praesent '
-      + 'at auctor metus. Etiam molestie '
-      + 'tincidunt justo eget laoreet. Quisque '
-      + 'vestibulum pretium tortor in mattis. '
-      + 'Nullam nec elit vitae tellus interdum vehicula. '
-      + 'Orci varius natoque penatibus et '
-      + 'magnis dis parturient montes, nascetur ridiculus mus. '
-      + 'Praesent congue arcu at accumsan '
-      + 'luctus. Nam sed diam nibh. In at lectus sodales, '
-      + 'interdum turpis at, semper nisl.',
-  },
-];
 
 const Wrapper = styled.div`
-  margin-left: 106px;
   width: 79%;
   padding: 40px 0 40px 60px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  border-bottom: 1px solid #515151;
-  margin-bottom: 50px;
+  z-index: 100;
+  background: white;
 `;
 const Title = styled.div`
   font-weight: 500;
@@ -50,14 +24,22 @@ const Title = styled.div`
   font-family: Montserrat, serif;
 `;
 
-const BlockComments = () => (
-  <Wrapper>
-    <Title>Комментарии</Title>
-    {arrayComments.map((item) => (
-      <Comment key={item.id} comment={item} />
-    ))}
-    <ComponentInput />
-  </Wrapper>
-);
+const BlockComments = ({ comments }) => {
+  if (!comments) return null;
+
+  return (
+    <Wrapper>
+      <Title>Комментарии</Title>
+      {comments.map((item) => (
+        <Comment key={item.id} comment={item} />
+      ))}
+      <ComponentInput />
+    </Wrapper>
+  );
+};
+
+BlockComments.propTypes = {
+  comments: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default BlockComments;
