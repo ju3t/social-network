@@ -27,7 +27,6 @@ const Input = styled.input`
   line-height: 20px;
   color: #515151;
   padding: 10px;
-  box-sizing: border-box;
 `;
 const BtnSend = styled.button`
   width: 21px;
