@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import { Swiper } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/swiper.scss';
 
@@ -30,21 +30,24 @@ const Arrow = styled.button`
   }
 `;
 
-const Slider = ({ children, ...props }) => {
+const Slider = ({ children, slidesPerView, spaceBetween }) => {
   let newSwiper;
 
-  const { slidesPerView, spaceBetween } = props;
-  const settings = {
-    slidesPerView,
-    spaceBetween,
-    onSwiper: (swiper) => {
-      newSwiper = swiper;
-    },
-  };
+  const slides = children.map((slide) => <SwiperSlide>{slide}</SwiperSlide>);
+
   return (
     <Container>
-      <Arrow onClick={() => newSwiper.slidePrev()} reverseArrow />
-      <Swiper {...settings}>{children}</Swiper>
+      <Arrow reverseArrow onClick={() => newSwiper.slidePrev()} />
+      <Swiper
+        slidesPerView={slidesPerView}
+        spaceBetween={+spaceBetween}
+        onSwiper={(swiper) => {
+          newSwiper = swiper;
+        }}
+        pagination
+      >
+        {slides}
+      </Swiper>
       <Arrow onClick={() => newSwiper.slideNext()} />
     </Container>
   );
