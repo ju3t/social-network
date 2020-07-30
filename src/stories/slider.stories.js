@@ -1,6 +1,6 @@
 import React from 'react';
 import SliderSt from '../common/slider/Slider';
-import SliderItemSt from '../common/sliderItem/SliderItem';
+import SliderItemSt from '../common/sliderItem/SliderItems';
 import PhotoSliderSt from '../components/PhotoSlider/PhotoSlider';
 
 import data from '../common/mock-data/albums';
