@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ScrollBar from 'react-scrollbars-custom';
+import { uniqueId } from 'lodash';
 import moreOptionSrc from '../../img/icons/chat-more-options.svg';
 import Messages from '../../common/chat/messages';
 import SubmitMessage from '../../common/chat/submit-message';
@@ -210,6 +211,7 @@ const scrollBarStyles = { width: '100%', height: '100%', paddingRight: 10 };
 // отсортировать по дате либо придут отсортированные
 const testData = [
   {
+    id: uniqueId(),
     username: 'kirill22',
     name: 'Кирилл',
     messages: 'Lorem! Aliquam erat volutpat?',
@@ -218,6 +220,7 @@ const testData = [
     image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
   },
   {
+    id: uniqueId(),
     username: 'bogdan13',
     name: 'Богдан',
     messages: 'Pellentesque blandit nibh at leo venenatis, in semper ipsum dictum',
@@ -226,6 +229,7 @@ const testData = [
     image: 'https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg',
   },
   {
+    id: uniqueId(),
     username: 'kirill22',
     name: 'Кирилл',
     messages: 'Nulla porttitor ligula quam, quis auctor felis consectetur non',
@@ -234,6 +238,7 @@ const testData = [
     image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
   },
   {
+    id: uniqueId(),
     username: 'kirill22',
     name: 'Кирилл',
     messages: 'Nulla porttitor ligula quam, quis auctor felis consectetur non',
@@ -242,6 +247,7 @@ const testData = [
     image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
   },
   {
+    id: uniqueId(),
     username: 'bogdan13',
     name: 'Богдан',
     messages: 'Pellentesque blandit nibh at leo venenatis, in semper ipsum dictum',
@@ -250,6 +256,7 @@ const testData = [
     image: 'https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg',
   },
   {
+    id: uniqueId(),
     username: 'kirill22',
     name: 'Кирилл',
     messages: 'Nulla porttitor ligula quam, quis auctor felis consectetur non',
@@ -258,6 +265,7 @@ const testData = [
     image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
   },
   {
+    id: uniqueId(),
     username: 'kirill22',
     name: 'Кирилл',
     messages: 'Lorem! Aliquam erat volutpat?',
@@ -266,6 +274,7 @@ const testData = [
     image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
   },
   {
+    id: uniqueId(),
     username: 'bogdan13',
     name: 'Богдан',
     messages: 'Pellentesque blandit nibh at leo venenatis, in semper ipsum dictum',
@@ -274,6 +283,7 @@ const testData = [
     image: 'https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg',
   },
   {
+    id: uniqueId(),
     username: 'kirill22',
     name: 'Кирилл',
     messages: 'Lorem! Aliquam erat volutpat?',
@@ -282,6 +292,7 @@ const testData = [
     image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
   },
   {
+    id: uniqueId(),
     username: 'kirill22',
     name: 'Кирилл',
     messages: 'Lorem! Aliquam erat volutpat?',
@@ -290,6 +301,7 @@ const testData = [
     image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
   },
   {
+    id: uniqueId(),
     username: 'bogdan13',
     name: 'Богдан',
     messages: 'Pellentesque blandit nibh at leo venenatis, in semper ipsum dictum',
@@ -298,6 +310,7 @@ const testData = [
     image: 'https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg',
   },
   {
+    id: uniqueId(),
     username: 'kirill22',
     name: 'Кирилл',
     messages: 'Nulla porttitor ligula quam, quis auctor felis consectetur non',
@@ -306,6 +319,7 @@ const testData = [
     image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
   },
   {
+    id: uniqueId(),
     username: 'kirill22',
     name: 'Кирилл',
     messages: 'Nulla porttitor ligula quam, quis auctor felis consectetur non',
@@ -314,6 +328,7 @@ const testData = [
     image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
   },
   {
+    id: uniqueId(),
     username: 'bogdan13',
     name: 'Богдан',
     messages: 'Pellentesque blandit nibh at leo venenatis, in semper ipsum dictum',
@@ -322,6 +337,7 @@ const testData = [
     image: 'https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg',
   },
   {
+    id: uniqueId(),
     username: 'kirill22',
     name: 'Кирилл',
     messages: 'Nulla porttitor ligula quam, quis auctor felis consectetur non',
@@ -330,6 +346,7 @@ const testData = [
     image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
   },
   {
+    id: uniqueId(),
     username: 'kirill22',
     name: 'Кирилл',
     messages: 'Lorem! Aliquam erat volutpat?',
@@ -338,6 +355,7 @@ const testData = [
     image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
   },
   {
+    id: uniqueId(),
     username: 'bogdan13',
     name: 'Богдан',
     messages: 'Pellentesque blandit nibh at leo venenatis, in semper ipsum dictum',
@@ -346,6 +364,7 @@ const testData = [
     image: 'https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg',
   },
   {
+    id: uniqueId(),
     username: 'kirill22',
     name: 'Кирилл',
     messages: 'Lorem! Aliquam erat volutpat?',
@@ -354,6 +373,7 @@ const testData = [
     image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
   },
   {
+    id: uniqueId(),
     username: 'kirill22',
     name: 'Кирилл',
     messages: 'Lorem! Aliquam erat volutpat?',
@@ -362,6 +382,7 @@ const testData = [
     image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
   },
   {
+    id: uniqueId(),
     username: 'bogdan13',
     name: 'Богдан',
     messages: 'Pellentesque blandit nibh at leo venenatis, in semper ipsum dictum',
@@ -370,6 +391,7 @@ const testData = [
     image: 'https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg',
   },
   {
+    id: uniqueId(),
     username: 'kirill22',
     name: 'Кирилл',
     messages: 'Nulla porttitor ligula quam, quis auctor felis consectetur non',
@@ -378,6 +400,7 @@ const testData = [
     image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
   },
   {
+    id: uniqueId(),
     username: 'kirill22',
     name: 'Кирилл',
     messages: 'Nulla porttitor ligula quam, quis auctor felis consectetur non',
@@ -386,6 +409,7 @@ const testData = [
     image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
   },
   {
+    id: uniqueId(),
     username: 'bogdan13',
     name: 'Богдан',
     messages: 'Pellentesque blandit nibh at leo venenatis, in semper ipsum dictum',
@@ -394,6 +418,7 @@ const testData = [
     image: 'https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg',
   },
   {
+    id: uniqueId(),
     username: 'kirill22',
     name: 'Кирилл',
     messages: 'Nulla porttitor ligula quam, quis auctor felis consectetur non',
@@ -402,6 +427,7 @@ const testData = [
     image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
   },
   {
+    id: uniqueId(),
     username: 'kirill22',
     name: 'Кирилл',
     messages: 'Lorem! Aliquam erat volutpat?',
@@ -410,6 +436,7 @@ const testData = [
     image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
   },
   {
+    id: uniqueId(),
     username: 'bogdan13',
     name: 'Богдан',
     messages: 'Pellentesque blandit nibh at leo venenatis, in semper ipsum dictum',
@@ -418,6 +445,7 @@ const testData = [
     image: 'https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg',
   },
   {
+    id: uniqueId(),
     username: 'kirill22',
     name: 'Кирилл',
     messages: 'Lorem! Aliquam erat volutpat?',
@@ -431,13 +459,16 @@ const groupMessagesByUser = testData.reduce((acc, el) => {
   const lastAccElement = acc[acc.length - 1];
   const lastAccIndex = acc.length - 1;
 
-  const initialMessagesArray = { ...el, messages: [el.messages] };
+  const initialMessagesArray = { ...el, messages: [{ title: el.messages, id: uniqueId() }] };
   if (lastAccElement === undefined) return [initialMessagesArray];
 
   if (lastAccElement.username === el.username) {
     const newObject = {
       ...acc[lastAccIndex],
-      messages: [...acc[lastAccIndex].messages, el.messages],
+      messages: [
+        ...acc[lastAccIndex].messages,
+        { title: el.messages, id: uniqueId() },
+      ],
     };
     return [...acc.splice(0, lastAccIndex), newObject];
   }
@@ -448,7 +479,7 @@ const MessagesPage = () => {
   const renderMessages = () => groupMessagesByUser.map((el) => {
     if (el.username === 'bogdan13') {
       return (
-        <MessageWrapper>
+        <MessageWrapper key={el.id}>
           <Messages messages={el.messages} messagesType="our" />
           <UserLink to="#">
             <ContentUserImg src={el.image} />
@@ -457,7 +488,7 @@ const MessagesPage = () => {
       );
     }
     return (
-      <MessageWrapper>
+      <MessageWrapper key={el.id}>
         <UserLink to="#">
           <ContentUserImg src={el.image} />
         </UserLink>
@@ -529,7 +560,7 @@ const MessagesPage = () => {
           <MoreOptionButton src={moreOptionSrc} />
 
           <MessagesWrapper>
-            <ScrollBar style={scrollBarStyles}>{renderMessages()}</ScrollBar>
+            <ScrollBar scrollTop={99999} style={scrollBarStyles}>{renderMessages()}</ScrollBar>
           </MessagesWrapper>
 
           <SubmitWrapper>
