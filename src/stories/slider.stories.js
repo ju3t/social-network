@@ -11,13 +11,13 @@ export const SliderItem = () => SliderItemSt(data[0]);
 
 const sliderItems = data.map((item) => SliderItemSt(item));
 export const Slider = () => (
-  <SliderSt slidesPerView="4" spaceBetween="20">
+  <SliderSt slidesPerView={4} spaceBetween={20}>
     {sliderItems}
   </SliderSt>
 );
 
 export const PhotoSlider = () => (
-  <PhotoSliderSt slidesPerView="4" spaceBetween="20">
+  <PhotoSliderSt slidesPerView={4} spaceBetween={20}>
     {sliderItems}
   </PhotoSliderSt>
 );

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import __ from 'lodash';
 
 const Container = styled.div`
   position: relative;
@@ -26,8 +27,8 @@ const Cover = styled.img`
   border-radius: 5px;
 `;
 
-const PhotoAlbumsItem = (item) => (
-  <Container>
+const SliderItem = (item) => (
+  <Container key={__.uniqueId()}>
     <Link href={item.link}>
       <Cover src={item.image} />
     </Link>
@@ -35,4 +36,4 @@ const PhotoAlbumsItem = (item) => (
   </Container>
 );
 
-export default PhotoAlbumsItem;
+export default SliderItem;

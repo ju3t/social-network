@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import __ from 'lodash';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -33,14 +34,14 @@ const Arrow = styled.button`
 const Slider = ({ children, slidesPerView, spaceBetween }) => {
   let newSwiper;
 
-  const slides = children.map((slide) => <SwiperSlide>{slide}</SwiperSlide>);
+  const slides = children.map((slide) => <SwiperSlide key={__.uniqueId()}>{slide}</SwiperSlide>);
 
   return (
     <Container>
       <Arrow reverseArrow onClick={() => newSwiper.slidePrev()} />
       <Swiper
         slidesPerView={slidesPerView}
-        spaceBetween={+spaceBetween}
+        spaceBetween={spaceBetween}
         onSwiper={(swiper) => {
           newSwiper = swiper;
         }}
@@ -64,5 +65,5 @@ Slider.propTypes = {
   slidesPerView: PropTypes.number,
   spaceBetween: PropTypes.number,
   // eslint-disable-next-line react/forbid-prop-types
-  children: PropTypes.object.isRequired,
+  children: PropTypes.array.isRequired,
 };
