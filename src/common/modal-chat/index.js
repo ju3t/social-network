@@ -191,10 +191,7 @@ const groupMessagesByUser = testData.reduce((acc, el) => {
   if (lastAccElement.username === el.username) {
     const newObject = {
       ...acc[lastAccIndex],
-      messages: [
-        ...acc[lastAccIndex].messages,
-        { title: el.messages, id: uniqueId() },
-      ],
+      messages: [...acc[lastAccIndex].messages, { title: el.messages, id: uniqueId() }],
     };
     return [...acc.splice(0, lastAccIndex), newObject];
   }
@@ -208,7 +205,7 @@ const ModalChat = () => {
     setIsOpen(!isOpen);
   };
 
-  const renderMessages = () => 
+  const renderMessages = () =>
     groupMessagesByUser.map((el) => {
       if (el.username === 'bogdan13') {
         return (
@@ -225,7 +222,7 @@ const ModalChat = () => {
         </ModalChatMessageWrapper>
       );
     });
-  
+
   return (
     <ModalChatWrapper>
       <ContentWrapper isOpen={isOpen}>
