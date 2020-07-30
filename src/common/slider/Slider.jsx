@@ -31,7 +31,7 @@ const Arrow = styled.button`
   }
 `;
 
-const Slider = ({ children, slidesPerView, spaceBetween }) => {
+const Slider = ({ children, ...props }) => {
   let newSwiper;
 
   const slides = children.map((slide) => <SwiperSlide key={__.uniqueId()}>{slide}</SwiperSlide>);
@@ -40,12 +40,10 @@ const Slider = ({ children, slidesPerView, spaceBetween }) => {
     <Container>
       <Arrow reverseArrow onClick={() => newSwiper.slidePrev()} />
       <Swiper
-        slidesPerView={slidesPerView}
-        spaceBetween={spaceBetween}
+        {...props}
         onSwiper={(swiper) => {
           newSwiper = swiper;
         }}
-        pagination
       >
         {slides}
       </Swiper>
