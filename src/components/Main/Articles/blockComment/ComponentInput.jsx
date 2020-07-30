@@ -41,7 +41,6 @@ const BtnSend = styled.button`
     outline: none;
   }
 `;
-
 const BtnOpenNote = styled.button`
   width: 34px;
   height: 34px;
