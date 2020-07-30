@@ -51,7 +51,7 @@ const MessageTime = styled.span`
 `;
 
 const Messages = ({ messages, messagesType }) => {
-  const renderMessages = () => messages.map((el) => <p>{el}</p>);
+  const renderMessages = () => messages.map((el) => <p key={el.id}>{el.title}</p>);
 
   return (
     <Container>
@@ -65,7 +65,7 @@ const Messages = ({ messages, messagesType }) => {
 export default Messages;
 
 Messages.propTypes = {
-  messages: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string])),
+  messages: PropTypes.arrayOf(PropTypes.object),
   messagesType: PropTypes.string,
 };
 
