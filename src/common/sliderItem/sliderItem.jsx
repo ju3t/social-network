@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { SwiperSlide } from 'swiper/react';
 // import PropTypes from 'prop-types';
 
 const Container = styled.div`
@@ -29,14 +28,12 @@ const Cover = styled.img`
 `;
 
 const PhotoAlbumsItem = (item) => (
-  <SwiperSlide>
-    <Container>
-      <Link href={item.link}>
-        <Cover src={item.image} />
-      </Link>
-      <Headline>{item.headline}</Headline>
-    </Container>
-  </SwiperSlide>
+  <Container>
+    <Link href={item.link}>
+      <Cover src={item.image} />
+    </Link>
+    <Headline>{item.headline}</Headline>
+  </Container>
 );
 
 export default PhotoAlbumsItem;
