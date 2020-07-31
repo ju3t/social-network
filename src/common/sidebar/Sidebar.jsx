@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import routes from '../../routes';
 
 import { Wrapper, List } from '../styledComponents';
 
@@ -27,11 +28,11 @@ const ItemLink = styled(Link)`
 const Sidebar = () => (
   <Wrapper>
     <List>
-      <ItemLink to="/">Моя страница</ItemLink>
-      <ItemLink to="/friends">Друзья</ItemLink>
-      <ItemLink to="#">Сообщения</ItemLink>
-      <ItemLink to="/news">Новости</ItemLink>
-      <ItemLink to="/bookmarks">Закладки</ItemLink>
+      <ItemLink to={routes.main}>Моя страница</ItemLink>
+      <ItemLink to={routes.friends}>Друзья</ItemLink>
+      <ItemLink to={routes.messages}>Сообщения</ItemLink>
+      <ItemLink to={routes.news}>Новости</ItemLink>
+      <ItemLink to={routes.bookmarks}>Закладки</ItemLink>
       <ItemLink to="#">Группы</ItemLink>
       <ItemLink to="#">Фотографии</ItemLink>
       <ItemLink to="#">Видеозаписи</ItemLink>
