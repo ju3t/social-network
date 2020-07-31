@@ -142,6 +142,8 @@ const PopularVideoList = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+  overflow: hidden;
+  height: ${({ show }) => (show ? 'auto' : '340px')};
 `;
 
 const ShowHideButton = styled.button`
@@ -181,7 +183,7 @@ const videoArr = [
 const GetYoutubeThumb = (id) => `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
 
 const VideoPage = () => {
-  const [showPopupar, setShowPopupar] = useState(null);
+  const [showPopupar, setShowPopupar] = useState(false);
   console.log(showPopupar);
   return (
     <>
