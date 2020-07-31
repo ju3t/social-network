@@ -20,10 +20,12 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-scrollbars-custom": "^4.0.25",
+    "react-slick": "^0.27.1",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^5.1.1",
     "swiper": "^6.0.4"
   },

@@ -136,6 +136,11 @@ const PopularVideosItemWrapper = styled.div`
   flex-basis: 48%;
 `;
 
+const SliderItemWrapper = styled.div`
+  margin-right: 25px;
+  margin-left: 25px;
+`;
+
 const PopularVideoList = styled.div`
   flex-wrap: wrap;
   max-width: 100%;
@@ -143,17 +148,19 @@ const PopularVideoList = styled.div`
   justify-content: space-between;
   flex-direction: row;
   overflow: hidden;
-  height: ${({ show }) => (show ? 'auto' : '340px')};
+  transition: all 0.5s;
+  max-height: ${({ show }) => (show ? 'auto' : '340px')};
 `;
 
 const ShowHideButton = styled.button`
+  transition: all 0.2s;
   position: absolute;
   right: -40px;
   content: '';
   border: none;
   height: 25px;
   width: 15px;
-  transform: rotate(-90deg);
+  transform: ${({ show }) => (show ? 'rotate(90deg)' : 'rotate(-90deg)')};
   background: #515151;
   mask-image: url(${arrowNotFilled});
   mask-position: center;
@@ -196,14 +203,16 @@ const VideoPage = () => {
             <PreContenTitle>Мои видео</PreContenTitle>
             <StyledButton>Добавить</StyledButton>
           </PreContentLine>
-          <Slider spaceBetween={52} slidesPerView={2} loop="loop">
+          <Slider spaceBetween={52} margin={50} slidesToShow={2} loop="loop">
             {videoArr.map((obj) => (
-              <VideoItem key={uniqueId()}>
-                <VideoImgOverlay href="#">
-                  <ImgModifed src={GetYoutubeThumb(obj.id)} alt="" />
-                </VideoImgOverlay>
-                <SliderUnderline>{obj.name}</SliderUnderline>
-              </VideoItem>
+              <SliderItemWrapper key={uniqueId()}>
+                <VideoItem>
+                  <VideoImgOverlay href="#">
+                    <ImgModifed src={GetYoutubeThumb(obj.id)} alt="" />
+                  </VideoImgOverlay>
+                  <SliderUnderline>{obj.name}</SliderUnderline>
+                </VideoItem>
+              </SliderItemWrapper>
             ))}
           </Slider>
         </MyVideos>
@@ -212,7 +221,7 @@ const VideoPage = () => {
             <PreContenTitle>Мои видео</PreContenTitle>
           </PreContentLine>
           <PopularVideoList show={showPopupar}>
-            <ShowHideButton onClick={() => setShowPopupar(!showPopupar)} />{' '}
+            <ShowHideButton show={showPopupar} onClick={() => setShowPopupar(!showPopupar)} />{' '}
             {videoArr.map((obj) => (
               <PopularVideosItemWrapper key={uniqueId()}>
                 <VideoItem>

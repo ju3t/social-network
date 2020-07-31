@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import __ from 'lodash';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import Slider from 'react-slick';
 import arrowIcon from '../img/icons/arr_left.svg';
+import 'slick-carousel/slick/slick.css';
 
 import 'swiper/swiper.scss';
 
@@ -24,54 +25,41 @@ const Arrow = styled.div`
   &:hover {
     cursor: pointer;
   }
-  /* mask- */
-  /* display: block;
-  background: transparent;
-  width: 20px;
-  height: 20px;
-  right: -40px;
-  left: ${(props) => (props.reverseArrow ? '-40px' : 'auto')};
-  top: calc(40% - 10px);
-  border: 4px solid #515151;
-  border-top: none;
-  border-left: none;
-  transform: ${(props) => (props.reverseArrow ? 'rotate(135deg)' : 'rotate(-45deg)')};
-  outline: none;
-  &:hover {
-    cursor: pointer;
-  } */
 `;
 
-const Slider = ({ children, ...props }) => {
-  let newSwiper;
+const SliderComp = ({ children, margin, ...props }) => {
+  const slides = children.map((slide) => (
+    <div style={{}} key={__.uniqueId()}>
+      {slide}
+    </div>
+  ));
 
-  const slides = children.map((slide) => <SwiperSlide key={__.uniqueId()}>{slide}</SwiperSlide>);
+  const settings = {
+    ...props,
+    nextArrow: <Arrow />,
+    prevArrow: <Arrow reverseArrow />,
+  };
 
   return (
     <Container>
-      <Arrow reverseArrow onClick={() => newSwiper.slidePrev()} />
-      <Swiper
-        {...props}
-        onSwiper={(swiper) => {
-          newSwiper = swiper;
-        }}
-      >
+      <Slider style={{ margin: `0 ${margin / 2}` }} {...settings}>
         {slides}
-      </Swiper>
-      <Arrow onClick={() => newSwiper.slideNext()} />
+      </Slider>
     </Container>
   );
 };
 
-export default Slider;
+export default SliderComp;
 
-Slider.defaultProps = {
+SliderComp.defaultProps = {
   slidesPerView: 3,
   spaceBetween: 10,
+  margin: 0,
 };
 
-Slider.propTypes = {
+SliderComp.propTypes = {
   slidesPerView: PropTypes.number,
+  margin: PropTypes.number,
   spaceBetween: PropTypes.number,
   // eslint-disable-next-line react/forbid-prop-types
   children: PropTypes.array.isRequired,
