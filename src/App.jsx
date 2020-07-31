@@ -7,6 +7,7 @@ import Main from './components/Main';
 import Friends from './components/Friends';
 import News from './components/News';
 import routes from './routes';
+import Bookmarks from './components/Bookmarks';
 
 const App = () => (
   <Switch>
@@ -15,6 +16,7 @@ const App = () => (
     <Route path={routes.friends} component={Friends} />
     <Route path={routes.news} component={News} />
     <Route path={routes.messages} component={Messages} />
+    <Route path={routes.bookmarks} component={Bookmarks} />
   </Switch>
 );
 
