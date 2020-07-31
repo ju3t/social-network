@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import __ from 'lodash';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
+import arrowIcon from '../img/icons/arr_left.svg';
 
 import 'swiper/swiper.scss';
 
@@ -12,9 +12,21 @@ const Container = styled.div`
   margin: 0 80px;
 `;
 
-const Arrow = styled.button`
+const Arrow = styled.div`
   position: absolute;
-  display: block;
+  width: 15px;
+  height: 25px;
+  background-color: #515151;
+  mask-image: url(${arrowIcon});
+  transform: ${(props) => (props.reverseArrow ? '' : 'rotate(180deg)')};
+  top: calc(33% - 10px);
+  left: ${(props) => (props.reverseArrow ? '-40px' : 'auto')};
+  right: ${(props) => (props.reverseArrow ? 'auto' : '-40px')};
+  &:hover {
+    cursor: pointer;
+  }
+  /* mask- */
+  /* display: block;
   background: transparent;
   width: 20px;
   height: 20px;
@@ -28,7 +40,7 @@ const Arrow = styled.button`
   outline: none;
   &:hover {
     cursor: pointer;
-  }
+  } */
 `;
 
 const Slider = ({ children, ...props }) => {
