@@ -11,15 +11,16 @@ import StyledButton from '../../common/button/VideoPageButton';
 import almostCircleIcon from '../../common/img/icons/almost_circle.svg';
 import arrowFilled from '../../common/img/icons/arrow_filled.svg';
 import arrowNotFilled from '../../common/img/icons/arr_left.svg';
+import PageWrapper from '../../common/pageWrapper';
 
-const PageWrapper = styled.div`
+const ComponentWrapper = styled.div`
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
   background: #ffffff;
   font-family: 'Montserrat', sans-serif;
   border-radius: 15px;
   padding: 114px 114px 114px 91px;
   margin-top: 275px;
-  width: 1291px;
+  /* width: 1291px; */
   position: relative;
 `;
 
@@ -34,6 +35,7 @@ const PageMarker = styled.h2`
   font-size: 32px;
   line-height: 39px;
   background: #ffb11b;
+  color: black;
 `;
 
 const VideoImgOverlay = styled.a`
@@ -57,6 +59,7 @@ const VideoImgOverlay = styled.a`
     background-image: url(${almostCircleIcon}), url(${arrowFilled});
     height: 73px;
     width: 73px;
+    top: 0;
     position: absolute;
     content: '';
     z-index: 3;
@@ -196,47 +199,49 @@ const VideoPage = () => {
     <>
       {' '}
       <PageWrapper>
-        {' '}
-        <PageMarker>Видеозаписи</PageMarker>
-        <MyVideos>
-          <PreContentLine>
-            <PreContenTitle>Мои видео</PreContenTitle>
-            <StyledButton>Добавить</StyledButton>
-          </PreContentLine>
-          <Slider spaceBetween={52} margin={50} slidesToShow={2} loop="loop">
-            {videoArr.map((obj) => (
-              <SliderItemWrapper key={uniqueId()}>
-                <VideoItem>
-                  <VideoImgOverlay href="#">
-                    <ImgModifed src={GetYoutubeThumb(obj.id)} alt="" />
-                  </VideoImgOverlay>
-                  <SliderUnderline>{obj.name}</SliderUnderline>
-                </VideoItem>
-              </SliderItemWrapper>
-            ))}
-          </Slider>
-        </MyVideos>
-        <PopulerVideos>
-          <PreContentLine>
-            <PreContenTitle>Мои видео</PreContenTitle>
-          </PreContentLine>
-          <PopularVideoList show={showPopupar}>
-            <ShowHideButton show={showPopupar} onClick={() => setShowPopupar(!showPopupar)} />{' '}
-            {videoArr.map((obj) => (
-              <PopularVideosItemWrapper key={uniqueId()}>
-                <VideoItem>
-                  <VideoImgOverlay href="#">
-                    <ImgModifed src={GetYoutubeThumb(obj.id)} alt="" />
-                  </VideoImgOverlay>
-                  <SliderUnderline>
-                    <span>{obj.name}</span>
-                    <AddButton>+</AddButton>
-                  </SliderUnderline>
-                </VideoItem>
-              </PopularVideosItemWrapper>
-            ))}
-          </PopularVideoList>
-        </PopulerVideos>
+        <ComponentWrapper>
+          {' '}
+          <PageMarker>Видеозаписи</PageMarker>
+          <MyVideos>
+            <PreContentLine>
+              <PreContenTitle>Мои видео</PreContenTitle>
+              <StyledButton>Добавить</StyledButton>
+            </PreContentLine>
+            <Slider spaceBetween={52} margin={50} slidesToShow={2} loop="loop">
+              {videoArr.map((obj) => (
+                <SliderItemWrapper key={uniqueId()}>
+                  <VideoItem>
+                    <VideoImgOverlay href="#">
+                      <ImgModifed src={GetYoutubeThumb(obj.id)} alt="" />
+                    </VideoImgOverlay>
+                    <SliderUnderline>{obj.name}</SliderUnderline>
+                  </VideoItem>
+                </SliderItemWrapper>
+              ))}
+            </Slider>
+          </MyVideos>
+          <PopulerVideos>
+            <PreContentLine>
+              <PreContenTitle>Мои видео</PreContenTitle>
+            </PreContentLine>
+            <PopularVideoList show={showPopupar}>
+              <ShowHideButton show={showPopupar} onClick={() => setShowPopupar(!showPopupar)} />{' '}
+              {videoArr.map((obj) => (
+                <PopularVideosItemWrapper key={uniqueId()}>
+                  <VideoItem>
+                    <VideoImgOverlay href="#">
+                      <ImgModifed src={GetYoutubeThumb(obj.id)} alt="" />
+                    </VideoImgOverlay>
+                    <SliderUnderline>
+                      <span>{obj.name}</span>
+                      <AddButton>+</AddButton>
+                    </SliderUnderline>
+                  </VideoItem>
+                </PopularVideosItemWrapper>
+              ))}
+            </PopularVideoList>
+          </PopulerVideos>
+        </ComponentWrapper>
       </PageWrapper>
     </>
   );
