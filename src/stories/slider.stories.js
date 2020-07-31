@@ -1,11 +1,11 @@
 import React from 'react';
-import SliderSt from '../common/slider/Slider';
+import SliderSt from '../common/slider/Slider2';
 import SliderItemSt from '../common/sliderItem/SliderItem';
-import PhotoSliderSt from '../components/PhotoSlider/PhotoSlider';
+import PhotoSliderSt from '../components/Photo/PhotoSlider';
 
-import data from '../common/mock-data/albums';
+import data from '../components/Photo/albums';
 
-export default { title: 'Slider' };
+export default { title: 'Slider2' };
 
 export const SliderItem = () => SliderItemSt(data[0]);
 

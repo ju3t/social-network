@@ -12,8 +12,8 @@ const StyledButton = styled.button`
 
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
+  font-size: ${(props) => (props.small ? '16px' : '24px')};
+  line-height: ${(props) => (props.small ? '20px' : '29px')};
   padding: ${(props) => (props.small ? '15px 40px' : '19px 66px')};
 
   &:hover {

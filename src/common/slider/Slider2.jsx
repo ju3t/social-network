@@ -9,7 +9,6 @@ import 'swiper/swiper.scss';
 
 const Container = styled.div`
   position: relative;
-  margin: 0 80px;
 `;
 
 const Arrow = styled.div`

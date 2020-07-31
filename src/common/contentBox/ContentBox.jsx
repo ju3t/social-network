@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Box = styled.div`
+  box-sizing: border-box;
   position: relative;
-  width: 1291px;
   background-color: #ffffff;
   border-radius: 15px;
   margin-top: 150px;
-  padding: 80px;
+  padding: 85px;
   color: #000000;
+  width: 1291;
 `;
 
 const Headline = styled.h1`
@@ -33,11 +34,11 @@ export default ContentBox;
 
 ContentBox.defaultProps = {
   headline: '',
-  children: {},
+  children: [],
 };
 
 ContentBox.propTypes = {
   headline: PropTypes.string,
   // eslint-disable-next-line react/forbid-prop-types
-  children: PropTypes.object,
+  children: PropTypes.array,
 };

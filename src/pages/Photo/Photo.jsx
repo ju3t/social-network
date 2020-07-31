@@ -1,32 +1,58 @@
 import React from 'react';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 // import PropTypes from 'prop-types';
+import __ from 'lodash';
 
-import { MainContainer } from '../../common/styledComponents';
-import Header from '../../common/header';
-import LeftBlock from '../../common/leftBlock';
-import RightBlock from '../../common/rightBlock';
+import PageWrapper from '../../common/pageWrapper';
+
 import ContentBox from '../../common/contentBox/ContentBox';
-import PhotoSlider from '../../components/PhotoSlider/PhotoSlider';
+import PhotoSlider from '../../components/Photo/PhotoSlider';
 import SliderItemSt from '../../common/sliderItem/SliderItem';
+import Button from '../../common/button/Button';
 
-import data from '../../common/mock-data/albums';
+import data from '../../components/Photo/albums';
+import AllPhotosGrid from '../../components/Photo/AllPhotosGrid';
+import AllPhotosItem from '../../components/Photo/AllPhotosItem';
 
 const sliderItems = data.map((item) => SliderItemSt(item));
+const allPhotoItems = data.map((item) => (
+  <AllPhotosItem src={item.image} alt="q" key={__.uniqueId()} />
+));
+
+const Headline = styled.h2`
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 37px;
+  vertical-align: middle;
+`;
+
+const SectionHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  height: 67px;
+  margin: 50px 0;
+`;
 
 const Photo = () => (
   <>
-    <Header />
-    <MainContainer>
-      <LeftBlock />
-      <RightBlock>
-        <ContentBox headline="Фотографии">
-          <PhotoSlider slidesPerView={3} spaceBetween={70}>
-            {sliderItems}
-          </PhotoSlider>
-        </ContentBox>
-      </RightBlock>
-    </MainContainer>
+    <PageWrapper>
+      <ContentBox headline="Фотографии">
+        <SectionHeader>
+          <Headline>Альбомы</Headline>
+          <Button>Создать</Button>
+        </SectionHeader>
+        <PhotoSlider slidesPerView={3} spaceBetween={120}>
+          {sliderItems}
+        </PhotoSlider>
+        <SectionHeader>
+          <Headline>Все фотографии</Headline>
+          <Button>Добавить</Button>
+        </SectionHeader>
+        <AllPhotosGrid gap="44px">{allPhotoItems}</AllPhotosGrid>
+      </ContentBox>
+    </PageWrapper>
   </>
 );
 

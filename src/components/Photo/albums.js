@@ -1,10 +1,10 @@
 const albums = [];
 
-for (let i = 1; i < 10; i += 1) {
+for (let i = 1; i <= 12; i += 1) {
   albums.push({
     id: i,
     link: '#',
-    headline: `Название альбома-${i}`,
+    headline: `Альбом ${i}`,
     image: `https://picsum.photos/id/${i + 249}/326`,
   });
 }
