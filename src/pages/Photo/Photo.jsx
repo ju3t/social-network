@@ -21,7 +21,9 @@ const Photo = () => (
       <LeftBlock />
       <RightBlock>
         <ContentBox headline="Фотографии">
-          <PhotoSlider>{sliderItems}</PhotoSlider>
+          <PhotoSlider slidesPerView={3} spaceBetween={70}>
+            {sliderItems}
+          </PhotoSlider>
         </ContentBox>
       </RightBlock>
     </MainContainer>
