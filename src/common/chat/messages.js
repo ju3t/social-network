@@ -32,13 +32,20 @@ const MessagesWrap = styled.div`
   }
 `;
 
+const MessageInfo = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: ${({ type }) => (type === 'our' ? 'flex-start' : 'flex-end')};
+  margin-top: 10px;
+`;
+
 const MessageDate = styled.span`
   font-family: Montserrat;
   font-style: normal;
   font-weight: 500;
   font-size: 11px;
   color: #b6b6b6;
-  margin: ${({ type }) => (type === 'our' ? '0 30px 0 0' : '0 0 0 30px')};
+  margin: ${({ type }) => (type === 'our' ? '0 15px 0 0' : '0 0 0 30px')};
 `;
 
 const MessageTime = styled.span`
@@ -47,7 +54,7 @@ const MessageTime = styled.span`
   font-weight: 500;
   font-size: 11px;
   color: #b6b6b6;
-  margin: ${({ type }) => (type === 'our' ? '0 0 0 -15px' : '0 0 0 15px')};
+  margin: ${({ type }) => (type === 'our' ? '0 30px 0 0' : '0 0 0 15px')};
 `;
 
 const Messages = ({ messages, messagesType }) => {
@@ -56,8 +63,10 @@ const Messages = ({ messages, messagesType }) => {
   return (
     <Container>
       <MessagesWrap type={messagesType}>{renderMessages()}</MessagesWrap>
-      <MessageDate type={messagesType}>05/05/20</MessageDate>
-      <MessageTime type={messagesType}>20:55</MessageTime>
+      <MessageInfo type={messagesType}>
+        <MessageDate type={messagesType}>05/05/20</MessageDate>
+        <MessageTime type={messagesType}>20:55</MessageTime>
+      </MessageInfo>
     </Container>
   );
 };
