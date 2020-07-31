@@ -7,9 +7,9 @@ const Box = styled.div`
   width: 1291px;
   background-color: #ffffff;
   border-radius: 15px;
-  border: 1px solid #000000;
   margin-top: 150px;
   padding: 80px;
+  color: #000000;
 `;
 
 const Headline = styled.h1`
