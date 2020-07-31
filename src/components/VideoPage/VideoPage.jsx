@@ -1,17 +1,16 @@
-import React from 'react';
-// import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+// import { connect } from 'react-redux'; import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import 'swiper/swiper.scss';
 import { uniqueId } from 'lodash';
 import Slider from '../../common/slider/Slider';
 import StyledButton from '../../common/button/VideoPageButton';
-// import Header from '../../common/header';
-// import LeftBlock from '../../common/leftBlock';
-// import RightBlock from '../../common/rightBlock';
+// import Header from '../../common/header'; import LeftBlock from
+// '../../common/leftBlock'; import RightBlock from '../../common/rightBlock';
 // import { MainContainer } from '../../common/styledComponents';
 import almostCircleIcon from '../../common/img/icons/almost_circle.svg';
 import arrowFilled from '../../common/img/icons/arrow_filled.svg';
+import arrowNotFilled from '../../common/img/icons/arr_left.svg';
 
 const PageWrapper = styled.div`
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
@@ -40,12 +39,13 @@ const PageMarker = styled.h2`
 const VideoImgOverlay = styled.a`
   height: 326px;
   display: block;
-  /* width: 535px; */
-  border-radius: 5px;
   overflow: hidden;
   margin: 0;
+  position: relative;
   margin-bottom: 46px;
+  border-radius: 5px;
   &::before {
+    border-radius: 5px;
     position: absolute;
     background-color: rgba(0, 0, 0, 0.42);
     z-index: 2;
@@ -68,18 +68,13 @@ const VideoImgOverlay = styled.a`
   }
 `;
 
-// const VideoOverlay = styled.div`
-//   content: '';
-//   background-image: url(${almostCircleIcon}), url(${arrowFilled});
-// `
-
 const ImgModifed = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
 `;
 
-const SliderWrapper = styled.div`
+const VideoItem = styled.div`
   margin: 0;
 `;
 
@@ -87,6 +82,9 @@ const MyVideos = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 43px;
+  margin-bottom: 63px;
 `;
 
 const PreContentLine = styled.div`
@@ -103,14 +101,64 @@ const PreContenTitle = styled.h2`
   line-height: 37px;
 `;
 
-const SliderText = styled.span`
+const SliderUnderline = styled.div`
   font-weight: 500;
   font-size: 24px;
   line-height: 29px;
   color: #000000;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
 `;
 
-//
+const AddButton = styled.button`
+  cursor: pointer;
+  content: '+';
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 32px;
+  background: none;
+`;
+
+const PopulerVideos = styled.div`
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+const PopularVideosItemWrapper = styled.div`
+  flex-shrink: 0;
+  margin-bottom: 48px;
+  flex-basis: 48%;
+`;
+
+const PopularVideoList = styled.div`
+  flex-wrap: wrap;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+`;
+
+const ShowHideButton = styled.button`
+  position: absolute;
+  right: -40px;
+  content: '';
+  border: none;
+  height: 25px;
+  width: 15px;
+  transform: rotate(-90deg);
+  background: #515151;
+  mask-image: url(${arrowNotFilled});
+  mask-position: center;
+  mask-repeat: no-repeat;
+  cursor: pointer;
+`;
+
 const videoArr = [
   {
     id: 'lTRiuFIWV54',
@@ -132,28 +180,55 @@ const videoArr = [
 
 const GetYoutubeThumb = (id) => `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
 
-const VideoPage = () => (
-  <>
-    <PageWrapper>
-      <PageMarker>Видеозаписи</PageMarker>
-      <MyVideos>
-        <PreContentLine>
-          <PreContenTitle>Мои видео</PreContenTitle>
-          <StyledButton>Добавить</StyledButton>
-        </PreContentLine>
-        <Slider spaceBetween={52} slidesPerView={2} loop>
-          {videoArr.map((obj) => (
-            <SliderWrapper key={uniqueId()}>
-              <VideoImgOverlay href="#">
-                <ImgModifed src={GetYoutubeThumb(obj.id)} alt="" />
-              </VideoImgOverlay>
-              <SliderText>{obj.name}</SliderText>
-            </SliderWrapper>
-          ))}
-        </Slider>
-      </MyVideos>
-    </PageWrapper>
-  </>
-);
+const VideoPage = () => {
+  const [showPopupar, setShowPopupar] = useState(null);
+  console.log(showPopupar);
+  return (
+    <>
+      {' '}
+      <PageWrapper>
+        {' '}
+        <PageMarker>Видеозаписи</PageMarker>
+        <MyVideos>
+          <PreContentLine>
+            <PreContenTitle>Мои видео</PreContenTitle>
+            <StyledButton>Добавить</StyledButton>
+          </PreContentLine>
+          <Slider spaceBetween={52} slidesPerView={2} loop="loop">
+            {videoArr.map((obj) => (
+              <VideoItem key={uniqueId()}>
+                <VideoImgOverlay href="#">
+                  <ImgModifed src={GetYoutubeThumb(obj.id)} alt="" />
+                </VideoImgOverlay>
+                <SliderUnderline>{obj.name}</SliderUnderline>
+              </VideoItem>
+            ))}
+          </Slider>
+        </MyVideos>
+        <PopulerVideos>
+          <PreContentLine>
+            <PreContenTitle>Мои видео</PreContenTitle>
+          </PreContentLine>
+          <PopularVideoList show={showPopupar}>
+            <ShowHideButton onClick={() => setShowPopupar(!showPopupar)} />{' '}
+            {videoArr.map((obj) => (
+              <PopularVideosItemWrapper key={uniqueId()}>
+                <VideoItem>
+                  <VideoImgOverlay href="#">
+                    <ImgModifed src={GetYoutubeThumb(obj.id)} alt="" />
+                  </VideoImgOverlay>
+                  <SliderUnderline>
+                    <span>{obj.name}</span>
+                    <AddButton>+</AddButton>
+                  </SliderUnderline>
+                </VideoItem>
+              </PopularVideosItemWrapper>
+            ))}
+          </PopularVideoList>
+        </PopulerVideos>
+      </PageWrapper>
+    </>
+  );
+};
 
 export default VideoPage;
