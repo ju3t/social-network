@@ -27,11 +27,11 @@ const ItemLink = styled(Link)`
 const Sidebar = () => (
   <Wrapper>
     <List>
-      <ItemLink to="#">Моя страница</ItemLink>
-      <ItemLink to="#">Друзья</ItemLink>
+      <ItemLink to="/">Моя страница</ItemLink>
+      <ItemLink to="/friends">Друзья</ItemLink>
       <ItemLink to="#">Сообщения</ItemLink>
-      <ItemLink to="#">Новости</ItemLink>
-      <ItemLink to="#">Закладки</ItemLink>
+      <ItemLink to="/news">Новости</ItemLink>
+      <ItemLink to="/bookmarks">Закладки</ItemLink>
       <ItemLink to="#">Группы</ItemLink>
       <ItemLink to="#">Фотографии</ItemLink>
       <ItemLink to="#">Видеозаписи</ItemLink>

@@ -1,14 +1,14 @@
 import React from 'react';
 
-import News from './News';
 import PageWrapper from '../../common/pageWrapper';
+import BookMarksPage from './components';
 
-function WrapperNews() {
+function Bookmarks() {
   return (
     <PageWrapper>
-      <News />
+      <BookMarksPage />
     </PageWrapper>
   );
 }
 
-export default WrapperNews;
+export default Bookmarks;

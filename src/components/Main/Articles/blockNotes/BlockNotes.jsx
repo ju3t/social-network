@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import searchLogo from '../icons/search-logo.svg';
-import UserNote from './UserNote';
 import Note from './Note';
+import userFoto from './userFoto.png';
+import userFotoComment1 from '../blockComment/userFotoComment1.png';
 
 const Wrapper = styled.div`
   border-bottom: 1px solid #515151;
@@ -12,14 +13,14 @@ const Wrapper = styled.div`
   font-family: Montserrat, serif;
   font-style: normal;
 `;
-const MenuWrapper = styled.div`
+export const MenuWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 50px 0;
   border-bottom: 1px solid #515151;
 `;
-const Menu = styled.ul`
+export const Menu = styled.ul`
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -31,7 +32,7 @@ const Menu = styled.ul`
   color: #515151;
 `;
 
-const MenuItem = styled.li`
+export const MenuItem = styled.li`
   list-style: none;
   cursor: pointer;
   color: black;
@@ -47,7 +48,7 @@ const MenuItem = styled.li`
     color: #ffb11b;
   }
 `;
-const ComponentSearch = styled.div`
+export const ComponentSearch = styled.div`
   width: 30px;
   height: 30px;
   background-image: url(${searchLogo});
@@ -56,7 +57,7 @@ const ComponentSearch = styled.div`
   cursor: pointer;
 `;
 
-const InputSearch = styled.input`
+export const InputSearch = styled.input`
   width: 200px;
   height: 35px;
   background: #ffffff;
@@ -69,27 +70,68 @@ const InputSearch = styled.input`
   padding: 10px;
   box-sizing: border-box;
 `;
+const TextOne = `Dolor sit amet, consectetur adipiscing elit. Maecenas sed congue urna. Etiam in pretium
+orci. Nunc id nulla sit amet ex lacinia euismod a eu risus. Sed consequat viverra libero
+congue vestibulum. Ut dolor odio, posuere vitae accumsan a, placerat ut odio. Proin in lorem
+dui. Maecenas viverra convallis nisi eget tincidunt. Vivamus nec tempus nunc, sit amet
+auctor massa. Morbi lobortis, elit eu malesuada malesuada, quam mauris semper turpis, vitae
+dapibus erat nibh at purus. Ut id odio massa.
+Nulla in metus dictum, dapibus justo sit amet, tristique purus. Pellentesque blandit nibh at
+leo venenatis, in semper ipsum dictum. Nulla porttitor ligula quam, quis auctor felis
+consectetur non. Praesent at auctor metus. Etiam molestie tincidunt justo eget laoreet.
+Quisque vestibulum pretium tortor in mattis. Nullam nec elit vitae tellus interdum vehicula.
+Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+Praesent congue arcu at accumsan luctus. Nam sed diam nibh. In at lectus sodales, interdum
+turpis at, semper nisl.`;
 
-const TagsList = styled.ul`
-  padding: 0;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 45px 0 55px 0;
-`;
-const TagItem = styled.li`
-  list-style: none;
-  font-size: 16px;
-  color: black;
-  &:not(:last-child) {
-    margin-right: 10px;
-  }
-`;
-
-const arrayTags = [
-  { id: 0, tag: '#nunc' },
-  { id: 1, tag: '#dolor' },
+const arrayComments = [
+  {
+    id: 0,
+    userName: 'Стефан Багдасар',
+    userFoto: userFotoComment1,
+    date: '07.07.2020 в 00:11',
+    text:
+      'Nulla in metus dictum, dapibus ' +
+      'justo sit amet, tristique purus. ' +
+      'Pellentesque blandit nibh at leo ' +
+      'venenatis, in semper ipsum dictum. ' +
+      'Nulla porttitor ligula quam, quis ' +
+      'auctor felis consectetur non. Praesent ' +
+      'at auctor metus. Etiam molestie ' +
+      'tincidunt justo eget laoreet. Quisque ' +
+      'vestibulum pretium tortor in mattis. ' +
+      'Nullam nec elit vitae tellus interdum vehicula. ' +
+      'Orci varius natoque penatibus et ' +
+      'magnis dis parturient montes, nascetur ridiculus mus. ' +
+      'Praesent congue arcu at accumsan ' +
+      'luctus. Nam sed diam nibh. In at lectus sodales, ' +
+      'interdum turpis at, semper nisl.',
+  },
 ];
+
+const users = {
+  users: {
+    first_name: 'Богдан',
+    last_name: 'Леста',
+    avatarka: userFoto,
+    posts: [
+      {
+        title: 'Lorem ipsum',
+        text: TextOne + TextOne,
+        persist_date: '07.07.2020 в 00:07',
+        bookmarks_count: '7',
+        repost_count: '4',
+        likes_count: '15',
+        comments_count: '1',
+        tags: [
+          { id: 0, tag: '#nunc' },
+          { id: 1, tag: '#dolor' },
+        ],
+        comments: arrayComments,
+      },
+    ],
+  },
+};
 
 const BlockNotes = () => {
   const [isOpenSearch, setIsOpenSearch] = useState(false);
@@ -111,13 +153,7 @@ const BlockNotes = () => {
         </Menu>
         {renderSearch()}
       </MenuWrapper>
-      <UserNote />
-      <Note />
-      <TagsList>
-        {arrayTags.map((item) => (
-          <TagItem key={item.id}>{item.tag}</TagItem>
-        ))}
-      </TagsList>
+      <Note users={users} />
     </Wrapper>
   );
 };
