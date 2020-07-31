@@ -7,7 +7,7 @@ import { Wrapper, List } from '../styledComponents';
 import Player from './Player';
 
 const ItemLink = styled(Link)`
-  font-family: Montserrat,serif;
+  font-family: Montserrat, serif;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;

@@ -68,13 +68,9 @@ const Friends = () => {
     return friendsArr;
   };
 
-  const deleteButtonHandler = (id) => () => {
-    console.log(`delete ${id}`);
-  };
+  const deleteButtonHandler = (id) => () => id;
 
-  const messegeButtonHandler = (id) => () => {
-    console.log(`message ${id}`);
-  };
+  const messegeButtonHandler = (id) => () => id;
 
   return (
     <FriendsWrapper>
