@@ -18,7 +18,7 @@ const Arrow = styled.div`
   background-color: #515151;
   mask-image: url(${arrowIcon});
   transform: ${(props) => (props.reverseArrow ? '' : 'rotate(180deg)')};
-  top: calc(33% - 10px);
+  top: 158px;
   left: ${(props) => (props.reverseArrow ? '-40px' : 'auto')};
   right: ${(props) => (props.reverseArrow ? 'auto' : '-40px')};
   &:hover {
