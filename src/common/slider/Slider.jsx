@@ -27,11 +27,17 @@ const Arrow = styled.div`
   }
 `;
 
-const SliderComp = ({ children, margin, ...props }) => {
+const Slide = styled.div`
+  margin-left: ${(props) => `${props.spaceBetween / 2}px`};
+  margin-right: ${(props) => `${props.spaceBetween / 2}px`};
+  width: auto !important;
+`;
+
+const SliderComp = ({ children, spaceBetween, ...props }) => {
   const slides = children.map((slide) => (
-    <div style={{}} key={__.uniqueId()}>
+    <Slide spaceBetween={spaceBetween} key={__.uniqueId()}>
       {slide}
-    </div>
+    </Slide>
   ));
 
   const settings = {
@@ -42,7 +48,7 @@ const SliderComp = ({ children, margin, ...props }) => {
 
   return (
     <Container>
-      <Slider style={{ margin: `0 ${margin / 2}` }} {...settings}>
+      <Slider style={{ spaceBetween: `0 ${spaceBetween / 2}` }} {...settings}>
         {slides}
       </Slider>
     </Container>

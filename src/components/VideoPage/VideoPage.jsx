@@ -140,8 +140,8 @@ const PopularVideosItemWrapper = styled.div`
 `;
 
 const SliderItemWrapper = styled.div`
-  margin-right: 25px;
-  margin-left: 25px;
+  /* margin-right: 25px;
+  margin-left: 25px; */
 `;
 
 const PopularVideoList = styled.div`
