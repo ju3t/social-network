@@ -102,6 +102,7 @@ const PreContenTitle = styled.h2`
   font-weight: 600;
   font-size: 30px;
   line-height: 37px;
+  color: #000;
 `;
 
 const SliderUnderline = styled.div`

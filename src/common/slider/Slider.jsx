@@ -48,7 +48,7 @@ const SliderComp = ({ children, spaceBetween, ...props }) => {
 
   return (
     <Container>
-      <Slider style={{ spaceBetween: `0 ${spaceBetween / 2}` }} {...settings}>
+      <Slider style={{ margin: `0 -${spaceBetween / 2}px` }} {...settings}>
         {slides}
       </Slider>
     </Container>
