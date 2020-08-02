@@ -6,13 +6,13 @@ import __ from 'lodash';
 import PageWrapper from '../../common/pageWrapper';
 
 import ContentBox from '../../common/contentBox/ContentBox';
-import PhotoSlider from '../../components/Photo/PhotoSlider';
+import PhotoSlider from './PhotoSlider';
 import SliderItemSt from '../../common/sliderItem/SliderItem';
 import Button from '../../common/button/Button';
 
-import data from '../../components/Photo/albums';
-import AllPhotosGrid from '../../components/Photo/AllPhotosGrid';
-import AllPhotosItem from '../../components/Photo/AllPhotosItem';
+import data from './albums';
+import AllPhotosGrid from './AllPhotosGrid';
+import AllPhotosItem from './AllPhotosItem';
 
 const sliderItems = data.map((item) => SliderItemSt(item));
 const allPhotoItems = data.map((item) => (

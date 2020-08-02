@@ -9,7 +9,7 @@ import VideoPage from './components/VideoPage/VideoPage';
 import News from './components/News';
 import routes from './routes';
 import Bookmarks from './components/Bookmarks';
-import Photo from './pages/Photo/Photo';
+import Photo from './components/Photo/Photo';
 
 const App = () => (
   <Switch>
