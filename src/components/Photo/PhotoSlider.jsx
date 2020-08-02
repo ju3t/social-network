@@ -6,7 +6,8 @@ import Slider from '../../common/slider/Slider2';
 
 const Container = styled.div`
   position: relative;
-  border-bottom: 1px solid #000000;
+  width: 1380px;
+  margin-left: -70px;
 `;
 
 const PhotoSlider = ({ ...props }) => (

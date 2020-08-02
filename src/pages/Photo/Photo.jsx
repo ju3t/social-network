@@ -43,9 +43,10 @@ const Photo = () => (
           <Headline>Альбомы</Headline>
           <Button>Создать</Button>
         </SectionHeader>
-        <PhotoSlider slidesPerView={3} spaceBetween={120}>
+        <PhotoSlider itemsToShow={3} itemsToScroll={3} pagination={false} itemPadding={[0]}>
           {sliderItems}
         </PhotoSlider>
+        <hr />
         <SectionHeader>
           <Headline>Все фотографии</Headline>
           <Button>Добавить</Button>
