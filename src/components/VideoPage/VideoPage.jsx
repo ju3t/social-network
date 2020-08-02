@@ -37,8 +37,7 @@ const MyVideos = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  border-bottom: 1px solid #000000;
-  padding-bottom: 43px;
+  /* padding-bottom: 43px; */
   margin-bottom: 63px;
 `;
 
