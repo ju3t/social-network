@@ -34,7 +34,7 @@ const Sidebar = () => (
       <ItemLink to="/bookmarks">Закладки</ItemLink>
       <ItemLink to="#">Группы</ItemLink>
       <ItemLink to="#">Фотографии</ItemLink>
-      <ItemLink to="#">Видеозаписи</ItemLink>
+      <ItemLink to="/video">Видеозаписи</ItemLink>
       <ItemLink to="#">Аудиозаписи</ItemLink>
       <ItemLink to="#">Настройки</ItemLink>
     </List>
