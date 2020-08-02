@@ -1,17 +1,13 @@
-import React, { useState } from 'react';
-// import { connect } from 'react-redux'; import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import 'swiper/swiper.scss';
 import { uniqueId } from 'lodash';
 import Slider from '../../common/slider/Slider';
 import StyledButton from '../../common/button/VideoPageButton';
-// import Header from '../../common/header'; import LeftBlock from
-// '../../common/leftBlock'; import RightBlock from '../../common/rightBlock';
-// import { MainContainer } from '../../common/styledComponents';
-import almostCircleIcon from '../../common/img/icons/almost_circle.svg';
-import arrowFilled from '../../common/img/icons/arrow_filled.svg';
 import arrowNotFilled from '../../common/img/icons/arr_left.svg';
 import PageWrapper from '../../common/pageWrapper';
+import VideoItem from './VideoItem';
+import OpenedVideo from './OpenedVideo';
 
 const ComponentWrapper = styled.div`
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
@@ -20,7 +16,6 @@ const ComponentWrapper = styled.div`
   border-radius: 15px;
   padding: 114px 114px 114px 91px;
   margin-top: 275px;
-  /* width: 1291px; */
   position: relative;
 `;
 
@@ -36,49 +31,6 @@ const PageMarker = styled.h2`
   line-height: 39px;
   background: #ffb11b;
   color: black;
-`;
-
-const VideoImgOverlay = styled.a`
-  height: 326px;
-  display: block;
-  overflow: hidden;
-  margin: 0;
-  position: relative;
-  margin-bottom: 46px;
-  border-radius: 5px;
-  &::before {
-    border-radius: 5px;
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.42);
-    z-index: 2;
-    width: 100%;
-    height: 326px;
-    content: '';
-  }
-  &::after {
-    background-image: url(${almostCircleIcon}), url(${arrowFilled});
-    height: 73px;
-    width: 73px;
-    top: 0;
-    position: absolute;
-    content: '';
-    z-index: 3;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%;
-    left: 0px;
-    height: 326px;
-  }
-`;
-
-const ImgModifed = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
-
-const VideoItem = styled.div`
-  margin: 0;
 `;
 
 const MyVideos = styled.div`
@@ -105,27 +57,6 @@ const PreContenTitle = styled.h2`
   color: #000;
 `;
 
-const SliderUnderline = styled.div`
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 29px;
-  color: #000000;
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const AddButton = styled.button`
-  cursor: pointer;
-  content: '+';
-  border: none;
-  padding: 0;
-  margin: 0;
-  font-size: 32px;
-  background: none;
-`;
-
 const PopulerVideos = styled.div`
   width: 100%;
   position: relative;
@@ -140,11 +71,6 @@ const PopularVideosItemWrapper = styled.div`
   flex-basis: 48%;
 `;
 
-const SliderItemWrapper = styled.div`
-  /* margin-right: 25px;
-  margin-left: 25px; */
-`;
-
 const PopularVideoList = styled.div`
   flex-wrap: wrap;
   max-width: 100%;
@@ -153,7 +79,7 @@ const PopularVideoList = styled.div`
   flex-direction: row;
   overflow: hidden;
   transition: all 0.5s;
-  max-height: ${({ show }) => (show ? 'auto' : '340px')};
+  max-height: ${({ show }) => (show ? 'auto' : '412px')};
 `;
 
 const ShowHideButton = styled.button`
@@ -178,27 +104,52 @@ const videoArr = [
     name: 'video 1',
   },
   {
-    id: 'lTRiuFIWV54',
+    id: '0wDGX0yTRVY',
     name: 'video 2',
   },
   {
-    id: 'lTRiuFIWV54',
+    id: 'OKj7HEnNTak',
     name: 'video 3',
   },
   {
-    id: 'lTRiuFIWV54',
+    id: '__aFjMPJGC0',
     name: 'video 4',
   },
 ];
 
-const GetYoutubeThumb = (id) => `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
-
 const VideoPage = () => {
   const [showPopupar, setShowPopupar] = useState(false);
-  console.log(showPopupar);
+  const [videoToShow, setVideoToShow] = useState({
+    showVideo: false,
+    videoId: '',
+  });
+
+  const showVideo = (id) => {
+    setVideoToShow({
+      showVideo: true,
+      videoId: id,
+    });
+  };
+
+  const hideVideo = () => {
+    setVideoToShow({
+      showVideo: false,
+      videoId: '',
+    });
+  };
+
+  useEffect(() => {
+    if (videoToShow.showVideo) {
+      document.body.style.overflow = 'hidden';
+      return;
+    }
+    document.body.style.overflow = 'unset';
+  }, [videoToShow]);
+
   return (
     <>
       {' '}
+      {videoToShow.showVideo ? <OpenedVideo id={videoToShow.videoId} action={hideVideo} /> : null}
       <PageWrapper>
         <ComponentWrapper>
           {' '}
@@ -210,14 +161,13 @@ const VideoPage = () => {
             </PreContentLine>
             <Slider spaceBetween={52} margin={50} slidesToShow={2} loop="loop">
               {videoArr.map((obj) => (
-                <SliderItemWrapper key={uniqueId()}>
-                  <VideoItem>
-                    <VideoImgOverlay href="#">
-                      <ImgModifed src={GetYoutubeThumb(obj.id)} alt="" />
-                    </VideoImgOverlay>
-                    <SliderUnderline>{obj.name}</SliderUnderline>
-                  </VideoItem>
-                </SliderItemWrapper>
+                <VideoItem
+                  key={uniqueId()}
+                  id={obj.id}
+                  name={obj.name}
+                  action={() => showVideo(obj.id)}
+                  isPopular={false}
+                />
               ))}
             </Slider>
           </MyVideos>
@@ -229,15 +179,12 @@ const VideoPage = () => {
               <ShowHideButton show={showPopupar} onClick={() => setShowPopupar(!showPopupar)} />{' '}
               {videoArr.map((obj) => (
                 <PopularVideosItemWrapper key={uniqueId()}>
-                  <VideoItem>
-                    <VideoImgOverlay href="#">
-                      <ImgModifed src={GetYoutubeThumb(obj.id)} alt="" />
-                    </VideoImgOverlay>
-                    <SliderUnderline>
-                      <span>{obj.name}</span>
-                      <AddButton>+</AddButton>
-                    </SliderUnderline>
-                  </VideoItem>
+                  <VideoItem
+                    id={obj.id}
+                    name={obj.name}
+                    isPopular
+                    action={() => showVideo(obj.id)}
+                  />
                 </PopularVideosItemWrapper>
               ))}
             </PopularVideoList>

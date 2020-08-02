@@ -20,8 +20,8 @@ const Arrow = styled.div`
   mask-image: url(${arrowIcon});
   transform: ${(props) => (props.reverseArrow ? '' : 'rotate(180deg)')};
   top: 158px;
-  left: ${(props) => (props.reverseArrow ? '-40px' : 'auto')};
-  right: ${(props) => (props.reverseArrow ? 'auto' : '-40px')};
+  left: ${(props) => (props.reverseArrow ? '-35px' : 'auto')};
+  right: ${(props) => (props.reverseArrow ? 'auto' : '-24px')};
   &:hover {
     cursor: pointer;
   }
