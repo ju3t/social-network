@@ -2,15 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Header from '../header';
+// eslint-disable-next-line
 import LeftBlock from '../leftBlock';
 import RightBlock from '../rightBlock';
 import { MainContainer } from '../styledComponents';
 
-const PageWrapper = ({ children }) => (
+const PageWrapper = ({ messages, children }) => (
   <>
     <Header />
     <MainContainer>
-      <LeftBlock />
+      <LeftBlock messages={messages} />
       <RightBlock>{children}</RightBlock>
     </MainContainer>
   </>
@@ -18,6 +19,7 @@ const PageWrapper = ({ children }) => (
 
 PageWrapper.propTypes = {
   children: PropTypes.node.isRequired,
+  messages: PropTypes.bool.isRequired,
 };
 
 export default PageWrapper;

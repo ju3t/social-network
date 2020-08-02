@@ -6,6 +6,7 @@ import moreOptionSrc from '../../img/icons/chat-more-options.svg';
 import Messages from '../../common/chat/messages';
 import SubmitMessage from '../../common/chat/submit-message';
 import PageSearchInput from '../../common/Inputs/PageSearch';
+import PageWrapper from '../../common/pageWrapper';
 
 const Wrapper = styled.div`
   max-width: 1456px;
@@ -23,7 +24,7 @@ const SelectChat = styled.div`
   display: flex;
   flex-direction: column;
   flex-basis: 39%;
-  
+
   &::before {
     content: 'Сообщения';
     width: 355px;
@@ -33,7 +34,7 @@ const SelectChat = styled.div`
     font-weight: 600;
     font-size: 32px;
     color: #000000;
-    background-color: #FFB11B;
+    background-color: #ffb11b;
     text-align: center;
     line-height: 155px;
     border-radius: 15px;
@@ -61,14 +62,14 @@ const SelectChatElement = styled.div`
   position: relative;
   padding: 30px 85px;
   cursor: pointer;
-  
+
   &:hover {
-    background-color: #FFF5E3;
+    background-color: #fff5e3;
   }
-  
+
   &::after {
-    content: "";
-    border-bottom: 1px solid #B3B3B3;
+    content: '';
+    border-bottom: 1px solid #b3b3b3;
     width: 200px;
     bottom: 0;
     padding: 0 85px;
@@ -117,7 +118,7 @@ const ContentWrapper = styled.div`
 
 const ContentHeader = styled.div`
   position: absolute;
-  top: -90px;;
+  top: -90px;
   left: 60px;
   display: flex;
   flex-direction: row;
@@ -140,7 +141,7 @@ const ContentUserName = styled.span`
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
-  color: #FFFFFF;
+  color: #ffffff;
 `;
 
 const ContentUserProfession = styled.p`
@@ -167,14 +168,14 @@ const MoreOptionButton = styled.img`
   align-self: flex-end;
   width: 40px;
   cursor: pointer;
-  
+
   &:hover {
     opacity: 0.7;
   }
 `;
 
 const MessagesWrapper = styled.div`
-  border-top: 1px solid #B3B3B3;
+  border-top: 1px solid #b3b3b3;
   width: 100%;
   height: -webkit-fill-available;
   max-height: 1500px;
@@ -189,13 +190,9 @@ const MessageWrapper = styled.div`
   padding-right: 35px;
 `;
 
-const SubmitWrapper = styled.div`
-  
-`;
+const SubmitWrapper = styled.div``;
 
-const UserLink = styled.a`
-
-`;
+const UserLink = styled.a``;
 
 const ContentUserImg = styled.img`
   object-fit: cover;
@@ -465,10 +462,7 @@ const groupMessagesByUser = testData.reduce((acc, el) => {
   if (lastAccElement.username === el.username) {
     const newObject = {
       ...acc[lastAccIndex],
-      messages: [
-        ...acc[lastAccIndex].messages,
-        { title: el.messages, id: uniqueId() },
-      ],
+      messages: [...acc[lastAccIndex].messages, { title: el.messages, id: uniqueId() }],
     };
     return [...acc.splice(0, lastAccIndex), newObject];
   }
@@ -476,99 +470,105 @@ const groupMessagesByUser = testData.reduce((acc, el) => {
 }, []);
 
 const MessagesPage = () => {
-  const renderMessages = () => groupMessagesByUser.map((el) => {
-    if (el.username === 'bogdan13') {
+  const renderMessages = () =>
+    groupMessagesByUser.map((el) => {
+      if (el.username === 'bogdan13') {
+        return (
+          <MessageWrapper key={el.id}>
+            <Messages messages={el.messages} messagesType="our" />
+            <UserLink to="#">
+              <ContentUserImg src={el.image} />
+            </UserLink>
+          </MessageWrapper>
+        );
+      }
+
       return (
         <MessageWrapper key={el.id}>
-          <Messages messages={el.messages} messagesType="our" />
           <UserLink to="#">
             <ContentUserImg src={el.image} />
           </UserLink>
+          <Messages messages={el.messages} messagesType="their" />
         </MessageWrapper>
       );
-    }
-    return (
-      <MessageWrapper key={el.id}>
-        <UserLink to="#">
-          <ContentUserImg src={el.image} />
-        </UserLink>
-        <Messages messages={el.messages} messagesType="their" />
-      </MessageWrapper>
-    );
-  });
+    });
 
   return (
-    <Wrapper>
-      <SelectChat>
-        <PageSearchInputWrapper>
-          <PageSearchInput placeholder="Поиск..." />
-        </PageSearchInputWrapper>
+    <PageWrapper messages>
+      <Wrapper>
+        <SelectChat>
+          <PageSearchInputWrapper>
+            <PageSearchInput placeholder="Поиск..." />
+          </PageSearchInputWrapper>
 
-        <SelectChatElementsWrapper>
-          <SelectChatElement>
-            <SelectChatUserImg src="https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg" />
-            <SelectChatUserInfo>
-              <UserName>Имя Фамилия</UserName>
-              <UserLastMessage>Текст последнего сообщения</UserLastMessage>
-            </SelectChatUserInfo>
-          </SelectChatElement>
+          <SelectChatElementsWrapper>
+            <SelectChatElement>
+              <SelectChatUserImg src="https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg" />
+              <SelectChatUserInfo>
+                <UserName>Имя Фамилия</UserName>
+                <UserLastMessage>Текст последнего сообщения</UserLastMessage>
+              </SelectChatUserInfo>
+            </SelectChatElement>
 
-          <SelectChatElement>
-            <SelectChatUserImg src="https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg" />
-            <SelectChatUserInfo>
-              <UserName>Имя Фамилия</UserName>
-              <UserLastMessage>Текст последнего сообщения</UserLastMessage>
-            </SelectChatUserInfo>
-          </SelectChatElement>
+            <SelectChatElement>
+              <SelectChatUserImg src="https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg" />
+              <SelectChatUserInfo>
+                <UserName>Имя Фамилия</UserName>
+                <UserLastMessage>Текст последнего сообщения</UserLastMessage>
+              </SelectChatUserInfo>
+            </SelectChatElement>
 
-          <SelectChatElement>
-            <SelectChatUserImg src="https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg" />
-            <SelectChatUserInfo>
-              <UserName>Имя Фамилия</UserName>
-              <UserLastMessage>Текст последнего сообщения</UserLastMessage>
-            </SelectChatUserInfo>
-          </SelectChatElement>
+            <SelectChatElement>
+              <SelectChatUserImg src="https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg" />
+              <SelectChatUserInfo>
+                <UserName>Имя Фамилия</UserName>
+                <UserLastMessage>Текст последнего сообщения</UserLastMessage>
+              </SelectChatUserInfo>
+            </SelectChatElement>
 
-          <SelectChatElement>
-            <SelectChatUserImg src="https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg" />
-            <SelectChatUserInfo>
-              <UserName>Имя Фамилия</UserName>
-              <UserLastMessage>Текст последнего сообщения</UserLastMessage>
-            </SelectChatUserInfo>
-          </SelectChatElement>
+            <SelectChatElement>
+              <SelectChatUserImg src="https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg" />
+              <SelectChatUserInfo>
+                <UserName>Имя Фамилия</UserName>
+                <UserLastMessage>Текст последнего сообщения</UserLastMessage>
+              </SelectChatUserInfo>
+            </SelectChatElement>
 
-          <SelectChatElement>
-            <SelectChatUserImg src="https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg" />
-            <SelectChatUserInfo>
-              <UserName>Имя Фамилия</UserName>
-              <UserLastMessage>Текст последнего сообщения</UserLastMessage>
-            </SelectChatUserInfo>
-          </SelectChatElement>
-        </SelectChatElementsWrapper>
-      </SelectChat>
+            <SelectChatElement>
+              <SelectChatUserImg src="https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg" />
+              <SelectChatUserInfo>
+                <UserName>Имя Фамилия</UserName>
+                <UserLastMessage>Текст последнего сообщения</UserLastMessage>
+              </SelectChatUserInfo>
+            </SelectChatElement>
+          </SelectChatElementsWrapper>
+        </SelectChat>
 
-      <ContentWrapper>
-        <ContentHeader>
-          <ContentHeaderUserImg src="https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg" />
-          <ContentUserInfo>
-            <ContentUserName>Павел Нечаев</ContentUserName>
-            <ContentUserProfession>Программист</ContentUserProfession>
-          </ContentUserInfo>
-        </ContentHeader>
+        <ContentWrapper>
+          <ContentHeader>
+            <ContentHeaderUserImg src="https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg" />
+            <ContentUserInfo>
+              <ContentUserName>Павел Нечаев</ContentUserName>
+              <ContentUserProfession>Программист</ContentUserProfession>
+            </ContentUserInfo>
+          </ContentHeader>
 
-        <Content>
-          <MoreOptionButton src={moreOptionSrc} />
+          <Content>
+            <MoreOptionButton src={moreOptionSrc} />
 
-          <MessagesWrapper>
-            <ScrollBar scrollTop={99999} style={scrollBarStyles}>{renderMessages()}</ScrollBar>
-          </MessagesWrapper>
+            <MessagesWrapper>
+              <ScrollBar scrollTop={99999} style={scrollBarStyles}>
+                {renderMessages()}
+              </ScrollBar>
+            </MessagesWrapper>
 
-          <SubmitWrapper>
-            <SubmitMessage />
-          </SubmitWrapper>
-        </Content>
-      </ContentWrapper>
-    </Wrapper>
+            <SubmitWrapper>
+              <SubmitMessage />
+            </SubmitWrapper>
+          </Content>
+        </ContentWrapper>
+      </Wrapper>
+    </PageWrapper>
   );
 };
 
