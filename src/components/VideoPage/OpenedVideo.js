@@ -41,23 +41,19 @@ const CloseButton = styled.button`
   align-self: flex-start;
 `;
 
-const OpenedVideo = ({ id, action }) => {
-  console.log(id);
-  const src = `https://www.youtube.com/embed/${id}`;
-  return (
-    <OpenedVideoWrapper onClick={action}>
-      <VideoFrameWrapper>
-        <VideoFrame
-          src={src}
-          frameBorder="0"
-          allow="accelerometer; autoplay;encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen="allowfullscreen"
-        />
-        <CloseButton onClick={action}>+</CloseButton>
-      </VideoFrameWrapper>
-    </OpenedVideoWrapper>
-  );
-};
+const OpenedVideo = ({ id, action }) => (
+  <OpenedVideoWrapper onClick={action}>
+    <VideoFrameWrapper>
+      <VideoFrame
+        src={`https://www.youtube.com/embed/${id}`}
+        frameBorder="0"
+        allow="accelerometer; autoplay;encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen="allowfullscreen"
+      />
+      <CloseButton onClick={action}>+</CloseButton>
+    </VideoFrameWrapper>
+  </OpenedVideoWrapper>
+);
 
 OpenedVideo.defaultProps = {
   id: '',

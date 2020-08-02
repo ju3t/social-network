@@ -13,7 +13,13 @@ const VideoImgOverlay = styled.a`
   margin-bottom: 46px;
   border-radius: 5px;
   cursor: pointer;
+  &:hover {
+    &::before {
+      background-color: rgba(0, 0, 0, 0.22);
+    }
+  }
   &::before {
+    transition: all 0.3s;
     border-radius: 5px;
     position: absolute;
     background-color: rgba(0, 0, 0, 0.42);
