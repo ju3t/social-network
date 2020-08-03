@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import 'swiper/swiper.scss';
 import { uniqueId } from 'lodash';
 import Slider from '../../common/slider/Slider';
-import StyledButton from '../../common/button/VideoPageButton';
+import StyledButton from '../../common/button/Button';
 import arrowNotFilled from '../../common/img/icons/arr_left.svg';
 import PageWrapper from '../../common/pageWrapper';
 import SectionHeader from '../../common/sectionHeader';
