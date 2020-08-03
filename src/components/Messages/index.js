@@ -490,17 +490,7 @@ const MessagesPage = () => {
           <Messages messages={el.messages} messagesType="their" />
         </MessageWrapper>
       );
-    }
-
-    return (
-      <MessageWrapper key={el.id}>
-        <UserLink to="#">
-          <ContentUserImg src={el.image} />
-        </UserLink>
-        <Messages messages={el.messages} messagesType="their" />
-      </MessageWrapper>
-    );
-  });
+    });
 
   return (
     <PageWrapper messages>
