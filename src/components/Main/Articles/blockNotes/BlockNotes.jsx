@@ -91,21 +91,21 @@ const arrayComments = [
     userFoto: userFotoComment1,
     date: '07.07.2020 в 00:11',
     text:
-      'Nulla in metus dictum, dapibus '
-      + 'justo sit amet, tristique purus. '
-      + 'Pellentesque blandit nibh at leo '
-      + 'venenatis, in semper ipsum dictum. '
-      + 'Nulla porttitor ligula quam, quis '
-      + 'auctor felis consectetur non. Praesent '
-      + 'at auctor metus. Etiam molestie '
-      + 'tincidunt justo eget laoreet. Quisque '
-      + 'vestibulum pretium tortor in mattis. '
-      + 'Nullam nec elit vitae tellus interdum vehicula. '
-      + 'Orci varius natoque penatibus et '
-      + 'magnis dis parturient montes, nascetur ridiculus mus. '
-      + 'Praesent congue arcu at accumsan '
-      + 'luctus. Nam sed diam nibh. In at lectus sodales, '
-      + 'interdum turpis at, semper nisl.',
+      'Nulla in metus dictum, dapibus ' +
+      'justo sit amet, tristique purus. ' +
+      'Pellentesque blandit nibh at leo ' +
+      'venenatis, in semper ipsum dictum. ' +
+      'Nulla porttitor ligula quam, quis ' +
+      'auctor felis consectetur non. Praesent ' +
+      'at auctor metus. Etiam molestie ' +
+      'tincidunt justo eget laoreet. Quisque ' +
+      'vestibulum pretium tortor in mattis. ' +
+      'Nullam nec elit vitae tellus interdum vehicula. ' +
+      'Orci varius natoque penatibus et ' +
+      'magnis dis parturient montes, nascetur ridiculus mus. ' +
+      'Praesent congue arcu at accumsan ' +
+      'luctus. Nam sed diam nibh. In at lectus sodales, ' +
+      'interdum turpis at, semper nisl.',
   },
 ];
 
@@ -136,11 +136,12 @@ const users = {
 const BlockNotes = () => {
   const [isOpenSearch, setIsOpenSearch] = useState(false);
 
-  const renderSearch = () => (isOpenSearch ? (
-    <InputSearch placeholder="Поиск..." />
-  ) : (
-    <ComponentSearch onClick={() => setIsOpenSearch(!isOpenSearch)} />
-  ));
+  const renderSearch = () =>
+    isOpenSearch ? (
+      <InputSearch placeholder="Поиск..." />
+    ) : (
+      <ComponentSearch onClick={() => setIsOpenSearch(!isOpenSearch)} />
+    );
 
   return (
     <Wrapper>

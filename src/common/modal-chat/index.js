@@ -191,10 +191,7 @@ const groupMessagesByUser = testData.reduce((acc, el) => {
   if (lastAccElement.username === el.username) {
     const newObject = {
       ...acc[lastAccIndex],
-      messages: [
-        ...acc[lastAccIndex].messages,
-        { title: el.messages, id: uniqueId() },
-      ],
+      messages: [...acc[lastAccIndex].messages, { title: el.messages, id: uniqueId() }],
     };
     return [...acc.splice(0, lastAccIndex), newObject];
   }
@@ -208,22 +205,23 @@ const ModalChat = () => {
     setIsOpen(!isOpen);
   };
 
-  const renderMessages = () => groupMessagesByUser.map((el) => {
-    if (el.username === 'bogdan13') {
+  const renderMessages = () =>
+    groupMessagesByUser.map((el) => {
+      if (el.username === 'bogdan13') {
+        return (
+          <ModalChatMessageWrapper key={el.id}>
+            <Messages messages={el.messages} messagesType="our" />
+            <Author img={el.image} name={el.name} />
+          </ModalChatMessageWrapper>
+        );
+      }
       return (
         <ModalChatMessageWrapper key={el.id}>
-          <Messages messages={el.messages} messagesType="our" />
           <Author img={el.image} name={el.name} />
+          <Messages messages={el.messages} messagesType="their" />
         </ModalChatMessageWrapper>
       );
-    }
-    return (
-      <ModalChatMessageWrapper key={el.id}>
-        <Author img={el.image} name={el.name} />
-        <Messages messages={el.messages} messagesType="their" />
-      </ModalChatMessageWrapper>
-    );
-  });
+    });
 
   return (
     <ModalChatWrapper>

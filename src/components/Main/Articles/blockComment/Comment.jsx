@@ -46,9 +46,7 @@ const Text = styled.p`
 `;
 
 const Comment = ({ comment }) => {
-  const {
-    userName, userFoto, date, text,
-  } = comment;
+  const { userName, userFoto, date, text } = comment;
 
   return (
     <Wrapper>

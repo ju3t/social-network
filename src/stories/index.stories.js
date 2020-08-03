@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { МодальныйЧат } from './modal-chat/index.stories';
 import Login from '../components/LoginPage/loginPage';
 import BlockComments from '../components/Main/Articles/blockComment/BlockComments';
 import BlockNotes from '../components/Main/Articles/blockNotes/BlockNotes';
@@ -11,7 +10,6 @@ import WallCreateArticle from '../components/Main/WallCreateArticle';
 import MessagesPage from '../components/Messages';
 
 storiesOf('Social network', module)
-  .add('МодальныйЧат', () => <МодальныйЧат />)
   .add('Страница авторизации', () => <Login />)
   .add('Страница сообщений', () => <MessagesPage />)
   .add('Блок комментариев', () => <BlockComments />)

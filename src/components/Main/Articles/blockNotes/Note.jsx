@@ -151,9 +151,7 @@ const Note = ({ users }) => {
   const [height, setHeight] = useState(`${100}px`);
   const minHeight = '100px';
   const fullHeight = '100%';
-  const {
-    first_name: firstName, last_name: lastName, avatarka, posts,
-  } = users.users;
+  const { first_name: firstName, last_name: lastName, avatarka, posts } = users.users;
   const {
     title,
     text,
