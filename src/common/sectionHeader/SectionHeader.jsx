@@ -21,7 +21,7 @@ const Container = styled.div`
 const SectionHeader = ({ headline, children }) => (
   <Container>
     <Headline>{headline}</Headline>
-    {children}
+    {children || null}
   </Container>
 );
 
@@ -29,11 +29,11 @@ export default SectionHeader;
 
 SectionHeader.defaultProps = {
   headline: '',
-  children: {},
+  children: [],
 };
 
 SectionHeader.propTypes = {
   headline: PropTypes.string,
   // eslint-disable-next-line react/forbid-prop-types
-  children: PropTypes.object,
+  children: PropTypes.array,
 };
