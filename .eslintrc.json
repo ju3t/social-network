@@ -15,10 +15,8 @@
     "jsx-a11y/href-no-hash": ["off"],
     "react/jsx-props-no-spreading": ["off"],
     "curly": "error",
-    "react/jsx-filename-extension": [0],
-    "import/extensions": "off",
-    "no-param-reassign": ["error", { "props": false }],
-    "linebreak-style": "off"
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "no-param-reassign": ["error", { "props": false }]
   },
   "settings": {
     "react": {
