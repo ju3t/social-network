@@ -2,19 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import Slider from '../../common/slider/Slider';
-
-const Headline = styled.h2`
-  margin-left: 80px;
-`;
+import Slider from '../../common/slider';
 
 const Container = styled.div`
   position: relative;
+  width: 1380px;
+  margin-left: -70px;
 `;
 
 const PhotoSlider = ({ ...props }) => (
   <Container>
-    <Headline>Альбомы</Headline>
     <Slider {...props} />
   </Container>
 );

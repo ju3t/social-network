@@ -9,15 +9,23 @@ const Headline = styled.h2`
   font-size: 30px;
   line-height: 37px;
   vertical-align: middle;
+<<<<<<< HEAD
   color: #000;
+=======
+>>>>>>> development
 `;
 
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
+<<<<<<< HEAD
   align-items: center;
   height: 67px;
   margin: 65px 0;
+=======
+  height: 67px;
+  margin: 50px 0;
+>>>>>>> development
 `;
 
 const SectionHeader = ({ headline, children }) => (

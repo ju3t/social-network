@@ -9,6 +9,7 @@ import VideoPage from './components/VideoPage';
 import News from './components/News';
 import routes from './routes';
 import Bookmarks from './components/Bookmarks';
+import Photo from './components/Photo/Photo';
 
 const App = () => (
   <Switch>
@@ -19,6 +20,7 @@ const App = () => (
     <Route path={routes.video} component={VideoPage} />
     <Route path={routes.messages} component={Messages} />
     <Route path={routes.bookmarks} component={Bookmarks} />
+    <Route path={routes.photo} component={Photo} />
   </Switch>
 );
 
