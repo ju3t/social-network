@@ -6,6 +6,7 @@ import moreOptionSrc from '../../img/icons/chat-more-options.svg';
 import Messages from '../../common/chat/messages';
 import SubmitMessage from '../../common/chat/submit-message';
 import PageSearchInput from '../../common/Inputs/PageSearch';
+import PageWrapper from '../../common/pageWrapper';
 
 const Wrapper = styled.div`
   max-width: 1456px;
@@ -489,82 +490,94 @@ const MessagesPage = () => {
           <Messages messages={el.messages} messagesType="their" />
         </MessageWrapper>
       );
-    });
+    }
+
+    return (
+      <MessageWrapper key={el.id}>
+        <UserLink to="#">
+          <ContentUserImg src={el.image} />
+        </UserLink>
+        <Messages messages={el.messages} messagesType="their" />
+      </MessageWrapper>
+    );
+  });
 
   return (
-    <Wrapper>
-      <SelectChat>
-        <PageSearchInputWrapper>
-          <PageSearchInput placeholder="Поиск..." />
-        </PageSearchInputWrapper>
+    <PageWrapper messages>
+      <Wrapper>
+        <SelectChat>
+          <PageSearchInputWrapper>
+            <PageSearchInput placeholder="Поиск..." />
+          </PageSearchInputWrapper>
 
-        <SelectChatElementsWrapper>
-          <SelectChatElement>
-            <SelectChatUserImg src="https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg" />
-            <SelectChatUserInfo>
-              <UserName>Имя Фамилия</UserName>
-              <UserLastMessage>Текст последнего сообщения</UserLastMessage>
-            </SelectChatUserInfo>
-          </SelectChatElement>
+          <SelectChatElementsWrapper>
+            <SelectChatElement>
+              <SelectChatUserImg src="https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg" />
+              <SelectChatUserInfo>
+                <UserName>Имя Фамилия</UserName>
+                <UserLastMessage>Текст последнего сообщения</UserLastMessage>
+              </SelectChatUserInfo>
+            </SelectChatElement>
 
-          <SelectChatElement>
-            <SelectChatUserImg src="https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg" />
-            <SelectChatUserInfo>
-              <UserName>Имя Фамилия</UserName>
-              <UserLastMessage>Текст последнего сообщения</UserLastMessage>
-            </SelectChatUserInfo>
-          </SelectChatElement>
+            <SelectChatElement>
+              <SelectChatUserImg src="https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg" />
+              <SelectChatUserInfo>
+                <UserName>Имя Фамилия</UserName>
+                <UserLastMessage>Текст последнего сообщения</UserLastMessage>
+              </SelectChatUserInfo>
+            </SelectChatElement>
 
-          <SelectChatElement>
-            <SelectChatUserImg src="https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg" />
-            <SelectChatUserInfo>
-              <UserName>Имя Фамилия</UserName>
-              <UserLastMessage>Текст последнего сообщения</UserLastMessage>
-            </SelectChatUserInfo>
-          </SelectChatElement>
+            <SelectChatElement>
+              <SelectChatUserImg src="https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg" />
+              <SelectChatUserInfo>
+                <UserName>Имя Фамилия</UserName>
+                <UserLastMessage>Текст последнего сообщения</UserLastMessage>
+              </SelectChatUserInfo>
+            </SelectChatElement>
 
-          <SelectChatElement>
-            <SelectChatUserImg src="https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg" />
-            <SelectChatUserInfo>
-              <UserName>Имя Фамилия</UserName>
-              <UserLastMessage>Текст последнего сообщения</UserLastMessage>
-            </SelectChatUserInfo>
-          </SelectChatElement>
+            <SelectChatElement>
+              <SelectChatUserImg src="https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg" />
+              <SelectChatUserInfo>
+                <UserName>Имя Фамилия</UserName>
+                <UserLastMessage>Текст последнего сообщения</UserLastMessage>
+              </SelectChatUserInfo>
+            </SelectChatElement>
 
-          <SelectChatElement>
-            <SelectChatUserImg src="https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg" />
-            <SelectChatUserInfo>
-              <UserName>Имя Фамилия</UserName>
-              <UserLastMessage>Текст последнего сообщения</UserLastMessage>
-            </SelectChatUserInfo>
-          </SelectChatElement>
-        </SelectChatElementsWrapper>
-      </SelectChat>
+            <SelectChatElement>
+              <SelectChatUserImg src="https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg" />
+              <SelectChatUserInfo>
+                <UserName>Имя Фамилия</UserName>
+                <UserLastMessage>Текст последнего сообщения</UserLastMessage>
+              </SelectChatUserInfo>
+            </SelectChatElement>
+          </SelectChatElementsWrapper>
+        </SelectChat>
 
-      <ContentWrapper>
-        <ContentHeader>
-          <ContentHeaderUserImg src="https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg" />
-          <ContentUserInfo>
-            <ContentUserName>Павел Нечаев</ContentUserName>
-            <ContentUserProfession>Программист</ContentUserProfession>
-          </ContentUserInfo>
-        </ContentHeader>
+        <ContentWrapper>
+          <ContentHeader>
+            <ContentHeaderUserImg src="https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg" />
+            <ContentUserInfo>
+              <ContentUserName>Павел Нечаев</ContentUserName>
+              <ContentUserProfession>Программист</ContentUserProfession>
+            </ContentUserInfo>
+          </ContentHeader>
 
-        <Content>
-          <MoreOptionButton src={moreOptionSrc} />
+          <Content>
+            <MoreOptionButton src={moreOptionSrc} />
 
-          <MessagesWrapper>
-            <ScrollBar scrollTop={99999} style={scrollBarStyles}>
-              {renderMessages()}
-            </ScrollBar>
-          </MessagesWrapper>
+            <MessagesWrapper>
+              <ScrollBar scrollTop={99999} style={scrollBarStyles}>
+                {renderMessages()}
+              </ScrollBar>
+            </MessagesWrapper>
 
-          <SubmitWrapper>
-            <SubmitMessage />
-          </SubmitWrapper>
-        </Content>
-      </ContentWrapper>
-    </Wrapper>
+            <SubmitWrapper>
+              <SubmitMessage />
+            </SubmitWrapper>
+          </Content>
+        </ContentWrapper>
+      </Wrapper>
+    </PageWrapper>
   );
 };
 
