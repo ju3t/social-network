@@ -1,6 +1,6 @@
 # Универслайдер
 
-## props:
+## Props:
 
 Параметры здесь: [parameters](https://swiperjs.com/api/#parameters)
 

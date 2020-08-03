@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import Slider from '../../common/slider/Slider2';
+import Slider from '../../common/slider';
 
 const Container = styled.div`
   position: relative;
