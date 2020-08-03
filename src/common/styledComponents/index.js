@@ -84,10 +84,11 @@ export const LeftBlockContainer = styled.div`
 export const RightBlockContainer = styled.div`
   //margin-left: 27%;
   margin-left: 519px;
+  margin-right:110px;
   background: ${bgColorBlack};
   position: relative;
   //width: 73%;
-  width: 1401px;
+  width: 1301px;
   height: 100%;
   color: white;
   margin-top: 109px;

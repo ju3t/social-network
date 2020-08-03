@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Input } from 'antd';
+import { Input, Slider } from 'antd';
 import styled from 'styled-components';
 import jm from '../../common/JM.svg';
 import sn from '../../common/SN.svg';
@@ -159,6 +159,7 @@ const Login = () => {
     <Wrapper>
       <img src={logo} alt="" />
       <Main>
+        <Slider defaultValue={100} tooltipVisible />
         {value === true && (
           <Form>
             <ButtonsArea>
@@ -172,6 +173,7 @@ const Login = () => {
             <InputsArea>
               <SearchInpit placeholder="Введите ваш e-mail" nostyle="false" />
               <SearchInpit placeholder="Введите ваш пароль" nostyle="true" />
+
             </InputsArea>
             <SubmitArea>
               <button type="button">
@@ -181,6 +183,7 @@ const Login = () => {
                 {' '}
                 <a href="/"> Забыли пароль?</a>
               </h4>
+
             </SubmitArea>
           </Form>
         )}
