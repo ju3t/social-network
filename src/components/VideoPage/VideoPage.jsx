@@ -6,6 +6,7 @@ import Slider from '../../common/slider/Slider';
 import StyledButton from '../../common/button/VideoPageButton';
 import arrowNotFilled from '../../common/img/icons/arr_left.svg';
 import PageWrapper from '../../common/pageWrapper';
+import SectionHeader from '../../common/sectionHeader';
 import VideoItem from './VideoItem';
 import OpenedVideo from './OpenedVideo';
 
@@ -37,23 +38,7 @@ const MyVideos = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  /* padding-bottom: 43px; */
   margin-bottom: 63px;
-`;
-
-const PreContentLine = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  margin-bottom: 47px;
-`;
-
-const PreContenTitle = styled.h2`
-  font-style: normal;
-  font-weight: 600;
-  font-size: 30px;
-  line-height: 37px;
-  color: #000;
 `;
 
 const PopulerVideos = styled.div`
@@ -154,10 +139,9 @@ const VideoPage = () => {
           {' '}
           <PageMarker>Видеозаписи</PageMarker>
           <MyVideos>
-            <PreContentLine>
-              <PreContenTitle>Мои видео</PreContenTitle>
+            <SectionHeader headline="Мои видео">
               <StyledButton>Добавить</StyledButton>
-            </PreContentLine>
+            </SectionHeader>
             <Slider spaceBetween={52} margin={50} slidesToShow={2} loop="loop">
               {videoArr.map((obj) => (
                 <VideoItem
@@ -171,9 +155,7 @@ const VideoPage = () => {
             </Slider>
           </MyVideos>
           <PopulerVideos>
-            <PreContentLine>
-              <PreContenTitle>Мои видео</PreContenTitle>
-            </PreContentLine>
+            <SectionHeader headline="Популярные" />
             <PopularVideoList show={showPopupar}>
               <ShowHideButton show={showPopupar} onClick={() => setShowPopupar(!showPopupar)} />{' '}
               {videoArr.map((obj) => (
