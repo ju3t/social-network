@@ -15,8 +15,19 @@ const StyledButton = styled.button`
   width: ${(props) => (props.wide ? '100%' : null)};
   line-height: ${(props) => (props.small ? '20px' : '29px')};
   padding: ${(props) => (props.small ? '15px 40px' : '19px 66px')};
+  transition: all 0.2s ease-out;
   &:hover {
     cursor: pointer;
+    box-shadow: 0 0 0 3px #ffffff, 0 0 0 5px #ffb11b;
+  }
+  &:active {
+    outline: none;
+    box-shadow: 0 0 0 3px #ffffff, 0 0 0 5px #000000;
+    transition: none;
+  }
+
+  &:focus {
+    outline: none;
   }
 `;
 

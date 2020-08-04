@@ -2,15 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-// const GridContainer = styled.div`
-//   display: grid;
-//   /* grid-template-columns: 1fr 1fr; */
-//   grid-template-columns: ${(props) => `${props.template}`};
-
-//   grid-gap:  ${(props) => `${props.gap}`};
-// `;
-
 const GridContainer = styled.div`
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
