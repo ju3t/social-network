@@ -37,9 +37,7 @@ const SearchInpit = styled.input`
   position: relative;
 `;
 
-const PageSearchInput = ({
-  action, placeholder, defaultValue,
-}) => (
+const PageSearchInput = ({ action, placeholder, defaultValue }) => (
   <SearchBlock>
     <SearchInpit
       defaultValue={defaultValue}

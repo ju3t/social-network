@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import routes from '../../routes';
 
 import { Wrapper, List } from '../styledComponents';
 
 import Player from './Player';
 
 const ItemLink = styled(Link)`
-  font-family: Montserrat,serif;
+  font-family: Montserrat, serif;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -27,13 +28,13 @@ const ItemLink = styled(Link)`
 const Sidebar = () => (
   <Wrapper>
     <List>
-      <ItemLink to="#">Моя страница</ItemLink>
-      <ItemLink to="#">Друзья</ItemLink>
-      <ItemLink to="#">Сообщения</ItemLink>
-      <ItemLink to="#">Новости</ItemLink>
-      <ItemLink to="#">Закладки</ItemLink>
+      <ItemLink to={routes.main}>Моя страница</ItemLink>
+      <ItemLink to={routes.friends}>Друзья</ItemLink>
+      <ItemLink to={routes.messages}>Сообщения</ItemLink>
+      <ItemLink to={routes.news}>Новости</ItemLink>
+      <ItemLink to={routes.bookmarks}>Закладки</ItemLink>
       <ItemLink to="#">Группы</ItemLink>
-      <ItemLink to="#">Фотографии</ItemLink>
+      <ItemLink to={routes.photo}>Фотографии</ItemLink>
       <ItemLink to="#">Видеозаписи</ItemLink>
       <ItemLink to="#">Аудиозаписи</ItemLink>
       <ItemLink to="#">Настройки</ItemLink>
