@@ -2,13 +2,13 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import avatar from './avatar.svg';
-import favorite from './favorite.svg';
-import like from './like.svg';
-import comment from './comment.svg';
-import repost from './repost.svg';
-import more from './more.svg';
-import moreUp from './moreUp.svg';
+import avatar from '../../img/icons/mock-avatar.svg';
+import favorite from '../../img/icons/favorite.svg';
+import like from '../../img/icons/like.svg';
+import comment from '../../img/icons/comment.svg';
+import repost from '../../img/icons/repost.svg';
+import more from '../../img/icons/more.svg';
+import moreUp from '../../img/icons/moreUp.svg';
 
 export default function NewsItem(props) {
   const { item } = props;
@@ -29,10 +29,8 @@ export default function NewsItem(props) {
   const height = isFullContent ? '' : '100px';
 
   const listTags = tags.map((tag) => (
-    <LiItem>
-      <TagLink key={tag} href="http://localhost:3000/social-network">
-        #{tag}
-      </TagLink>
+    <LiItem key={tag}>
+      <TagLink href="http://localhost:3000/social-network">#{tag}</TagLink>
     </LiItem>
   ));
   return (
@@ -66,9 +64,9 @@ export default function NewsItem(props) {
       </NewsHeader>
       <NewsTitle>{title}</NewsTitle>
       <div style={{ display: 'flex' }}>
-        <NewsContentContainer style={{ display: 'flex', flexDirection: 'column', width: '735px' }}>
-          <CardImage src={img} alt="" />
-          <CardContent style={{ height }}>{text}</CardContent>
+        <NewsContentContainer>
+          <NewsImage src={img} alt="" />
+          <NewsContent style={{ height }}>{text}</NewsContent>
         </NewsContentContainer>
         <ButtonMore>
           <MoreIcon
@@ -78,7 +76,7 @@ export default function NewsItem(props) {
         </ButtonMore>
       </div>
 
-      <CardTags>{listTags}</CardTags>
+      <NewsTags>{listTags}</NewsTags>
     </Container>
   );
 }
@@ -183,7 +181,7 @@ const NewsTitle = styled.div`
   line-height: 160%;
 `;
 
-const CardImage = styled.img`
+const NewsImage = styled.img`
   display: block;
   border-radius: 15px;
   width: 100%;
@@ -195,10 +193,13 @@ const CardImage = styled.img`
 const NewsContentContainer = styled.div`
   display: flex;
   margin-bottom: 30px;
+  flex-direction: column;
+  width: 735px;
 `;
 
-const CardContent = styled.span`
+const NewsContent = styled.span`
   overflow: hidden;
+  color: #000000;
   display: block;
   min-width: 100px;
   max-width: 705px;
@@ -228,7 +229,7 @@ const MoreIcon = styled.img`
   }
 `;
 
-const CardTags = styled.span`
+const NewsTags = styled.span`
   display: flex;
   min-width: 175px;
   min-height: 30px;
