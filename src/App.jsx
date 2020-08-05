@@ -10,6 +10,7 @@ import News from './components/News';
 import routes from './routes';
 import Bookmarks from './components/Bookmarks';
 import Photo from './components/Photo/Photo';
+import Group from './components/Group';
 
 const App = () => (
   <Switch>
@@ -21,6 +22,7 @@ const App = () => (
     <Route path={routes.messages} component={Messages} />
     <Route path={routes.bookmarks} component={Bookmarks} />
     <Route path={routes.photo} component={Photo} />
+    <Route path={routes.group} component={Group} />
   </Switch>
 );
 

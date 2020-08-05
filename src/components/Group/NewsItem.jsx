@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import styled from 'styled-components';
@@ -29,11 +28,8 @@ export default function NewsItem(props) {
   const height = isFullContent ? '' : '100px';
 
   const listTags = tags.map((tag) => (
-    <LiItem>
-      <TagLink key={tag} href="http://localhost:3000/social-network">
-        #
-        {tag}
-      </TagLink>
+    <LiItem key={tag}>
+      <TagLink href="http://localhost:3000/social-network">#{tag}</TagLink>
     </LiItem>
   ));
   return (
@@ -66,7 +62,7 @@ export default function NewsItem(props) {
         </ActionsContainer>
       </NewsHeader>
       <NewsTitle>{title}</NewsTitle>
-      <div style={{ display: 'flex' }}>
+      <WrapperContent>
         <NewsContentContainer>
           <NewsImage src={img} alt="" />
           <NewsContent style={{ height }}>{text}</NewsContent>
@@ -77,7 +73,7 @@ export default function NewsItem(props) {
             onClick={() => setFullContent(!isFullContent)}
           />
         </ButtonMore>
-      </div>
+      </WrapperContent>
 
       <NewsTags>{listTags}</NewsTags>
     </Container>
@@ -193,19 +189,21 @@ const NewsImage = styled.img`
   margin-right: auto;
 `;
 
+const WrapperContent = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 const NewsContentContainer = styled.div`
   display: flex;
   margin-bottom: 30px;
   flex-direction: column;
-  width: 735px;
 `;
 
 const NewsContent = styled.span`
   overflow: hidden;
-  color: #000000;
   display: block;
-  min-width: 100px;
-  max-width: 705px;
+  width: 100%;
   font-size: 16px;
   line-height: 165%;
   margin-right: 20px;
