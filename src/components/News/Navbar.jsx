@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 import React from 'react';
 import styled from 'styled-components';
-import img from './search.svg';
+import img from '../../img/icons/search.svg';
 
 const Navbar = () => (
   <NavbarWrapper>
