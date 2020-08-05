@@ -15,11 +15,9 @@ const ItemLink = styled(Link)`
   line-height: 20px;
   color: #ffffff;
   text-decoration: none;
-
   &:not(:last-child) {
     margin-bottom: 24px;
   }
-
   &:hover {
     color: #ffb11b;
   }
@@ -35,7 +33,7 @@ const Sidebar = () => (
       <ItemLink to={routes.bookmarks}>Закладки</ItemLink>
       <ItemLink to="#">Группы</ItemLink>
       <ItemLink to={routes.photo}>Фотографии</ItemLink>
-      <ItemLink to="#">Видеозаписи</ItemLink>
+      <ItemLink to={routes.video}>Видеозаписи</ItemLink>
       <ItemLink to="#">Аудиозаписи</ItemLink>
       <ItemLink to="#">Настройки</ItemLink>
     </List>

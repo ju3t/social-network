@@ -5,7 +5,7 @@ import Login from './components/LoginPage/loginPage';
 import Messages from './components/Messages';
 import Main from './components/Main';
 import Friends from './components/Friends';
-import VideoPage from './components/VideoPage/VideoPage';
+import VideoPage from './components/VideoPage';
 import News from './components/News';
 import routes from './routes';
 import Bookmarks from './components/Bookmarks';

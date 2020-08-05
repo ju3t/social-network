@@ -10,7 +10,7 @@ const Box = styled.div`
   margin-top: 150px;
   padding: 85px;
   color: #000000;
-  width: 1291;
+  width: 1291px;
 `;
 
 const Headline = styled.h1`

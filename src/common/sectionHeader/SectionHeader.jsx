@@ -9,13 +9,15 @@ const Headline = styled.h2`
   font-size: 30px;
   line-height: 37px;
   vertical-align: middle;
+  color: #000;
 `;
 
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   height: 67px;
-  margin: 50px 0;
+  margin: 65px 0;
 `;
 
 const SectionHeader = ({ headline, children }) => (
