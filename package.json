@@ -15,6 +15,7 @@
     "lodash": "^4.17.19",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-elastic-carousel": "^0.6.7",
     "react-rangeslider": "^2.2.0",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
@@ -26,7 +27,8 @@
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
     "slick-carousel": "^1.8.1",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.1.1",
+    "swiper": "^6.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -79,14 +81,14 @@
   "husky": {
     "hooks": {
       "pre-commit": "npx lint-staged",
-    "prettier": "2.0.5",
-    "node-sass": "^4.14.1"
-  },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "npm run lint:fix",
-      "prettier --write"
-    ]
+      "prettier": "2.0.5",
+      "node-sass": "^4.14.1"
+    },
+    "lint-staged": {
+      "*.{js,jsx}": [
+        "npm run lint:fix",
+        "prettier --write"
+      ]
+    }
   }
-}
 }

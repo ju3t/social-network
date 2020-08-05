@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Slider from 'react-rangeslider';
 import Card from './Card';
 import forward from '../../../common/img/icons/forward.svg';
 import play from '../../../common/img/icons/play.svg';
 import back from '../../../common/img/icons/back.svg';
+import { Slider } from 'antd';
 
 const Main = styled.div`
     border:1px solid black;
@@ -24,7 +24,6 @@ const ButtonsArea = styled.div`
 `;
 
 const PlayandPauseBlock = styled.div`
-
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -36,7 +35,6 @@ const PlayandPauseBlock = styled.div`
         box-shadow:none;
         cursor: pointer;
     }
-
 `;
 
 const Play = styled.button`
@@ -197,41 +195,19 @@ class Deck extends Component {
 
       }
     }
-
-    handleChangeStart = () => {
-      console.log('Change event started');
-    };
-
-    handleChange = (value) => {
-      this.setState({
-        value,
-      });
-    };
-
-    handleChangeComplete = () => {
-      console.log('Change event completed');
-    };
-
     render() {
-      const { value } = this.state;
       return (
         <Main>
           <ButtonsArea>
             <PlayandPauseBlock>
               <button onClick={this.handle_prev}><img src={back} alt="" /></button>
-              <Play onClick={this.handle_next}><img src={play} alt="" /></Play>
+              <Play ><img src={play} alt="" /></Play>
               <Next onClick={this.handle_next}>
                 <img src={forward} alt="" />
               </Next>
+              <Slider defaultValue={30} />
             </PlayandPauseBlock>
-            <Slider
-              min={0}
-              max={100}
-              value={value}
-              onChangeStart={this.handleChangeStart}
-              onChange={this.handleChange}
-              onChangeComplete={this.handleChangeComplete}
-            />
+            
           </ButtonsArea>
           <div ref={(ref_id) => this.deck = ref_id} style={styles.deck}>
             {this.state.cards}
