@@ -76,7 +76,7 @@ Comment.propTypes = {
   userFoto: PropTypes.string,
   date: PropTypes.string,
   text: PropTypes.string,
-  comment: PropTypes.objectOf(PropTypes.object).isRequired,
+  comment: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])).isRequired,
 };
 
 export default Comment;

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import React, { useState } from 'react';
 import ScrollBar from 'react-scrollbars-custom';
-import { Button } from 'antd';
 import { uniqueId } from 'lodash';
 import Author from './message-author';
 import Messages from '../chat/messages';
@@ -66,7 +65,7 @@ const SubmitMessageWrap = styled.div`
   margin: 30px;
 `;
 
-const ModalChatOpen = styled(Button)`
+const ModalChatOpen = styled.button`
   position: absolute;
   width: 60px;
   height: 60px;
@@ -200,10 +199,7 @@ const groupMessagesByUser = testData.reduce((acc, el) => {
 const ModalChat = () => {
   const [isOpen, setIsOpen] = useState(true);
 
-  const switchModalStatus = () => {
-    setIsOpen(!isOpen);
-  };
-
+  const switchModalStatus = () => setIsOpen(!isOpen);
   const renderMessages = () => groupMessagesByUser.map((el) => {
     if (el.username === 'bogdan13') {
       return (

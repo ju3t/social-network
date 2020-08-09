@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 
-export default combineReducers({
+const reducer1 = () => 1;
+const reducer2 = () => 2;
 
-});
+export default combineReducers({ reducer1, reducer2 });
