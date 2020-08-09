@@ -157,7 +157,7 @@ const VideoPage = () => {
           <PopulerVideos>
             <SectionHeader headline="Популярные" />
             <PopularVideoList show={showPopupar}>
-              <ShowHideButton show={showPopupar} onClick={() => setShowPopupar(!showPopupar)} />{' '}
+              <ShowHideButton show={showPopupar} onClick={() => setShowPopupar(!showPopupar)} />
               {videoArr.map((obj) => (
                 <PopularVideosItemWrapper key={uniqueId()}>
                   <VideoItem
