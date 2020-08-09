@@ -72,7 +72,9 @@ const AddButton = styled.button`
 `;
 
 const VideoItem = (props) => {
-  const { id, name, isPopular, action } = props;
+  const {
+    id, name, isPopular, action,
+  } = props;
   return (
     <>
       <VideoImgOverlay role="button" onClick={action}>

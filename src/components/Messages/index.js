@@ -468,27 +468,26 @@ const groupMessagesByUser = testData.reduce((acc, el) => {
 }, []);
 
 const MessagesPage = () => {
-  const renderMessages = () =>
-    groupMessagesByUser.map((el) => {
-      if (el.username === 'bogdan13') {
-        return (
-          <MessageWrapper key={el.id}>
-            <Messages messages={el.messages} messagesType="our" />
-            <UserLink to="#">
-              <ContentUserImg src={el.image} />
-            </UserLink>
-          </MessageWrapper>
-        );
-      }
+  const renderMessages = () => groupMessagesByUser.map((el) => {
+    if (el.username === 'bogdan13') {
       return (
         <MessageWrapper key={el.id}>
+          <Messages messages={el.messages} messagesType="our" />
           <UserLink to="#">
             <ContentUserImg src={el.image} />
           </UserLink>
-          <Messages messages={el.messages} messagesType="their" />
         </MessageWrapper>
       );
-    });
+    }
+    return (
+      <MessageWrapper key={el.id}>
+        <UserLink to="#">
+          <ContentUserImg src={el.image} />
+        </UserLink>
+        <Messages messages={el.messages} messagesType="their" />
+      </MessageWrapper>
+    );
+  });
 
   return (
     <PageWrapper messages>
