@@ -10,7 +10,7 @@ const SingleFriendWrapper = styled.div`
   justify-content: space-between;
   flex-wrap: nowrap;
   align-items: center;
-  padding: 51px 0px;
+  padding: 51px 0;
   border-bottom: 1px solid #b2b2b2;
 `;
 
@@ -42,14 +42,14 @@ const BaseButtonStyle = `
 `;
 
 const DeleteButton = styled.button`
-    ${BaseButtonStyle}
-    mask-image: url(${DeleteIcon});
-    margin-left: 69px;
+  ${BaseButtonStyle};
+  mask-image: url(${DeleteIcon});
+  margin-left: 69px;
 `;
 
 const MessageButton = styled.button`
-    ${BaseButtonStyle}
-    mask-image: url(${MessageIcon});
+  ${BaseButtonStyle};
+  mask-image: url(${MessageIcon});
 `;
 
 const FriendInfo = styled.div`

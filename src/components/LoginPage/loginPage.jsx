@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Input, Slider } from 'antd';
+import { Input } from 'antd';
 import styled from 'styled-components';
 import jm from '../../common/JM.svg';
 import sn from '../../common/SN.svg';
@@ -45,7 +45,6 @@ const InputsArea = styled.div`
 const SearchInpit = styled(Input)`
   background-color: rgba(0, 125, 215, 0);
   color: #959595;
-  font-size: 14px;
   width: 360px;
   margin: 15px 20px;
   padding-bottom: 5px;
@@ -71,7 +70,7 @@ const ButtonRight = styled.button`
   margin-right: 35px;
   padding-bottom: 2px;
   p {
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     color: white;
     font-weight: 50;
     font-size: 26px;
@@ -91,7 +90,7 @@ const ButtonLeft = styled.button`
   margin-right: 35px;
   padding-bottom: 2px;
   p {
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     color: white;
     font-weight: 50;
     font-size: 26px;
@@ -111,7 +110,7 @@ const SubmitArea = styled.div`
   padding-bottom: 80px;
   h4,
   a {
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-size: 14px;
     letter-spacing: 0.05em;
     color: #959595;
@@ -126,7 +125,7 @@ const SubmitArea = styled.div`
     margin-bottom: 10px;
     border-radius: 4px;
     p {
-      font-family: Montserrat;
+      font-family: Montserrat, sans-serif;
       font-style: normal;
       font-weight: 600;
       font-size: 16px;
@@ -159,7 +158,6 @@ const Login = () => {
     <Wrapper>
       <img src={logo} alt="" />
       <Main>
-        <Slider defaultValue={100} tooltipVisible />
         {value === true && (
           <Form>
             <ButtonsArea>
@@ -173,7 +171,6 @@ const Login = () => {
             <InputsArea>
               <SearchInpit placeholder="Введите ваш e-mail" nostyle="false" />
               <SearchInpit placeholder="Введите ваш пароль" nostyle="true" />
-
             </InputsArea>
             <SubmitArea>
               <button type="button">
@@ -183,7 +180,6 @@ const Login = () => {
                 {' '}
                 <a href="/"> Забыли пароль?</a>
               </h4>
-
             </SubmitArea>
           </Form>
         )}
@@ -197,7 +193,7 @@ const Login = () => {
               <ButtonLeft selected={border.second} onClick={() => selectRegistration()}>
                 <p>Регистрация</p>
               </ButtonLeft>
-            </ButtonsArea>{' '}
+            </ButtonsArea>
             <InputsArea>
               <SearchInpit placeholder="Введите ваше имя" nostyle="false" />
               <SearchInpit placeholder="Введите ваш e-mail" nostyle="true" />

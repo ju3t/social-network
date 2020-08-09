@@ -14,13 +14,13 @@ const ModalChatWrapper = styled.div`
   height: 840px;
   padding-bottom: 40px;
   overflow: hidden;
-  margin: 0px auto;
+  margin: 0 auto;
 `;
 
 const ContentWrapper = styled.div`
   height: 100%;
   width: 100%;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   background-color: white;
   transform: ${({ isOpen }) => (isOpen ? 'translateY(0)' : 'translateY(870px)')};
   opacity: ${({ isOpen }) => (isOpen ? '1' : '0')};
@@ -35,7 +35,7 @@ const Header = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #ffb11b;
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
@@ -53,7 +53,6 @@ const Content = styled.div`
   padding: 35px 35px 0 35px;
   background-color: #ffffff;
   height: 560px;
-  overflow-y: scroll;
   overflow: hidden;
 `;
 

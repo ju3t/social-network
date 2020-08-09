@@ -7,12 +7,12 @@ import { uniqueId } from 'lodash';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import Header from '../../common/header';
-import LeftBlock from '../../common/leftBlock';
+// import LeftBlock from '../../common/leftBlock';
 import RightBlock from '../../common/rightBlock';
 import { MainContainer } from '../../common/styledComponents';
 
 const PageWrapper = styled.div`
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+  @font-face url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
   background: #ffffff;
   font-family: 'Montserrat', sans-serif;
   border-radius: 15px;
@@ -58,7 +58,6 @@ const VideoPage = () => (
   <>
     <Header />
     <MainContainer>
-      <LeftBlock />
       <RightBlock>
         <PageWrapper>
           <PageMarker>Видеозаписи</PageMarker>
@@ -66,8 +65,8 @@ const VideoPage = () => (
             <Swiper
               spaceBetween={30}
               slidesPerView={2}
-              onSlideChange={() => console.log('change')}
-              onSwiper={(swiper) => console.log(swiper)}
+              // onSlideChange={() => console.log('change')}
+              // onSwiper={(swiper) => console.log(swiper)}
             >
               {videoArr.map((obj) => (
                 <SwiperSlide key={uniqueId()}>{obj.preview}</SwiperSlide>
