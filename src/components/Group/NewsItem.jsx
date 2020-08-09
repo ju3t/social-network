@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import styled from 'styled-components';
@@ -29,10 +28,8 @@ export default function NewsItem(props) {
   const height = isFullContent ? '' : '100px';
 
   const listTags = tags.map((tag) => (
-    <LiItem>
-      <TagLink key={tag} href="http://localhost:3000/social-network">
-        #{tag}
-      </TagLink>
+    <LiItem key={tag}>
+      <TagLink href="http://localhost:3000/social-network">#{tag}</TagLink>
     </LiItem>
   ));
   return (
@@ -65,7 +62,7 @@ export default function NewsItem(props) {
         </ActionsContainer>
       </NewsHeader>
       <NewsTitle>{title}</NewsTitle>
-      <div style={{ display: 'flex' }}>
+      <WrapperContent>
         <NewsContentContainer>
           <NewsImage src={img} alt="" />
           <NewsContent style={{ height }}>{text}</NewsContent>
@@ -76,7 +73,7 @@ export default function NewsItem(props) {
             onClick={() => setFullContent(!isFullContent)}
           />
         </ButtonMore>
-      </div>
+      </WrapperContent>
 
       <NewsTags>{listTags}</NewsTags>
     </Container>
@@ -118,7 +115,7 @@ const AuthorContainer = styled.div`
 
 const Author = styled.span`
   display: block;
-  font-family: Montserrat, sans-serif;
+  font-family: Montserrat;
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -130,7 +127,7 @@ const Author = styled.span`
 
 const Time = styled.span`
   display: block;
-  font-family: Montserrat, sans-serif;
+  font-family: Montserrat;
   font-style: normal;
   font-weight: 500;
   font-size: 13px;
@@ -150,7 +147,7 @@ const ActionsContainer = styled.div`
 const ButtonAction = styled.button`
   margin-left: 65px;
   display: flex;
-  font-family: Montserrat, sans-serif;
+  font-family: Montserrat;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -192,19 +189,21 @@ const NewsImage = styled.img`
   margin-right: auto;
 `;
 
+const WrapperContent = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 const NewsContentContainer = styled.div`
   display: flex;
   margin-bottom: 30px;
   flex-direction: column;
-  width: 735px;
 `;
 
 const NewsContent = styled.span`
   overflow: hidden;
-  color: #000000;
   display: block;
-  min-width: 100px;
-  max-width: 705px;
+  width: 100%;
   font-size: 16px;
   line-height: 165%;
   margin-right: 20px;
