@@ -1,23 +1,21 @@
 import React from 'react';
+import styled from 'styled-components';
 
-import Header from '../../common/header';
-import LeftBlock from '../../common/leftBlock';
-import RightBlock from '../../common/rightBlock';
-import { MainContainer, WallContainer } from '../../common/styledComponents';
+import PageWrapper from '../../common/pageWrapper';
 import Audio from './AudioPage';
+import { Box } from '../../common/styledComponents';
+
+const ContentBox = styled(Box)`
+  margin-top: 200px;
+  padding: 0;
+`;
 
 const AudioPage = () => (
-  <>
-    <Header />
-    <MainContainer>
-      <LeftBlock />
-      <RightBlock>
-        <WallContainer>
-          <Audio />
-        </WallContainer>
-      </RightBlock>
-    </MainContainer>
-  </>
+  <PageWrapper>
+    <ContentBox>
+      <Audio />
+    </ContentBox>
+  </PageWrapper>
 );
 
 export default AudioPage;

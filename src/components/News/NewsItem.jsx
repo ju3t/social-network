@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import __ from 'lodash';
 import avatar from '../../img/icons/mock-avatar.svg';
 import favorite from '../../img/icons/favorite.svg';
 import like from '../../img/icons/like.svg';
@@ -29,7 +30,7 @@ export default function NewsItem(props) {
   const height = isFullContent ? '' : '100px';
 
   const listTags = tags.map((tag) => (
-    <LiItem>
+    <LiItem key={__.uniqueId()}>
       <TagLink key={tag} href="http://localhost:3000/social-network">
         #
         {tag}

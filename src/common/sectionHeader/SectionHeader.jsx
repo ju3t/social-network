@@ -9,7 +9,7 @@ const Headline = styled.h2`
   font-size: 30px;
   line-height: 37px;
   vertical-align: middle;
-  color: #000;
+  color: #000000;
 `;
 
 const Container = styled.div`
@@ -31,11 +31,10 @@ export default SectionHeader;
 
 SectionHeader.defaultProps = {
   headline: '',
-  children: [],
+  children: '',
 };
 
 SectionHeader.propTypes = {
   headline: PropTypes.string,
-  // eslint-disable-next-line react/forbid-prop-types
-  children: PropTypes.array,
+  children: PropTypes.node,
 };

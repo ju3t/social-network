@@ -84,7 +84,7 @@ export const LeftBlockContainer = styled.div`
 export const RightBlockContainer = styled.div`
   //margin-left: 27%;
   margin-left: 519px;
-  margin-right:110px;
+  margin-right: 110px;
   background: ${bgColorBlack};
   position: relative;
   //width: 73%;
@@ -187,7 +187,7 @@ export const WallContainer = styled.div`
   width: 1291px;
   height: 100%;
   background: #ffffff;
-  border-radius: 15px 15px 0px 0px;
+  border-radius: 15px 15px 0 0;
   display: flex;
   flex-direction: column;
 `;
@@ -382,4 +382,14 @@ export const List = styled.ul`
   align-items: flex-start;
   padding: 0;
   margin: 0 0 40px 0;
+`;
+
+export const Box = styled.div`
+  box-sizing: border-box;
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 15px;
+  margin-top: 150px;
+  color: #000000;
+  width: 1291px;
 `;

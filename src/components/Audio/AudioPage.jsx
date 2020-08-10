@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Slider from 'react-slick';
+// import Slider from '../../common/slider';
+
 import album from '../../common/img/png/album5.png';
 import pic from '../../common/img/png/pic.png';
 import Deck from './AudioSlider/Deck';
@@ -20,6 +22,7 @@ const SliderContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 300px;
+  z-index: 2;
 `;
 
 const ButtonsArea = styled.div`
@@ -107,7 +110,7 @@ const SongsArea = styled.div`
     overflow: scroll;
     ::-webkit-scrollbar {
       /* chrome based */
-      width: 0; /* ширина scrollbar'a */
+      width: 0; /* ширина scrollbar */
       background: transparent; /* опционально */
     }
     li {
@@ -127,6 +130,7 @@ const Next = styled.div`
   height: 30px;
   margin-left: 70px;
   margin-top: 40px;
+  cursor: pointer;
 `;
 const Prev = styled.div`
   background-image: url(${backArrow});
@@ -135,7 +139,8 @@ const Prev = styled.div`
   max-width: 30px;
   height: 30px;
   margin-left: -150px;
-  margin-top: 45px;
+  margin-top: 40px;
+  cursor: pointer;
 `;
 
 const RightSide = styled.div`
@@ -156,20 +161,33 @@ const LeftSide = styled.div`
 // slick arrows and settings area
 
 const SampleNextArrow = ({ onClick }) => <Next onClick={onClick} />;
-
 const SamplePrevArrow = ({ onClick }) => <Prev onClick={onClick} />;
-
 const settings = {
-  dots: false,
-  infinite: true,
-  speed: 500,
+  loop: true,
   slidesToShow: 5,
-  slidesToScroll: 3,
-  nextArrow: SampleNextArrow,
-  prevArrow: SamplePrevArrow,
+  slidesToScroll: 1,
+  nextArrow: <SampleNextArrow onClick={onclick} />,
+  prevArrow: <SamplePrevArrow onClick={onclick} />,
 };
 
 // end
+const songsArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const songsItems = songsArray.map((song) => (
+  <li>
+    <RightSide>
+      <div>
+        <img src={pic} alt="" />
+      </div>
+      <div>
+        <h3>Исполнитель</h3>
+        <p>{`название трека - ${song}`}</p>
+      </div>
+    </RightSide>
+    <LeftSide>
+      <h4>3:58</h4>
+    </LeftSide>
+  </li>
+));
 
 const Audio = () => {
   const arr = [1, 2, 3, 4, 7, 6];
@@ -206,162 +224,7 @@ const Audio = () => {
         </Slider>
       </PlayListArea>
       <SongsArea>
-        <ul>
-          <li>
-            <RightSide>
-              <div>
-                <img src={pic} alt="" />
-              </div>
-              <div>
-                <h3>Исполнитель</h3>
-                <p>название трека</p>
-              </div>
-            </RightSide>
-            <LeftSide>
-              <h4>3:58</h4>
-            </LeftSide>
-          </li>
-          <li>
-            <RightSide>
-              <div>
-                <img src={pic} alt="" />
-              </div>
-              <div>
-                <h3>Исполнитель</h3>
-                <p>название трека</p>
-              </div>
-            </RightSide>
-            <LeftSide>
-              <h4>3:58</h4>
-            </LeftSide>
-          </li>
-          <li>
-            <RightSide>
-              <div>
-                <img src={pic} alt="" />
-              </div>
-              <div>
-                <h3>Исполнитель</h3>
-                <p>название трека</p>
-              </div>
-            </RightSide>
-            <LeftSide>
-              <h4>3:58</h4>
-            </LeftSide>
-          </li>
-          <li>
-            <RightSide>
-              <div>
-                <img src={pic} alt="" />
-              </div>
-              <div>
-                <h3>Исполнитель</h3>
-                <p>название трека</p>
-              </div>
-            </RightSide>
-            <LeftSide>
-              <h4>3:58</h4>
-            </LeftSide>
-          </li>
-          <li>
-            <RightSide>
-              <div>
-                <img src={pic} alt="" />
-              </div>
-              <div>
-                <h3>Исполнитель</h3>
-                <p>название трека</p>
-              </div>
-            </RightSide>
-            <LeftSide>
-              <h4>3:58</h4>
-            </LeftSide>
-          </li>
-          <li>
-            <RightSide>
-              <div>
-                <img src={pic} alt="" />
-              </div>
-              <div>
-                <h3>Исполнитель</h3>
-                <p>название трека</p>
-              </div>
-            </RightSide>
-            <LeftSide>
-              <h4>3:58</h4>
-            </LeftSide>
-          </li>
-          <li>
-            <RightSide>
-              <div>
-                <img src={pic} alt="" />
-              </div>
-              <div>
-                <h3>Исполнитель</h3>
-                <p>название трека</p>
-              </div>
-            </RightSide>
-            <LeftSide>
-              <h4>3:58</h4>
-            </LeftSide>
-          </li>
-          <li>
-            <RightSide>
-              <div>
-                <img src={pic} alt="" />
-              </div>
-              <div>
-                <h3>Исполнитель</h3>
-                <p>название трека</p>
-              </div>
-            </RightSide>
-            <LeftSide>
-              <h4>3:58</h4>
-            </LeftSide>
-          </li>
-          <li>
-            <RightSide>
-              <div>
-                <img src={pic} alt="" />
-              </div>
-              <div>
-                <h3>Исполнитель</h3>
-                <p>название трека</p>
-              </div>
-            </RightSide>
-            <LeftSide>
-              <h4>3:58</h4>
-            </LeftSide>
-          </li>
-          <li>
-            <RightSide>
-              <div>
-                <img src={pic} alt="" />
-              </div>
-              <div>
-                <h3>Исполнитель</h3>
-                <p>название трека</p>
-              </div>
-            </RightSide>
-            <LeftSide>
-              <h4>3:58</h4>
-            </LeftSide>
-          </li>
-          <li>
-            <RightSide>
-              <div>
-                <img src={pic} alt="" />
-              </div>
-              <div>
-                <h3>Исполнитель</h3>
-                <p>название трека</p>
-              </div>
-            </RightSide>
-            <LeftSide>
-              <h4>3:58</h4>
-            </LeftSide>
-          </li>
-        </ul>
+        <ul>{songsItems}</ul>
       </SongsArea>
     </Main>
   );

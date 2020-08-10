@@ -11,19 +11,18 @@ import play from '../../../common/img/icons/play.svg';
 import back from '../../../common/img/icons/back.svg';
 
 const Main = styled.div`
-  border: 1px solid #000000;
-  max-width: 900px;
-  margin-top: 0;
+  //border: 1px solid #000000;
+  position: absolute;
+  width: 980px;
+  top: -150px;
 `;
 
 const ButtonsArea = styled.div`
   padding-top: 20px;
   position: absolute;
-  top: -1%;
-  left: 27%;
+  top: 15%;
+  left: 18%;
   z-index: 2;
-  div {
-  }
 `;
 
 const ControlsContainer = styled.div`
@@ -99,39 +98,39 @@ const Deck = () => {
             <Slider defaultValue={30} />
           </ControlsContainer>
         </ButtonsArea>
+        <Swiper
+          spaceBetween={10}
+          slidesPerView="auto"
+          effect="coverflow"
+          centeredSlides
+          loopedSlides={1}
+          // loopAdditionalSlides={1}
+          loop
+          onSwiper={(swiper) => {
+            mySwiper = swiper;
+          }}
+          coverflowEffect={{
+            rotate: 0,
+            stretch: 1100,
+            depth: 200,
+            modifier: 1,
+            slideShadows: false,
+          }}
+        >
+          <SwiperSlide>
+            <Img alt="sd" src="http://lorempixel.com/600/600/abstract/1" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Img alt="sd" src="http://lorempixel.com/600/600/abstract/2" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Img alt="sd" src="http://lorempixel.com/600/600/abstract/3" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Img alt="sd" src="http://lorempixel.com/600/600/abstract/4" />
+          </SwiperSlide>
+        </Swiper>
       </Main>
-      <Swiper
-        spaceBetween={10}
-        slidesPerView="auto"
-        effect="coverflow"
-        centeredSlides
-        loopedSlides={1}
-        // loopAdditionalSlides={1}
-        loop
-        onSwiper={(swiper) => {
-          mySwiper = swiper;
-        }}
-        coverflowEffect={{
-          rotate: 0,
-          stretch: 1150,
-          depth: 200,
-          modifier: 1,
-          slideShadows: false,
-        }}
-      >
-        <SwiperSlide>
-          <Img alt="sd" src="http://lorempixel.com/600/600/abstract/1" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Img alt="sd" src="http://lorempixel.com/600/600/abstract/2" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Img alt="sd" src="http://lorempixel.com/600/600/abstract/3" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Img alt="sd" src="http://lorempixel.com/600/600/abstract/4" />
-        </SwiperSlide>
-      </Swiper>
     </>
   );
 };
