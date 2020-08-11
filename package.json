@@ -4,31 +4,43 @@
   "private": true,
   "homepage": "https://feniks916.github.io/social-network",
   "dependencies": {
+    "@storybook/react": "^5.3.19",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "antd": "^4.4.3",
     "formik": "^2.1.5",
-    "prop-types": "^15.7.2",
     "gh-pages": "^3.1.0",
+    "lodash": "^4.17.19",
+    "node-sass": "^4.14.1",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-elastic-carousel": "^0.6.7",
+    "react-modal-image": "^2.5.0",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-scroll": "^1.8.0",
     "react-scrollbars-custom": "^4.0.25",
+    "react-slick": "^0.27.1",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^5.1.1",
     "reselect": "^4.0.0",
-    "@storybook/react": "^5.3.19"
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^5.1.1",
+    "swiper": "^6.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "prettier": "prettier src/**/*.{js,jsx} --write",
+    "eslint": "eslint src/**/*.{js,jsx}",
+    "eslint:fix": "eslint src/**/*.{js,jsx} --fix",
+    "eslint:fix:layout": "eslint  src/**/*.{js,jsx} --fix --fix-type layout",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "lint": "eslint src/**/*.{js,jsx}",
@@ -65,7 +77,8 @@
     "eslint-plugin-react-hooks": "^4.0.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
-    "prettier": "2.0.5"
+    "prettier": "2.0.5",
+    "node-sass": "^4.14.1"
   },
   "husky": {
     "hooks": {
@@ -75,8 +88,7 @@
   "lint-staged": {
     "*.{js,jsx}": [
       "npm run lint:fix",
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   }
 }

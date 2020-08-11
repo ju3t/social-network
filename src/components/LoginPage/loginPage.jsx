@@ -194,7 +194,8 @@ const Login = () => {
               <ButtonLeft selected={border.second} onClick={() => selectRegistration()}>
                 <p>Регистрация</p>
               </ButtonLeft>
-            </ButtonsArea>{' '}
+            </ButtonsArea>
+            {' '}
             <InputsArea>
               <SearchInpit placeholder="Введите ваше имя" nostyle="false" />
               <SearchInpit placeholder="Введите ваш e-mail" nostyle="true" />
