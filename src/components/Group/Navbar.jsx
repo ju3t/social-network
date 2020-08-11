@@ -5,7 +5,9 @@ import styled from 'styled-components';
 
 const Navbar = (props) => {
   const {
-    data: { date, description, link, owner },
+    data: {
+      date, description, link, owner,
+    },
   } = props;
   return (
     <NavbarWrapper>

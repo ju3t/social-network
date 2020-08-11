@@ -29,7 +29,10 @@ export default function NewsItem(props) {
 
   const listTags = tags.map((tag) => (
     <LiItem key={tag}>
-      <TagLink href="http://localhost:3000/social-network">#{tag}</TagLink>
+      <TagLink href="http://localhost:3000/social-network">
+        #
+        {tag}
+      </TagLink>
     </LiItem>
   ));
   return (
