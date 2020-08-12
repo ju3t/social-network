@@ -1,4 +1,11 @@
-<svg width="31" height="28" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M5.86596 12.2841C4.56915 13.0605 4.56915 14.9395 5.86596 15.7159L20.2226 24.3118C21.5557 25.1099 23.25 24.1496 23.25 22.5958L23.25 5.40419C23.25 3.85043 21.5557 2.89009 20.2226 3.68825L5.86596 12.2841Z" fill="white"  stroke="black"/>
-<rect y="4" width="3" height="21" rx="1.5" fill="white" stroke="black"/>
+<svg width="36" height="30" viewBox="0 0 36 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <filter id="f1" x="0" y="0" width="200%" height="200%">
+        <feOffset result="offOut" in="SourceAlpha" dx="2" dy="2"/>
+        <feGaussianBlur result="blurOut" in="offOut" stdDeviation="2"/>
+        <feBlend in="SourceGraphic" in2="blurOut" />
+    </filter>
+    <path filter="url(#f1)"
+          d="M5.86596 12.2841C4.56915 13.0605 4.56915 14.9395 5.86596 15.7159L20.2226 24.3118C21.5557 25.1099 23.25 24.1496 23.25 22.5958L23.25 5.40419C23.25 3.85043 21.5557 2.89009 20.2226 3.68825L5.86596 12.2841Z"
+          fill="white"/>
+    <rect filter="url(#f1)" y="4" width="3" height="21" rx="1.5" fill="white"/>
 </svg>
