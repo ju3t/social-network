@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { EffectCoverflow } from 'swiper';
 import 'swiper/swiper.scss';
-import { Slider, Progress } from 'antd';
-import songs from '../songs';
+import { Slider } from 'antd';
+import tracks from '../tracks';
 import 'antd/dist/antd.css';
-// import Card from './Card';
+import Card from './Card';
 import forward from '../../../common/img/icons/forward.svg';
 import play from '../../../common/img/icons/play.svg';
 import stop from '../../../common/img/icons/stop.svg';
@@ -16,28 +16,28 @@ import back from '../../../common/img/icons/back.svg';
 SwiperCore.use([EffectCoverflow]);
 
 const Deck = () => {
-  const [currentTrackId, setCurrentTrackId] = useState(songs[0].id);
+  const [currentTrackId, setCurrentTrackId] = useState(tracks[0].id);
   const [mySwiper, setMySwiper] = useState();
   const [playing, setPlaying] = useState(false);
   const [timePlayed, setTimePlayed] = useState(0);
 
   const handleNext = () => {
     mySwiper.slideNext();
-    setCurrentTrackId(songs[mySwiper.realIndex].id);
+    setCurrentTrackId(tracks[mySwiper.realIndex].id);
   };
 
   const handlePrev = () => {
     mySwiper.slidePrev();
-    setCurrentTrackId(songs[mySwiper.realIndex].id);
+    setCurrentTrackId(tracks[mySwiper.realIndex].id);
   };
 
   const handleToggle = () => {
     setPlaying((prevState) => !prevState);
   };
 
-  const Slides = songs.map((song) => (
+  const Slides = tracks.map((track) => (
     <SwiperSlide>
-      <Img src={`${song.image}`} alt="cover" />
+      <Card image={track.image} />
     </SwiperSlide>
   ));
 
@@ -57,15 +57,14 @@ const Deck = () => {
             </Next>
           </ControlsBlock>
           <Slider defaultValue={0} value={timePlayed * 100} />
-          <Progress percent={timePlayed * 100} showInfo={false} status="active" />
         </ControlsContainer>
         <TrackInfoArea>
-          <TrackAlbum>{songs.find((song) => song.id === currentTrackId).title}</TrackAlbum>
+          <TrackAlbum>{tracks.find((song) => song.id === currentTrackId).title}</TrackAlbum>
           <TrackInfo>
             <TrackPerformer>
-              {songs.find((song) => song.id === currentTrackId).performer}
+              {tracks.find((song) => song.id === currentTrackId).performer}
             </TrackPerformer>
-            <TrackTitle>{songs.find((song) => song.id === currentTrackId).album}</TrackTitle>
+            <TrackTitle>{tracks.find((song) => song.id === currentTrackId).album}</TrackTitle>
           </TrackInfo>
         </TrackInfoArea>
       </ButtonsArea>
@@ -98,7 +97,7 @@ const Deck = () => {
         }}
         onProgress={({ played }) => setTimePlayed(played)}
         playing={playing}
-        url={songs.find((song) => song.id === currentTrackId).url}
+        url={tracks.find((song) => song.id === currentTrackId).url}
       />
     </Main>
   );
@@ -115,12 +114,12 @@ const Main = styled.div`
 
 const ButtonsArea = styled.div`
   position: absolute;
-  padding: 10px;
-  top: 100px;
+  padding: 60px 10px;
+  top: 40px;
   //left: 200px;
   z-index: 2;
   background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
+  border-radius: 10px;
   display: flex;
   justify-content: space-around;
   width: 80%;
@@ -138,6 +137,7 @@ const ControlsBlock = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-bottom: 60px;
   button {
     outline: none;
     background: none;
@@ -169,16 +169,6 @@ const Player = styled(ReactPlayer)`
   height: 400px;
   background-color: #808080;
   visibility: hidden;
-`;
-
-const Img = styled.img`
-  display: block;
-  margin: 0 auto;
-  border-radius: 10px;
-  width: 800px;
-  height: 400px;
-  object-fit: cover;
-  background-color: #808080;
 `;
 
 const TrackInfoArea = styled.div`

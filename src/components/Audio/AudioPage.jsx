@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Slider from 'react-slick';
+import __ from 'lodash';
 // import Slider from '../../common/slider';
 
 import album from '../../common/img/png/album5.png';
@@ -173,7 +174,7 @@ const settings = {
 // end
 const songsArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const songsItems = songsArray.map((song) => (
-  <li>
+  <li key={__.uniqueId()}>
     <RightSide>
       <div>
         <img src={pic} alt="" />
@@ -216,7 +217,7 @@ const Audio = () => {
         <h3>Плейлисты</h3>
         <Slider {...settings}>
           {arr.map((el) => (
-            <div>
+            <div key={__.uniqueId()}>
               <img src={album} alt="" />
               <p>{el}</p>
             </div>
