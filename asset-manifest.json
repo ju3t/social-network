@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/social-network/static/css/main.1d8d616d.chunk.css",
-    "main.js": "/social-network/static/js/main.a228116d.chunk.js",
-    "main.js.map": "/social-network/static/js/main.a228116d.chunk.js.map",
+    "main.js": "/social-network/static/js/main.66b92a23.chunk.js",
+    "main.js.map": "/social-network/static/js/main.66b92a23.chunk.js.map",
     "runtime-main.js": "/social-network/static/js/runtime-main.a948e851.js",
     "runtime-main.js.map": "/social-network/static/js/runtime-main.a948e851.js.map",
     "static/css/2.70d9069a.chunk.css": "/social-network/static/css/2.70d9069a.chunk.css",
-    "static/js/2.a66abd3b.chunk.js": "/social-network/static/js/2.a66abd3b.chunk.js",
-    "static/js/2.a66abd3b.chunk.js.map": "/social-network/static/js/2.a66abd3b.chunk.js.map",
+    "static/js/2.d1249692.chunk.js": "/social-network/static/js/2.d1249692.chunk.js",
+    "static/js/2.d1249692.chunk.js.map": "/social-network/static/js/2.d1249692.chunk.js.map",
     "index.html": "/social-network/index.html",
-    "precache-manifest.30930c0dd025db44990f5eb59568c01c.js": "/social-network/precache-manifest.30930c0dd025db44990f5eb59568c01c.js",
+    "precache-manifest.f929f3863e38ffffaccc1db7092f36f8.js": "/social-network/precache-manifest.f929f3863e38ffffaccc1db7092f36f8.js",
     "service-worker.js": "/social-network/service-worker.js",
     "static/css/2.70d9069a.chunk.css.map": "/social-network/static/css/2.70d9069a.chunk.css.map",
     "static/css/main.1d8d616d.chunk.css.map": "/social-network/static/css/main.1d8d616d.chunk.css.map",
-    "static/js/2.a66abd3b.chunk.js.LICENSE.txt": "/social-network/static/js/2.a66abd3b.chunk.js.LICENSE.txt",
+    "static/js/2.d1249692.chunk.js.LICENSE.txt": "/social-network/static/js/2.d1249692.chunk.js.LICENSE.txt",
     "static/media/BTN more.svg": "/social-network/static/media/BTN more.d45c2c6f.svg",
     "static/media/H1 JMSN.svg": "/social-network/static/media/H1 JMSN.188ddb60.svg",
     "static/media/JM.svg": "/social-network/static/media/JM.0070d2f6.svg",
@@ -79,8 +79,8 @@
   "entrypoints": [
     "static/js/runtime-main.a948e851.js",
     "static/css/2.70d9069a.chunk.css",
-    "static/js/2.a66abd3b.chunk.js",
+    "static/js/2.d1249692.chunk.js",
     "static/css/main.1d8d616d.chunk.css",
-    "static/js/main.a228116d.chunk.js"
+    "static/js/main.66b92a23.chunk.js"
   ]
 }
