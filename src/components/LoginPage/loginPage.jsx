@@ -5,8 +5,8 @@ import jm from '../../common/JM.svg';
 import sn from '../../common/SN.svg';
 import logo from '../../common/logo.svg';
 
+
 const Wrapper = styled.div`
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -29,17 +29,16 @@ const Main = styled.div`
 `;
 
 const Form = styled.form`
-  max-width: 500px;
   margin: 100px 0;
   border-radius: 15px;
   background: #111111;
+  padding: 76px 75px 80px 72px;
 `;
+
 const InputsArea = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 150px;
-  margin-bottom: 60px;
+  margin-top: 181px;
 `;
 
 const SearchInpit = styled(Input)`
@@ -51,28 +50,32 @@ const SearchInpit = styled(Input)`
   border: none;
   border-bottom: 1px solid #ffb11b;
   outline: none;
-  font-size: 16px;
-  line-height: 20px;
+  color: aliceblue;
+  font-size: 14px;
+  line-height: 17px;
+    &:not(:first-child) {
+      margin-top: 33px;
+    }
+  ;
 `;
 
 const ButtonsArea = styled.div`
   display: flex;
-  flex-direction: row;
-  margin-left: 17%;
-  padding-top: 50px;
+  justify-content: space-between;
 `;
 
-const ButtonRight = styled.button`
+const ButtonSingInUpTxt = styled.button`
   background-color: rgba(0, 125, 215, 0);
+  padding: 0;
   border: none;
-  border-bottom: ${(props) => (props.selected ? '2px solid #FFB11B' : 'none')};
+  border-bottom: ${(props) => (props.selected
+                               ? '2px solid #FFB11B'
+                               : 'none')};
   box-shadow: none;
-  margin-right: 35px;
-  padding-bottom: 2px;
   p {
-    font-family: Montserrat, sans-serif;
     color: white;
-    font-weight: 50;
+    font-style: normal;
+    font-weight: normal;
     font-size: 26px;
     line-height: 32px;
     letter-spacing: 0.1em;
@@ -85,14 +88,15 @@ const ButtonRight = styled.button`
 const ButtonLeft = styled.button`
   background-color: rgba(0, 125, 215, 0);
   border: none;
-  border-bottom: ${(props) => (props.selected ? '2px solid #FFB11B' : 'none')};
+  border-bottom: ${(props) => (props.selected
+                               ? '2px solid #FFB11B'
+                               : 'none')};
   box-shadow: none;
   margin-right: 35px;
   padding-bottom: 2px;
   p {
-    font-family: Montserrat, sans-serif;
     color: white;
-    font-weight: 50;
+    font-weight: 500;
     font-size: 26px;
     line-height: 32px;
     letter-spacing: 0.1em;
@@ -104,13 +108,11 @@ const ButtonLeft = styled.button`
 `;
 
 const SubmitArea = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-bottom: 80px;
-  h4,
+margin-top: 66px;
+display:flex;
+justify-content: center;
+
   a {
-    font-family: Montserrat, sans-serif;
     font-size: 14px;
     letter-spacing: 0.05em;
     color: #959595;
@@ -121,17 +123,29 @@ const SubmitArea = styled.div`
   button {
     background-color: #ffb11b;
     border: none;
-    width: 365px;
-    margin-bottom: 10px;
+    max-width: 351px;
+    width: 100%;
+    height: 60px;
     border-radius: 4px;
     p {
-      font-family: Montserrat, sans-serif;
       font-style: normal;
       font-weight: 600;
       font-size: 16px;
       letter-spacing: 0.05em;
     }
   }
+`;
+
+const ForgetPasswordArea = styled.div`
+margin-top: 28px;
+`;
+
+const TxtLink = styled.a`
+font-size: 14px;
+line-height: 17px;
+letter-spacing: 0.05em;
+color: #959595;
+text-decoration: none;
 `;
 
 const Login = () => {
@@ -161,12 +175,12 @@ const Login = () => {
         {value === true && (
           <Form>
             <ButtonsArea>
-              <ButtonRight selected={border.first} onClick={() => selectLogin()}>
+              <ButtonSingInUpTxt selected={border.first} onClick={() => selectLogin()}>
                 <p>Вход</p>
-              </ButtonRight>
-              <ButtonLeft selected={border.second} onClick={() => selectRegistration()}>
+              </ButtonSingInUpTxt>
+              <ButtonSingInUpTxt selected={border.second} onClick={() => selectRegistration()}>
                 <p>Регистрация</p>
-              </ButtonLeft>
+              </ButtonSingInUpTxt>
             </ButtonsArea>
             <InputsArea>
               <SearchInpit placeholder="Введите ваш e-mail" nostyle="false" />
@@ -176,23 +190,22 @@ const Login = () => {
               <button type="button">
                 <p>ВОЙТИ</p>
               </button>
-              <h4>
-                {' '}
-                <a href="/"> Забыли пароль?</a>
-              </h4>
             </SubmitArea>
+            <ForgetPasswordArea>
+              <TxtLink href="/">Забыли пароль?</TxtLink>
+            </ForgetPasswordArea>
           </Form>
         )}
 
         {value === false && (
           <Form>
             <ButtonsArea>
-              <ButtonRight selected={border.first} onClick={() => selectLogin()}>
+              <ButtonSingInUpTxt selected={border.first} onClick={() => selectLogin()}>
                 <p>Вход</p>
-              </ButtonRight>
-              <ButtonLeft selected={border.second} onClick={() => selectRegistration()}>
+              </ButtonSingInUpTxt>
+              <ButtonSingInUpTxt selected={border.second} onClick={() => selectRegistration()}>
                 <p>Регистрация</p>
-              </ButtonLeft>
+              </ButtonSingInUpTxt>
             </ButtonsArea>
             <InputsArea>
               <SearchInpit placeholder="Введите ваше имя" nostyle="false" />

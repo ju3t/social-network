@@ -94,6 +94,7 @@ const SingleFriend = ({
       <FriendInfo>
         <FriendFullName>
           {firstname}
+          {' '}
           {lastname}
         </FriendFullName>
         <FriendProfession>{profesion}</FriendProfession>

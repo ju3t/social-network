@@ -6,6 +6,7 @@ import Author from './message-author';
 import Messages from '../chat/messages';
 import SubmitMessage from '../chat/submit-message';
 import OpenModalSrc from '../../img/icons/modal-message-open.svg';
+import { groupMessagesByUser } from '../chat/helper';
 
 const ModalChatWrapper = styled.div`
   position: relative;
@@ -84,121 +85,8 @@ const ModalChatOpen = styled.button`
 
 const scrollBarStyles = { width: '100%', height: '100%', paddingRight: 35 };
 
-// добавить сообщениям id либо id придёт от сервера
-// отсортировать по дате либо придут отсортированные
-const testData = [
-  {
-    id: uniqueId(),
-    username: 'kirill22',
-    name: 'Кирилл',
-    messages: 'Lorem! Aliquam erat volutpat?',
-    dateSend: '05/06/20',
-    timeSend: '12:55',
-    image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
-  },
-  {
-    id: uniqueId(),
-    username: 'stefan2233',
-    name: 'Стефан',
-    messages: 'Nulla in metus dictum, dapibus justo sit amet, tristique purus',
-    dateSend: '05/06/20',
-    timeSend: '12:56',
-    image: 'https://stuki-druki.com/biofoto2/stepan-pivkin-01.jpg',
-  },
-  {
-    id: uniqueId(),
-    username: 'bogdan13',
-    name: 'Богдан',
-    messages: 'Pellentesque blandit nibh at leo venenatis, in semper ipsum dictum',
-    dateSend: '05/06/20',
-    timeSend: '12:58',
-    image: 'https://www.meme-arsenal.com/memes/b5397c380e660b6e60fd9b86f0a18709.jpg',
-  },
-  {
-    id: uniqueId(),
-    username: 'kirill22',
-    name: 'Кирилл',
-    messages: 'Nulla porttitor ligula quam, quis auctor felis consectetur non',
-    dateSend: '05/06/20',
-    timeSend: '12:59',
-    image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
-  },
-  {
-    id: uniqueId(),
-    username: 'kirill22',
-    name: 'Кирилл',
-    messages: 'Nulla porttitor ligula quam, quis auctor felis consectetur non',
-    dateSend: '05/06/20',
-    timeSend: '12:59',
-    image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
-  },
-  {
-    id: uniqueId(),
-    username: 'bogdan13',
-    name: 'Богдан',
-    messages: 'Pellentesque blandit nibh at leo venenatis, in semper ipsum dictum',
-    dateSend: '05/06/20',
-    timeSend: '12:58',
-    image: 'https://www.meme-arsenal.com/memes/b5397c380e660b6e60fd9b86f0a18709.jpg',
-  },
-  {
-    id: uniqueId(),
-    username: 'kirill22',
-    name: 'Кирилл',
-    messages: 'Nulla porttitor ligula quam, quis auctor felis consectetur non',
-    dateSend: '05/06/20',
-    timeSend: '12:59',
-    image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
-  },
-  {
-    id: uniqueId(),
-    username: 'kirill22',
-    name: 'Кирилл',
-    messages: 'Lorem! Aliquam erat volutpat?',
-    dateSend: '05/06/20',
-    timeSend: '13:40',
-    image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
-  },
-  {
-    id: uniqueId(),
-    username: 'bogdan13',
-    name: 'Богдан',
-    messages: 'Pellentesque blandit nibh at leo venenatis, in semper ipsum dictum',
-    dateSend: '05/06/20',
-    timeSend: '12:58',
-    image: 'https://www.meme-arsenal.com/memes/b5397c380e660b6e60fd9b86f0a18709.jpg',
-  },
-  {
-    id: uniqueId(),
-    username: 'kirill22',
-    name: 'Кирилл',
-    messages: 'Lorem! Aliquam erat volutpat?',
-    dateSend: '05/06/20',
-    timeSend: '13:40',
-    image: 'https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg',
-  },
-];
-
-const groupMessagesByUser = testData.reduce((acc, el) => {
-  const lastAccElement = acc[acc.length - 1];
-  const lastAccIndex = acc.length - 1;
-
-  const initialMessagesArray = { ...el, messages: [{ title: el.messages, id: uniqueId() }] };
-  if (lastAccElement === undefined) return [initialMessagesArray];
-
-  if (lastAccElement.username === el.username) {
-    const newObject = {
-      ...acc[lastAccIndex],
-      messages: [...acc[lastAccIndex].messages, { title: el.messages, id: uniqueId() }],
-    };
-    return [...acc.splice(0, lastAccIndex), newObject];
-  }
-  return [...acc, initialMessagesArray];
-}, []);
-
 const ModalChat = () => {
   const [isOpen, setIsOpen] = useState(true);
-
   const switchModalStatus = () => setIsOpen(!isOpen);
   const renderMessages = () => groupMessagesByUser.map((el) => {
     if (el.username === 'bogdan13') {
