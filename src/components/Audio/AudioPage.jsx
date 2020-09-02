@@ -13,6 +13,8 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import backArrow from '../../common/img/icons/playlistarrowback.svg';
 import nextArrow from '../../common/img/icons/playlistarrownext.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { audiosAction } from '../../redux/actions/actions';
 
 const Main = styled.div`
   //width: 1300px;
@@ -192,6 +194,14 @@ const songsItems = songsArray.map((song) => (
 
 const Audio = () => {
   const arr = [1, 2, 3, 4, 5, 6];
+  const dispatch = useDispatch()
+  const state = useSelector((state) => state)
+  console.log('state AudioPage', state);
+
+  const testOnClick = () => {
+    console.log('test click worked');
+    dispatch(audiosAction())
+  }
 
   return (
     <Main>
@@ -199,8 +209,8 @@ const Audio = () => {
         <Deck />
       </SliderContainer>
       <ButtonsArea>
-        <button type="button">
-          <p>Моя музыка</p>
+        <button type="button" onClick={testOnClick}>
+          Моя музыка!!!
         </button>
         <button type="button">
           <p>Вся музыка</p>
