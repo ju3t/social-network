@@ -18,7 +18,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /*background: #111111;*/
   font-style: normal;
   font-weight: normal;
 }
@@ -30,4 +29,5 @@ code {
 
 input, textarea, select, button {
   font-family: inherit;
+  cursor: pointer;
 }
