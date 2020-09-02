@@ -170,7 +170,7 @@ const Login = () => {
   };
   return (
     <Wrapper>
-      <img src={logo} alt="" />
+      <img src={logo} alt="logo" />
       <Main>
         {value === true && (
           <Form>
