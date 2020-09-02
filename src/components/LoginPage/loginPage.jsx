@@ -5,6 +5,7 @@ import jm from '../../common/JM.svg';
 import sn from '../../common/SN.svg';
 import logo from '../../common/logo.svg';
 
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -64,7 +65,9 @@ const ButtonSingInUpTxt = styled.button`
   background-color: rgba(0, 125, 215, 0);
   padding: 0;
   border: none;
-  border-bottom: ${(props) => (props.selected ? '2px solid #FFB11B' : 'none')};
+  border-bottom: ${(props) => (props.selected
+                               ? '2px solid #FFB11B'
+                               : 'none')};
   box-shadow: none;
   p {
     color: white;
@@ -82,7 +85,9 @@ const ButtonSingInUpTxt = styled.button`
 const ButtonLeft = styled.button`
   background-color: rgba(0, 125, 215, 0);
   border: none;
-  border-bottom: ${(props) => (props.selected ? '2px solid #FFB11B' : 'none')};
+  border-bottom: ${(props) => (props.selected
+                               ? '2px solid #FFB11B'
+                               : 'none')};
   box-shadow: none;
   margin-right: 35px;
   padding-bottom: 2px;
@@ -98,7 +103,6 @@ const ButtonLeft = styled.button`
     cursor: pointer;
   }
 `;
-
 
 const SubmitArea = styled.div`
 margin-top: 66px;
@@ -131,7 +135,7 @@ justify-content: center;
 
 const ForgetPasswordArea = styled.div`
 margin-top: 28px;
-`
+`;
 
 const TxtLink = styled.a`
 font-size: 14px;
@@ -139,33 +143,31 @@ line-height: 17px;
 letter-spacing: 0.05em;
 color: #959595;
 text-decoration: none;
-`
-
-
+`;
 
 const Login = () => {
   const [value, setValue] = useState(true);
   const [border, setBorder] = useState({
     first: true,
-    second: false
+    second: false,
   });
   const selectRegistration = () => {
     setBorder({
       first: false,
-      second: true
+      second: true,
     });
     setValue(false);
   };
   const selectLogin = () => {
     setBorder({
       first: true,
-      second: false
+      second: false,
     });
     setValue(true);
   };
   return (
     <Wrapper>
-      <img src={logo} alt=""/>
+      <img src={logo} alt="" />
       <Main>
         {value === true && (
           <Form>
@@ -178,8 +180,8 @@ const Login = () => {
               </ButtonSingInUpTxt>
             </ButtonsArea>
             <InputsArea>
-              <SearchInpit placeholder="Введите ваш e-mail" nostyle="false"/>
-              <SearchInpit placeholder="Введите ваш пароль" nostyle="true"/>
+              <SearchInpit placeholder="Введите ваш e-mail" nostyle="false" />
+              <SearchInpit placeholder="Введите ваш пароль" nostyle="true" />
             </InputsArea>
             <SubmitArea>
               <button type="button">
@@ -204,10 +206,10 @@ const Login = () => {
             </ButtonsArea>
             {' '}
             <InputsArea>
-              <SearchInpit placeholder="Введите ваше имя" nostyle="false"/>
-              <SearchInpit placeholder="Введите ваш e-mail" nostyle="true"/>
-              <SearchInpit placeholder="Придумайте ваш пароль" nostyle="false"/>
-              <SearchInpit placeholder="Повторите ваш пароль" nostyle="true"/>
+              <SearchInpit placeholder="Введите ваше имя" nostyle="false" />
+              <SearchInpit placeholder="Введите ваш e-mail" nostyle="true" />
+              <SearchInpit placeholder="Придумайте ваш пароль" nostyle="false" />
+              <SearchInpit placeholder="Повторите ваш пароль" nostyle="true" />
             </InputsArea>
             <SubmitArea>
               <button type="button">
