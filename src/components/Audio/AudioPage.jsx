@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Slider from 'react-slick';
 import __ from 'lodash';
-// import Slider from '../../common/slider';
-
 import album from '../../common/img/png/album5.png';
 import pic from '../../common/img/png/pic.png';
 import Deck from './AudioSlider/Deck';
@@ -14,7 +12,8 @@ import 'slick-carousel/slick/slick-theme.css';
 import backArrow from '../../common/img/icons/playlistarrowback.svg';
 import nextArrow from '../../common/img/icons/playlistarrownext.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { audiosAction } from '../../redux/actions/actions';
+import { allAudiosAction, audiosAction } from '../../redux/actions/actions';
+// import Slider from '../../common/slider';
 
 const Main = styled.div`
   //width: 1300px;
@@ -174,34 +173,45 @@ const settings = {
 };
 
 // end
-const songsArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const songsItems = songsArray.map((song) => (
-  <li key={__.uniqueId()}>
-    <RightSide>
-      <div>
-        <img src={pic} alt="" />
-      </div>
-      <div>
-        <h3>Исполнитель</h3>
-        <p>{`название трека - ${song}`}</p>
-      </div>
-    </RightSide>
-    <LeftSide>
-      <h4>3:58</h4>
-    </LeftSide>
-  </li>
-));
+
 
 const Audio = () => {
   const arr = [1, 2, 3, 4, 5, 6];
-  const dispatch = useDispatch()
-  const state = useSelector((state) => state)
-  console.log('state AudioPage', state);
+  const dispatch = useDispatch();
+  const arrAllAudios = useSelector(({ allAudiosReducer }) => allAudiosReducer);
+  console.log('arrAllAudios', arrAllAudios);
+  const test = arrAllAudios.length > 0 && arrAllAudios[0].persistDateTime
+  console.log('test', test);
+
+  const songsArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const songsItems = arrAllAudios.length > 0 && arrAllAudios.map(({ id, icon, author, name }) => (
+
+    <li key={id}>
+      <RightSide>
+        <div>
+          <img src={pic || icon} alt={icon} title={icon} />
+        </div>
+        <div>
+          <h3>{author}</h3>
+          <p>{name}</p>
+        </div>
+      </RightSide>
+      <LeftSide>
+        <h4>3:58</h4>
+      </LeftSide>
+    </li>
+  ));
+
 
   const testOnClick = () => {
     console.log('test click worked');
-    dispatch(audiosAction())
-  }
+    // dispatch(audiosAction());
+  };
+
+  const allAudiosOnClick = () => {
+    console.log('allAudiosOnClick worked');
+    dispatch(allAudiosAction())
+  };
 
   return (
     <Main>
@@ -210,9 +220,9 @@ const Audio = () => {
       </SliderContainer>
       <ButtonsArea>
         <button type="button" onClick={testOnClick}>
-          Моя музыка!!!
+          <p>Моя музыка!!!</p>
         </button>
-        <button type="button">
+        <button type="button" onClick={allAudiosOnClick}>
           <p>Вся музыка</p>
         </button>
         <button type="button">

@@ -17,6 +17,7 @@ const Wrapper = styled.div`
   min-height: 79vh;
   margin-top: 10px;
   margin-bottom: 10px;
+  background: #fff;
 `;
 
 const Main = styled.div`
@@ -25,7 +26,7 @@ const Main = styled.div`
   background-position: top, bottom;
   min-height: 79vh;
   min-width: 500px;
-  margin: 30px auto 0;
+  margin: 30px auto 0;  
 `;
 
 const Form = styled.form`

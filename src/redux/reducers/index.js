@@ -5,13 +5,13 @@ import * as actions from '../actions/actions'
 const reducer1 = () => 1;
 const reducer2 = () => 2;
 
-const audiosReducer = handleActions({
+const allAudiosReducer = handleActions({
   [actions.fetchGetAllAudiosSuccess](state, { payload }) {
     console.log('state audiosReducer', state);
     console.log('payload audiosReducer', payload);
     return payload
   }
-}, {})
+}, [])
 
 
-export default combineReducers({ reducer1, reducer2, audiosReducer });
+export default combineReducers({ reducer1, reducer2, allAudiosReducer });

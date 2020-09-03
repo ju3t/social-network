@@ -110,6 +110,7 @@ const Main = styled.div`
   position: absolute;
   width: 980px;
   top: -150px;
+  border: 10px solid gold;
 `;
 
 const ButtonsArea = styled.div`
@@ -161,14 +162,11 @@ const Next = styled.button`
 `;
 
 const Player = styled(ReactPlayer)`
-  display: block;
+  display: none; // скрыт блок проигрывателя
   margin: 0 auto;
   border-radius: 10px;
   border: 1px solid #000000;
-  width: 800px;
-  height: 400px;
   background-color: #808080;
-  visibility: hidden;
 `;
 
 const TrackInfoArea = styled.div`
