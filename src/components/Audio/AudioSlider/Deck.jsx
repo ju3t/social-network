@@ -22,12 +22,12 @@ const Deck = () => {
   const [timePlayed, setTimePlayed] = useState(0);
 
   const handleNext = () => {
-    mySwiper.slideNext();
+    mySwiper.slidePrev();
     setCurrentTrackId(tracks[mySwiper.realIndex].id);
   };
 
   const handlePrev = () => {
-    mySwiper.slidePrev();
+    mySwiper.slideNext();
     setCurrentTrackId(tracks[mySwiper.realIndex].id);
   };
 

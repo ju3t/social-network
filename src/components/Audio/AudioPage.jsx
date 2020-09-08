@@ -12,7 +12,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import backArrow from '../../common/img/icons/playlistarrowback.svg';
 import nextArrow from '../../common/img/icons/playlistarrownext.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { allAudiosAction, audiosAction } from '../../redux/actions/actions';
+import { allAudiosAction, audiosAction, myAudiosAction } from '../../redux/actions/actions';
 // import Slider from '../../common/slider';
 
 const Main = styled.div`
@@ -203,9 +203,9 @@ const Audio = () => {
   ));
 
 
-  const testOnClick = () => {
-    console.log('test click worked');
-    // dispatch(audiosAction());
+  const myAudiosOnClick = () => {
+    console.log('myAudiosOnClick click worked');
+    dispatch(myAudiosAction());
   };
 
   const allAudiosOnClick = () => {
@@ -219,7 +219,7 @@ const Audio = () => {
         <Deck />
       </SliderContainer>
       <ButtonsArea>
-        <button type="button" onClick={testOnClick}>
+        <button type="button" onClick={myAudiosOnClick}>
           <p>Моя музыка!!!</p>
         </button>
         <button type="button" onClick={allAudiosOnClick}>
