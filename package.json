@@ -5,11 +5,17 @@
   "homepage": "https://feniks916.github.io/social-network",
   "dependencies": {
     "@csstools/normalize.css": "^11.0.1",
+    "@reduxjs/toolkit": "^1.4.0",
     "@storybook/react": "^5.3.19",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "@types/jest": "^26.0.13",
+    "@types/node": "^14.10.1",
+    "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8",
     "antd": "^4.4.3",
+    "axios": "^0.20.0",
     "formik": "^2.1.5",
     "gh-pages": "^3.1.0",
     "lodash": "^4.17.19",
@@ -44,8 +50,8 @@
     "eslint:fix:layout": "eslint  src/**/*.{js,jsx} --fix --fix-type layout",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "lint": "eslint src/**/*.{js,jsx}",
-    "lint:fix": "eslint src/**/*.{js,jsx} --fix",
+    "lint": "eslint src/**/*.{js,jsx,ts,tsx}",
+    "lint:fix": "eslint src/**/*.{js,jsx,ts,tsx} --fix",
     "storybook": "start-storybook"
   },
   "eslintConfig": {
@@ -69,6 +75,8 @@
     "@storybook/addon-knobs": "^5.3.19",
     "@storybook/addon-links": "^5.3.19",
     "@storybook/preset-create-react-app": "^3.1.4",
+    "@typescript-eslint/eslint-plugin": "^4.1.0",
+    "@typescript-eslint/parser": "^4.1.0",
     "babel-loader": "^8.1.0",
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.2.0",
@@ -78,8 +86,9 @@
     "eslint-plugin-react-hooks": "^4.0.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
+    "node-sass": "^4.14.1",
     "prettier": "2.0.5",
-    "node-sass": "^4.14.1"
+    "typescript": "^4.0.2"
   },
   "husky": {
     "hooks": {
