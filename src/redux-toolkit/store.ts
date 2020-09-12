@@ -1,5 +1,6 @@
-import { configureStore } from '@reduxjs/toolkit';
-import rootReducer from './rootReducer';
+import { Action, configureStore } from '@reduxjs/toolkit';
+import { ThunkAction } from 'redux-thunk';
+import rootReducer, { TypeRootReducer } from './rootReducer';
 
 const store = configureStore({
   reducer: rootReducer,
@@ -13,6 +14,7 @@ if (process.env.NODE_ENV === 'development' && module.hot) {
   });
 }
 
-export type AppDispatch = typeof store.dispatch;
+export type TypeDispatch = typeof store.dispatch;
+export type TypeThunkAction = ThunkAction<void, TypeRootReducer, null, Action<string>>;
 
 export default store;
