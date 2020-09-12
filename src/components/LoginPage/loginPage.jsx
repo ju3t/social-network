@@ -5,7 +5,6 @@ import jm from '../../common/JM.svg';
 import sn from '../../common/SN.svg';
 import logo from '../../common/logo.svg';
 
-
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
