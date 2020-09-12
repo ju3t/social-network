@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Slider from 'react-slick';
 import __ from 'lodash';
+import { useDispatch, useSelector } from 'react-redux';
 import album from '../../common/img/png/album5.png';
 import pic from '../../common/img/png/pic.png';
 import Deck from './AudioSlider/Deck';
@@ -11,7 +12,6 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import backArrow from '../../common/img/icons/playlistarrowback.svg';
 import nextArrow from '../../common/img/icons/playlistarrownext.svg';
-import { useDispatch, useSelector } from 'react-redux';
 import { allAudiosAction, audiosAction, myAudiosAction } from '../../redux/actions/actions';
 // import Slider from '../../common/slider';
 
@@ -205,12 +205,12 @@ const Audio = () => {
 
   const myAudiosOnClick = () => {
     console.log('myAudiosOnClick click worked');
-    dispatch(myAudiosAction());
+    // dispatch(myAudiosAction());
   };
 
   const allAudiosOnClick = () => {
     console.log('allAudiosOnClick worked');
-    dispatch(allAudiosAction())
+    // dispatch(allAudiosAction())
   };
 
   return (

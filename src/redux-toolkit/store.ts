@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, ThunkAction } from '@reduxjs/toolkit';
 import rootReducer from './rootReducer';
 
 const store = configureStore({
@@ -14,5 +14,6 @@ if (process.env.NODE_ENV === 'development' && module.hot) {
 }
 
 export type AppDispatch = typeof store.dispatch;
+export type Th
 
 export default store;

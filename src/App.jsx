@@ -13,6 +13,9 @@ import Bookmarks from './components/Bookmarks';
 import Photo from './components/Photo/Photo';
 import Group from './components/Group';
 
+
+
+
 const App = () => (
   <Switch>
     <Route path={routes.main} component={Main} exact />
