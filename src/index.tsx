@@ -9,8 +9,12 @@ import { BrowserRouter } from 'react-router-dom';
 import reducers from './redux/reducers';
 import * as serviceWorker from './serviceWorker';
 import App from './App.jsx';
+import store from './redux-toolkit/store';
 
-const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
+// const store = createStore(reducers, composeWithDevTools(applyMiddleware(thunk)));
+
+const render = () => {
+  const App = require('./app/App').default
 
 ReactDOM.render(
   <BrowserRouter>
@@ -22,6 +26,12 @@ ReactDOM.render(
   </BrowserRouter>,
   document.getElementById('root'),
 );
+
+render()
+
+if (process.env.NODE_ENV === 'development' && module.hot) {
+  module.hot.accept('./app/App', render)
+}
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
