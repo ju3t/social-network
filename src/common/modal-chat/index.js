@@ -15,6 +15,7 @@ const ModalChatWrapper = styled.div`
   padding-bottom: 40px;
   overflow: hidden;
   margin: 0px auto;
+  border-radius: 15px;
 `;
 
 const ContentWrapper = styled.div`
@@ -22,9 +23,10 @@ const ContentWrapper = styled.div`
   width: 100%;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   background-color: white;
-  transform: ${({ isOpen }) => (isOpen ? 'translateY(0)' : 'translateY(870px)')};
+  transform: ${({ isOpen }) => (isOpen ? 'translateY(0)' : 'translateY(-870px)')};
   opacity: ${({ isOpen }) => (isOpen ? '1' : '0')};
   transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+  border-radius: 15px;
 `;
 
 const Header = styled.div`
@@ -49,7 +51,6 @@ const Content = styled.div`
   flex-direction: column;
   flex-grow: 1;
   width: 100%;
-  max-width: 406px;
   padding: 35px 35px 0 35px;
   background-color: #ffffff;
   height: 560px;
@@ -80,7 +81,7 @@ const ModalChatOpen = styled(Button)`
   bottom: 10px;
   border: none;
   outline: none;
-  transform: rotate(${({ isOpen }) => (isOpen ? '-180deg' : '0deg')});
+  transform: ${({ isOpen }) => (isOpen ? 'translateY(0) rotate(0)' : 'translateY(-750px) rotate(-180deg)')};
   transition: transform 1s ease-in-out;
 `;
 
@@ -111,7 +112,7 @@ const ModalChat = () => {
   });
 
   return (
-    <ModalChatWrapper>
+    <ModalChatWrapper isOpen={isOpen}>
       <ContentWrapper isOpen={isOpen}>
         <Header>Чат JMSN</Header>
         <Content>
@@ -121,7 +122,7 @@ const ModalChat = () => {
           <SubmitMessage />
         </SubmitMessageWrap>
       </ContentWrapper>
-      <ModalChatOpen onClick={switchModalStatus} />
+      <ModalChatOpen onClick={switchModalStatus} isOpen={isOpen} />
     </ModalChatWrapper>
   );
 };

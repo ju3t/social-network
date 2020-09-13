@@ -28,7 +28,6 @@ const WallCreateArticle = () => {
   const [isOpen, setOpen] = useState(false);
 
   const changeOpen = () => setOpen(false);
-  const renderArticleForm = () => <ArticleForm changeOpen={changeOpen} />;
   const renderPlus = () => <IconArticle img={add} onClick={() => setOpen(true)} />;
 
   return (
@@ -44,7 +43,7 @@ const WallCreateArticle = () => {
           {isOpen ? renderIcons() : renderPlus()}
         </WallCreateArticleHeaderBlockRight>
       </WallCreateArticleHeaderBlock>
-      {isOpen ? renderArticleForm() : null}
+      <ArticleForm isOpen={isOpen} changeOpen={changeOpen} />
     </WallCreateArticleContainer>
   );
 };
