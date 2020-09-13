@@ -28,7 +28,7 @@
     "semi": "off",
     "@typescript-eslint/semi": "error",
     "no-use-before-define": 0,
-    "@typescript-eslint/no-use-before-define": "off"
+    "@typescript-eslint/no-use-before-define": 0
   },
   "settings": {
     "react": {
