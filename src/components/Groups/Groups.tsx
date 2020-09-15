@@ -4,7 +4,6 @@ import SingleGroup from './SingleGroup';
 
 import testAvatarka from '../../img/test-group-avatar.svg';
 import PageSearchInput from '../../common/Inputs/PageSearch';
-import { number } from 'prop-types';
 
 interface GroupData {
   avatarka: string;
