@@ -7,7 +7,7 @@ import InputComment from './InputComment';
 import { mockData } from './mockData';
 import photogroup from '../../img/icons/photogroup.svg';
 
-export default function News() {
+export default function Group() {
   const { data, comments } = mockData;
   return (
     <Wrapper>
@@ -32,13 +32,20 @@ export default function News() {
 
 const Wrapper = styled.div`
   font-family: Montserrat;
+  background: #111222;
+  padding: 100px 0;
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+  font-family: 'Montserrat', sans-serif;
   background: #111111;
-  padding: 100px;
+  border-radius: 15px;
+  padding: 114px 0 114px 0;
+  margin-top: 30px;
+  position: relative;
+  min-height: 1200px;
 `;
 
 const Container = styled.div`
   position: relative;
-  max-width: 875px;
   display: flex;
   flex-direction: column;
   padding-left: 95px;
@@ -46,8 +53,7 @@ const Container = styled.div`
   padding-top: 80px;
   background: #ffffff;
   text-align: center;
-  margin-right: auto;
-  margin-left: auto;
+
   margin-top: 50px;
   border-radius: 15px 15px 15px 15px;
 `;

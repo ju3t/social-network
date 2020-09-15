@@ -1,11 +1,11 @@
 import React from 'react';
-import Group from './Group';
+import Groups from './Groups.tsx';
 import PageWrapper from '../../common/pageWrapper';
 
-const WrappedGroup = () => (
+const WrappedGroups = () => (
   <PageWrapper>
-    <Group />
+    <Groups />
   </PageWrapper>
 );
 
-export default WrappedGroup;
+export default WrappedGroups;
