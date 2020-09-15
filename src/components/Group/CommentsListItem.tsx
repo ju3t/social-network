@@ -3,11 +3,22 @@ import React from 'react';
 import styled from 'styled-components';
 import avatar from '../../img/icons/mock-avatar.svg';
 
-export default function CommentsList(props) {
-  const {
-    data: { author, date, text },
-  } = props;
+interface Icomment {
+  avatar: string;
+  author: string;
+  date: Date;
+  text: string;
+}
 
+interface Idata {
+  data: {
+    author: string;
+    date: Date;
+    text: string;
+  };
+}
+
+const CommentsList = ({ data: { author, date, text } }: Idata) => {
   return (
     <Container>
       <AvatarContainer>
@@ -20,7 +31,7 @@ export default function CommentsList(props) {
       </Content>
     </Container>
   );
-}
+};
 
 const Container = styled.div`
   display: flex;
@@ -80,3 +91,5 @@ const Text = styled.div`
   line-height: 165%;
   color: #000000;
 `;
+
+export default CommentsList;

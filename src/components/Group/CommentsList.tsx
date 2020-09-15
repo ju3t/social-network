@@ -3,8 +3,18 @@ import React from 'react';
 import styled from 'styled-components';
 import CommentsListItem from './CommentsListItem';
 
-export default function CommentsList(props) {
-  const { data } = props;
+interface Icomment {
+  avatar: string;
+  author: string;
+  date: Date;
+  text: string;
+}
+
+interface Idata {
+  data: Icomment[];
+}
+
+const CommentsList = ({ data }: Idata) => {
   return (
     <Container>
       {data.map((item) => (
@@ -17,8 +27,9 @@ export default function CommentsList(props) {
       ))}
     </Container>
   );
-}
+};
 
 const Container = styled.div`
   height: 210px;
 `;
+export default CommentsList;

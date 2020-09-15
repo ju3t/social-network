@@ -2,9 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import routes from '../../routes';
-import PropTypes from 'prop-types';
 
-const SingleGroup = ({ avatar, name, category, followers }) => (
+type GroupProps = {
+  avatar: string;
+  name: string;
+  category: string;
+  followers: number;
+};
+
+const SingleGroup = ({ avatar, name, category, followers }: GroupProps) => (
   <SingleGroupContainer>
     <LeftWrapper>
       <GroupAvatar src={avatar} alt="avatar" />
@@ -20,12 +26,6 @@ const SingleGroup = ({ avatar, name, category, followers }) => (
   </SingleGroupContainer>
 );
 
-// SingleGroup.propTypes = {
-//   avatar: PropTypes.string.isRequired,
-//   name: PropTypes.string.isRequired,
-//   category: PropTypes.string.isRequired,
-//   followers: PropTypes.string.isRequired,
-// };
 const SingleGroupContainer = styled.div`
 display:flex;
 flex-direction: row;

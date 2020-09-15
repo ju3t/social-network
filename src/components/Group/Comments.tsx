@@ -1,18 +1,26 @@
-/* eslint-disable react/prop-types */
-
 import React from 'react';
 import styled from 'styled-components';
 import CommentsList from './CommentsList';
 
-export default function Comments(props) {
-  const { data } = props;
+interface Icomment {
+  avatar: string;
+  author: string;
+  date: Date;
+  text: string;
+}
+
+interface Idata {
+  data: Icomment[];
+}
+
+const Comments = ({ data }: Idata) => {
   return (
     <Container>
       <Heading>Комментарии</Heading>
       <CommentsList data={data} />
     </Container>
   );
-}
+};
 
 const Container = styled.div`
   max-height: 400px;
@@ -31,3 +39,4 @@ const Heading = styled.div`
   line-height: 125px;
   text-align: left;
 `;
+export default Comments;

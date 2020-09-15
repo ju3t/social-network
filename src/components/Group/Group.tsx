@@ -7,8 +7,37 @@ import InputComment from './InputComment';
 import { mockData } from './mockData';
 import photogroup from '../../img/icons/photogroup.svg';
 
-export default function Group() {
-  const { data, comments } = mockData;
+interface Idata {
+  data: {
+    date: Date;
+    description: string;
+    link: string;
+    owner: string;
+    news: Inews[];
+  };
+  comments: Icomment[];
+}
+interface Inews {
+  id: number;
+  title: string;
+  img: string;
+  text: string;
+  tags: string[];
+  author: string;
+  time: string;
+  favoritesCount: number;
+  likesCount: number;
+  commentsCount: number;
+  repostsCount: number;
+}
+interface Icomment {
+  avatar: string;
+  author: string;
+  date: Date;
+  text: string;
+}
+const Group: React.FC = () => {
+  const { data, comments }: Idata = mockData;
   return (
     <Wrapper>
       <Container>
@@ -28,7 +57,7 @@ export default function Group() {
       </Container>
     </Wrapper>
   );
-}
+};
 
 const Wrapper = styled.div`
   font-family: Montserrat;
@@ -109,3 +138,4 @@ const Category = styled.div`
   color: #b2b2b2;
   text-align: left;
 `;
+export default Group;
