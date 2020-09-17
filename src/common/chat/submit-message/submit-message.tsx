@@ -24,7 +24,7 @@ export default (): React.FunctionComponentElement<unknown> => {
         <Text
           placeholder="Напишите что-нибудь..."
           id="message"
-          rows="2"
+          rows={2}
           value={formik.values.message}
           onChange={formik.handleChange}
         />
