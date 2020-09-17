@@ -2,7 +2,7 @@
   "name": "social-network",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://feniks916.github.io/social-network",
+  "homepage": "https://Ruslan-I7.github.io/social-network",
   "dependencies": {
     "@csstools/normalize.css": "^11.0.1",
     "@reduxjs/toolkit": "^1.4.0",
