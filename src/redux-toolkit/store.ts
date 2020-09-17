@@ -6,6 +6,8 @@ const store = configureStore({
   reducer: rootReducer,
 });
 
+console.log('store', store);
+
 const newRootReducer = require('./rootReducer').default;
 
 if (process.env.NODE_ENV === 'development' && module.hot) {

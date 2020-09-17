@@ -388,7 +388,7 @@ export const Box = styled.div`
   box-sizing: border-box;
   position: relative;
   background-color: #ffffff;
-  border-radius: 15px;
+  border-radius: 15px 15px 0 0;
   margin-top: 150px;
   color: #000000;
   width: 1291px;

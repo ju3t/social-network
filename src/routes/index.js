@@ -12,4 +12,4 @@ const routes = {
   audio: '/audio',
 };
 
-export default routes
+export default routes;

@@ -5,6 +5,7 @@ import jm from '../../common/JM.svg';
 import sn from '../../common/SN.svg';
 import logo from '../../common/logo.svg';
 
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -43,7 +44,6 @@ const InputsArea = styled.div`
 
 const SearchInpit = styled(Input)`
   background-color: rgba(0, 125, 215, 0);
-  color: #959595;
   width: 360px;
   margin: 15px 20px;
   padding-bottom: 5px;

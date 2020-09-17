@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Slider from 'react-slick';
 import __ from 'lodash';
@@ -12,7 +11,9 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import backArrow from '../../common/img/icons/playlistarrowback.svg';
 import nextArrow from '../../common/img/icons/playlistarrownext.svg';
-import { allAudiosAction, audiosAction, myAudiosAction } from '../../redux/actions/actions';
+import { TypeDispatch } from '../../redux-toolkit/store';
+import { TypeRootReducer } from '../../redux-toolkit/rootReducer';
+import { allAudiosAction } from '../../redux-toolkit/allAudiosSlice';
 // import Slider from '../../common/slider';
 
 const Main = styled.div`
@@ -25,23 +26,20 @@ const SliderContainer = styled.div`
   justify-content: center;
   margin-bottom: 300px;
   z-index: 2;
+  border: 3px solid goldenrod;
 `;
 
 const ButtonsArea = styled.div`
   display: flex;
-  justify-content: flex-start;
   margin-bottom: 100px;
-  margin-top: 100px;
+  //margin-top: 250px;
   margin-left: 130px;
-  button {
-    margin-right: 50px;
-    outline: none;
-    background: none;
-    border: none;
-    box-shadow: none;
-    cursor: pointer;
-  }
+  border: 3px solid gold;
 `;
+
+// Для кнопок Моя музыка и т.д.
+
+
 const SearchArea = styled.div`
   display: flex;
   justify-content: space-between;
@@ -161,9 +159,12 @@ const LeftSide = styled.div`
 `;
 
 // slick arrows and settings area
+interface ISlickOnClick {
+  onClick: any
+}
 
-const SampleNextArrow = ({ onClick }) => <Next onClick={onClick} />;
-const SamplePrevArrow = ({ onClick }) => <Prev onClick={onClick} />;
+const SampleNextArrow = ({ onClick }: ISlickOnClick) => <Next onClick={onClick} />;
+const SamplePrevArrow = ({ onClick }: ISlickOnClick) => <Prev onClick={onClick} />;
 const settings = {
   loop: true,
   slidesToShow: 5,
@@ -174,22 +175,53 @@ const settings = {
 
 // end
 
-
 const Audio = () => {
   const arr = [1, 2, 3, 4, 5, 6];
-  const dispatch = useDispatch();
-  const arrAllAudios = useSelector(({ allAudiosReducer }) => allAudiosReducer);
-  console.log('arrAllAudios', arrAllAudios);
-  const test = arrAllAudios.length > 0 && arrAllAudios[0].persistDateTime
-  console.log('test', test);
+  const dispatch: TypeDispatch = useDispatch();
+  const arrAllAudiosState = useSelector(({ allAudiosSlice }: TypeRootReducer) => {
+    console.log('allAudiosSlice selector', allAudiosSlice);
+    return allAudiosSlice.allAudios;
+  });
+  console.log('arrAllAudiosState', arrAllAudiosState);
+
+  type TypeInitialStateActiveBtn<T extends string> = { [key in T]: boolean };
+
+  interface IinitialStateActiveBtn {
+    myAudios: boolean;
+    allAudios: boolean;
+    friendsAudios: boolean;
+  }
+
+  const initialStateActiveBtn: { [key: string]: boolean } = {
+    myAudios: true,
+    allAudios: false,
+    friendsAudios: false,
+    argCategoryAudio: false,
+  };
+
+  const [objCategoryAudios, setChosenCategoryAudios] = useState(initialStateActiveBtn);
+
+  interface IAllAudios {
+    album: string
+    author: string
+    icon: string
+    id: number
+    name: string
+    persistDateTime: string
+    url: string
+  }
+
+  // useEffect(() => {
+  //   dispatch(allAudiosAction());
+  // }, [dispatch]);
 
   const songsArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const songsItems = arrAllAudios.length > 0 && arrAllAudios.map(({ id, icon, author, name }) => (
-
+  // const songsItems = arrAllAudiosState.length > 0 && arrAllAudiosState.map(({ id, icon, author, name }) => (
+  const songsItems = arrAllAudiosState.length > 0 && arrAllAudiosState.map(({ icon, author, name, id, persistDateTime }: IAllAudios) => (
     <li key={id}>
       <RightSide>
         <div>
-          <img src={pic || icon} alt={icon} title={icon} />
+          <img src={pic || icon} alt="icon" title="icon" />
         </div>
         <div>
           <h3>{author}</h3>
@@ -197,21 +229,62 @@ const Audio = () => {
         </div>
       </RightSide>
       <LeftSide>
-        <h4>3:58</h4>
+        <h4>{persistDateTime}</h4>
       </LeftSide>
     </li>
   ));
 
-
-  const myAudiosOnClick = () => {
-    console.log('myAudiosOnClick click worked');
+  const myAudiosOnClick = (argActiveBtn: string) => async (evt: any) => {
+    console.log('evt.target', evt.target);
+    console.log('myAudiosOnClick');
     // dispatch(myAudiosAction());
+    // setChosenCategoryAudios({
+    //   myAudios: 'activeBtn--underline',
+    //   allAudios: '',
+    //   friendsAudios: '',
+    // });
   };
 
-  const allAudiosOnClick = () => {
+  const allAudiosOnClick = (argActiveBtn: string) => (evt: any) => {
     console.log('allAudiosOnClick worked');
-    // dispatch(allAudiosAction())
+    console.log('argActiveBtn', argActiveBtn);
+    if (argActiveBtn === 'allAudios') {
+      setChosenCategoryAudios({
+        myAudios: false,
+        allAudios: true,
+        friendsAudios: false,
+      });
+    }
+    dispatch(allAudiosAction());
   };
+
+  const chooseCategoryAudiosOnClick = (argCategoryAudio: string) => (): void => {
+    console.log('argCategoryAudio', argCategoryAudio);
+    // this.setState((prev: any): any => ({ [argCategoryAudio]: !prev[argCategoryAudio] }));
+    setChosenCategoryAudios({
+      [argCategoryAudio]: true,
+    });
+    if ('allAudios' in objCategoryAudios) {
+      dispatch(allAudiosAction());
+    }
+  };
+
+  interface IBtnCategAudio {
+    type?: string;
+    onClick?: (arg?: string) => void;
+    selected?: boolean;
+  }
+
+  const BtnCategAudio = styled.button<IBtnCategAudio>`
+border: none;
+background: none;
+padding: 0;
+line-height: 30px;
+border-bottom: ${(props: any): any => props.selected && '3px solid red'};
+&:not(:last-child) {
+margin-right: 51px;
+}
+`;
 
   return (
     <Main>
@@ -219,15 +292,27 @@ const Audio = () => {
         <Deck />
       </SliderContainer>
       <ButtonsArea>
-        <button type="button" onClick={myAudiosOnClick}>
-          <p>Моя музыка!!!</p>
-        </button>
-        <button type="button" onClick={allAudiosOnClick}>
-          <p>Вся музыка</p>
-        </button>
-        <button type="button">
-          <p>Музыка друзей</p>
-        </button>
+        <BtnCategAudio
+          type="button"
+          onClick={chooseCategoryAudiosOnClick('myAudios')}
+          selected={objCategoryAudios.myAudios}
+        >
+          Моя музыка!!!
+        </BtnCategAudio>
+        <BtnCategAudio
+          type="button"
+          onClick={chooseCategoryAudiosOnClick('allAudios')}
+          selected={objCategoryAudios.allAudios}
+        >
+          Вся музыка
+        </BtnCategAudio>
+        <BtnCategAudio
+          type="button"
+          onClick={chooseCategoryAudiosOnClick('friendsAudios')}
+          selected={objCategoryAudios.friendsAudios}
+        >
+          Музыка друзей
+        </BtnCategAudio>
       </ButtonsArea>
       <SearchArea>
         <input type="text" placeholder="Начните поиск музыки..." />
@@ -253,10 +338,11 @@ const Audio = () => {
 
 export default Audio;
 
-SampleNextArrow.propTypes = {
-  onClick: PropTypes.func.isRequired,
-};
+// SampleNextArrow.propTypes = {
+//   onClick: PropTypes.func.isRequired,
+// };
+//
+// SamplePrevArrow.propTypes = {
+//   onClick: PropTypes.func.isRequired,
+// };
 
-SamplePrevArrow.propTypes = {
-  onClick: PropTypes.func.isRequired,
-};
