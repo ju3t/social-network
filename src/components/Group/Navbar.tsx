@@ -1,14 +1,16 @@
-/* eslint-disable react/prop-types */
-
 import React from 'react';
 import styled from 'styled-components';
 
-const Navbar = (props) => {
-  const {
-    data: {
-      date, description, link, owner,
-    },
-  } = props;
+interface Idata {
+  data: {
+    date: Date;
+    description: string;
+    link: string;
+    owner: string;
+  };
+}
+
+const Navbar = ({ data: { date, description, link, owner } }: Idata) => {
   return (
     <NavbarWrapper>
       <Date>{date.toLocaleString()}</Date>

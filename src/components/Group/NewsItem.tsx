@@ -9,9 +9,23 @@ import repost from '../../img/icons/repost.svg';
 import more from '../../img/icons/more.svg';
 import moreUp from '../../img/icons/moreUp.svg';
 
-export default function NewsItem(props) {
-  const { item } = props;
-  const {
+interface Idata {
+  item: {
+    title: string;
+    img: string;
+    text: string;
+    tags: string[];
+    author: string;
+    time: string;
+    favoritesCount: number;
+    likesCount: number;
+    commentsCount: number;
+    repostsCount: number;
+  };
+}
+
+const NewsItem = ({
+  item: {
     title,
     img,
     text,
@@ -22,17 +36,14 @@ export default function NewsItem(props) {
     likesCount,
     commentsCount,
     repostsCount,
-  } = item;
-
+  },
+}: Idata) => {
   const [isFullContent, setFullContent] = useState(false);
   const height = isFullContent ? '' : '100px';
 
   const listTags = tags.map((tag) => (
     <LiItem key={tag}>
-      <TagLink href="http://localhost:3000/social-network">
-        #
-        {tag}
-      </TagLink>
+      <TagLink href="http://localhost:3000/social-network">#{tag}</TagLink>
     </LiItem>
   ));
   return (
@@ -81,7 +92,7 @@ export default function NewsItem(props) {
       <NewsTags>{listTags}</NewsTags>
     </Container>
   );
-}
+};
 
 const Container = styled.div`
   padding-top: 50px;
@@ -250,3 +261,5 @@ const LiItem = styled.li`
   list-style-type: none;
   margin-left: 5px;
 `;
+
+export default NewsItem;

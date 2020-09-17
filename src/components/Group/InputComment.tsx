@@ -5,7 +5,7 @@ import submit from '../../img/icons/submit.svg';
 import more from '../../img/icons/more.svg';
 // import moreUp from './moreUp.svg';
 
-export default function InputComment() {
+const InputComment: React.FC = () => {
   return (
     <Container>
       <AvatarContainer>
@@ -21,7 +21,7 @@ export default function InputComment() {
       </ButtonMore>
     </Container>
   );
-}
+};
 
 const Container = styled.div`
   display: flex;
@@ -102,3 +102,5 @@ const MoreIcon = styled.img`
     transform: scale(1.05);
   }
 `;
+
+export default InputComment;

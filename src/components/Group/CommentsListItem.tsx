@@ -3,13 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 import avatar from '../../img/icons/mock-avatar.svg';
 
-interface Icomment {
-  avatar: string;
-  author: string;
-  date: Date;
-  text: string;
-}
-
 interface Idata {
   data: {
     author: string;
