@@ -1,9 +1,9 @@
 /* eslint-disable import/prefer-default-export */
-
+import { uniqueId } from 'lodash';
 // добавить сообщениям id либо id придёт от сервера
 // заменить dateSend и timeSend на Date() и отредачить по date-fns
 // отсортировать по дате либо придут отсортированные
-import { uniqueId } from 'lodash';
+
 
 const testData = [
   {
@@ -251,9 +251,22 @@ const testData = [
   },
 ];
 
-export const groupMessagesByUser = testData.reduce((acc, el) => {
-  const lastAccElement = acc[acc.length - 1];
-  const lastAccIndex = acc.length - 1;
+export type IgroupMessageByUser = {
+  id: string;
+  username: string;
+  name: string; 
+  messages: {
+    title: string;
+    id: string;
+  }[];
+  dateSend: string;
+  timeSend: string;
+  image: string;
+}
+
+export const groupMessagesByUser:IgroupMessageByUser[] = testData.reduce((acc:Array<IgroupMessageByUser>, el) => {
+  const lastAccElement:IgroupMessageByUser = acc[acc.length - 1];
+  const lastAccIndex:number = acc.length - 1;
 
   const initialMessagesArray = { ...el, messages: [{ title: el.messages, id: uniqueId() }] };
   if (lastAccElement === undefined) return [initialMessagesArray];
@@ -267,3 +280,4 @@ export const groupMessagesByUser = testData.reduce((acc, el) => {
   }
   return [...acc, initialMessagesArray];
 }, []);
+
