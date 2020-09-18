@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const bgColorBlack = '#111111';
+export const bgColorBlack = '#111111';
 
 export const HeaderContainer = styled.div`
   background: ${bgColorBlack};
@@ -65,125 +65,114 @@ export const InputHeader = styled.input`
 
 export const MainContainer = styled.div`
   display: flex;
+  width: 100%;
   background: ${bgColorBlack};
 `;
 
 export const LeftBlockContainer = styled.div`
   margin-top: 109px;
-  position: absolute;
   background: ${bgColorBlack};
-  //width: 27%;
-  width: 519px;
   min-height: 100%;
-  padding: 1px;
+  flex-basis: 40%;
+  padding: 23px;
   color: white;
   display: flex;
   flex-direction: column;
 `;
 
 export const RightBlockContainer = styled.div`
-  //margin-left: 27%;
-  margin-left: 519px;
   background: ${bgColorBlack};
   position: relative;
-  //width: 73%;
-  width: 1401px;
+  padding-right: 23px;
   height: 100%;
+  width: 100%;
+  overflow: hidden;
   color: white;
   margin-top: 109px;
 `;
 
 export const UserInfoHeaderContainer = styled.div`
-  margin-left: 75px;
-  position: absolute;
-  width: 800px;
-  height: 344px;
-  display: flex;
-  justify-content: flex-start;
-  z-index: 10;
+margin-left: 75px;
+position: absolute;
+height: 344px;
+display: flex;
+z-index: 10;
 `;
 
 export const UserInfoAvatar = styled.div`
-  width: 340px;
-  height: 340px;
-  border-radius: 170px;
+max-width: 340px;
+height: 340px;
+border-radius: 170px;
 `;
 
 export const UserInfoNameBlock = styled.div`
-  height: 340px;
-  display: flex;
-  flex-direction: column;
+height: 340px;
+display: flex;
+flex-direction: column;
 `;
 
 export const Avatar = styled.img.attrs((props) => ({ src: props.img }))`
-  width: 340px;
-  height: 340px;
-  border-radius: 170px;
-  box-shadow: 9px 9px 25px rgba(0, 0, 0, 0.25);
-  &:hover {
-    cursor: pointer;
-  }
+max-width: 340px;
+max-height: 340px;
+border-radius: 170px;
+box-shadow: 9px 9px 25px rgba(0, 0, 0, 0.25);
+&:hover {
+  cursor: pointer;
+}
 `;
 
 export const AddPhotoIcon = styled.img.attrs((props) => ({ src: props.img }))`
-  position: absolute;
-  left: 230px;
-  bottom: -28px;
-  width: 110px;
-  height: 110px;
-  border-radius: 55px;
-  &:hover {
-    cursor: pointer;
-  }
+position: absolute;
+left: 230px;
+bottom: -28px;
+max-width: 110px;
+height: 110px;
+border-radius: 55px;
+&:hover {
+  cursor: pointer;
+}
 `;
 
 export const UserName = styled.div`
-  margin-top: 136px;
-  margin-left: 32px;
-  font-family: Montserrat, serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 30px;
-  line-height: 37px;
-  color: #ffffff;
+margin-top: 136px;
+margin-left: 32px;
+font-weight: bold;
+font-size: 30px;
+line-height: 37px;
+color: #ffffff;
 `;
 
 export const UserProfession = styled.div`
-  margin-top: 13px;
-  margin-left: 32px;
-  font-family: Montserrat, serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 20px;
-  color: #c1c1c1;
+margin-top: 13px;
+margin-left: 32px;
+font-size: 16px;
+line-height: 20px;
+color: #c1c1c1;
 `;
 
 export const UserOnlineStatus = styled.div`
-  margin-top: 91px;
-  margin-left: 32px;
-  font-family: Montserrat, serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 20px;
-  color: #c1c1c1;
+margin-top: 91px;
+margin-left: 32px;
+font-size: 16px;
+line-height: 20px;
+color: #c1c1c1;
 `;
 
 export const UserOnlineIcon = styled.div`
-  position: absolute;
-  top: 35px;
-  left: 277px;
-  width: 28px;
-  height: 28px;
-  border-radius: 14px;
-  background: #ffb11b;
+position: absolute;
+top: 35px;
+left: 277px;
+width: 28px;
+height: 28px;
+border-radius: 14px;
+background: #ffb11b;
 `;
 
 export const WallContainer = styled.div`
   position: relative;
   margin-top: 250px;
-  width: 1291px;
+  padding: 0 103px;
+  overflow: hidden;
   height: 100%;
   background: #ffffff;
   border-radius: 15px 15px 0px 0px;
@@ -193,22 +182,17 @@ export const WallContainer = styled.div`
 
 export const StatusContainer = styled.div`
   width: 530px;
-  margin-left: 103px;
   margin-top: 149px;
-  font-family: Montserrat, serif;
-  font-style: normal;
-  font-weight: normal;
   font-size: 16px;
   line-height: 20px;
   color: #515151;
 `;
 
 export const WallInfoBlock = styled.div`
-  width: 1086px;
-  height: 511px;
-  margin-left: 103px;
+  max-width: 100%;
   margin-top: 25px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 `;
 
@@ -220,9 +204,6 @@ export const WallInfoUserAbout = styled.div`
 
 export const InfoHeaderText = styled.div`
   margin-top: 47px;
-  font-family: Montserrat, serif;
-  font-style: normal;
-  font-weight: 500;
   font-size: 16px;
   line-height: 20px;
   color: #000000;
@@ -247,9 +228,6 @@ export const InfoHeaderTextRightBlock = styled.div`
 
 export const InfoHeaderListItemLeft = styled.div`
   margin-bottom: 23px;
-  font-family: Montserrat, serif;
-  font-style: normal;
-  font-weight: normal;
   font-size: 16px;
   line-height: 20px;
   color: #515151;
@@ -257,9 +235,6 @@ export const InfoHeaderListItemLeft = styled.div`
 
 export const InfoHeaderListItemRight = styled.div`
   margin-bottom: 23px;
-  font-family: Montserrat, serif;
-  font-style: normal;
-  font-weight: normal;
   font-size: 16px;
   line-height: 20px;
   color: #000000;
@@ -287,8 +262,7 @@ export const InfoUserPhoto = styled.img.attrs((props) => ({ src: props.img }))`
 // Wall Create Article
 export const WallCreateArticleContainer = styled.div`
   margin-top: 49px;
-  margin-left: 103px;
-  width: 1086px;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   border-top: 1px solid #515151;
@@ -298,7 +272,6 @@ export const WallCreateArticleContainer = styled.div`
 
 export const WallCreateArticleHeaderBlock = styled.div`
   margin-top: 27px;
-  width: 1086px;
   height: 100px;
   display: flex;
   align-items: center;
@@ -321,9 +294,6 @@ export const AvatarMin = styled.img.attrs((props) => ({ src: props.img }))`
 export const WallCreateArticleHeaderBlockLeftText = styled.div`
   margin-left: 24px;
   margin-top: 25px;
-  font-family: Montserrat, serif;
-  font-style: normal;
-  font-weight: normal;
   font-size: 16px;
   line-height: 20px;
   color: #515151;
@@ -343,9 +313,6 @@ export const IconArticle = styled.img.attrs((props) => ({ src: props.img }))`
 
 export const ArticleName = styled.div`
   margin-top: 20px;
-  font-family: Montserrat, serif;
-  font-style: normal;
-  font-weight: normal;
   font-size: 20px;
   line-height: 160.9%;
   color: #000000;

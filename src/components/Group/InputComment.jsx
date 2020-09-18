@@ -37,7 +37,6 @@ const Container = styled.div`
 const AvatarContainer = styled.div`
   align-self: center;
   display: flex;
-  justify-content: flex-start;
   width: 85px;
   border-radius: 50%;
   margin-right: 30px;
@@ -60,7 +59,7 @@ const InputField = styled.input`
   background: #ffffff;
   border: 1px solid #515151;
   border-radius: 5px;
-  font-family: Montserrat;
+  
   font-style: normal;
   font-weight: normal;
   font-size: 16px;

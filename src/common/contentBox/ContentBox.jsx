@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Box = styled.div`
-  box-sizing: border-box;
   position: relative;
   background-color: #ffffff;
   border-radius: 15px;

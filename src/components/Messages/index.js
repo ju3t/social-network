@@ -29,7 +29,7 @@ const SelectChat = styled.div`
     content: 'Сообщения';
     width: 355px;
     height: 155px;
-    font-family: Montserrat;
+    
     font-style: normal;
     font-weight: 600;
     font-size: 32px;
@@ -89,7 +89,7 @@ const SelectChatUserInfo = styled.div`
 `;
 
 const UserName = styled.span`
-  font-family: Montserrat;
+  
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -97,7 +97,7 @@ const UserName = styled.span`
 `;
 
 const UserLastMessage = styled.p`
-  font-family: Montserrat;
+  
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -137,7 +137,7 @@ const ContentUserInfo = styled.div`
 `;
 
 const ContentUserName = styled.span`
-  font-family: Montserrat;
+  
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
@@ -145,7 +145,7 @@ const ContentUserName = styled.span`
 `;
 
 const ContentUserProfession = styled.p`
-  font-family: Montserrat;
+  
   font-style: normal;
   font-weight: normal;
   font-size: 16px;

@@ -9,7 +9,7 @@ import actionAddNone from '../icons/action_addNote.svg';
 import actionLike from '../icons/action_like.svg';
 import actionComment from '../icons/action_comment.svg';
 import actionRepost from '../icons/action_repost.svg';
-import BlockComments from '../blockComment/BlockComments';
+import BlockComments from '../blockComment/BlockComments/BlockComments';
 
 const Wrapper = styled.div`
   position: relative;
@@ -25,7 +25,6 @@ const WrapperNote = styled.div`
 
 const UserInfo = styled.div`
   display: flex;
-  justify-content: flex-start;
   align-items: center;
 `;
 
@@ -52,20 +51,20 @@ const SubtitleTime = styled.span`
 
 const UserActions = styled.div`
   display: flex;
-  justify-content: flex-start;
   align-items: center;
 `;
-const UserAction = styled.div`
+const UserAction = styled.button`
   width: 30px;
   height: 30px;
   background-position: center center;
   background-repeat: no-repeat;
   cursor: pointer;
+  border: none;
+  background-color: transparent;
 `;
 
 const Action = styled.div`
   display: flex;
-  justify-content: flex-start;
   align-items: center;
   &:not(:last-child) {
     margin-right: 45px;
@@ -108,7 +107,9 @@ const Text = styled.div`
   margin: 0 0 40px 0;
   color: #000000;
   text-align: start;
-  height: ${(props) => props.height};
+  height: auto;
+  max-height: ${({ isOpen }) => (isOpen ? '100%' : '100px')};
+  //transition: 1s;
   overflow: hidden;
 `;
 
@@ -134,7 +135,6 @@ const BtnOpenNote = styled.button`
 const TagsList = styled.ul`
   padding: 0;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
   margin: 45px 0 55px 0;
 `;
@@ -148,9 +148,10 @@ const TagItem = styled.li`
 `;
 
 const Note = ({ users }) => {
-  const [height, setHeight] = useState(`${100}px`);
-  const minHeight = '100px';
-  const fullHeight = '100%';
+  const [isOpen, setIsOpen] = useState(false);
+  const [isCommentsOpen, setIsCommentsOpen] = useState(true);
+  // const minHeight = '100px';
+  // const fullHeight = '100%';
   const {
     first_name: firstName, last_name: lastName, avatarka, posts,
   } = users.users;
@@ -187,7 +188,7 @@ const Note = ({ users }) => {
             <CountAction>{likesCount}</CountAction>
           </Action>
           <Action>
-            <ActionComment />
+            <ActionComment onClick={() => setIsCommentsOpen(true)} />
             <CountAction>{commentsCount}</CountAction>
           </Action>
           <Action>
@@ -198,10 +199,10 @@ const Note = ({ users }) => {
       </WrapperNote>
       <Wrapper>
         <TitleText>{title}</TitleText>
-        <Text height={height}>{text}</Text>
+        <Text isOpen={isOpen}>{text}</Text>
         <BtnOpenNote
-          isOpen={height !== minHeight}
-          onClick={() => (height === minHeight ? setHeight(fullHeight) : setHeight(minHeight))}
+          isOpen={isOpen}
+          onClick={() => setIsOpen(!isOpen)}
         />
         <TagsList>
           {tags.map((item) => (
@@ -209,7 +210,11 @@ const Note = ({ users }) => {
           ))}
         </TagsList>
       </Wrapper>
-      <BlockComments comments={comments} />
+      <BlockComments
+        isCommentsOpen={isCommentsOpen}
+        setIsCommentsOpen={setIsCommentsOpen}
+        comments={comments}
+      />
     </>
   );
 };

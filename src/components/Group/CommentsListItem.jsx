@@ -24,13 +24,11 @@ export default function CommentsList(props) {
 
 const Container = styled.div`
   display: flex;
-  justify-content: flex-start;
 `;
 
 const AvatarContainer = styled.div`
   align-self: center;
   display: flex;
-  justify-content: flex-start;
   width: 85px;
   border-radius: 50%;
   margin-right: 30px;
@@ -52,7 +50,7 @@ const Content = styled.div`
 
 const Author = styled.div`
   margin-bottom: 5px;
-  font-family: Montserrat;
+  
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -62,7 +60,7 @@ const Author = styled.div`
 
 const Date = styled.div`
   margin-bottom: 20px;
-  font-family: Montserrat;
+  
   font-style: normal;
   font-weight: 500;
   font-size: 13px;
@@ -73,7 +71,7 @@ const Date = styled.div`
 
 const Text = styled.div`
   text-align: left;
-  font-family: Montserrat;
+  
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
