@@ -22,7 +22,7 @@ const Navbar = (props) => {
 export default Navbar;
 
 const NavbarWrapper = styled.nav`
-  font-family: Montserrat;
+  
   font-style: normal;
   font-weight: normal;
   min-height: 150px;
@@ -36,7 +36,7 @@ const NavbarWrapper = styled.nav`
 `;
 
 const Date = styled.div`
-  font-family: Montserrat;
+  
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -46,7 +46,7 @@ const Date = styled.div`
 `;
 
 const Description = styled.div`
-  font-family: Montserrat;
+  
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -57,7 +57,7 @@ const Description = styled.div`
 `;
 
 const Link = styled.a`
-  font-family: Montserrat;
+  
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -68,7 +68,7 @@ const Link = styled.a`
 `;
 
 const Owner = styled.div`
-  font-family: Montserrat;
+  
   font-style: normal;
   font-weight: normal;
   font-size: 16px;

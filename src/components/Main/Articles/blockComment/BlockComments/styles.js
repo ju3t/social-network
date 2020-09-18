@@ -5,7 +5,6 @@ width: 100%;
 padding: 40px 0 40px 60px;
 display: flex;
 flex-direction: column;
-justify-content: flex-start;
 align-items: flex-start;
 z-index: 100;
 background: white;

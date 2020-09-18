@@ -2,11 +2,11 @@ import styled from 'styled-components';
 import openNote from '../../icons/open_note.svg';
 import closeNote from '../../icons/close_note.svg';
 import sendComments from '../../icons/send_comments.svg';
+import { Form } from 'formik';
 
-export const Wrapper = styled.div`
+export const WrapperForm = styled(Form)`
   width: 100%;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
   position: relative;
 `;
@@ -16,7 +16,6 @@ export const Input = styled.input`
   height: 46px;
   background: #ffffff;
   border: 1px solid #515151;
-  box-sizing: border-box;
   border-radius: 5px;
   margin: 0 25px;
   font-size: 16px;

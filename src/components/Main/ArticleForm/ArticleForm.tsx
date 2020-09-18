@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { useFormik } from 'formik';
+import { Formik, Field } from 'formik';
 
 import {
   InputName,
@@ -17,41 +18,36 @@ interface Props {
 }
 
 const ArticleForm : React.FC<Props> = ({ changeOpen, isOpen }) => {
-  const formik = useFormik({
-    initialValues: {
-      articleName: '',
-      articleText: '',
-    },
-    onSubmit: (values) => {
-      // eslint-disable-next-line no-console
-      console.log(values);
-    },
-  });
   return (
-    <ArticleStyledForm isOpen={isOpen} onSubmit={formik.handleSubmit}>
-      <ArticleName>Название статьи</ArticleName>
-      <InputName
-        className="inputName"
-        id="articleName"
-        name="articleName"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.articleName}
-      />
-      <ArticleName>Текст</ArticleName>
-      <InputText
-        className="inputText"
-        id="articleText"
-        name="articleText"
-        onChange={formik.handleChange}
-        value={formik.values.articleText}
-        rows="12"
-      />
-      <ArticleButton className="articleButton" type="submit">
-        Опубликовать
-      </ArticleButton>
-      <ButtonMore img={buttonMore} onClick={changeOpen} />
-    </ArticleStyledForm>
+    <Formik
+      initialValues={{
+        articleName: '',
+        articleText: '',
+      }}
+      onSubmit={(values, actions): void => {
+        alert(`Sending article: ${values.articleName} with text: ${values.articleText}`);
+        actions.resetForm();
+      }}
+      >
+      <ArticleStyledForm isOpen={isOpen}>
+        <ArticleName>Название статьи</ArticleName>
+        <Field
+          name="articleName"
+          as={InputName}
+          autoComplete="off"
+        />
+        <ArticleName>Текст</ArticleName>
+        <Field
+          name="articleText"
+          rows="12"
+          as={InputText}
+        />
+        <ArticleButton className="articleButton" type="submit">
+          Опубликовать
+        </ArticleButton>
+        <ButtonMore img={buttonMore} onClick={changeOpen} />
+      </ArticleStyledForm>
+    </Formik>
   );
 };
 

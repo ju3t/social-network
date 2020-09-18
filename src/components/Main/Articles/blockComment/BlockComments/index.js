@@ -1,3 +1,4 @@
-import BlockComments from './BlockComments';
+import BlockComments, { IComment } from './BlockComments';
 
 export default BlockComments;
+export { IComment };

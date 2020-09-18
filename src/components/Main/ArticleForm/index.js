@@ -1,3 +1,3 @@
-import all from './ArticleForm.tsx';
+import all from './ArticleForm';
 
 export default all;

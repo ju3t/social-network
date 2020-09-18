@@ -1,13 +1,12 @@
 import styled from 'styled-components';
-import { Input } from 'antd';
+import sendMessageSrc from '../../../img/icons/send-message.svg';
+import { Form } from 'formik';
 
-const { TextArea } = Input;
 
-export const Wrap = styled.div`
+export const WrapForm = styled(Form)`
   width: 100%;
   display: flex;
   flex-direction: row;
-  box-sizing: border-box;
 `;
 
 export const TextWrap = styled.div`
@@ -15,14 +14,14 @@ export const TextWrap = styled.div`
   display: flex;
   width: 100%;
   flex-grow: 1;
-  font-family: Montserrat;
+  
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 20px;
 
 `;
-export const Text = styled(TextArea)`
+export const Text = styled.input`
   height: 3rem;
   border: none;
   background: #FFF5E3;
@@ -48,9 +47,16 @@ export const FileIcon = styled.img`
   transform: translateX(-100%);
 `;
 
-export const SubmitMessageIcon = styled.img`
+export const SubmitMessageButton = styled.button`
+  min-width: 21px;
+  min-height: 18px;
   margin-left: 25px;
-  cursor: pointer;
+  border: none;
+  background: none;
+  background-image: url(${sendMessageSrc});
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 
   &:hover {
     opacity: 0.7;

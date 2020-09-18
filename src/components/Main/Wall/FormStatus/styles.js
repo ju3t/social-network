@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Form } from 'formik';
 
 export const StatusInput = styled.input`
     margin-left: 0;
@@ -15,7 +16,7 @@ export const StatusInput = styled.input`
     color: #515151;
 `;
 
-export const StatusForm = styled.form`
+export const StatusForm = styled(Form)`
     margin-top: 140px;
     display: flex;
     flex-direction: column;

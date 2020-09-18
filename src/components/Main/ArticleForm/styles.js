@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Form } from 'formik';
 
 export const InputName = styled.input`
     margin-left: 0;
@@ -22,7 +23,12 @@ export const InputText = styled.textarea`
     resize: none;
 `;
 
-export const ArticleStyledForm = styled.form`
+export const ArticleStyledForm = styled(Form)
+/* withConfig не позволяет пропу isOpen пройти дальше styled в Form.
+Иначе Form "видит" неподобающий проп и ругается об этом в чат*/
+.withConfig({
+    shouldForwardProp: (prop) => !['isOpen'].includes(prop)
+})`
     display: flex;
     flex-direction: column;
     position: relative;

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import {
@@ -6,11 +7,19 @@ import {
 } from './styles';
 
 import Comment from '../Comment';
-import ComponentInput from '../ComponentInput/index';
+import ComponentInput from '../ComponentInput';
+
+export interface IComment {
+  id: number,
+  userName: string,
+  userFoto: string,
+  date: string,
+  text: string
+}
 
 interface Props {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  comments?: Record<string, any>[];
+  comments?: IComment[];
   setIsCommentsOpen?: (state: boolean) => void;
   isCommentsOpen?: boolean;
 }

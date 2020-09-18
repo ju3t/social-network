@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import React from 'react';
 
 import photo1 from './img/photo 1.png';

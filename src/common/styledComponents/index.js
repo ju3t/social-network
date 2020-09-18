@@ -96,7 +96,6 @@ margin-left: 75px;
 position: absolute;
 height: 344px;
 display: flex;
-justify-content: flex-start;
 z-index: 10;
 `;
 
@@ -137,8 +136,6 @@ border-radius: 55px;
 export const UserName = styled.div`
 margin-top: 136px;
 margin-left: 32px;
-font-family: Montserrat, serif;
-font-style: normal;
 font-weight: bold;
 font-size: 30px;
 line-height: 37px;
@@ -148,9 +145,6 @@ color: #ffffff;
 export const UserProfession = styled.div`
 margin-top: 13px;
 margin-left: 32px;
-font-family: Montserrat, serif;
-font-style: normal;
-font-weight: normal;
 font-size: 16px;
 line-height: 20px;
 color: #c1c1c1;
@@ -159,9 +153,6 @@ color: #c1c1c1;
 export const UserOnlineStatus = styled.div`
 margin-top: 91px;
 margin-left: 32px;
-font-family: Montserrat, serif;
-font-style: normal;
-font-weight: normal;
 font-size: 16px;
 line-height: 20px;
 color: #c1c1c1;
@@ -192,9 +183,6 @@ export const WallContainer = styled.div`
 export const StatusContainer = styled.div`
   width: 530px;
   margin-top: 149px;
-  font-family: Montserrat, serif;
-  font-style: normal;
-  font-weight: normal;
   font-size: 16px;
   line-height: 20px;
   color: #515151;
@@ -216,9 +204,6 @@ export const WallInfoUserAbout = styled.div`
 
 export const InfoHeaderText = styled.div`
   margin-top: 47px;
-  font-family: Montserrat, serif;
-  font-style: normal;
-  font-weight: 500;
   font-size: 16px;
   line-height: 20px;
   color: #000000;
@@ -243,9 +228,6 @@ export const InfoHeaderTextRightBlock = styled.div`
 
 export const InfoHeaderListItemLeft = styled.div`
   margin-bottom: 23px;
-  font-family: Montserrat, serif;
-  font-style: normal;
-  font-weight: normal;
   font-size: 16px;
   line-height: 20px;
   color: #515151;
@@ -253,9 +235,6 @@ export const InfoHeaderListItemLeft = styled.div`
 
 export const InfoHeaderListItemRight = styled.div`
   margin-bottom: 23px;
-  font-family: Montserrat, serif;
-  font-style: normal;
-  font-weight: normal;
   font-size: 16px;
   line-height: 20px;
   color: #000000;
@@ -315,9 +294,6 @@ export const AvatarMin = styled.img.attrs((props) => ({ src: props.img }))`
 export const WallCreateArticleHeaderBlockLeftText = styled.div`
   margin-left: 24px;
   margin-top: 25px;
-  font-family: Montserrat, serif;
-  font-style: normal;
-  font-weight: normal;
   font-size: 16px;
   line-height: 20px;
   color: #515151;
@@ -337,9 +313,6 @@ export const IconArticle = styled.img.attrs((props) => ({ src: props.img }))`
 
 export const ArticleName = styled.div`
   margin-top: 20px;
-  font-family: Montserrat, serif;
-  font-style: normal;
-  font-weight: normal;
   font-size: 20px;
   line-height: 160.9%;
   color: #000000;

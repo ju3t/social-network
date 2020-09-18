@@ -18,7 +18,7 @@ export default function News() {
 }
 
 const Wrapper = styled.div`
-  font-family: Montserrat;
+  
   background: #111111;
   padding: 100px;
 `;
@@ -47,7 +47,7 @@ const Label = styled.div`
   background: #ffb11b;
   border-radius: 15px;
   padding-top: 20px;
-  font-family: Montserrat;
+  
   font-style: normal;
   font-weight: 600;
   font-size: 32px;

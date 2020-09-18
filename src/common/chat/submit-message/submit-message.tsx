@@ -1,36 +1,36 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import React from 'react';
-import { useFormik } from 'formik';
-import sendMessageSrc from '../../../img/icons/send-message.svg';
+import { Formik, Field } from 'formik';
 import addFileSrc from '../../../img/icons/add-file.svg';
 
 import {
-  Wrap,
+  WrapForm,
   TextWrap,
   Text,
   FileIcon,
-  SubmitMessageIcon,
+  SubmitMessageButton,
 } from './styles';
 
 export default (): React.FunctionComponentElement<unknown> => {
-  const formik = useFormik({
-    initialValues: { message: '' },
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    onSubmit: (): void => {},
-  });
-
   return (
-    <Wrap>
-      <TextWrap>
-        <Text
-          placeholder="Напишите что-нибудь..."
-          id="message"
-          rows={2}
-          value={formik.values.message}
-          onChange={formik.handleChange}
-        />
-        <FileIcon src={addFileSrc} />
-      </TextWrap>
-      <SubmitMessageIcon src={sendMessageSrc} onClick={formik.handleSubmit} />
-    </Wrap>
+    <Formik
+      initialValues={{ message: '' }}
+      onSubmit={(values, actions): void => {
+        alert(`Sending ${values.message}`);
+        actions.resetForm();
+        }}>
+        <WrapForm>
+          <TextWrap>
+              <Field
+                placeholder="Напишите что-нибудь..."
+                name="message"
+                component={Text}
+                autoComplete="off"
+              />
+              <FileIcon src={addFileSrc} />
+          </TextWrap>
+          <SubmitMessageButton/>
+      </WrapForm>
+    </Formik>
   );
 };

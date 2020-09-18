@@ -22,7 +22,7 @@ const Container = styled.div`
 `;
 
 const Heading = styled.div`
-  font-family: Montserrat;
+  
   font-style: normal;
   font-weight: 500;
   font-size: 20px;

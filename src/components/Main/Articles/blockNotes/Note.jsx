@@ -25,7 +25,6 @@ const WrapperNote = styled.div`
 
 const UserInfo = styled.div`
   display: flex;
-  justify-content: flex-start;
   align-items: center;
 `;
 
@@ -52,7 +51,6 @@ const SubtitleTime = styled.span`
 
 const UserActions = styled.div`
   display: flex;
-  justify-content: flex-start;
   align-items: center;
 `;
 const UserAction = styled.button`
@@ -67,7 +65,6 @@ const UserAction = styled.button`
 
 const Action = styled.div`
   display: flex;
-  justify-content: flex-start;
   align-items: center;
   &:not(:last-child) {
     margin-right: 45px;
@@ -138,7 +135,6 @@ const BtnOpenNote = styled.button`
 const TagsList = styled.ul`
   padding: 0;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
   margin: 45px 0 55px 0;
 `;

@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Avatar } from 'antd';
+import { Formik, Field } from 'formik';
 import userFoto from '../../blockNotes/userFoto.png';
 import {
-  Wrapper,
+  WrapperForm,
   Input,
   BtnSend,
   BtnOpenNote,
@@ -13,12 +15,33 @@ interface Props {
   setIsOpen: (state: boolean) => void;
 }
 
-const ComponentInput: React.FC<Props> = ({ setIsOpen }) => (
-  <Wrapper>
-    <Avatar src={userFoto} />
-    <Input placeholder="Напишите что-нибудь..." />
-    <BtnSend />
-    <BtnOpenNote onClick={() => setIsOpen(false)} />
-  </Wrapper>
-);
+const ComponentInput: React.FC<Props> = ({ setIsOpen }) => {
+  const openOnClick = useCallback(() => {
+    setIsOpen(false);
+  }, [setIsOpen]);
+  return (
+    <Formik
+      initialValues={{
+        inputText: ''
+      }}
+      onSubmit={
+        (values, actions) => {
+          alert(`Sending ${values.inputText}`);
+          actions.resetForm();
+        }
+      }>
+      <WrapperForm>
+        <Avatar src={userFoto} />
+        <Field 
+          as={Input}
+          name="inputText" 
+          placeholder="Напишите что-нибудь..."
+          autoComplete="off"
+        />
+        <BtnSend type="submit"/>
+        <BtnOpenNote type="button" onClick={openOnClick} />
+      </WrapperForm>
+    </Formik>
+  )
+};
 export default ComponentInput;

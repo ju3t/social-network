@@ -1,33 +1,34 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import React from 'react';
-import { useFormik } from 'formik';
+import { Formik, Field } from 'formik';
 
 import {
   StatusForm,
   StatusInput,
 } from './styles.js';
 
-const FormStatus = (): React.FunctionComponentElement<unknown> => {
-  const formik = useFormik({
-    initialValues: {
-      statusText: '',
-    },
-    onSubmit: (values) => {
-      // eslint-disable-next-line no-console
-      console.log(values);
-    },
-  });
+interface Props {
+}
 
+const FormStatus: React.FC<Props> = () => {
   return (
-    <StatusForm onSubmit={formik.handleSubmit}>
-      <StatusInput
-        id="statusText"
-        name="statusText"
-        type="text"
-        onChange={formik.handleChange}
-        value={formik.values.statusText}
-        placeholder="Обновите свой статус"
-      />
-    </StatusForm>
+    <Formik
+      initialValues={{
+        statusText: '',
+      }}
+      onSubmit={
+        (values, actions) => {
+        alert(`Sending ${values.statusText}`);
+      }}>
+      <StatusForm>
+        <Field
+          name="statusText"
+          placeholder="Обновите свой статус"
+          as={StatusInput}
+          autoComplete="off"
+        />
+      </StatusForm>
+    </Formik>
   );
 };
 
