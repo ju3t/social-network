@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-// import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
+
 import styled from 'styled-components';
 import { uniqueId } from 'lodash';
 
 import SingleFriend from './SingleFriend';
 import PageSearchInput from '../../common/Inputs/PageSearch';
+
+import { IFriendsArr } from '../Friends/FriendsInterface'
 
 export const FriendsWrapper = styled.div`
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
@@ -31,7 +32,7 @@ export const PageMarker = styled.h2`
   background: #ffb11b;
 `;
 
-const friendsArr = [
+const friendsArr: IFriendsArr[] = [
   {
     firstName: 'Firstname1',
     lastName: 'Lastname1',
@@ -55,12 +56,12 @@ const friendsArr = [
   },
 ];
 
-const Friends = () => {
-  const [filterString, setfilterString] = useState('');
+const Friends: React.FC = () => {
+  const [filterString, setfilterString] = useState<string>('');
 
-  const filterInputHandler = (event) => setfilterString(event.target.value.toLowerCase());
+  const filterInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => setfilterString(event.target.value.toLowerCase());
 
-  const userFiltered = () => {
+  const userFiltered = (): IFriendsArr[] => {
     if (filterString.length > 0) {
       return friendsArr.filter(({ firstName, lastName }) => {
         const fullName = `${firstName} ${lastName}`.toLowerCase();
@@ -70,24 +71,30 @@ const Friends = () => {
     return friendsArr;
   };
 
-  const deleteButtonHandler = (id) => () => id;
+  const deleteButtonHandler = (event: React.MouseEvent, id: number) => {
+    console.log(id)
+  }
 
-  const messegeButtonHandler = (id) => () => id;
+  const messegeButtonHandler = (event: React.MouseEvent, id: number) => {
+    console.log(id)
+  }
 
+  console.log(uniqueId());
   return (
     <FriendsWrapper>
       <PageMarker>Друзья</PageMarker>
       <PageSearchInput action={filterInputHandler} placeholder="Начните поиск друзей..." />
       <div>
-        {userFiltered().map((item) => (
+        {userFiltered().map((item, index) => (
           <SingleFriend
             key={uniqueId()}
-            deleteButtonHandler={deleteButtonHandler(item.id)}
-            messegeButtonHandler={messegeButtonHandler(item.id)}
+            deleteButtonHandler={deleteButtonHandler}
+            messegeButtonHandler={messegeButtonHandler}
             firstname={item.firstName}
             lastname={item.lastName}
             profesion={item.profesion}
             avatarka={item.avatarka}
+            id={index}
           />
         ))}
       </div>
