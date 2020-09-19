@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import React, { useState, useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import avatar from '../UserInfoHeader/img/main photo.png';
 import photo from './img/photo.svg';
@@ -10,28 +10,32 @@ import dots from './img/dots.svg';
 import add from './img/add.svg';
 
 import {
+  AvatarMin,
+  IconArticle,
   WallCreateArticleContainer,
   WallCreateArticleHeaderBlock,
   WallCreateArticleHeaderBlockLeft,
-  AvatarMin,
   WallCreateArticleHeaderBlockLeftText,
   WallCreateArticleHeaderBlockRight,
-  IconArticle,
 } from '../../../common/styledComponents';
 import ArticleForm from '../ArticleForm';
-
-interface IWallCreateArticle {};
 
 const renderIcons = () => {
   const icons = [photo, music, video, note, dots];
   return icons.map((el) => <IconArticle img={el} key={el} />);
 };
 
-const WallCreateArticle: React.FC<IWallCreateArticle> = () => {
+const WallCreateArticle: React.FC = () => {
   const [isOpen, setOpen] = useState(false);
 
-  const changeOpen = useCallback(() => setOpen(false), [setOpen]);
-  const renderPlus = useCallback(() => <IconArticle img={add} onClick={() => setOpen(true)} />, [setOpen]);
+  const changeOpen = () => {
+    setOpen(false);
+  };
+
+  const renderPlus = useCallback(
+    () => <IconArticle img={add} onClick={() => setOpen(true)} />,
+    [isOpen],
+  );
 
   return (
     <WallCreateArticleContainer>

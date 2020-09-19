@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
-
 import styled from 'styled-components';
 import { uniqueId } from 'lodash';
-
 import SingleFriend from './SingleFriend';
 import PageSearchInput from '../../common/Inputs/PageSearch';
-
-import { IFriendsArr } from '../Friends/FriendsInterface'
+import { IFriendsArr } from './FriendsInterface';
 
 export const FriendsWrapper = styled.div`
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
@@ -72,12 +69,12 @@ const Friends: React.FC = () => {
   };
 
   const deleteButtonHandler = (event: React.MouseEvent, id: number) => {
-    console.log(id)
-  }
+    console.log(id);
+  };
 
   const messegeButtonHandler = (event: React.MouseEvent, id: number) => {
-    console.log(id)
-  }
+    console.log(id);
+  };
 
   console.log(uniqueId());
   return (

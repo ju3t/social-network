@@ -1,23 +1,15 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
-/* eslint-disable react/prop-types */
 import React from 'react';
-import { Formik, Field } from 'formik';
-
-import {
-  InputName,
-  InputText,
-  ArticleStyledForm,
-  ArticleButton,
-} from './styles.js';
-import buttonMore from './img/BTN more.svg';
+import { Field, Formik } from 'formik';
+import { ArticleButton, ArticleStyledForm, InputName, InputText } from './styles';
+import imgButtonMore from './img/BTN more.svg';
 import { ArticleName, ButtonMore } from '../../../common/styledComponents';
 
 interface Props {
-  changeOpen?: () => void;
-  isOpen?: boolean;
-}
+  changeOpen: () => void;
+  isOpen: boolean;
+};
 
-const ArticleForm : React.FC<Props> = ({ changeOpen, isOpen }) => {
+const ArticleForm: React.FC<Props> = ({ changeOpen, isOpen }): JSX.Element => {
   return (
     <Formik
       initialValues={{
@@ -28,7 +20,7 @@ const ArticleForm : React.FC<Props> = ({ changeOpen, isOpen }) => {
         alert(`Sending article: ${values.articleName} with text: ${values.articleText}`);
         actions.resetForm();
       }}
-      >
+    >
       <ArticleStyledForm isOpen={isOpen}>
         <ArticleName>Название статьи</ArticleName>
         <Field
@@ -45,7 +37,7 @@ const ArticleForm : React.FC<Props> = ({ changeOpen, isOpen }) => {
         <ArticleButton className="articleButton" type="submit">
           Опубликовать
         </ArticleButton>
-        <ButtonMore img={buttonMore} onClick={changeOpen} />
+        <ButtonMore img={imgButtonMore} onClick={changeOpen} />
       </ArticleStyledForm>
     </Formik>
   );

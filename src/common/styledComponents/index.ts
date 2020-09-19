@@ -1,4 +1,6 @@
-import styled from 'styled-components';
+import styled, { ThemedStyledProps } from 'styled-components';
+import { DetailedHTMLProps, ImgHTMLAttributes } from 'react';
+import Iimg from '../../types/Iimg';
 
 export const bgColorBlack = '#111111';
 
@@ -13,7 +15,7 @@ export const HeaderContainer = styled.div`
   z-index: 15;
 `;
 
-export const Logo = styled.img.attrs((props) => ({ src: props.img }))`
+export const Logo = styled.img.attrs((props: Iimg) => ({ src: props.img }))`
   height: 32px;
   width: 67px;
   margin-top: 57px;
@@ -23,7 +25,7 @@ export const Logo = styled.img.attrs((props) => ({ src: props.img }))`
   }
 `;
 
-export const IconHeader = styled.img.attrs((props) => ({ src: props.img }))`
+export const IconHeader = styled.img.attrs((props: Iimg) => ({ src: props.img }))`
   height: 30px;
   width: 30px;
   margin-left: 55px;
@@ -31,7 +33,7 @@ export const IconHeader = styled.img.attrs((props) => ({ src: props.img }))`
     cursor: pointer;
   }
 `;
-export const IconSearch = styled.img.attrs((props) => ({ src: props.img }))`
+export const IconSearch = styled.img.attrs((props: Iimg) => ({ src: props.img }))`
   height: 30px;
   width: 30px;
   &:hover {
@@ -111,7 +113,7 @@ display: flex;
 flex-direction: column;
 `;
 
-export const Avatar = styled.img.attrs((props) => ({ src: props.img }))`
+export const Avatar = styled.img.attrs<Iimg>((props) => ({ src: props.img }))<Iimg>`
 max-width: 340px;
 max-height: 340px;
 border-radius: 170px;
@@ -121,7 +123,7 @@ box-shadow: 9px 9px 25px rgba(0, 0, 0, 0.25);
 }
 `;
 
-export const AddPhotoIcon = styled.img.attrs((props) => ({ src: props.img }))`
+export const AddPhotoIcon = styled.img.attrs<Iimg>((props) => ({ src: props.img }))<Iimg>`
 position: absolute;
 left: 230px;
 bottom: -28px;
@@ -249,7 +251,7 @@ export const InfoPhotoBlock = styled.div`
   align-content: space-between;
 `;
 
-export const InfoUserPhoto = styled.img.attrs((props) => ({ src: props.img }))`
+export const InfoUserPhoto = styled.img.attrs<Iimg>((props) => ({ src: props.img }))<Iimg>`
   width: 256px;
   height: 162px;
   margin-right: 22px;
@@ -282,7 +284,7 @@ export const WallCreateArticleHeaderBlockLeft = styled.div`
   display: flex;
 `;
 
-export const AvatarMin = styled.img.attrs((props) => ({ src: props.img }))`
+export const AvatarMin = styled.img.attrs<Iimg>((props) => ({ src: props.img }))<Iimg>`
   width: 70px;
   height: 70px;
   border-radius: 35px;
@@ -304,7 +306,7 @@ export const WallCreateArticleHeaderBlockRight = styled.div`
   justify-content: space-between;
 `;
 
-export const IconArticle = styled.img.attrs((props) => ({ src: props.img }))`
+export const IconArticle = styled.img.attrs<Iimg>((props) => ({ src: props.img }))<Iimg>`
   margin-left: 13px;
   &:hover {
     cursor: pointer;
@@ -318,8 +320,13 @@ export const ArticleName = styled.div`
   color: #000000;
 `;
 
+interface Images {
+  img: string;
+  [key: string]: string;
+}
+
 // Article Form
-export const ButtonMore = styled.img.attrs((props) => ({ src: props.img }))`
+export const ButtonMore = styled.img.attrs<Iimg>((props) => ({ src: props.img }))<Iimg>`
   position: absolute;
   right: 0;
   bottom: 0;

@@ -7,17 +7,16 @@ import SubmitMessage from '../../chat/submit-message';
 import { groupMessagesByUser } from '../../chat/helper';
 
 import {
-    ModalChatWrapper,
-    ContentWrapper,
-    Header,
-    Content,
-    ModalChatMessageWrapper,
-    SubmitMessageWrap,
-    ModalChatOpen
+  Content,
+  ContentWrapper,
+  Header,
+  ModalChatMessageWrapper,
+  ModalChatOpen,
+  ModalChatWrapper,
+  SubmitMessageWrap,
 } from './styles';
 
 const scrollBarStyles = { width: '100%', height: '100%', paddingRight: 35 };
-
 
 
 const ModalChat = () => {
