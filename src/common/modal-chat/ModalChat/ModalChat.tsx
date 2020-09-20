@@ -18,10 +18,7 @@ import {
 
 const scrollBarStyles = { width: '100%', height: '100%', paddingRight: 35 };
 
-export interface IModalChat {
-};
-
-const ModalChat: React.FC<IModalChat> = () => {
+const ModalChat: React.FC = () => {
   const [isOpen, setIsOpen] = useState(true);
 
   const switchModalStatus = () => {
