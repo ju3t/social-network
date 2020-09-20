@@ -28,13 +28,14 @@ const renderIcons = () => {
 const WallCreateArticle: React.FC = () => {
   const [isOpen, setOpen] = useState(false);
 
-  const changeOpen = () => {
-    setOpen(false);
-  };
+  const changeOpen = useCallback(
+    () => setOpen(false),
+    [setOpen]
+  );
 
   const renderPlus = useCallback(
     () => <IconArticle img={add} onClick={() => setOpen(true)} />,
-    [isOpen],
+    [setOpen],
   );
 
   return (

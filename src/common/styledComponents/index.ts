@@ -1,5 +1,4 @@
-import styled, { ThemedStyledProps } from 'styled-components';
-import { DetailedHTMLProps, ImgHTMLAttributes } from 'react';
+import styled from 'styled-components';
 import Iimg from '../../types/Iimg';
 
 export const bgColorBlack = '#111111';
@@ -319,11 +318,6 @@ export const ArticleName = styled.div`
   line-height: 160.9%;
   color: #000000;
 `;
-
-interface Images {
-  img: string;
-  [key: string]: string;
-}
 
 // Article Form
 export const ButtonMore = styled.img.attrs<Iimg>((props) => ({ src: props.img }))<Iimg>`
