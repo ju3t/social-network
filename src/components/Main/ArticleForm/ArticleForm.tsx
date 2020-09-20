@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import React from 'react';
 import { Field, Formik } from 'formik';
 import { ArticleButton, ArticleStyledForm, InputName, InputText } from './styles';

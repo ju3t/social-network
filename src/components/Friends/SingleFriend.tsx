@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import React from 'react';
 import styled from 'styled-components';
 import DeleteIcon from '../../common/img/icons/delete.svg';
@@ -89,7 +90,7 @@ const SingleFriend: React.FC<ISingleFriendProps> = ({
   id,
   deleteButtonHandler,
   messegeButtonHandler
-}) => (
+}:ISingleFriendProps) => (
     <SingleFriendWrapper>
       <Placer>
         <FriendAvatarWrapper href="#">
