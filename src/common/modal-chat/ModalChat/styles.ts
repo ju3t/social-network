@@ -12,7 +12,12 @@ export const ModalChatWrapper = styled.div<IisOpen>`
     border-radius: 15px;
 `;
 
-export const ContentWrapper = styled.div`
+export const ContentWrapper = styled.div
+// withConfig не позволяет пропу isOpen пройти дальше styled в Form.
+// Иначе Form "видит" неподобающий проп и ругается об этом в чат
+.withConfig({
+  shouldForwardProp: (prop) => !['isOpen'].includes(prop),
+})<{ isOpen?: boolean }>`
     height: 100%;
     width: 100%;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -59,7 +64,12 @@ export const SubmitMessageWrap = styled.div`
     margin: 30px;
 `;
 
-export const ModalChatOpen = styled.button`
+export const ModalChatOpen = styled.button
+// withConfig не позволяет пропу isOpen пройти дальше styled в Form.
+// Иначе Form "видит" неподобающий проп и ругается об этом в чат
+.withConfig({
+  shouldForwardProp: (prop) => !['isOpen'].includes(prop),
+})<{ isOpen?: boolean }>`
     position: absolute;
     width: 60px;
     height: 60px;
