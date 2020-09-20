@@ -90,7 +90,7 @@ const Container = styled.div`
 const Label = styled.div`
   position: absolute;
   top: -90px;
-  font-family: Montserrat;
+
   font-style: normal;
   font-weight: 600;
   font-size: 32px;
@@ -119,7 +119,6 @@ const DataContainer = styled.div`
 `;
 
 const NameGroup = styled.div`
-  font-family: Montserrat;
   font-style: normal;
   font-weight: 500;
   font-size: 24px;
@@ -130,7 +129,6 @@ const NameGroup = styled.div`
 `;
 
 const Category = styled.div`
-  font-family: Montserrat;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
