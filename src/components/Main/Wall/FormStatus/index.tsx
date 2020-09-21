@@ -7,10 +7,8 @@ import {
   StatusInput,
 } from './styles.js';
 
-interface Props {
-}
 
-const FormStatus: React.FC<Props> = () => {
+const FormStatus: React.FC = () => {
   return (
     <Formik
       initialValues={{

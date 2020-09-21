@@ -52,6 +52,7 @@ const PageSearchInput = ({ action, placeholder, defaultValue }) => (
 PageSearchInput.defaultProps = {
   defaultValue: '',
   placeholder: '',
+/* eslint-disable @typescript-eslint/no-empty-function */
   action: () => {},
 };
 

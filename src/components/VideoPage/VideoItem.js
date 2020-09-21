@@ -95,6 +95,7 @@ VideoItem.defaultProps = {
   id: '',
   name: '',
   isPopular: false,
+  /* eslint-disable @typescript-eslint/no-empty-function*/
   action: () => {},
 };
 
