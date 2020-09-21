@@ -6,7 +6,19 @@ import Comments from './Comments';
 import InputComment from './InputComment';
 import { mockData } from './mockData';
 import photogroup from '../../img/icons/photogroup.svg';
+import { connect, ConnectedProps } from 'react-redux';
+import { getGroups } from '../../redux-toolkit/sliceGroup';
 
+interface RootState {
+  groups: [];
+}
+
+const mapDispatch = { getGroups };
+const mapState = (state: RootState) => ({
+  groups: state.groups,
+});
+const connector = connect(mapState, mapDispatch);
+type PropsFromRedux = ConnectedProps<typeof connector>;
 interface Idata {
   data: {
     date: Date;
@@ -36,7 +48,20 @@ interface Icomment {
   date: Date;
   text: string;
 }
-const Group: React.FC = () => {
+type GroupProps = {
+  getGroups: () => void;
+};
+interface Iprops {
+  getGroups: () => void;
+}
+const Group = (props: PropsFromRedux) => {
+  //const Group: React.FC<GroupProps> = (props) => {
+  const { getGroups } = props;
+  const handle = () => {
+    getGroups('qweeee');
+  };
+  console.log(props);
+  console.log(getGroups);
   const { data, comments }: Idata = mockData;
   return (
     <Wrapper>
@@ -46,6 +71,7 @@ const Group: React.FC = () => {
             <Img src={photogroup} alt="Фото группы" />
           </GroupIco>
           <DataContainer>
+            <button onClick={handle}>Test</button>
             <NameGroup>Группа для красивых</NameGroup>
             <Category>Категория</Category>
           </DataContainer>
@@ -136,4 +162,5 @@ const Category = styled.div`
   color: #b2b2b2;
   text-align: left;
 `;
-export default Group;
+
+export default connector(Group);
