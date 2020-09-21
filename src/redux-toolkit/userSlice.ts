@@ -30,7 +30,7 @@ const userSlice = createSlice({
         [loadUser.fulfilled.type]: (state, action) => 
             ({ ...state, data: action.payload, loading: false }),
         [loadUser.rejected.type]: (state, action) =>
-            ({ ...state, error: action.payload, loading: false }),
+            ({ ...state, error: action.error, loading: false }),
     }
 });
 
