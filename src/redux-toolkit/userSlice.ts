@@ -45,7 +45,7 @@ export interface IUser {
     "avatar": string,
     "email": string,
     "password": string,
-    "city": "SPb",
+    "city": string,
     "linkSite"?: string,
     "roleName": string,
     "status"?: string,
