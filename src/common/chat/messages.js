@@ -12,7 +12,6 @@ const MessagesWrap = styled.div`
   margin: ${({ type }) => (type === 'our' ? '0 30px 0 0' : '0 0 0 30px')};
   font-size: 16px;
   color: #000000;
-  font-family: Montserrat;
   font-weight: 500;
   font-style: normal;
 
@@ -40,7 +39,7 @@ const MessageInfo = styled.div`
 `;
 
 const MessageDate = styled.span`
-  font-family: Montserrat;
+  
   font-style: normal;
   font-weight: 500;
   font-size: 11px;
@@ -49,7 +48,7 @@ const MessageDate = styled.span`
 `;
 
 const MessageTime = styled.span`
-  font-family: Montserrat;
+  
   font-style: normal;
   font-weight: 500;
   font-size: 11px;

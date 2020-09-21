@@ -22,7 +22,7 @@ const Navbar = () => (
 export default Navbar;
 
 const NavbarWrapper = styled.nav`
-  font-family: Montserrat;
+  
   font-style: normal;
   font-weight: normal;
   min-height: 150px;
@@ -39,7 +39,7 @@ const NavbarContainer = styled.div`
 `;
 
 const Button = styled.button`
-  font-family: Montserrat;
+  
   font-size: 16px;
   line-height: 20px;
   background: none;

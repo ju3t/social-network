@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import DeleteIcon from '../../common/img/icons/delete.svg';
 import MessageIcon from '../../common/img/icons/message.svg';
+import { ISingleFriendProps } from '../Friends/FriendsInterface'
 
 const SingleFriendWrapper = styled.div`
   display: flex;
@@ -78,51 +78,38 @@ const Placer = styled.div`
   align-items: center;
 `;
 
-const SingleFriend = ({
+
+
+
+const SingleFriend: React.FC<ISingleFriendProps> = ({
   firstname,
   lastname,
   profesion,
   avatarka,
+  id,
   deleteButtonHandler,
-  messegeButtonHandler,
+  messegeButtonHandler
 }) => (
-  <SingleFriendWrapper>
-    <Placer>
-      <FriendAvatarWrapper href="#">
-        <FriendAvatar src={avatarka} alt="there should be avatarka" />
-      </FriendAvatarWrapper>
-      <FriendInfo>
-        <FriendFullName>
-          {firstname}
-          {' '}
-          {lastname}
-        </FriendFullName>
-        <FriendProfession>{profesion}</FriendProfession>
-      </FriendInfo>
-    </Placer>
-    <Placer>
-      <MessageButton onClick={messegeButtonHandler} />
-      <DeleteButton onClick={deleteButtonHandler} />
-    </Placer>
-  </SingleFriendWrapper>
-);
+    <SingleFriendWrapper>
+      <Placer>
+        <FriendAvatarWrapper href="#">
+          <FriendAvatar src={avatarka} alt="there should be avatarka" />
+        </FriendAvatarWrapper>
+        <FriendInfo>
+          <FriendFullName>
+            {firstname}
+            {' '}
+            {lastname}
+          </FriendFullName>
+          <FriendProfession>{profesion}</FriendProfession>
+        </FriendInfo>
+      </Placer>
+      <Placer>
+        <MessageButton onClick={(event) => messegeButtonHandler(event, id)} />
+        <DeleteButton onClick={(event) => deleteButtonHandler(event, id)} />
+      </Placer>
+    </SingleFriendWrapper>
 
-SingleFriend.defaultProps = {
-  firstname: '',
-  lastname: '',
-  profesion: '',
-  avatarka: '',
-  deleteButtonHandler: () => {},
-  messegeButtonHandler: () => {},
-};
-
-SingleFriend.propTypes = {
-  firstname: PropTypes.string,
-  lastname: PropTypes.string,
-  profesion: PropTypes.string,
-  avatarka: PropTypes.string,
-  deleteButtonHandler: PropTypes.func,
-  messegeButtonHandler: PropTypes.func,
-};
+  );
 
 export default SingleFriend;

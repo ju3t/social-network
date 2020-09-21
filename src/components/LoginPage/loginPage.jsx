@@ -81,6 +81,8 @@ const ButtonSingInUpTxt = styled.button`
     cursor: pointer;
   }
 `;
+
+// eslint-disable-next-line no-unused-vars
 const ButtonLeft = styled.button`
   background-color: rgba(0, 125, 215, 0);
   border: none;

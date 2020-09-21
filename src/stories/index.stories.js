@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import Login from '../components/LoginPage/loginPage';
-import BlockComments from '../components/Main/Articles/blockComment/BlockComments';
+import BlockComments from '../components/Main/Articles/blockComment/BlockComments/BlockComments';
 import BlockNotes from '../components/Main/Articles/blockNotes/BlockNotes';
 import UserInfoHeader from '../components/Main/UserInfoHeader';
 import Wall from '../components/Main/Wall';
