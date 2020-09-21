@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import SingleGroup from './SingleGroup';
 import testAvatarka from '../../img/test-group-avatar.svg';
 import PageSearchInput from '../../common/Inputs/PageSearch';
+import { useSelector, useDispatch } from 'react-redux';
+import { TypeRootReducer } from '../../redux-toolkit/rootReducer';
+import { getGroups, fetchgroups } from '../../redux-toolkit/sliceGroup';
 
 interface GroupData {
   avatarka: string;
@@ -58,6 +61,11 @@ const testData = [
 ];
 
 const Groups: React.FC = () => {
+  const dispatch = useDispatch();
+  const { groups } = useSelector((state: TypeRootReducer) => state.groupsReducer);
+  const fetch = () => {
+    dispatch(fetchgroups(1, 15));
+  };
   const [groupName, setGroupName] = useState<string>('');
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -81,6 +89,8 @@ const Groups: React.FC = () => {
     });
   return (
     <GroupsContainer>
+      <button onClick={fetch}>TEST</button>
+
       <PageSearchInput placeholder="Начните поиск группы..." action={handleInput} />
       <GroupsTitle>Группы</GroupsTitle>
       {groupName.length > 0 ? renderGroups(filterGroups(testData)) : renderGroups(testData)}
