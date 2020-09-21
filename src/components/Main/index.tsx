@@ -1,8 +1,9 @@
 // eslint-disable-next-line
-import React, {useEffect, useCallback} from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { connect } from 'react-redux';
-import { loadUser, IUser } from '../../redux-toolkit/userSlice';
+import { loadUser } from '../../redux-toolkit/userSlice';
 import { IStore } from '../../redux-toolkit/store';
+import { IUser } from '../../types/user';
 import { Spin } from 'antd';
 
 import Header from '../../common/header';
@@ -12,65 +13,55 @@ import UserInfoHeader from './UserInfoHeader';
 import Wall from './Wall';
 
 interface MainProps {
-  loadUser: ( arg: number ) => void,
-  user: IUser,
-  loading: boolean,
-  error: Error
+  loadUser: (arg: number) => void;
+  user: IUser;
+  loading: boolean;
+  error: Error;
 }
 
-const Main: React.FC<MainProps> = ({
-  loadUser: _loadUser,
-  user,
-  loading,
-  error
-}: MainProps) => {
+const Main: React.FC<MainProps> = ({ loadUser: _loadUser, user, loading, error }: MainProps) => {
   useEffect(() => {
     _loadUser(2);
   }, [_loadUser]);
   const renderContent = useCallback(() => {
     if (!user) {
-      return <Spin></Spin>
+      return <Spin></Spin>;
     }
     const profession = 'Программист на HTML';
     const lastStatus = 'online';
-    const {
-      firstName,
-      lastName,
-      avatar
-    } = user;
+    const { firstName, lastName, avatar } = user;
     return (
-    <>
-      <UserInfoHeader 
-        firstName={firstName}
-        lastName={lastName}
-        profession={profession}
-        lastStatus={lastStatus}
-        avatar={avatar}
-      />
-      <Wall />
-    </>)
+      <>
+        <UserInfoHeader
+          firstName={firstName}
+          lastName={lastName}
+          profession={profession}
+          lastStatus={lastStatus}
+          avatar={avatar}
+        />
+        <Wall />
+      </>
+    );
   }, [user]);
 
   return (
-  <>
-    <Header />
-    <MainContainer>
-        <PageWrapper messages={false}>
-          {renderContent()}
-        </PageWrapper>
-    </MainContainer>
-  </>
-);
+    <>
+      <Header />
+      <MainContainer>
+        <PageWrapper messages={false}>{renderContent()}</PageWrapper>
+      </MainContainer>
+    </>
+  );
 };
 
-const mapStateToProps = (state:IStore) => ({
+const mapStateToProps = (state: IStore) => ({
   user: state.user.data,
   loading: state.user.loading,
-  error: state.user.error
-})
+  error: state.user.error,
+});
 
 const mapDispatchToProps = {
-  loadUser
+  loadUser,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
