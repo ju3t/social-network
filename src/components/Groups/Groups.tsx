@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import SingleGroup from './SingleGroup';
 import testAvatarka from '../../img/test-group-avatar.svg';
@@ -10,8 +10,8 @@ import { getGroups, fetchgroups } from '../../redux-toolkit/sliceGroup';
 interface GroupData {
   avatarka: string;
   name: string;
-  category: string;
-  followers: number;
+  groupCategory: string;
+  subscribers: number;
   id: number;
 }
 
@@ -66,6 +66,11 @@ const Groups: React.FC = () => {
   const fetch = () => {
     dispatch(fetchgroups(1, 15));
   };
+  const [groupsToShow, setGroupsToShow] = useState(groups);
+  useEffect(() => {
+    fetch();
+  }, []);
+
   const [groupName, setGroupName] = useState<string>('');
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -76,24 +81,24 @@ const Groups: React.FC = () => {
 
   const renderGroups = (data: GroupData[]) =>
     data.map((el) => {
-      const { avatarka, name, category, followers } = el;
+      const { avatarka = testAvatarka, name, groupCategory, subscribers } = el;
       return (
         <SingleGroup
           key={el.id}
           avatar={avatarka}
           name={name}
-          category={category}
-          followers={followers}
+          category={groupCategory}
+          followers={subscribers}
         />
       );
     });
   return (
     <GroupsContainer>
-      <button onClick={fetch}>TEST</button>
+      <button onClick={() => console.log(groupsToShow, groups)}>TEST</button>
 
       <PageSearchInput placeholder="Начните поиск группы..." action={handleInput} />
       <GroupsTitle>Группы</GroupsTitle>
-      {groupName.length > 0 ? renderGroups(filterGroups(testData)) : renderGroups(testData)}
+      {groupName.length > 0 ? renderGroups(filterGroups(groups)) : renderGroups(groups)}
     </GroupsContainer>
   );
 };
