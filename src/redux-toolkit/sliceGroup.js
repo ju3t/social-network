@@ -12,7 +12,7 @@ const groupsSlice = createSlice({
   reducers: {
     getGroups(state, action) {
       console.log(action);
-      state.groups.push(action.payload);
+      state.groups = action.payload;
       //const { id, text } = action.payload;
       //state.push({ id, text, completed: false });
     },
