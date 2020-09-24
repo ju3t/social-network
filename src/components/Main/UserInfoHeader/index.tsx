@@ -28,7 +28,7 @@ const UserInfoHeader : React.FC<IUserInfoHeader> = ({
   lastName,
   profession,
   lastStatus,
-  avatar
+  avatar,
 }: IUserInfoHeader) => (
   <UserInfoHeaderContainer>
     <UserInfoAvatar>
@@ -37,7 +37,11 @@ const UserInfoHeader : React.FC<IUserInfoHeader> = ({
       { lastStatus === 'online' && <UserOnlineIcon />}
     </UserInfoAvatar>
     <UserInfoNameBlock>
-      <UserName>{firstName} {lastName}</UserName>
+      <UserName>
+        {firstName}
+        {' '}
+        {lastName}
+      </UserName>
       <UserProfession>{profession}</UserProfession>
       <UserOnlineStatus>{lastStatus}</UserOnlineStatus>
     </UserInfoNameBlock>

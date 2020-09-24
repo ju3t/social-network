@@ -30,7 +30,7 @@ const WallCreateArticle: React.FC = () => {
 
   const changeOpen = useCallback(
     () => setOpen(false),
-    [setOpen]
+    [setOpen],
   );
 
   const renderPlus = useCallback(

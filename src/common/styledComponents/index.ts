@@ -211,9 +211,9 @@ export const InfoHeaderText = styled.div`
 `;
 
 export const InfoHeaderTextBlock = styled.div`
-  width: 530px;
   margin-top: 47px;
   display: flex;
+  flex-wrap: wrap;
 `;
 
 export const InfoHeaderTextLeftBlock = styled.div`
@@ -232,6 +232,7 @@ export const InfoHeaderListItemLeft = styled.div`
   font-size: 16px;
   line-height: 20px;
   color: #515151;
+  flex-basis: 45%;
 `;
 
 export const InfoHeaderListItemRight = styled.div`
@@ -239,6 +240,7 @@ export const InfoHeaderListItemRight = styled.div`
   font-size: 16px;
   line-height: 20px;
   color: #000000;
+  flex-basis: 45%;
 `;
 
 export const InfoPhotoBlock = styled.div`

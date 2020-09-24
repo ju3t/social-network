@@ -10,7 +10,7 @@ export interface IUser {
   password: string;
   city: string;
   linkSite?: string;
-  roleName: string;
+  roleName?: string;
   status?: string;
   activeName?: string;
 }

@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import userController from '../services/user-controller';
+import { getUserById } from '../services/user-controller';
 
 const loadUser = createAsyncThunk('user/loadUser', async (id: number) => {
-  const response = await userController.getUserById(id);
+  const response = await getUserById(id);
   return response;
 });
 
