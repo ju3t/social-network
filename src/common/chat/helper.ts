@@ -4,7 +4,6 @@ import { uniqueId } from 'lodash';
 // заменить dateSend и timeSend на Date() и отредачить по date-fns
 // отсортировать по дате либо придут отсортированные
 
-
 const testData = [
   {
     id: uniqueId(),
@@ -254,7 +253,7 @@ const testData = [
 export type IgroupMessageByUser = {
   id: string;
   username: string;
-  name: string; 
+  name: string;
   messages: {
     title: string;
     id: string;
@@ -262,23 +261,22 @@ export type IgroupMessageByUser = {
   dateSend: string;
   timeSend: string;
   image: string;
-}
+};
 
 export const groupMessagesByUser:IgroupMessageByUser[] = testData
-                                            .reduce((acc:Array<IgroupMessageByUser>, el) => {
-  const lastAccElement:IgroupMessageByUser = acc[acc.length - 1];
-  const lastAccIndex:number = acc.length - 1;
+  .reduce((acc:Array<IgroupMessageByUser>, el) => {
+    const lastAccElement:IgroupMessageByUser = acc[acc.length - 1];
+    const lastAccIndex:number = acc.length - 1;
 
-  const initialMessagesArray = { ...el, messages: [{ title: el.messages, id: uniqueId() }] };
-  if (lastAccElement === undefined) return [initialMessagesArray];
+    const initialMessagesArray = { ...el, messages: [{ title: el.messages, id: uniqueId() }] };
+    if (lastAccElement === undefined) return [initialMessagesArray];
 
-  if (lastAccElement.username === el.username) {
-    const newObject = {
-      ...acc[lastAccIndex],
-      messages: [...acc[lastAccIndex].messages, { title: el.messages, id: uniqueId() }],
-    };
-    return [...acc.splice(0, lastAccIndex), newObject];
-  }
-  return [...acc, initialMessagesArray];
-}, []);
-
+    if (lastAccElement.username === el.username) {
+      const newObject = {
+        ...acc[lastAccIndex],
+        messages: [...acc[lastAccIndex].messages, { title: el.messages, id: uniqueId() }],
+      };
+      return [...acc.splice(0, lastAccIndex), newObject];
+    }
+    return [...acc, initialMessagesArray];
+  }, []);

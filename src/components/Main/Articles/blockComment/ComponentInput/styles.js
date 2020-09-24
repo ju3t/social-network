@@ -1,8 +1,8 @@
 import styled from 'styled-components';
+import { Form } from 'formik';
 import openNote from '../../icons/open_note.svg';
 import closeNote from '../../icons/close_note.svg';
 import sendComments from '../../icons/send_comments.svg';
-import { Form } from 'formik';
 
 export const WrapperForm = styled(Form)`
   width: 100%;

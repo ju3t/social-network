@@ -22,26 +22,27 @@ const ComponentInput: React.FC<Props> = ({ setIsOpen }) => {
   return (
     <Formik
       initialValues={{
-        inputText: ''
+        inputText: '',
       }}
       onSubmit={
         (values, actions) => {
           alert(`Sending ${values.inputText}`);
           actions.resetForm();
         }
-      }>
+      }
+    >
       <WrapperForm>
         <Avatar src={userFoto} />
-        <Field 
+        <Field
           as={Input}
-          name="inputText" 
+          name="inputText"
           placeholder="Напишите что-нибудь..."
           autoComplete="off"
         />
-        <BtnSend type="submit"/>
+        <BtnSend type="submit" />
         <BtnOpenNote type="button" onClick={openOnClick} />
       </WrapperForm>
     </Formik>
-  )
+  );
 };
 export default ComponentInput;
