@@ -12,12 +12,14 @@ import forward from '../../../common/img/icons/forward.svg';
 import play from '../../../common/img/icons/play.svg';
 import stop from '../../../common/img/icons/stop.svg';
 import back from '../../../common/img/icons/back.svg';
+import typeFuncFind from '../../../helperFunctions/typeFuncFind';
+
 
 SwiperCore.use([EffectCoverflow]);
 
 const Deck = () => {
-  const [currentTrackId, setCurrentTrackId] = useState(tracks[0].id);
-  const [mySwiper, setMySwiper] = useState();
+  const [currentTrackId, setCurrentTrackId] = useState<number>(tracks[0].id);
+  const [mySwiper, setMySwiper] = useState<any>();
   const [playing, setPlaying] = useState(false);
   const [timePlayed, setTimePlayed] = useState(0);
 
@@ -31,15 +33,21 @@ const Deck = () => {
     setCurrentTrackId(tracks[mySwiper.realIndex].id);
   };
 
-  const handleToggle = () => {
+  const handlePlayToggle = () => {
     setPlaying((prevState) => !prevState);
   };
 
-  const Slides = tracks.map((track) => (
-    <SwiperSlide>
+  const Slides = tracks.map((track: { image: string, id: number }) => (
+    <SwiperSlide key={track.id}>
       <Card image={track.image} />
     </SwiperSlide>
   ));
+
+  const chosenTrack = tracks.find((song) => song.id === currentTrackId);
+  const titleSong = typeFuncFind(chosenTrack).title;
+  const performerSong = typeFuncFind(chosenTrack).performer;
+  const albomSongs = typeFuncFind(chosenTrack).album;
+  const urlSong = typeFuncFind(chosenTrack).url;
 
   return (
     <Main>
@@ -49,7 +57,7 @@ const Deck = () => {
             <button onClick={handlePrev} type="button">
               <img src={back} alt="" />
             </button>
-            <Play onClick={handleToggle}>
+            <Play onClick={handlePlayToggle}>
               <img src={playing ? stop : play} alt="" />
             </Play>
             <Next onClick={handleNext}>
@@ -59,12 +67,12 @@ const Deck = () => {
           <Slider defaultValue={0} value={timePlayed * 100} />
         </ControlsContainer>
         <TrackInfoArea>
-          <TrackAlbum>{tracks.find((song) => song.id === currentTrackId).title}</TrackAlbum>
+          <TrackAlbum>{titleSong}</TrackAlbum>
           <TrackInfo>
             <TrackPerformer>
-              {tracks.find((song) => song.id === currentTrackId).performer}
+              {performerSong}
             </TrackPerformer>
-            <TrackTitle>{tracks.find((song) => song.id === currentTrackId).album}</TrackTitle>
+            <TrackTitle>{albomSongs}</TrackTitle>
           </TrackInfo>
         </TrackInfoArea>
       </ButtonsArea>
@@ -95,9 +103,12 @@ const Deck = () => {
         onEnded={() => {
           handleNext();
         }}
-        onProgress={({ played }) => setTimePlayed(played)}
+        onProgress={({ played }: { played: () => number }) => {
+          console.log('played', played);
+          setTimePlayed(played);
+        }}
         playing={playing}
-        url={tracks.find((song) => song.id === currentTrackId).url}
+        url={urlSong}
       />
     </Main>
   );

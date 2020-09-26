@@ -17,14 +17,15 @@
     "@types/react-redux": "^7.1.9",
     "@types/react-router-dom": "^5.1.5",
     "@types/react-slick": "^0.23.4",
+    "@types/react-swipe": "^6.0.0",
     "@types/styled-components": "^5.1.3",
+    "@types/swiper": "^5.4.0",
     "antd": "^4.4.3",
     "axios": "^0.20.0",
     "formik": "^2.1.5",
     "gh-pages": "^3.1.0",
     "lodash": "^4.17.19",
     "node-sass": "^4.14.1",
-    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-elastic-carousel": "^0.6.7",
@@ -44,7 +45,7 @@
     "reselect": "^4.0.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.1.1",
-    "swiper": "^6.1.1"
+    "swiper": "^6.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -103,8 +104,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx}": [
-      "prettier --write",
+    "*.{js,jsx,ts,tsx}": [
       "npm run lint:fix"
     ]
   }

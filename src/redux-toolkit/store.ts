@@ -6,7 +6,7 @@ const store = configureStore({
   reducer: rootReducer,
 });
 
-console.log('store', store);
+// console.log('store', store);
 
 const newRootReducer = require('./rootReducer').default;
 

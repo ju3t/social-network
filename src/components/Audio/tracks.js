@@ -1,4 +1,4 @@
-export default [
+const tracks = [
   {
     id: 2310,
     playlistId: 4,
@@ -90,3 +90,5 @@ export default [
     album: '',
   },
 ];
+
+export default tracks;

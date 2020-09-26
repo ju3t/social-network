@@ -251,7 +251,7 @@ const testData = [
   },
 ];
 
-export const groupMessagesByUser = testData.reduce((acc, el) => {
+export const groupMessagesByUser = testData.reduce((acc: any, el: any) => {
   const lastAccElement = acc[acc.length - 1];
   const lastAccIndex = acc.length - 1;
 

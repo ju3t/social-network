@@ -1,3 +1,3 @@
-export const requested = 'requested';
-export const finished = 'finished';
-export const failed = 'failed';
+export const pending = 'pending';
+export const fulfilled = 'fulfilled';
+export const rejected = 'rejected';

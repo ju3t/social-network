@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Slider from 'react-slick';
 import __ from 'lodash';
@@ -13,8 +13,11 @@ import backArrow from '../../common/img/icons/playlistarrowback.svg';
 import nextArrow from '../../common/img/icons/playlistarrownext.svg';
 import { TypeDispatch } from '../../redux-toolkit/store';
 import { TypeRootReducer } from '../../redux-toolkit/rootReducer';
-import { allAudiosAction } from '../../redux-toolkit/allAudiosSlice';
+import { allAudiosAction, friendsAudioAction, myAudiosAction } from '../../redux-toolkit/audios/allAudiosSlice';
+import { message } from 'antd';
+import { rejected } from '../../constants/fetchState';
 // import Slider from '../../common/slider';
+
 
 const Main = styled.div`
   //width: 1300px;
@@ -143,7 +146,7 @@ const Prev = styled.div`
   cursor: pointer;
 `;
 
-const RightSide = styled.div`
+const LeftSide = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -152,7 +155,7 @@ const RightSide = styled.div`
   }
 `;
 
-const LeftSide = styled.div`
+const RightSide = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -178,11 +181,19 @@ const settings = {
 const Audio = () => {
   const arr = [1, 2, 3, 4, 5, 6];
   const dispatch: TypeDispatch = useDispatch();
-  const arrAllAudiosState = useSelector(({ allAudiosSlice }: TypeRootReducer) => {
-    console.log('allAudiosSlice selector', allAudiosSlice);
-    return allAudiosSlice.allAudios;
+  const objAudiosState = useSelector(({ allAudiosReducer }: TypeRootReducer) => {
+    // console.log('objAudiosState selector page', objAudiosState);
+    // console.log('allAudiosReducer selector page', allAudiosReducer);
+    return allAudiosReducer;
   });
-  console.log('arrAllAudiosState', arrAllAudiosState);
+  // console.log('objAudiosState', objAudiosState);
+
+
+  useEffect(() => {
+    if (objAudiosState.loading.endsWith(rejected)) {
+      message.error(objAudiosState.msgFetchState);
+    }
+  }, [objAudiosState.loading, objAudiosState.msgFetchState]);
 
   type TypeInitialStateActiveBtn<T extends string> = { [key in T]: boolean };
 
@@ -196,7 +207,6 @@ const Audio = () => {
     myAudios: true,
     allAudios: false,
     friendsAudios: false,
-    argCategoryAudio: false,
   };
 
   const [objCategoryAudios, setChosenCategoryAudios] = useState(initialStateActiveBtn);
@@ -207,7 +217,7 @@ const Audio = () => {
     icon: string
     id: number
     name: string
-    persistDateTime: string
+    length: number
     url: string
   }
 
@@ -216,33 +226,63 @@ const Audio = () => {
   // }, [dispatch]);
 
   const songsArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  // const songsItems = arrAllAudiosState.length > 0 && arrAllAudiosState.map(({ id, icon, author, name }) => (
-  const songsItems = arrAllAudiosState.length > 0 && arrAllAudiosState.map(({ icon, author, name, id, persistDateTime }: IAllAudios) => (
-    <li key={id}>
-      <RightSide>
-        <div>
-          <img src={pic || icon} alt="icon" title="icon" />
-        </div>
-        <div>
-          <h3>{author}</h3>
-          <p>{name}</p>
-        </div>
-      </RightSide>
-      <LeftSide>
-        <h4>{persistDateTime}</h4>
-      </LeftSide>
-    </li>
-  ));
+  // const songsItems = objAudiosState.length > 0 && objAudiosState.map(({ id, icon, author, name }) => (
+  const songsItems = objAudiosState && objAudiosState.allAudios.length > 0
+    && objAudiosState.allAudios.map(({ icon, author, name, id, length }: IAllAudios) => {
+      const timeAudio = (sec: number): string => {
+        if (sec === null) {
+          return sec;
+        }
+        const minutes = Math.floor(sec / 60);
+        const seconds = sec % 60;
+        return `${minutes}:${seconds}`;
+      };
+      console.log('length', length, typeof length);
+      return (
+        <li key={id}>
+          <LeftSide>
+            <div>
+              <img src={pic || icon} alt="icon" title="icon" />
+            </div>
+            <div>
+              <h3>{author}</h3>
+              <p>{name}</p>
+            </div>
+          </LeftSide>
+          <RightSide>
+            <h4>{timeAudio(length)}</h4>
+          </RightSide>
+        </li>
+      );
+    });
+
+
+  const ListFriends = objAudiosState && objAudiosState.friends.length > 0
+    && objAudiosState.friends
+      .map(({ firstName, lastName, userId, status, avatar, aboutMe }: any) => {
+        return (
+          <li key={userId} onClick={() => console.log('Открыть список аудио')}>
+            <LeftSide>
+              <div>
+                <img src={pic || avatar} alt="icon" title="icon" />
+              </div>
+              <div>
+                <h3>{`${firstName} ${lastName}`}</h3>
+                <p>{aboutMe}</p>
+              </div>
+            </LeftSide>
+            <RightSide>
+              <h4>{status}</h4>
+            </RightSide>
+          </li>
+        );
+      });
+
 
   const myAudiosOnClick = (argActiveBtn: string) => async (evt: any) => {
     console.log('evt.target', evt.target);
     console.log('myAudiosOnClick');
     // dispatch(myAudiosAction());
-    // setChosenCategoryAudios({
-    //   myAudios: 'activeBtn--underline',
-    //   allAudios: '',
-    //   friendsAudios: '',
-    // });
   };
 
   const allAudiosOnClick = (argActiveBtn: string) => (evt: any) => {
@@ -255,17 +295,28 @@ const Audio = () => {
         friendsAudios: false,
       });
     }
-    dispatch(allAudiosAction());
+    // dispatch(allAudiosAction());
   };
 
-  const chooseCategoryAudiosOnClick = (argCategoryAudio: string) => (): void => {
+  const chooseCategoryAudiosOnClick = (argCategoryAudio: string) => async (): Promise<any> => {
     console.log('argCategoryAudio', argCategoryAudio);
     // this.setState((prev: any): any => ({ [argCategoryAudio]: !prev[argCategoryAudio] }));
     setChosenCategoryAudios({
       [argCategoryAudio]: true,
     });
-    if ('allAudios' in objCategoryAudios) {
-      dispatch(allAudiosAction());
+
+    if (argCategoryAudio === 'myAudios') {
+      console.log('objCategoryAudios', objCategoryAudios);
+      console.log('page MYAudios worked ');
+      return dispatch(myAudiosAction());
+    }
+    if (argCategoryAudio === 'allAudios') {
+      console.log('page ALLAudios worked', objCategoryAudios);
+      return dispatch(allAudiosAction());
+    }
+    if (argCategoryAudio === 'friendsAudios') {
+      console.log('friendsAudios page worked');
+      return dispatch(friendsAudioAction());
     }
   };
 
@@ -330,7 +381,7 @@ margin-right: 51px;
         </Slider>
       </PlayListArea>
       <SongsArea>
-        <ul>{songsItems}</ul>
+        <ul>{objCategoryAudios.friendsAudios ? ListFriends : songsItems}</ul>
       </SongsArea>
     </Main>
   );

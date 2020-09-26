@@ -1,11 +1,10 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import allAudiosSlice from './allAudiosSlice';
+import allAudiosReducer from './audios/allAudiosSlice';
+import myAudiosReducer from './audios/myAudiosSlice';
 
 const rootReducer = combineReducers({
-  allAudiosSlice,
+  allAudiosReducer,
 });
-
-console.log('rootReducer', rootReducer);
 
 export type TypeRootReducer = ReturnType<typeof rootReducer>;
 
