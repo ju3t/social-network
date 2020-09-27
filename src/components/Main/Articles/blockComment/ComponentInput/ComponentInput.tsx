@@ -3,7 +3,7 @@
 import React, { useCallback } from 'react';
 import { Avatar } from 'antd';
 import { Formik, Field } from 'formik';
-import userFoto from '../../blockNotes/userFoto.png';
+import userFoto from '../../../../../img/userFoto.png';
 import {
   WrapperForm,
   Input,

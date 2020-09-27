@@ -1,4 +1,4 @@
-import avatar from '../../components/Main/UserInfoHeader/img/main photo.png';
+import avatar from '../../img/main photo.png';
 import { IUser } from '../../types/user';
 
 function getUserById(id: number) :IUser {

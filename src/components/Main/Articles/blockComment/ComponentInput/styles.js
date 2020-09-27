@@ -12,7 +12,7 @@ export const WrapperForm = styled(Form)`
 `;
 
 export const Input = styled.input`
-  width: 808px;
+  width: 70%;
   height: 46px;
   background: #ffffff;
   border: 1px solid #515151;
@@ -43,13 +43,11 @@ export const BtnOpenNote = styled.button`
   height: 34px;
   border-radius: 17px;
   background-color: #ffb11b;
-  transform: translateX(100%);
   background-image: ${({ isOpen }) => (isOpen ? `url(${openNote})` : `url(${closeNote})`)};
   background-position: center center;
   background-repeat: no-repeat;
   cursor: pointer;
   border: none;
-  position: absolute;
   bottom: 18px;
   right: 0;
 

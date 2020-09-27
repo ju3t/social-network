@@ -7,6 +7,4 @@ import {
   updateUser,
 } from './user-controller';
 
-export {
-  getUserById, getAllUsers, createNewUser, removeUserById, getFriendsByUserId, updateUser,
-};
+export { getUserById, getAllUsers, createNewUser, removeUserById, getFriendsByUserId, updateUser };

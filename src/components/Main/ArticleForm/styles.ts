@@ -35,7 +35,6 @@ export const ArticleStyledForm = styled(Form)
     opacity: ${({ isOpen }) => (isOpen ? '1' : '0')};
     height: ${({ isOpen }) => (isOpen ? '100%' : '0px')};
     transition: 1s;
-    border: 3px solid red;
 `;
 
 export const ArticleButton = styled.button`
