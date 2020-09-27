@@ -13,8 +13,8 @@ const Img = styled.img`
   display: block;
   margin: 0 auto;
   border-radius: 10px;
-  width: 800px;
-  height: 400px;
+  max-width: 828px;
+  max-height: 404px;
   object-fit: contain;
   object-position: left;
   background: #808080;

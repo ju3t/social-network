@@ -54,7 +54,7 @@ const BtnBack = styled.button`
 
 const TitleAutor = styled.h3`
   color: #fff;
-  font-family: Montserrat;
+  
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -63,7 +63,7 @@ const TitleAutor = styled.h3`
 `;
 const TitleMusic = styled.h3`
   color: #fff;
-  font-family: Montserrat;
+  
   font-style: normal;
   font-weight: normal;
   font-size: 14px;

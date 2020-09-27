@@ -22,7 +22,7 @@ const UserName = styled.div`
   color: #000000;
   font-size: 12px;
   font-weight: 500;
-  font-family: Montserrat;
+  
   text-align: center;
 `;
 

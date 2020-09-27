@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const Headline = styled.h2`
-  font-family: Montserrat, sans-serif;
+  
   font-style: normal;
   font-weight: 600;
   font-size: 30px;
   line-height: 37px;
   vertical-align: middle;
-  color: #000000;
+  color: #000;
 `;
 
 const Container = styled.div`
@@ -31,10 +31,11 @@ export default SectionHeader;
 
 SectionHeader.defaultProps = {
   headline: '',
-  children: '',
+  children: [],
 };
 
 SectionHeader.propTypes = {
   headline: PropTypes.string,
-  children: PropTypes.node,
+  // eslint-disable-next-line react/forbid-prop-types
+  children: PropTypes.array,
 };

@@ -57,6 +57,7 @@ const OpenedVideo = ({ id, action }) => (
 
 OpenedVideo.defaultProps = {
   id: '',
+  /* eslint-disable @typescript-eslint/no-empty-function*/
   action: () => {},
 };
 

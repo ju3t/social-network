@@ -28,16 +28,13 @@ const Main = styled.div`
 const SliderContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-bottom: 300px;
   z-index: 2;
   border: 3px solid goldenrod;
 `;
 
 const ButtonsArea = styled.div`
   display: flex;
-  margin-bottom: 100px;
-  //margin-top: 250px;
-  margin-left: 130px;
+  margin-top: 250px;
   border: 3px solid gold;
 `;
 
@@ -48,7 +45,7 @@ const SearchArea = styled.div`
   display: flex;
   justify-content: space-between;
   height: 130px;
-  width: 1000px;
+  max-width: 1000px;
   margin: 10px auto 80px auto;
   border-top: 1px solid #000000;
   border-bottom: 1px solid #000000;
@@ -62,8 +59,6 @@ const PlayListArea = styled.div`
   display: flex;
   flex-direction: column;
   background-color: white;
-  margin-left: 200px;
-  width: 1000px;
   h3 {
     color: black;
     text-align: left;
@@ -142,7 +137,7 @@ const Prev = styled.div`
   background-repeat: no-repeat;
   max-width: 30px;
   height: 30px;
-  margin-left: -150px;
+  margin-left: -64px;
   margin-top: 40px;
   cursor: pointer;
 `;

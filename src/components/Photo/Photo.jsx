@@ -14,6 +14,7 @@ import Slider from '../../common/slider';
 import SliderItemSt from './SliderItem';
 import SectionHeader from '../../common/sectionHeader';
 import Button from '../../common/button';
+import ContentBox from '../../common/contentBox/ContentBox';
 
 import data from './albums';
 import AllPhotosGrid from './AllPhotosGrid';
@@ -51,10 +52,10 @@ const Headline = styled.h1`
   top: -90px;
 `;
 
-const ContentBox = styled(Box)`
-  margin-top: 250px;
-  padding: 85px;
-`;
+// const ContentBox = styled(Box)`
+//   margin-top: 250px;
+//   padding: 85px;
+// `;
 
 const Photo = () => (
   <PageWrapper>

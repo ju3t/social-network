@@ -2,7 +2,6 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import __ from 'lodash';
 import avatar from '../../img/icons/mock-avatar.svg';
 import favorite from '../../img/icons/favorite.svg';
 import like from '../../img/icons/like.svg';
@@ -30,7 +29,7 @@ export default function NewsItem(props) {
   const height = isFullContent ? '' : '100px';
 
   const listTags = tags.map((tag) => (
-    <LiItem key={__.uniqueId()}>
+    <LiItem>
       <TagLink key={tag} href="http://localhost:3000/social-network">
         #
         {tag}
@@ -120,7 +119,7 @@ const AuthorContainer = styled.div`
 
 const Author = styled.span`
   display: block;
-  font-family: Montserrat, sans-serif;
+  
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -132,7 +131,7 @@ const Author = styled.span`
 
 const Time = styled.span`
   display: block;
-  font-family: Montserrat, sans-serif;
+  
   font-style: normal;
   font-weight: 500;
   font-size: 13px;
@@ -152,7 +151,7 @@ const ActionsContainer = styled.div`
 const ButtonAction = styled.button`
   margin-left: 65px;
   display: flex;
-  font-family: Montserrat, sans-serif;
+  
   font-style: normal;
   font-weight: normal;
   font-size: 18px;

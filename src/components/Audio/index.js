@@ -3,12 +3,7 @@ import styled from 'styled-components';
 
 import PageWrapper from '../../common/pageWrapper';
 import Audio from './AudioPage';
-import { Box } from '../../common/styledComponents';
-
-const ContentBox = styled(Box)`
-  margin-top: 200px;
-  padding: 0;
-`;
+import ContentBox from '../../common/contentBox/ContentBox';
 
 const AudioPage = () => (
   <PageWrapper>
