@@ -16,6 +16,7 @@ import { TypeRootReducer } from '../../redux-toolkit/rootReducer';
 import { allAudiosAction, friendsAudioAction, myAudiosAction } from '../../redux-toolkit/audios/allAudiosSlice';
 import { message } from 'antd';
 import { rejected } from '../../constants/fetchState';
+import IAllAudios from '../../typesInterfaces/IAllAudios';
 // import Slider from '../../common/slider';
 
 
@@ -195,13 +196,9 @@ const Audio = () => {
     }
   }, [objAudiosState.loading, objAudiosState.msgFetchState]);
 
+  // Вариант типизации для initialStateActiveBtn
   type TypeInitialStateActiveBtn<T extends string> = { [key in T]: boolean };
-
-  interface IinitialStateActiveBtn {
-    myAudios: boolean;
-    allAudios: boolean;
-    friendsAudios: boolean;
-  }
+  // Виды типизации для initialStateActiveBtn END
 
   const initialStateActiveBtn: { [key: string]: boolean } = {
     myAudios: true,
@@ -210,16 +207,6 @@ const Audio = () => {
   };
 
   const [objCategoryAudios, setChosenCategoryAudios] = useState(initialStateActiveBtn);
-
-  interface IAllAudios {
-    album: string
-    author: string
-    icon: string
-    id: number
-    name: string
-    length: number
-    url: string
-  }
 
   // useEffect(() => {
   //   dispatch(allAudiosAction());
