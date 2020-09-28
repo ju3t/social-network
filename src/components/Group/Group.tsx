@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect, ConnectedProps } from 'react-redux';
 import Navbar from './Navbar';
 import NewsList from './NewsList';
 import Comments from './Comments';
 import InputComment from './InputComment';
 import { mockData } from './mockData';
 import photogroup from '../../img/icons/photogroup.svg';
-import { connect, ConnectedProps } from 'react-redux';
-import { getGroups } from '../../redux-toolkit/sliceGroup';
+import { getGroups } from '../../redux-toolkit/groupSlice';
 
 interface RootState {
   groups: [];
@@ -55,7 +55,7 @@ interface Iprops {
   getGroups: () => void;
 }
 const Group = (props: PropsFromRedux) => {
-  //const Group: React.FC<GroupProps> = (props) => {
+  // const Group: React.FC<GroupProps> = (props) => {
   const { getGroups } = props;
   const handle = () => {
     getGroups('qweeee');

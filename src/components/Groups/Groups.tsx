@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
 import SingleGroup from './SingleGroup';
 import testAvatarka from '../../img/test-group-avatar.svg';
 import PageSearchInput from '../../common/Inputs/PageSearch';
-import { useSelector, useDispatch } from 'react-redux';
 import { TypeRootReducer } from '../../redux-toolkit/rootReducer';
-import { getGroups, fetchgroups } from '../../redux-toolkit/sliceGroup';
+import { getGroups, fetchgroups } from '../../redux-toolkit/groupSlice';
 
 interface GroupData {
   avatarka: string;

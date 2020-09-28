@@ -264,7 +264,8 @@ export type IgroupMessageByUser = {
   image: string;
 }
 
-export const groupMessagesByUser:IgroupMessageByUser[] = testData.reduce((acc:Array<IgroupMessageByUser>, el) => {
+export const groupMessagesByUser:IgroupMessageByUser[] = testData
+                                            .reduce((acc:Array<IgroupMessageByUser>, el) => {
   const lastAccElement:IgroupMessageByUser = acc[acc.length - 1];
   const lastAccIndex:number = acc.length - 1;
 

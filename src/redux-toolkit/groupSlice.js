@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { TypeThunkAction } from './store';
-import apiService from './apiService';
-const api = new apiService();
+import ApiService from './apiService';
+
+const api = new ApiService();
 
 const initialState = {
   groups: [],
@@ -13,8 +14,8 @@ const groupsSlice = createSlice({
     getGroups(state, action) {
       console.log(action);
       state.groups = action.payload;
-      //const { id, text } = action.payload;
-      //state.push({ id, text, completed: false });
+      // const { id, text } = action.payload;
+      // state.push({ id, text, completed: false });
     },
     toggleTodo(state, action) {
       const todo = state.find((todo) => todo.id === action.payload);
@@ -30,9 +31,8 @@ export const { getGroups, toggleTodo } = groupsSlice.actions;
 export default groupsSlice.reducer;
 
 export function fetchgroups(page, size) {
-  return (dispatch) => {
-    return api.apiGroups(page, size).then((json) => {
+  return (dispatch) =>
+    api.apiGroups(page, size).then((json) => {
       dispatch(getGroups(json));
     });
-  };
 }

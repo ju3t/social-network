@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import * as React from 'react';
 
-import avatar from './img/main photo.png';
 import addPhotoIcon from './img/add photo.svg';
 import {
   UserInfoHeaderContainer,
@@ -15,17 +14,32 @@ import {
   UserOnlineIcon,
 } from '../../../common/styledComponents';
 
-const UserInfoHeader = () : React.FunctionComponentElement<unknown> => (
+export interface IUserInfoHeader {
+    firstName: string,
+    lastName: string,
+    profession: string,
+    lastStatus: Date | string,
+    avatar: string
+}
+
+/* TODO с onlineStatus и lastStatus */
+const UserInfoHeader : React.FC<IUserInfoHeader> = ({
+  firstName,
+  lastName,
+  profession,
+  lastStatus,
+  avatar
+}: IUserInfoHeader) => (
   <UserInfoHeaderContainer>
     <UserInfoAvatar>
       <Avatar img={avatar} />
       <AddPhotoIcon img={addPhotoIcon} />
-      <UserOnlineIcon />
+      { lastStatus === 'online' && <UserOnlineIcon />}
     </UserInfoAvatar>
     <UserInfoNameBlock>
-      <UserName>Богдан Леста</UserName>
-      <UserProfession>Frontend разработчик</UserProfession>
-      <UserOnlineStatus>был 20.07.2020 в 15:07</UserOnlineStatus>
+      <UserName>{firstName} {lastName}</UserName>
+      <UserProfession>{profession}</UserProfession>
+      <UserOnlineStatus>{lastStatus}</UserOnlineStatus>
     </UserInfoNameBlock>
   </UserInfoHeaderContainer>
 );

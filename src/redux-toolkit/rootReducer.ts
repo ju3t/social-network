@@ -1,7 +1,11 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import groupsReducer from './sliceGroup';
+import groupsReducer from './groupSlice';
+import { userReducer } from './userSlice';
 
-const rootReducer = combineReducers({ groupsReducer });
+const rootReducer = combineReducers({
+  user: userReducer,
+  groupsReducer,
+});
 
 export type TypeRootReducer = ReturnType<typeof rootReducer>;
 
