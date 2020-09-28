@@ -48,20 +48,15 @@ interface Icomment {
   date: Date;
   text: string;
 }
-type GroupProps = {
-  getGroups: () => void;
-};
-interface Iprops {
-  getGroups: () => void;
-}
+// type GroupProps = {
+//   getGroups: () => void;
+// };
+// interface Iprops {
+//   getGroups: () => void;
+// }
 const Group = (props: PropsFromRedux) => {
-  // const Group: React.FC<GroupProps> = (props) => {
-  const { getGroups } = props;
-  const handle = () => {
-    getGroups('qweeee');
-  };
-  console.log(props);
-  console.log(getGroups);
+  // const { getGroups } = props;
+  // console.log(getGroups);
   const { data, comments }: Idata = mockData;
   return (
     <Wrapper>
@@ -71,7 +66,6 @@ const Group = (props: PropsFromRedux) => {
             <Img src={photogroup} alt="Фото группы" />
           </GroupIco>
           <DataContainer>
-            <button onClick={handle}>Test</button>
             <NameGroup>Группа для красивых</NameGroup>
             <Category>Категория</Category>
           </DataContainer>

@@ -43,7 +43,10 @@ const NewsItem = ({
 
   const listTags = tags.map((tag) => (
     <LiItem key={tag}>
-      <TagLink href="http://localhost:3000/social-network">#{tag}</TagLink>
+      <TagLink href="http://localhost:3000/social-network">
+        #
+        {tag}
+      </TagLink>
     </LiItem>
   ));
   return (
@@ -129,7 +132,7 @@ const AuthorContainer = styled.div`
 
 const Author = styled.span`
   display: block;
-  
+
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -141,7 +144,7 @@ const Author = styled.span`
 
 const Time = styled.span`
   display: block;
-  
+
   font-style: normal;
   font-weight: 500;
   font-size: 13px;
@@ -161,7 +164,7 @@ const ActionsContainer = styled.div`
 const ButtonAction = styled.button`
   margin-left: 65px;
   display: flex;
-  
+
   font-style: normal;
   font-weight: normal;
   font-size: 18px;

@@ -10,7 +10,9 @@ type GroupProps = {
   followers: number;
 };
 
-const SingleGroup = ({ avatar, name, category, followers }: GroupProps) => (
+const SingleGroup = ({
+  avatar, name, category, followers,
+}: GroupProps) => (
   <SingleGroupContainer>
     <LeftWrapper>
       <GroupAvatar src={avatar} alt="avatar" />
@@ -19,7 +21,11 @@ const SingleGroup = ({ avatar, name, category, followers }: GroupProps) => (
           <ItemLink to={routes.group}>{name}</ItemLink>
         </GroupTitle>
         <GroupCategory>{category}</GroupCategory>
-        <GroupFollowers>{followers} подписчиков</GroupFollowers>
+        <GroupFollowers>
+          {followers}
+          {' '}
+          подписчиков
+        </GroupFollowers>
       </GroupDescriptionContainer>
     </LeftWrapper>
     <FollowButton>Вступить в группу</FollowButton>

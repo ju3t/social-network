@@ -11,20 +11,18 @@ interface Idata {
   };
 }
 
-const CommentsList = ({ data: { author, date, text } }: Idata) => {
-  return (
-    <Container>
-      <AvatarContainer>
-        <AvatarImg src={avatar} alt="Aватар" />
-      </AvatarContainer>
-      <Content>
-        <Author>{author}</Author>
-        <Date>{date.toLocaleString()}</Date>
-        <Text>{text}</Text>
-      </Content>
-    </Container>
-  );
-};
+const CommentsList = ({ data: { author, date, text } }: Idata) => (
+  <Container>
+    <AvatarContainer>
+      <AvatarImg src={avatar} alt="Aватар" />
+    </AvatarContainer>
+    <Content>
+      <Author>{author}</Author>
+      <Date>{date.toLocaleString()}</Date>
+      <Text>{text}</Text>
+    </Content>
+  </Container>
+);
 
 const Container = styled.div`
   display: flex;
@@ -54,7 +52,7 @@ const Content = styled.div`
 
 const Author = styled.div`
   margin-bottom: 5px;
-  
+
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -64,7 +62,7 @@ const Author = styled.div`
 
 const Date = styled.div`
   margin-bottom: 20px;
-  
+
   font-style: normal;
   font-weight: 500;
   font-size: 13px;
@@ -75,7 +73,7 @@ const Date = styled.div`
 
 const Text = styled.div`
   text-align: left;
-  
+
   font-style: normal;
   font-weight: normal;
   font-size: 16px;

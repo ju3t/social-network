@@ -10,21 +10,22 @@ interface Idata {
   };
 }
 
-const Navbar = ({ data: { date, description, link, owner } }: Idata) => {
-  return (
-    <NavbarWrapper>
-      <Date>{date.toLocaleString()}</Date>
-      <Description>{description}</Description>
-      <Link href={link}>{link}</Link>
-      <Owner>{owner}</Owner>
-    </NavbarWrapper>
-  );
-};
+const Navbar = ({
+  data: {
+    date, description, link, owner,
+  },
+}: Idata) => (
+  <NavbarWrapper>
+    <Date>{date.toLocaleString()}</Date>
+    <Description>{description}</Description>
+    <Link href={link}>{link}</Link>
+    <Owner>{owner}</Owner>
+  </NavbarWrapper>
+);
 
 export default Navbar;
 
 const NavbarWrapper = styled.nav`
-  
   font-style: normal;
   font-weight: normal;
   min-height: 150px;
@@ -38,7 +39,6 @@ const NavbarWrapper = styled.nav`
 `;
 
 const Date = styled.div`
-  
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -48,7 +48,6 @@ const Date = styled.div`
 `;
 
 const Description = styled.div`
-  
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -59,7 +58,6 @@ const Description = styled.div`
 `;
 
 const Link = styled.a`
-  
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -70,7 +68,6 @@ const Link = styled.a`
 `;
 
 const Owner = styled.div`
-  
   font-style: normal;
   font-weight: normal;
   font-size: 16px;

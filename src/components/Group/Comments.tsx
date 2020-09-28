@@ -13,14 +13,12 @@ interface Idata {
   data: Icomment[];
 }
 
-const Comments = ({ data }: Idata) => {
-  return (
-    <Container>
-      <Heading>Комментарии</Heading>
-      <CommentsList data={data} />
-    </Container>
-  );
-};
+const Comments = ({ data }: Idata) => (
+  <Container>
+    <Heading>Комментарии</Heading>
+    <CommentsList data={data} />
+  </Container>
+);
 
 const Container = styled.div`
   max-height: 400px;
@@ -30,7 +28,6 @@ const Container = styled.div`
 `;
 
 const Heading = styled.div`
-  
   font-style: normal;
   font-weight: 500;
   font-size: 20px;

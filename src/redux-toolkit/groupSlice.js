@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { TypeThunkAction } from './store';
-import ApiService from './apiService';
+import ApiService from './ApiService';
 
 const api = new ApiService();
 
@@ -31,8 +31,7 @@ export const { getGroups, toggleTodo } = groupsSlice.actions;
 export default groupsSlice.reducer;
 
 export function fetchgroups(page, size) {
-  return (dispatch) =>
-    api.apiGroups(page, size).then((json) => {
-      dispatch(getGroups(json));
-    });
+  return (dispatch) => api.apiGroups(page, size).then((json) => {
+    dispatch(getGroups(json));
+  });
 }

@@ -15,51 +15,6 @@ interface GroupData {
   id: number;
 }
 
-const testData = [
-  {
-    avatarka: testAvatarka,
-    name: 'Название группы',
-    category: 'категория',
-    followers: 228,
-    id: 1,
-  },
-  {
-    avatarka: testAvatarka,
-    name: 'Название группы',
-    category: 'категория',
-    followers: 666,
-    id: 2,
-  },
-  {
-    avatarka: testAvatarka,
-    name: 'Название группы',
-    category: 'категория',
-    followers: 777,
-    id: 3,
-  },
-  {
-    avatarka: testAvatarka,
-    name: 'Название группы',
-    category: 'категория',
-    followers: 1234,
-    id: 4,
-  },
-  {
-    avatarka: testAvatarka,
-    name: 'Название группы',
-    category: 'категория',
-    followers: 911,
-    id: 5,
-  },
-  {
-    avatarka: testAvatarka,
-    name: 'Название группы',
-    category: 'категория',
-    followers: 3,
-    id: 6,
-  },
-];
-
 const Groups: React.FC = () => {
   const dispatch = useDispatch();
   const { groups } = useSelector((state: TypeRootReducer) => state.groupsReducer);
@@ -76,26 +31,25 @@ const Groups: React.FC = () => {
     const { value } = event.target;
     setGroupName(value.toLowerCase());
   };
-  const filterGroups = (data: GroupData[]) =>
-    data.filter((el) => el.name.toLowerCase().includes(groupName));
+  // eslint-disable-next-line max-len
+  const filterGroups = (data: GroupData[]) => data.filter((el) => el.name.toLowerCase().includes(groupName));
 
-  const renderGroups = (data: GroupData[]) =>
-    data.map((el) => {
-      const { avatarka = testAvatarka, name, groupCategory, subscribers } = el;
-      return (
-        <SingleGroup
-          key={el.id}
-          avatar={avatarka}
-          name={name}
-          category={groupCategory}
-          followers={subscribers}
-        />
-      );
-    });
+  const renderGroups = (data: GroupData[]) => data.map((el) => {
+    const {
+      avatarka = testAvatarka, name, groupCategory, subscribers,
+    } = el;
+    return (
+      <SingleGroup
+        key={el.id}
+        avatar={avatarka}
+        name={name}
+        category={groupCategory}
+        followers={subscribers}
+      />
+    );
+  });
   return (
     <GroupsContainer>
-      <button onClick={() => console.log(groupsToShow, groups)}>TEST</button>
-
       <PageSearchInput placeholder="Начните поиск группы..." action={handleInput} />
       <GroupsTitle>Группы</GroupsTitle>
       {groupName.length > 0 ? renderGroups(filterGroups(groups)) : renderGroups(groups)}
