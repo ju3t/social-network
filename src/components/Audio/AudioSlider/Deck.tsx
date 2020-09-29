@@ -102,7 +102,6 @@ const Deck = () => {
           handleNext();
         }}
         onProgress={({ played }: { played: () => number }) => {
-          console.log('played', played);
           setTimePlayed(played);
         }}
         playing={playing}
