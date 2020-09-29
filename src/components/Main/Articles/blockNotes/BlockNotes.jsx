@@ -71,12 +71,11 @@ const users = {
 const BlockNotes = () => {
   const [isOpenSearch, setIsOpenSearch] = useState(false);
 
-  const renderSearch = () =>
-    isOpenSearch ? (
-      <InputSearch placeholder="Поиск..." onBlur={() => setIsOpenSearch(!isOpenSearch)} />
-    ) : (
-      <ComponentSearch onClick={() => setIsOpenSearch(!isOpenSearch)} />
-    );
+  const renderSearch = () => (isOpenSearch ? (
+    <InputSearch placeholder="Поиск..." onBlur={() => setIsOpenSearch(!isOpenSearch)} />
+  ) : (
+    <ComponentSearch onClick={() => setIsOpenSearch(!isOpenSearch)} />
+  ));
 
   return (
     <Wrapper>

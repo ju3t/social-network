@@ -1,4 +1,4 @@
-export default {
+const routes = {
   main: '/',
   login: '/social-network',
   friends: '/friends',
@@ -11,3 +11,5 @@ export default {
   video: '/video',
   audio: '/audio',
 };
+
+export default routes;

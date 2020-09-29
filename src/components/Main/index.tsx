@@ -1,6 +1,7 @@
 // eslint-disable-next-line
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Spin } from 'antd';
 import { loadUser } from '../../redux-toolkit/userSlice';
 import { IStore } from '../../redux-toolkit/store';
 import { IUser } from '../../types/user';

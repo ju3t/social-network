@@ -6,7 +6,7 @@ const StyledButton = styled.button`
   display: block;
   background: #ffb11b;
   border: none;
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   letter-spacing: 0.065em;
   font-weight: ${(props) => (props.small ? '400' : '500')};

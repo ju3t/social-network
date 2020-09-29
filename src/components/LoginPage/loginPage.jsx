@@ -16,6 +16,7 @@ const Wrapper = styled.div`
   min-height: 79vh;
   margin-top: 10px;
   margin-bottom: 10px;
+  background: #fff;
 `;
 
 const Main = styled.div`
@@ -24,7 +25,7 @@ const Main = styled.div`
   background-position: top, bottom;
   min-height: 79vh;
   min-width: 500px;
-  margin: 30px auto 0;
+  margin: 30px auto 0;  
 `;
 
 const Form = styled.form`
@@ -42,7 +43,9 @@ const InputsArea = styled.div`
 
 const SearchInpit = styled(Input)`
   background-color: rgba(0, 125, 215, 0);
-  padding-bottom: 10px;
+  width: 360px;
+  margin: 15px 20px;
+  padding-bottom: 5px;
   border: none;
   border-bottom: 1px solid #ffb11b;
   outline: none;
@@ -63,7 +66,13 @@ const ButtonSingInUpTxt = styled.button`
   background-color: rgba(0, 125, 215, 0);
   padding: 0;
   border: none;
+<<<<<<< HEAD
   border-bottom: ${(props) => (props.selected ? '2px solid #FFB11B' : 'none')};
+=======
+  border-bottom: ${(props) => (props.selected
+    ? '2px solid #FFB11B'
+    : 'none')};
+>>>>>>> 8a358cb800d658b06359d4bb922cdab0f64a3b08
   box-shadow: none;
   p {
     color: white;
@@ -83,7 +92,13 @@ const ButtonSingInUpTxt = styled.button`
 const ButtonLeft = styled.button`
   background-color: rgba(0, 125, 215, 0);
   border: none;
+<<<<<<< HEAD
   border-bottom: ${(props) => (props.selected ? '2px solid #FFB11B' : 'none')};
+=======
+  border-bottom: ${(props) => (props.selected
+    ? '2px solid #FFB11B'
+    : 'none')};
+>>>>>>> 8a358cb800d658b06359d4bb922cdab0f64a3b08
   box-shadow: none;
   margin-right: 35px;
   padding-bottom: 2px;
@@ -163,7 +178,7 @@ const Login = () => {
   };
   return (
     <Wrapper>
-      <img src={logo} alt="" />
+      <img src={logo} alt="logo" />
       <Main>
         {value === true && (
           <Form>
@@ -199,7 +214,7 @@ const Login = () => {
               <ButtonSingInUpTxt selected={border.second} onClick={() => selectRegistration()}>
                 <p>Регистрация</p>
               </ButtonSingInUpTxt>
-            </ButtonsArea>{' '}
+            </ButtonsArea>
             <InputsArea>
               <SearchInpit placeholder="Введите ваше имя" nostyle="false" />
               <SearchInpit placeholder="Введите ваш e-mail" nostyle="true" />
