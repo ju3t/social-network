@@ -14,10 +14,10 @@ const initialState = {
 };
 
 type IUserState = {
-  data: IUser | null,
+  data: null | IUser,
   loading: boolean,
   error: Error | null
-} | void;
+};
 
 const userSlice = createSlice({
   name: 'user',
@@ -26,8 +26,11 @@ const userSlice = createSlice({
     setData: (state, action) => ({ ...state, data: action.payload, loading: false }),
     setError: (state, action) => ({ ...state, error: action.payload, loading: false }),
     setLoading: (state) => ({ ...state, loading: true }),
-    updateStatus: (state, action) => {
-      const newUser = { ...state.data, status: action.payload };
+    updateStatus: (state, action: { type: string, payload: string }) => {
+      if ( state?.data ) {
+        return state;
+      }
+      const newUser: IUser | null = Object.assign( {}, state?.data, { status: action.payload });
       return { ...state, data: newUser };
     },
   },
