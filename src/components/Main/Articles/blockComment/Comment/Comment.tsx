@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React from 'react';
 import { Avatar } from 'antd';
-import IComment from './../../../../../types/comment';
+import IComment from '../../../../../types/comment';
 import {
   Wrapper,
   UserInfo,
@@ -9,7 +9,7 @@ import {
   Title,
   SubtitleTime,
   Text,
-} from './styles.js';
+} from './styles';
 
 interface Props {
   comment: IComment
@@ -17,8 +17,8 @@ interface Props {
 
 const Comment: React.FC<Props> = ({ comment }) => {
   const {
-    userDto: { firstName, lastName, avatar }, 
-    persistDate, 
+    userDto: { firstName, lastName, avatar },
+    persistDate,
     comment: text,
   } = comment;
 

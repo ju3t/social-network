@@ -1,3 +1,3 @@
-import Wall from './index.tsx';
+import Wall from './Wall.tsx';
 
 export default Wall;

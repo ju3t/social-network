@@ -1,5 +1,6 @@
-import getUserById from './mock-user-controller';
+// import getUserById from './mock-user-controller';
 import {
+  getUserById,
   getAllUsers,
   createNewUser,
   removeUserById,

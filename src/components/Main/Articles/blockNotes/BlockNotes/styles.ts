@@ -65,4 +65,4 @@ export const EmptyBlockNotes = styled.div`
   text-align: center;
   color: black;
   margin: 50px auto;
-`
+`;

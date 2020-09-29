@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Form } from 'formik';
 import openNote from '../../icons/open_note.svg';
-import closeNote from '../../icons/close_note.svg';
 import sendComments from '../../icons/send_comments.svg';
 
 export const WrapperForm = styled(Form)`
@@ -38,14 +37,16 @@ export const BtnSend = styled.button`
   }
 `;
 
-export const BtnOpenNote = styled.button`
+export const BtnOpenNote = styled.button<{ isOpen: boolean }>`
   width: 34px;
   height: 34px;
   border-radius: 17px;
   background-color: #ffb11b;
-  background-image: ${({ isOpen }) => (isOpen ? `url(${openNote})` : `url(${closeNote})`)};
+  background-image:url(${openNote});
   background-position: center center;
   background-repeat: no-repeat;
+  transform: rotate(${({ isOpen }) => (isOpen ? '0' : '180')}deg);
+  transition: transform 0.3s;
   cursor: pointer;
   border: none;
   bottom: 18px;

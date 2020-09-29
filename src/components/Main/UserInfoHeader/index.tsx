@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { IStore } from './../../../redux-toolkit/store';
+import { IStore } from '../../../redux-toolkit/store';
 import addPhotoIcon from './img/add photo.svg';
 import {
   UserInfoHeaderContainer,
@@ -28,7 +28,7 @@ export interface IUserInfoHeader {
 
 /* TODO с onlineStatus и lastStatus */
 const UserInfoHeader : React.FC<IUserInfoHeader> = ({
-  user
+  user,
 }: IUserInfoHeader) => {
   const {
     firstName,
@@ -38,27 +38,27 @@ const UserInfoHeader : React.FC<IUserInfoHeader> = ({
   const profession = 'Программист на HTML';
   const lastStatus = 'online';
   return (
-  <UserInfoHeaderContainer>
-    <UserInfoAvatar>
-      <Avatar img={avatar} />
-      <AddPhotoIcon img={addPhotoIcon} />
-      { lastStatus === 'online' && <UserOnlineIcon />}
-    </UserInfoAvatar>
-    <UserInfoNameBlock>
-      <UserName>
-        {firstName}
-        {' '}
-        {lastName}
-      </UserName>
-      <UserProfession>{profession}</UserProfession>
-      <UserOnlineStatus>{lastStatus}</UserOnlineStatus>
-    </UserInfoNameBlock>
-  </UserInfoHeaderContainer>
+    <UserInfoHeaderContainer>
+      <UserInfoAvatar>
+        <Avatar img={avatar} />
+        <AddPhotoIcon img={addPhotoIcon} />
+        { lastStatus === 'online' && <UserOnlineIcon />}
+      </UserInfoAvatar>
+      <UserInfoNameBlock>
+        <UserName>
+          {firstName}
+          {' '}
+          {lastName}
+        </UserName>
+        <UserProfession>{profession}</UserProfession>
+        <UserOnlineStatus>{lastStatus}</UserOnlineStatus>
+      </UserInfoNameBlock>
+    </UserInfoHeaderContainer>
   );
-}
+};
 
-const mapStateToProps = ( state: IStore ) => ({
-  user: state?.user?.data
-})
+const mapStateToProps = (state: IStore) => ({
+  user: state?.user?.data,
+});
 
 export default connect(mapStateToProps)(UserInfoHeader);

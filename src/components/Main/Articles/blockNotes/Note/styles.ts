@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import openNote from '../../icons/open_note.svg';
-import closeNote from '../..//icons/close_note.svg';
+import closeNote from '../../icons/close_note.svg';
 import actionAddNone from '../../icons/action_addNote.svg';
 import actionLike from '../../icons/action_like.svg';
 import actionComment from '../../icons/action_comment.svg';
@@ -29,7 +29,7 @@ export const Avatar = styled.img`
 width: 70px;
 height: 70px;
 border-radius: 50%;
-`
+`;
 
 export const TitleWrap = styled.div`
 display: flex;
@@ -121,8 +121,7 @@ width: 34px;
 height: 34px;
 border-radius: 17px;
 background-color: #ffb11b;
-background-image: ${({ isOpen }:{ isOpen: boolean}) => 
-                        (isOpen ? `url(${closeNote})` : `url(${openNote})`)};
+background-image: ${({ isOpen }:{ isOpen: boolean}) => (isOpen ? `url(${closeNote})` : `url(${openNote})`)};
 background-position: center center;
 background-repeat: no-repeat;
 cursor: pointer;
@@ -160,7 +159,7 @@ export const NoteLoadingBlock = styled.div`
   bottom: 0;
   transform: translate(3.5em, -3em);
   position: absolute;
-`
+`;
 
 export const NoteErrorBlock = styled.div`
   position: absolute;

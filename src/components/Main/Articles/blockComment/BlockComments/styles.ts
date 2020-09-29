@@ -25,4 +25,4 @@ export const CommentsEmpty = styled.div`
 text-align: center;
 color: rgba(1,1,1,0.7);
 margin: 30px auto;
-`
+`;

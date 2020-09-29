@@ -9,13 +9,14 @@ import {
   Input,
   BtnSend,
   BtnOpenNote,
-} from './styles.js';
+} from './styles';
 
 interface Props {
   setIsOpen: (state: boolean) => void;
+  isOpen: boolean;
 }
 
-const ComponentInput: React.FC<Props> = ({ setIsOpen }) => {
+const ComponentInput: React.FC<Props> = ({ setIsOpen, isOpen }) => {
   const openOnClick = useCallback(() => {
     setIsOpen(false);
   }, [setIsOpen]);
@@ -40,7 +41,7 @@ const ComponentInput: React.FC<Props> = ({ setIsOpen }) => {
           autoComplete="off"
         />
         <BtnSend type="submit" />
-        <BtnOpenNote type="button" onClick={openOnClick} />
+        <BtnOpenNote type="button" onClick={openOnClick} isOpen={isOpen} />
       </WrapperForm>
     </Formik>
   );

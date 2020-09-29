@@ -16,7 +16,7 @@ export const StatusInput = styled.input`
     color: #515151;
 `;
 
-export const StatusForm = styled(Form)`
+export const StatusForm = styled.form`
     margin-top: 140px;
     display: flex;
     flex-direction: column;

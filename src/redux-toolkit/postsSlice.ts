@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { getPostsByUser, getAllCommentsByPost } from '../services/post-controller';
-import { IDataPost } from '../types/post';
-import { IPost } from '../types/post';
+import { IDataPost, IPost } from '../types/post';
 
 const loadPostsByUser = createAsyncThunk('posts/loadPostsByUser', async (id: number) => {
   const response = await getPostsByUser(id);
@@ -13,7 +12,7 @@ const loadCommentsByPost = createAsyncThunk('posts/loadCommentsByPost', async (i
   return response;
 });
 
-/* 
+/*
 По итогу у нас образуется примерно следующая модель хранения постов:
 {
   loading: boolean - показатель загрузки вообще всех постов,
@@ -26,7 +25,7 @@ const loadCommentsByPost = createAsyncThunk('posts/loadCommentsByPost', async (i
           comments: comment[] - комментарии, изначально null
         },
         ...
-      ] 
+      ]
 }
  */
 const initialState = {
@@ -47,17 +46,15 @@ const postsSlice = createSlice({
     /* POST */
     [loadPostsByUser.pending.type]: (state) => ({ ...state, loading: true }),
     [loadPostsByUser.fulfilled.type]: (state, action) => {
-      if ( !Array.isArray(action.payload) ) {
+      if (!Array.isArray(action.payload)) {
         return state;
       }
-      const newData = action.payload.map(( post: IPost ) => {
-        return {
-          post,
-          comments: null,
-          loading: false,
-          error: null
-        }
-      });
+      const newData = action.payload.map((post: IPost) => ({
+        post,
+        comments: null,
+        loading: false,
+        error: null,
+      }));
       return { ...state, data: newData, loading: false };
     },
     [loadPostsByUser.rejected.type]: (state, action) => ({
@@ -67,32 +64,32 @@ const postsSlice = createSlice({
     }),
     /* COMMENTS */
     [loadCommentsByPost.pending.type]: (state, action) => {
-      const newPosts = (state.data as ( IDataPost[] | null ))?.map(( dataPost: IDataPost ) => {
-              if ( dataPost.post.id === action.meta.arg ) {
-                return { ...dataPost, loading: true };
-              }
-              return dataPost;
+      const newPosts = (state.data as (IDataPost[] | null))?.map((dataPost: IDataPost) => {
+        if (dataPost.post.id === action.meta.arg) {
+          return { ...dataPost, loading: true };
+        }
+        return dataPost;
       });
       return { ...state, data: newPosts };
     },
     [loadCommentsByPost.fulfilled.type]: (state, action) => {
-        const newPosts = (state.data as ( IDataPost[] | null ))?.map(( dataPost: IDataPost ) => {
-                if ( dataPost.post.id === action.meta.arg ) {
-                  return { ...dataPost, comments: action.payload , loading: false };
-                }
-                return dataPost;
-        });
-        return { ...state, data: newPosts };
-    },
-    [loadPostsByUser.rejected.type]: (state, action) => {
-      const newPosts = (state.data as ( IDataPost[] | null ))?.map(( dataPost: IDataPost ) => {
-              if ( dataPost.post.id === action.meta.arg ) {
-                return { ...dataPost, loading: false, error: action.error };
-              }
-              return dataPost;
+      const newPosts = (state.data as (IDataPost[] | null))?.map((dataPost: IDataPost) => {
+        if (dataPost.post.id === action.meta.arg) {
+          return { ...dataPost, comments: action.payload, loading: false };
+        }
+        return dataPost;
       });
       return { ...state, data: newPosts };
-    }
+    },
+    [loadPostsByUser.rejected.type]: (state, action) => {
+      const newPosts = (state.data as (IDataPost[] | null))?.map((dataPost: IDataPost) => {
+        if (dataPost.post.id === action.meta.arg) {
+          return { ...dataPost, loading: false, error: action.error };
+        }
+        return dataPost;
+      });
+      return { ...state, data: newPosts };
+    },
   },
 });
 

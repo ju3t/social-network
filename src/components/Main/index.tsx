@@ -31,7 +31,7 @@ const Main: React.FC<MainProps> = ({
   }, [_loadUser, _loadPostsByUser]);
   const renderContent = () => {
     if (user) {
-                /* TODO Сделать чтобы statusName помещался в статус */
+      /* TODO Сделать чтобы statusName помещался в статус */
       return (
         <>
           <UserInfoHeader />
@@ -62,7 +62,7 @@ const mapStateToProps = (state: IStore) => ({
 
 const mapDispatchToProps = {
   loadUser,
-  loadPostsByUser
+  loadPostsByUser,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

@@ -4,7 +4,7 @@ import { postsReducer } from './postsSlice';
 
 const rootReducer = combineReducers({
   user: userReducer,
-  posts: postsReducer
+  posts: postsReducer,
 });
 
 export type TypeRootReducer = ReturnType<typeof rootReducer>;

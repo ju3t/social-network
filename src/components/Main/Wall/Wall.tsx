@@ -28,7 +28,7 @@ interface IWall {
 
 const Wall: React.FC<IWall> = ({ user }: IWall) => (
   <WallContainer>
-    <FormStatus />
+    <FormStatus statusText={user?.status}/>
     <WallInfoBlock>
       <UserAbout
         dateOfBirth={user?.dateOfBirth}

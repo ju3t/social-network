@@ -1,5 +1,12 @@
-import { getPostsByUser, getAllCommentsByPost } from './mock-post-controller';
-import { getAllPosts, createNewPost, deletePost, getPostsByTag } from './post-controller';
+// import { getPostsByUser, getAllCommentsByPost } from './mock-post-controller';
+import {
+  getPostsByUser,
+  getAllCommentsByPost,
+  getAllPosts,
+  createNewPost,
+  deletePost,
+  getPostsByTag,
+} from './post-controller';
 
 export {
   getAllPosts,

@@ -24,7 +24,7 @@ import {
   BtnOpenNote,
   TagItem,
   NoteLoadingBlock,
-  NoteErrorBlock
+  NoteErrorBlock,
 } from './styles';
 
 interface INote {
@@ -32,17 +32,20 @@ interface INote {
 }
 
 const Note: React.FC<INote> = ({ dataPost }: INote) => {
-  const { post, comments, loading, error } = dataPost;
+  const {
+    post, comments, loading, error,
+  } = dataPost;
   const [isOpen, setIsOpen] = useState(false);
-  const [isCommentsOpen, setIsCommentsOpen] = useState( Boolean( comments ) );
+  const [isCommentsOpen, setIsCommentsOpen] = useState(Boolean(comments));
 
   /* Вынес в отдельную функцию, чтобы BlockComments подгружал комменты во время рендера */
   const renderBlockComments = () => {
-    if ( !isCommentsOpen ) {
+    if (!isCommentsOpen) {
       return null;
     }
     return (
       <BlockComments
+        isOpen={isCommentsOpen}
         setIsCommentsOpen={setIsCommentsOpen}
         id={post.id}
         comments={comments}
@@ -51,27 +54,27 @@ const Note: React.FC<INote> = ({ dataPost }: INote) => {
   };
 
   const renderState = () => {
-    if ( loading ) {
+    if (loading) {
       return <NoteLoadingBlock />;
     }
-    if ( error ) {
-      return <NoteErrorBlock> Что-то пошло не так... </NoteErrorBlock>
+    if (error) {
+      return <NoteErrorBlock> Что-то пошло не так... </NoteErrorBlock>;
     }
     return null;
-  }
+  };
 
   const {
-    firstName, 
-    lastName, 
-    avatar, 
-    title, 
+    firstName,
+    lastName,
+    avatar,
+    title,
     text,
     likeAmount,
     commentAmount,
     shareAmount,
     bookmarkAmount,
     persistDate,
-    tags
+    tags,
   } = post;
 
   return (
@@ -94,7 +97,7 @@ const Note: React.FC<INote> = ({ dataPost }: INote) => {
             <CountAction>{likeAmount}</CountAction>
           </Action>
           <Action>
-            <ActionComment onClick={() => setIsCommentsOpen(( state ) => !state )} />
+            <ActionComment onClick={() => setIsCommentsOpen((state) => !state)} />
             <CountAction>{commentAmount}</CountAction>
           </Action>
           <Action>
