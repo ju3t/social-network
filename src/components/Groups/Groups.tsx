@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { connect, useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { useSelector, useDispatch } from 'react-redux';
+
 import SingleGroup from './SingleGroup';
 import testAvatarka from '../../img/test-group-avatar.svg';
 import PageSearchInput from '../../common/Inputs/PageSearch';
 import { TypeRootReducer } from '../../redux-toolkit/rootReducer';
-import { getGroups, fetchgroups } from '../../redux-toolkit/groupSlice';
+import { loadGroups } from '../../redux-toolkit/groupSlice';
+import { IStore } from '../../redux-toolkit/store';
 
 interface GroupData {
   avatarka: string;
@@ -14,16 +16,27 @@ interface GroupData {
   subscribers: number;
   id: number;
 }
-
-const Groups: React.FC = () => {
-  const dispatch = useDispatch();
-  const { groups } = useSelector((state: TypeRootReducer) => state.groupsReducer);
-  const fetch = () => {
-    dispatch(fetchgroups(1, 15));
-  };
+// interface GroupsProps {
+//   loadGroups: (page?: number, size?: number) => void;
+//   groups: GroupData[];
+//   loading: boolean;
+//   error: Error;
+// }
+interface GroupsProps {
+  loadGroups: (page: number, size: number) => void;
+  groups: GroupData[];
+  loading: boolean;
+  error: Error;
+}
+const Groups: React.FC<GroupsProps> = ({
+  loadGroups: _loadGroups, loading, error, groups,
+}: GroupsProps) => {
+  // const dispatch = useDispatch();
+  // const { groups } = useSelector((state: TypeRootReducer) => state.groups);
   const [groupsToShow, setGroupsToShow] = useState(groups);
   useEffect(() => {
-    fetch();
+    _loadGroups(1, 15);
+    console.log(_loadGroups);
   }, []);
 
   const [groupName, setGroupName] = useState<string>('');
@@ -57,7 +70,16 @@ const Groups: React.FC = () => {
   );
 };
 
-export default Groups;
+const mapStateToProps = (state: IStore) => ({
+  groups: state.groups.groups,
+  memberOf: state.groups.memberOf,
+  loading: state.groups.loading,
+  error: state.groups.error,
+});
+
+const mapDispatchToProps = {
+  loadGroups,
+};
 
 export const GroupsContainer = styled.div`
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
@@ -81,3 +103,4 @@ const GroupsTitle = styled.h2`
   padding: 58px 61px;
   top: -90px;
 `;
+export default connect(mapStateToProps, mapDispatchToProps)(Groups);
