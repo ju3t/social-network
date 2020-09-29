@@ -1,10 +1,10 @@
 // eslint-disable-next-line
 import React, { useEffect, useCallback } from 'react';
 import { connect } from 'react-redux';
+import { Spin } from 'antd';
 import { loadUser } from '../../redux-toolkit/userSlice';
 import { IStore } from '../../redux-toolkit/store';
 import { IUser } from '../../types/user';
-import { Spin } from 'antd';
 
 import Header from '../../common/header';
 import PageWrapper from '../../common/pageWrapper';
@@ -25,7 +25,7 @@ const Main: React.FC<MainProps> = ({ loadUser: _loadUser, user, loading, error }
   }, [_loadUser]);
   const renderContent = useCallback(() => {
     if (!user) {
-      return <Spin></Spin>;
+      return <Spin />;
     }
     const profession = 'Программист на HTML';
     const lastStatus = 'online';

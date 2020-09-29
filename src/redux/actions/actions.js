@@ -9,7 +9,6 @@ import {
 } from './actionTypes';
 import { fetchAudiosAll, fetchMyAudios } from '../../services/allFetch';
 
-
 export const fetchGetAllAudiosRequest = createAction(FETCH_GET_ALL_AUDIOS_REQUEST);
 export const fetchGetAllAudiosSuccess = createAction(FETCH_GET_ALL_AUDIOS_SUCCESS);
 export const fetchGetAllAudiosFailure = createAction(FETCH_GET_ALL_AUDIOS_FAILURE);

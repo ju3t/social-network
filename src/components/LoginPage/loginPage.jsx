@@ -5,7 +5,6 @@ import jm from '../../common/JM.svg';
 import sn from '../../common/SN.svg';
 import logo from '../../common/logo.svg';
 
-
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -69,8 +68,8 @@ const ButtonSingInUpTxt = styled.button`
   padding: 0;
   border: none;
   border-bottom: ${(props) => (props.selected
-                               ? '2px solid #FFB11B'
-                               : 'none')};
+    ? '2px solid #FFB11B'
+    : 'none')};
   box-shadow: none;
   p {
     color: white;
@@ -91,8 +90,8 @@ const ButtonLeft = styled.button`
   background-color: rgba(0, 125, 215, 0);
   border: none;
   border-bottom: ${(props) => (props.selected
-                               ? '2px solid #FFB11B'
-                               : 'none')};
+    ? '2px solid #FFB11B'
+    : 'none')};
   box-shadow: none;
   margin-right: 35px;
   padding-bottom: 2px;

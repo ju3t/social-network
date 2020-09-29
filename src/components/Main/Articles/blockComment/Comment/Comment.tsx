@@ -9,8 +9,8 @@ import {
   TitleWrap,
   Title,
   SubtitleTime,
-  Text
-} from './styles.js'
+  Text,
+} from './styles.js';
 
 interface Props {
   comment: IComment

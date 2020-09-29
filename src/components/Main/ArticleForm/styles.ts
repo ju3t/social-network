@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Form } from 'formik';
 
-
 export const InputName = styled.input`
     margin-left: 0;
     margin-top: 32px;

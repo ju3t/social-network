@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import sendMessageSrc from '../../../img/icons/send-message.svg';
 import { Form } from 'formik';
-
+import sendMessageSrc from '../../../img/icons/send-message.svg';
 
 export const WrapForm = styled(Form)`
   width: 100%;

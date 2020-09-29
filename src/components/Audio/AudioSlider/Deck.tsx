@@ -14,7 +14,6 @@ import stop from '../../../common/img/icons/stop.svg';
 import back from '../../../common/img/icons/back.svg';
 import typeFuncFind from '../../../helperFunctions/typeFuncFind';
 
-
 SwiperCore.use([EffectCoverflow]);
 
 const Deck = () => {
@@ -64,7 +63,7 @@ const Deck = () => {
               <img src={forward} alt="" />
             </Next>
           </ControlsBlock>
-          <Slider defaultValue={0} value={timePlayed * 100} />
+          <UpdSlider defaultValue={0} value={timePlayed * 100} />
         </ControlsContainer>
         <TrackInfoArea>
           <TrackAlbum>{titleSong}</TrackAlbum>
@@ -76,7 +75,6 @@ const Deck = () => {
           </TrackInfo>
         </TrackInfoArea>
       </ButtonsArea>
-
       <Swiper
         spaceBetween={10}
         slidesPerView="auto"
@@ -119,29 +117,26 @@ export default Deck;
 const Main = styled.div`
   //border: 1px solid #000000;
   position: absolute;
-  width: 980px;
+  width: 740px;
   top: -150px;
-  border: 10px solid gold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ButtonsArea = styled.div`
   position: absolute;
-  padding: 60px 10px;
-  top: 40px;
-  //left: 200px;
   z-index: 2;
-  background-color: rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   display: flex;
-  justify-content: space-around;
-  width: 80%;
-  margin: 0 100px;
+  justify-content: center;
+  width: 400px;
+  padding: 0 20px;
 `;
 
 const ControlsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 40%;
 `;
 
 const ControlsBlock = styled.div`
@@ -164,7 +159,6 @@ const Play = styled.button`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  margin: 0 20px;
   border: 2px solid #ff0000;
 `;
 
@@ -183,10 +177,10 @@ const Player = styled(ReactPlayer)`
 const TrackInfoArea = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  width: 40%;
   text-shadow: 1px 1px 2px #000000;
+  justify-content: space-between;
+  text-align: center;
 `;
 
 const TrackTitle = styled.span`
@@ -208,7 +202,6 @@ const TrackPerformer = styled.span`
 `;
 
 const TrackAlbum = styled.span`
-  text-align: center;
   font-family: Montserrat, sans-serif;
   font-style: normal;
   font-weight: 600;
@@ -221,4 +214,9 @@ const TrackInfo = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  //text-align: center;
+`;
+
+const UpdSlider = styled(Slider)`
+margin: 0;
 `;

@@ -7,27 +7,26 @@ import {
   StatusInput,
 } from './styles.js';
 
-
-const FormStatus: React.FC = () => {
-  return (
-    <Formik
-      initialValues={{
-        statusText: '',
-      }}
-      onSubmit={
+const FormStatus: React.FC = () => (
+  <Formik
+    initialValues={{
+      statusText: '',
+    }}
+    onSubmit={
         (values, actions) => {
-        alert(`Sending ${values.statusText}`);
-      }}>
-      <StatusForm>
-        <Field
-          name="statusText"
-          placeholder="Обновите свой статус"
-          as={StatusInput}
-          autoComplete="off"
-        />
-      </StatusForm>
-    </Formik>
-  );
-};
+          alert(`Sending ${values.statusText}`);
+        }
+}
+  >
+    <StatusForm>
+      <Field
+        name="statusText"
+        placeholder="Обновите свой статус"
+        as={StatusInput}
+        autoComplete="off"
+      />
+    </StatusForm>
+  </Formik>
+);
 
 export default FormStatus;

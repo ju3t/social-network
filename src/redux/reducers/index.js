@@ -15,7 +15,6 @@ const myAudiosState = handleActions({
   },
 }, '');
 
-
 const allAudiosState = handleActions({
   [actions.fetchGetAllAudiosRequest]() {
     return requested;
@@ -27,8 +26,6 @@ const allAudiosState = handleActions({
     return failed;
   },
 }, '');
-
-
 
 const allAudiosReducer = handleActions({
   [actions.fetchGetAllAudiosSuccess](state, { payload }) {

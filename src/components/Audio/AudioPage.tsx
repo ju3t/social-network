@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Slider from 'react-slick';
 import __ from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
+import { message } from 'antd';
 import album from '../../common/img/png/album5.png';
 import pic from '../../common/img/png/pic.png';
 import Deck from './AudioSlider/Deck';
@@ -14,11 +15,9 @@ import nextArrow from '../../common/img/icons/playlistarrownext.svg';
 import { TypeDispatch } from '../../redux-toolkit/store';
 import { TypeRootReducer } from '../../redux-toolkit/rootReducer';
 import { allAudiosAction, friendsAudioAction, myAudiosAction } from '../../redux-toolkit/audios/allAudiosSlice';
-import { message } from 'antd';
 import { rejected } from '../../constants/fetchState';
 import IAllAudios from '../../typesInterfaces/IAllAudios';
 // import Slider from '../../common/slider';
-
 
 const Main = styled.div`
   //width: 1300px;
@@ -29,24 +28,21 @@ const SliderContainer = styled.div`
   display: flex;
   justify-content: center;
   z-index: 2;
-  border: 3px solid goldenrod;
 `;
 
 const ButtonsArea = styled.div`
   display: flex;
   margin-top: 250px;
-  border: 3px solid gold;
 `;
 
 // Для кнопок Моя музыка и т.д.
-
 
 const SearchArea = styled.div`
   display: flex;
   justify-content: space-between;
   height: 130px;
   max-width: 1000px;
-  margin: 10px auto 80px auto;
+  margin: 60px auto 80px auto;
   border-top: 1px solid #000000;
   border-bottom: 1px solid #000000;
   align-items: center;
@@ -58,16 +54,12 @@ const SearchArea = styled.div`
 const PlayListArea = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: white;
   h3 {
     color: black;
-    text-align: left;
     padding-bottom: 50px;
   }
   div {
-    width: 1000px;
     display: flex;
-    flex-direction: row;
     div {
       div {
         div {
@@ -120,22 +112,26 @@ const SongsArea = styled.div`
     }
   }
 `;
-const Next = styled.div`
+const Next = styled.button`
+  background: none;
+  border: none;
   background-image: url(${nextArrow});
   position: absolute;
   left: 95%;
   background-repeat: no-repeat;
-  max-width: 30px;
+  width: 30px;
   height: 30px;
   margin-left: 70px;
   margin-top: 40px;
   cursor: pointer;
 `;
-const Prev = styled.div`
+const Prev = styled.button`
+  background: none;
+  border: none;
   background-image: url(${backArrow});
   position: absolute;
   background-repeat: no-repeat;
-  max-width: 30px;
+  width: 30px;
   height: 30px;
   margin-left: -64px;
   margin-top: 40px;
@@ -159,7 +155,7 @@ const RightSide = styled.div`
 
 // slick arrows and settings area
 interface ISlickOnClick {
-  onClick: any
+  onClick?: () => void
 }
 
 const SampleNextArrow = ({ onClick }: ISlickOnClick) => <Next onClick={onClick} />;
@@ -168,8 +164,8 @@ const settings = {
   loop: true,
   slidesToShow: 5,
   slidesToScroll: 1,
-  nextArrow: <SampleNextArrow onClick={onclick} />,
-  prevArrow: <SamplePrevArrow onClick={onclick} />,
+  nextArrow: <SampleNextArrow />,
+  prevArrow: <SamplePrevArrow />,
 };
 
 // end
@@ -177,13 +173,11 @@ const settings = {
 const Audio = () => {
   const arr = [1, 2, 3, 4, 5, 6];
   const dispatch: TypeDispatch = useDispatch();
-  const objAudiosState = useSelector(({ allAudiosReducer }: TypeRootReducer) => {
+  const objAudiosState = useSelector(({ allAudiosReducer }: TypeRootReducer) =>
     // console.log('objAudiosState selector page', objAudiosState);
     // console.log('allAudiosReducer selector page', allAudiosReducer);
-    return allAudiosReducer;
-  });
+    allAudiosReducer);
   // console.log('objAudiosState', objAudiosState);
-
 
   useEffect(() => {
     if (objAudiosState.loading.endsWith(rejected)) {
@@ -203,9 +197,10 @@ const Audio = () => {
 
   const [objCategoryAudios, setChosenCategoryAudios] = useState(initialStateActiveBtn);
 
-  // useEffect(() => {
-  //   dispatch(allAudiosAction());
-  // }, [dispatch]);
+  // При переходе на страницу вывод списка audio
+  useEffect(() => {
+    dispatch(myAudiosAction());
+  }, [dispatch]);
 
   const songsArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   // const songsItems = objAudiosState.length > 0 && objAudiosState.map(({ id, icon, author, name }) => (
@@ -238,66 +233,38 @@ const Audio = () => {
       );
     });
 
-
   const ListFriends = objAudiosState && objAudiosState.friends.length > 0
     && objAudiosState.friends
-      .map(({ firstName, lastName, userId, status, avatar, aboutMe }: any) => {
-        return (
-          <li key={userId} onClick={() => console.log('Открыть список аудио')}>
-            <LeftSide>
-              <div>
-                <img src={pic || avatar} alt="icon" title="icon" />
-              </div>
-              <div>
-                <h3>{`${firstName} ${lastName}`}</h3>
-                <p>{aboutMe}</p>
-              </div>
-            </LeftSide>
-            <RightSide>
-              <h4>{status}</h4>
-            </RightSide>
-          </li>
-        );
-      });
-
-
-  const myAudiosOnClick = (argActiveBtn: string) => async (evt: any) => {
-    console.log('evt.target', evt.target);
-    console.log('myAudiosOnClick');
-    // dispatch(myAudiosAction());
-  };
-
-  const allAudiosOnClick = (argActiveBtn: string) => (evt: any) => {
-    console.log('allAudiosOnClick worked');
-    console.log('argActiveBtn', argActiveBtn);
-    if (argActiveBtn === 'allAudios') {
-      setChosenCategoryAudios({
-        myAudios: false,
-        allAudios: true,
-        friendsAudios: false,
-      });
-    }
-    // dispatch(allAudiosAction());
-  };
+      .map(({ firstName, lastName, userId, status, avatar, aboutMe }: any) => (
+        <li key={userId} onClick={() => console.log('Открыть список аудио')}>
+          <LeftSide>
+            <div>
+              <img src={pic || avatar} alt="icon" title="icon" />
+            </div>
+            <div>
+              <h3>{`${firstName} ${lastName}`}</h3>
+              <p>{aboutMe}</p>
+            </div>
+          </LeftSide>
+          <RightSide>
+            <h4>{status}</h4>
+          </RightSide>
+        </li>
+      ));
 
   const chooseCategoryAudiosOnClick = (argCategoryAudio: string) => async (): Promise<any> => {
-    console.log('argCategoryAudio', argCategoryAudio);
     // this.setState((prev: any): any => ({ [argCategoryAudio]: !prev[argCategoryAudio] }));
     setChosenCategoryAudios({
       [argCategoryAudio]: true,
     });
 
     if (argCategoryAudio === 'myAudios') {
-      console.log('objCategoryAudios', objCategoryAudios);
-      console.log('page MYAudios worked ');
       return dispatch(myAudiosAction());
     }
     if (argCategoryAudio === 'allAudios') {
-      console.log('page ALLAudios worked', objCategoryAudios);
       return dispatch(allAudiosAction());
     }
     if (argCategoryAudio === 'friendsAudios') {
-      console.log('friendsAudios page worked');
       return dispatch(friendsAudioAction());
     }
   };
@@ -313,7 +280,7 @@ border: none;
 background: none;
 padding: 0;
 line-height: 30px;
-border-bottom: ${(props: any): any => props.selected && '3px solid red'};
+border-bottom: ${(props: any): any => props.selected && '3px solid #FFB11B'};
 &:not(:last-child) {
 margin-right: 51px;
 }
@@ -378,4 +345,3 @@ export default Audio;
 // SamplePrevArrow.propTypes = {
 //   onClick: PropTypes.func.isRequired,
 // };
-

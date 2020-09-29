@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, Draft, PayloadAction } from '@reduxjs/toolkit';
-import { fetchAudiosAll, fetchMyPartAudios } from '../../services/allFetch';
 import axios from 'axios';
+import { fetchAudiosAll, fetchMyPartAudios } from '../../services/allFetch';
 import IfriendData from '../../typesInterfaces/IfriendData';
 import errFetchHandler from '../../helperFunctions/errFetchHandler';
 import { TypeRootReducer } from '../rootReducer';
@@ -59,7 +59,6 @@ export const friendsAudioAction = createAsyncThunk(
     }
   },
 );
-
 
 const allAudiosSlice = createSlice({
   name: 'allAudiosSlice',
