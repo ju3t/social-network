@@ -4,14 +4,9 @@ import { IUser } from '../types/user';
 
 const loadFrendsList = createAsyncThunk('frendList/loadFrendsList', async (id: number) => {
   const response = await userController.getFriendsByUserId(id);
-  response.map((i) => i.friendId + i.id);
-  const temp: any = [];
-
-  response.forEach(async (item) => {
-    temp.push(userController.getUserById(item.friendId));
-  });
-
-  return temp;
+  const temp: Array<Promise<IUser>> = [];
+  response.forEach((item) => temp.push(userController.getUserById(item.friendId)));
+  return Promise.all(temp);
 });
 
 const initialState = {
