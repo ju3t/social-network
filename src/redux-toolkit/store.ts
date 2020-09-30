@@ -2,6 +2,7 @@ import { Action, configureStore } from '@reduxjs/toolkit';
 import { ThunkAction } from 'redux-thunk';
 import rootReducer, { TypeRootReducer } from './rootReducer';
 import { IUser } from '../types/user';
+import { IDataPost } from '../types/post';
 
 const store = configureStore({
   reducer: rootReducer,
@@ -23,6 +24,11 @@ export interface IStore {
     error: Error;
     loading: boolean;
   };
+  posts: {
+    data: IDataPost[],
+    error: Error;
+    loading: boolean;
+  }
 }
 export type TypeDispatch = typeof store.dispatch;
 export type TypeThunkAction = ThunkAction<void, TypeRootReducer, null, Action<string>>;

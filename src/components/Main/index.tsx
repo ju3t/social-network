@@ -1,8 +1,8 @@
 // eslint-disable-next-line
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Spin } from 'antd';
 import { loadUser } from '../../redux-toolkit/userSlice';
+import { loadPostsByUser } from '../../redux-toolkit/postsSlice';
 import { IStore } from '../../redux-toolkit/store';
 import { IUser } from '../../types/user';
 
@@ -11,39 +11,39 @@ import PageWrapper from '../../common/pageWrapper';
 import { MainContainer } from '../../common/styledComponents';
 import UserInfoHeader from './UserInfoHeader';
 import Wall from './Wall';
+import ErrorBlock from '../../common/errorBlock';
+import LoadingBlock from '../../common/loadingBlock';
 
 interface MainProps {
   loadUser: (arg: number) => void;
+  loadPostsByUser: (arg: number) => void;
   user: IUser;
   loading: boolean;
   error: Error;
 }
 
-const Main: React.FC<MainProps> = ({ loadUser: _loadUser, user, loading, error }: MainProps) => {
+const Main: React.FC<MainProps> = ({
+  loadUser: _loadUser, loadPostsByUser: _loadPostsByUser, user, loading, error,
+}: MainProps) => {
   useEffect(() => {
-    _loadUser(2);
-  }, [_loadUser]);
-  const renderContent = useCallback(() => {
-    if (!user) {
-      return <Spin />;
+    _loadUser(1);
+    _loadPostsByUser(1);
+  }, [_loadUser, _loadPostsByUser]);
+  const renderContent = () => {
+    if (user) {
+      /* TODO Сделать чтобы statusName помещался в статус */
+      return (
+        <>
+          <UserInfoHeader />
+          <Wall />
+        </>
+      );
     }
-    const profession = 'Программист на HTML';
-    const lastStatus = 'online';
-    const { firstName, lastName, avatar } = user;
-    return (
-      <>
-        <UserInfoHeader
-          firstName={firstName}
-          lastName={lastName}
-          profession={profession}
-          lastStatus={lastStatus}
-          avatar={avatar}
-        />
-        <Wall />
-      </>
-    );
-  }, [user]);
-
+    if (loading) {
+      return <LoadingBlock />;
+    }
+    return <ErrorBlock errorMessage={error?.message} />;
+  };
   return (
     <>
       <Header />
@@ -62,6 +62,7 @@ const mapStateToProps = (state: IStore) => ({
 
 const mapDispatchToProps = {
   loadUser,
+  loadPostsByUser,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

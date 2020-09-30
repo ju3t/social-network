@@ -4,7 +4,7 @@ import IisOpen from '../../../types/IisOpen';
 
 export const ModalChatWrapper = styled.div<IisOpen>`
     position: relative;
-    width: 476px;
+    width: 25em;
     height: 840px;
     padding-bottom: 40px;
     overflow: hidden;

@@ -52,10 +52,9 @@ const SearchInpit = styled(Input)`
   color: aliceblue;
   font-size: 14px;
   line-height: 17px;
-    &:not(:first-child) {
-      margin-top: 33px;
-    }
-  ;
+  &:not(:first-child) {
+    margin-top: 33px;
+  }
 `;
 
 const ButtonsArea = styled.div`
@@ -67,9 +66,13 @@ const ButtonSingInUpTxt = styled.button`
   background-color: rgba(0, 125, 215, 0);
   padding: 0;
   border: none;
+<<<<<<< HEAD
+  border-bottom: ${(props) => (props.selected ? '2px solid #FFB11B' : 'none')};
+=======
   border-bottom: ${(props) => (props.selected
     ? '2px solid #FFB11B'
     : 'none')};
+>>>>>>> 8a358cb800d658b06359d4bb922cdab0f64a3b08
   box-shadow: none;
   p {
     color: white;
@@ -89,9 +92,13 @@ const ButtonSingInUpTxt = styled.button`
 const ButtonLeft = styled.button`
   background-color: rgba(0, 125, 215, 0);
   border: none;
+<<<<<<< HEAD
+  border-bottom: ${(props) => (props.selected ? '2px solid #FFB11B' : 'none')};
+=======
   border-bottom: ${(props) => (props.selected
     ? '2px solid #FFB11B'
     : 'none')};
+>>>>>>> 8a358cb800d658b06359d4bb922cdab0f64a3b08
   box-shadow: none;
   margin-right: 35px;
   padding-bottom: 2px;
@@ -109,9 +116,9 @@ const ButtonLeft = styled.button`
 `;
 
 const SubmitArea = styled.div`
-margin-top: 66px;
-display:flex;
-justify-content: center;
+  margin-top: 66px;
+  display: flex;
+  justify-content: center;
 
   a {
     font-size: 14px;
@@ -138,15 +145,15 @@ justify-content: center;
 `;
 
 const ForgetPasswordArea = styled.div`
-margin-top: 28px;
+  margin-top: 28px;
 `;
 
 const TxtLink = styled.a`
-font-size: 14px;
-line-height: 17px;
-letter-spacing: 0.05em;
-color: #959595;
-text-decoration: none;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.05em;
+  color: #959595;
+  text-decoration: none;
 `;
 
 const Login = () => {

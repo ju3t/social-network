@@ -1,10 +1,11 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import { userReducer } from './userSlice';
 import allAudiosReducer from './audios/allAudiosSlice';
-import myAudiosReducer from './audios/myAudiosSlice';
+import { postsReducer } from './postsSlice';
 
 const rootReducer = combineReducers({
   user: userReducer,
+  posts: postsReducer,
   allAudiosReducer,
 });
 

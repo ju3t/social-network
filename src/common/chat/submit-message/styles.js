@@ -18,7 +18,6 @@ export const TextWrap = styled.div`
   font-weight: normal;
   font-size: 14px;
   line-height: 20px;
-
 `;
 export const Text = styled.input`
   height: 3rem;

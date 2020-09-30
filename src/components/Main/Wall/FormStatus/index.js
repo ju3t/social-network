@@ -1,3 +1,3 @@
-import comp from './index.tsx';
+import comp from './FormStatus.tsx';
 
 export default comp;
