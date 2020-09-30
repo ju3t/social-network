@@ -7,7 +7,7 @@ import BlockNotes from '../components/Main/Articles/blockNotes/BlockNotes';
 import UserInfoHeader from '../components/Main/UserInfoHeader';
 import Wall from '../components/Main/Wall';
 import WallCreateArticle from '../components/Main/WallCreateArticle';
-import MessagesPage from '../components/Messages';
+import MessagesPage from '../components/Messages/Messages';
 
 storiesOf('Social network', module)
   .add('Страница авторизации', () => <Login />)

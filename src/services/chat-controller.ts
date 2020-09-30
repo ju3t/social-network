@@ -12,7 +12,7 @@ export const getSingleChats = async (id: number): Promise<IsingleChat> => {
   return res.data;
 };
 
-export const getChats = async (): Promise<Ichat> => {
+export const getChats = async (): Promise<Ichat[]> => {
   const res = await fetchChat.get('chats');
   return res.data;
 };
