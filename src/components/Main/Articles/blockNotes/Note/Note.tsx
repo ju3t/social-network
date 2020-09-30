@@ -90,19 +90,19 @@ const Note: React.FC<INote> = ({ dataPost }: INote) => {
         <UserActions>
           <Action>
             <ActionAddNote />
-            <CountAction>{bookmarkAmount}</CountAction>
+            <CountAction>{bookmarkAmount || 0}</CountAction>
           </Action>
           <Action>
             <ActionLike />
-            <CountAction>{likeAmount}</CountAction>
+            <CountAction>{likeAmount || 0}</CountAction>
           </Action>
           <Action>
             <ActionComment onClick={() => setIsCommentsOpen((state) => !state)} />
-            <CountAction>{commentAmount}</CountAction>
+            <CountAction>{commentAmount || 0}</CountAction>
           </Action>
           <Action>
             <ActionRepost />
-            <CountAction>{shareAmount}</CountAction>
+            <CountAction>{shareAmount || 0}</CountAction>
           </Action>
         </UserActions>
         {renderState()}
