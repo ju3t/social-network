@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import PageWrapper from '../../common/pageWrapper';
 import Audio from './AudioPage';

@@ -9,7 +9,6 @@ import arrowIcon from '../../common/img/icons/arr_left.svg';
 
 import PageWrapper from '../../common/pageWrapper';
 
-import { Box } from '../../common/styledComponents';
 import Slider from '../../common/slider';
 import SliderItemSt from './SliderItem';
 import SectionHeader from '../../common/sectionHeader';
@@ -51,11 +50,6 @@ const Headline = styled.h1`
   padding: 60px 80px;
   top: -90px;
 `;
-
-// const ContentBox = styled(Box)`
-//   margin-top: 250px;
-//   padding: 85px;
-// `;
 
 const Photo = () => (
   <PageWrapper>

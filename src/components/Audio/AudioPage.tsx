@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Slider from 'react-slick';
@@ -21,7 +22,6 @@ import {
 } from '../../redux-toolkit/audios/allAudiosSlice';
 import { rejected } from '../../constants/fetchState';
 import IAllAudios from '../../typesInterfaces/IAllAudios';
-// import Slider from '../../common/slider';
 
 const Main = styled.div`
   //width: 1300px;
@@ -186,7 +186,7 @@ const Audio: React.FC = () => {
   }, [objAudiosState.loading, objAudiosState.msgFetchState]);
 
   // Вариант типизации для initialStateActiveBtn
-  type TypeInitialStateActiveBtn<T extends string> = { [key in T]: boolean };
+  // type TypeInitialStateActiveBtn<T extends string> = { [key in T]: boolean };
   // Виды типизации для initialStateActiveBtn END
 
   const initialStateActiveBtn: { [key: string]: boolean } = {
@@ -202,9 +202,10 @@ const Audio: React.FC = () => {
     dispatch(myAudiosAction());
   }, [dispatch]);
 
-  const songsArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const songsItems = objAudiosState
-    && objAudiosState.allAudios.length > 0
+  // const songsArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  // const songsItems = objAudiosState.length > 0 &&
+  // objAudiosState.map(({ id, icon, author, name }) => (
+  const songsItems = objAudiosState && objAudiosState.allAudios.length > 0
     && objAudiosState.allAudios.map(({ icon, author, name, id, length }: IAllAudios) => {
       const timeAudio = (sec: number): string => {
         if (sec === null) {

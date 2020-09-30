@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React, { useCallback, useState } from 'react';
 
-import avatar from '../UserInfoHeader/img/main photo.png';
+import avatar from '../../../img/main photo.png';
 import photo from './img/photo.svg';
 import music from './img/music.svg';
 import video from './img/video.svg';

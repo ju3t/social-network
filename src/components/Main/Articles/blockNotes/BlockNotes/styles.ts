@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import searchLogo from '../icons/search-logo.svg';
+import searchLogo from '../../icons/search-logo.svg';
 
 export const Wrapper = styled.div`
 border-bottom: 1px solid #515151;
@@ -59,4 +59,10 @@ font-size: 16px;
 line-height: 20px;
 color: #515151;
 padding: 10px;
+`;
+
+export const EmptyBlockNotes = styled.div`
+  text-align: center;
+  color: black;
+  margin: 50px auto;
 `;
