@@ -18,7 +18,9 @@ import {
 
 const Header = () => (
   <HeaderContainer>
-    <Logo img={logo} />
+    <Link to="/">
+      <Logo img={logo} />
+    </Link>
     <RightBlockHeader>
       <ButtonSearch>
         <IconSearch img={search} />

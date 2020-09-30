@@ -9,11 +9,11 @@ import arrowIcon from '../../common/img/icons/arr_left.svg';
 
 import PageWrapper from '../../common/pageWrapper';
 
-import ContentBox from '../../common/contentBox/ContentBox';
 import Slider from '../../common/slider';
 import SliderItemSt from './SliderItem';
 import SectionHeader from '../../common/sectionHeader';
 import Button from '../../common/button';
+import ContentBox from '../../common/contentBox/ContentBox';
 
 import data from './albums';
 import AllPhotosGrid from './AllPhotosGrid';
@@ -42,9 +42,20 @@ const LinkArrow = styled(Link)`
   }
 `;
 
+const Headline = styled.h1`
+  position: absolute;
+  display: inline-block;
+  background: #ffb11b;
+  border-radius: 15px;
+  padding: 60px 80px;
+  top: -90px;
+`;
+
+
 const Photo = () => (
   <PageWrapper>
-    <ContentBox headline="Фотографии">
+    <ContentBox>
+      <Headline>Фотографии</Headline>
       <SectionHeader headline="Альбомы">
         <Button>Создать</Button>
       </SectionHeader>

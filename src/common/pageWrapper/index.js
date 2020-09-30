@@ -17,9 +17,13 @@ const PageWrapper = ({ messages, children }) => (
   </>
 );
 
+PageWrapper.defaultProps = {
+  messages: false,
+};
+
 PageWrapper.propTypes = {
   children: PropTypes.node.isRequired,
-  messages: PropTypes.bool.isRequired,
+  messages: PropTypes.bool,
 };
 
 export default PageWrapper;

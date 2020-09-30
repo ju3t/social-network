@@ -1,9 +1,17 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getUserById } from '../services/user-controller';
+import { getUserById, updateUser } from '../services/user-controller';
 import { IUser } from '../types/user';
+import { IStore } from './store';
 
 const loadUser = createAsyncThunk('user/loadUser', async (id: number) => {
   const response = await getUserById(id);
+  return response;
+});
+
+const updateStatus = createAsyncThunk('user/updateStatus', async ( status: string, thunkApi ) => {
+  const { user } = thunkApi.getState() as IStore;
+  const newUser = Object.assign( {}, user.data, { status, roleName: undefined } );
+  const response = await updateUser( newUser );
   return response;
 });
 
@@ -13,11 +21,6 @@ const initialState = {
   error: null,
 };
 
-type IUserState = {
-  data: null | IUser,
-  loading: boolean,
-  error: Error | null
-};
 
 const userSlice = createSlice({
   name: 'user',
@@ -25,14 +28,7 @@ const userSlice = createSlice({
   reducers: {
     setData: (state, action) => ({ ...state, data: action.payload, loading: false }),
     setError: (state, action) => ({ ...state, error: action.payload, loading: false }),
-    setLoading: (state) => ({ ...state, loading: true }),
-    updateStatus: (state, action: { type: string, payload: string }) => {
-      if ( state?.data ) {
-        return state;
-      }
-      const newUser: IUser | null = Object.assign( {}, state?.data, { status: action.payload });
-      return { ...state, data: newUser };
-    },
+    setLoading: (state) => ({ ...state, loading: true })
   },
   extraReducers: {
     [loadUser.pending.type]: (state) => ({ ...state, loading: true }),
@@ -46,11 +42,24 @@ const userSlice = createSlice({
       error: action.error,
       loading: false,
     }),
+    [updateStatus.pending.type]: (state) => ({ ...state, loading: true }),
+    [updateStatus.fulfilled.type]: (state, action) => {
+      if ( state?.data ) {
+        return state;
+      }
+      const newUser: IUser | null = Object.assign( {}, state?.data, { status: action.payload });
+      return { ...state, data: newUser };
+    },
+    [loadUser.rejected.type]: (state, action) => ({
+      ...state,
+      error: action.error,
+      loading: false,
+    }),
   },
 });
 
 export const {
-  setData, setError, setLoading, updateStatus,
+  setData, setError, setLoading
 } = userSlice.actions;
-export { loadUser };
+export { loadUser, updateStatus };
 export const userReducer = userSlice.reducer;

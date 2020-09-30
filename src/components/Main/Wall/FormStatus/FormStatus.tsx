@@ -25,12 +25,13 @@ const FormStatus: React.FC<IFormStatus> = ({ statusText, updateStatus: _updateSt
   useEffect(() => {
     setStatus(statusText || '');
   }, [statusText]);
-  const onSubmit = () => {
-    alert(`Sending ${status}`);
-    // _updateStatus(status);
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) : void => {
+    event.preventDefault();
+    _updateStatus(status);
   };
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) : void => {
-    const temp = event.target.value ? event.target.value : status;
+    const { value } = event.target;
+    const temp = value !== null || value !== undefined ? value : status;
     setStatus(temp);
   };
   return (

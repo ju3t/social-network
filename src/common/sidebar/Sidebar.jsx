@@ -34,7 +34,7 @@ const Sidebar = () => (
       <ItemLink to="#">Группы</ItemLink>
       <ItemLink to={routes.photo}>Фотографии</ItemLink>
       <ItemLink to={routes.video}>Видеозаписи</ItemLink>
-      <ItemLink to="#">Аудиозаписи</ItemLink>
+      <ItemLink to={routes.audio}>Аудиозаписи</ItemLink>
       <ItemLink to="#">Настройки</ItemLink>
     </List>
     <Player />
