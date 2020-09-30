@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 export const StatusInput = styled.input`
     margin-left: 0;
     margin-top: 32px;

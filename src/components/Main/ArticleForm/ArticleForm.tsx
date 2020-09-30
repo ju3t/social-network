@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React from 'react';
 import { Field, Formik } from 'formik';
-import {
-  ArticleButton, ArticleStyledForm, InputName, InputText,
-} from './styles';
+import { ArticleButton, ArticleStyledForm, InputName, InputText } from './styles';
 import imgButtonMore from './img/BTN more.svg';
 import { ArticleName, ButtonMore } from '../../../common/styledComponents';
 

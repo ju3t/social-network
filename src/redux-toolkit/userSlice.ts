@@ -8,10 +8,10 @@ const loadUser = createAsyncThunk('user/loadUser', async (id: number) => {
   return response;
 });
 
-const updateStatus = createAsyncThunk('user/updateStatus', async ( status: string, thunkApi ) => {
+const updateStatus = createAsyncThunk('user/updateStatus', async (status: string, thunkApi) => {
   const { user } = thunkApi.getState() as IStore;
-  const newUser = Object.assign( {}, user.data, { status, roleName: undefined } );
-  const response = await updateUser( newUser );
+  const newUser = { ...user.data, status, roleName: undefined };
+  const response = await updateUser(newUser);
   return response;
 });
 
@@ -21,14 +21,13 @@ const initialState = {
   error: null,
 };
 
-
 const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
     setData: (state, action) => ({ ...state, data: action.payload, loading: false }),
     setError: (state, action) => ({ ...state, error: action.payload, loading: false }),
-    setLoading: (state) => ({ ...state, loading: true })
+    setLoading: (state) => ({ ...state, loading: true }),
   },
   extraReducers: {
     [loadUser.pending.type]: (state) => ({ ...state, loading: true }),
@@ -44,10 +43,10 @@ const userSlice = createSlice({
     }),
     [updateStatus.pending.type]: (state) => ({ ...state, loading: true }),
     [updateStatus.fulfilled.type]: (state, action) => {
-      if ( state?.data ) {
+      if (state?.data) {
         return state;
       }
-      const newUser: IUser | null = Object.assign( {}, state?.data, { status: action.payload });
+      const newUser: IUser | null = { ...state?.data, status: action.payload };
       return { ...state, data: newUser };
     },
     [loadUser.rejected.type]: (state, action) => ({
@@ -59,7 +58,7 @@ const userSlice = createSlice({
 });
 
 export const {
-  setData, setError, setLoading
+  setData, setError, setLoading,
 } = userSlice.actions;
 export { loadUser, updateStatus };
 export const userReducer = userSlice.reducer;

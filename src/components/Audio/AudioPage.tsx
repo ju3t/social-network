@@ -15,7 +15,11 @@ import backArrow from '../../common/img/icons/playlistarrowback.svg';
 import nextArrow from '../../common/img/icons/playlistarrownext.svg';
 import { TypeDispatch } from '../../redux-toolkit/store';
 import { TypeRootReducer } from '../../redux-toolkit/rootReducer';
-import { allAudiosAction, friendsAudioAction, myAudiosAction } from '../../redux-toolkit/audios/allAudiosSlice';
+import {
+  allAudiosAction,
+  friendsAudioAction,
+  myAudiosAction,
+} from '../../redux-toolkit/audios/allAudiosSlice';
 import { rejected } from '../../constants/fetchState';
 import IAllAudios from '../../typesInterfaces/IAllAudios';
 
@@ -155,7 +159,7 @@ const RightSide = styled.div`
 
 // slick arrows and settings area
 interface ISlickOnClick {
-  onClick?: () => void
+  onClick?: () => void;
 }
 
 const SampleNextArrow = ({ onClick }: ISlickOnClick) => <Next onClick={onClick} />;
@@ -170,14 +174,10 @@ const settings = {
 
 // end
 
-const Audio = () => {
+const Audio: React.FC = () => {
   const arr = [1, 2, 3, 4, 5, 6];
   const dispatch: TypeDispatch = useDispatch();
-  const objAudiosState = useSelector(({ allAudiosReducer }: TypeRootReducer) =>
-    // console.log('objAudiosState selector page', objAudiosState);
-    // console.log('allAudiosReducer selector page', allAudiosReducer);
-    allAudiosReducer);
-  // console.log('objAudiosState', objAudiosState);
+  const objAudiosState = useSelector(({ allAudiosReducer }: TypeRootReducer) => allAudiosReducer);
 
   useEffect(() => {
     if (objAudiosState.loading.endsWith(rejected)) {
@@ -203,7 +203,8 @@ const Audio = () => {
   }, [dispatch]);
 
   // const songsArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  // const songsItems = objAudiosState.length > 0 && objAudiosState.map(({ id, icon, author, name }) => (
+  // const songsItems = objAudiosState.length > 0 &&
+  // objAudiosState.map(({ id, icon, author, name }) => (
   const songsItems = objAudiosState && objAudiosState.allAudios.length > 0
     && objAudiosState.allAudios.map(({ icon, author, name, id, length }: IAllAudios) => {
       const timeAudio = (sec: number): string => {
@@ -233,11 +234,12 @@ const Audio = () => {
       );
     });
 
-  const ListFriends = objAudiosState && objAudiosState.friends.length > 0
+  const ListFriends = objAudiosState
+    && objAudiosState.friends.length > 0
     && objAudiosState.friends
       .map(({ firstName, lastName, userId, status, avatar, aboutMe }: any) => (
-        <li key={userId} onClick={() => console.log('Открыть список аудио')}>
-          <LeftSide>
+        <li key={userId}>
+          <LeftSide onClick={() => console.log('Открыть список аудио')}>
             <div>
               <img src={pic || avatar} alt="icon" title="icon" />
             </div>
@@ -267,6 +269,7 @@ const Audio = () => {
     if (argCategoryAudio === 'friendsAudios') {
       return dispatch(friendsAudioAction());
     }
+    return undefined;
   };
 
   interface IBtnCategAudio {
@@ -276,15 +279,15 @@ const Audio = () => {
   }
 
   const BtnCategAudio = styled.button<IBtnCategAudio>`
-border: none;
-background: none;
-padding: 0;
-line-height: 30px;
-border-bottom: ${(props: any): any => props.selected && '3px solid #FFB11B'};
-&:not(:last-child) {
-margin-right: 51px;
-}
-`;
+    border: none;
+    background: none;
+    padding: 0;
+    line-height: 30px;
+    border-bottom: ${(props: any): any => props.selected && '3px solid #FFB11B'};
+    &:not(:last-child) {
+      margin-right: 51px;
+    }
+  `;
 
   return (
     <Main>

@@ -51,7 +51,6 @@ const Headline = styled.h1`
   top: -90px;
 `;
 
-
 const Photo = () => (
   <PageWrapper>
     <ContentBox>
