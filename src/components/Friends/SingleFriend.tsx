@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import DeleteIcon from '../../common/img/icons/delete.svg';
 import MessageIcon from '../../common/img/icons/message.svg';
-import { ISingleFriendProps } from '../Friends/FriendsInterface'
+import { ISingleFriendProps } from './FriendsInterface';
 
 const SingleFriendWrapper = styled.div`
   display: flex;
@@ -11,7 +11,7 @@ const SingleFriendWrapper = styled.div`
   justify-content: space-between;
   flex-wrap: nowrap;
   align-items: center;
-  padding: 51px 0px;
+  padding: 51px 0;
   border-bottom: 1px solid #b2b2b2;
 `;
 
@@ -43,14 +43,14 @@ const BaseButtonStyle = `
 `;
 
 const DeleteButton = styled.button`
-    ${BaseButtonStyle}
-    mask-image: url(${DeleteIcon});
-    margin-left: 69px;
+  ${BaseButtonStyle};
+  mask-image: url(${DeleteIcon});
+  margin-left: 69px;
 `;
 
 const MessageButton = styled.button`
-    ${BaseButtonStyle}
-    mask-image: url(${MessageIcon});
+  ${BaseButtonStyle};
+  mask-image: url(${MessageIcon});
 `;
 
 const FriendInfo = styled.div`
@@ -79,9 +79,6 @@ const Placer = styled.div`
   align-items: center;
 `;
 
-
-
-
 const SingleFriend: React.FC<ISingleFriendProps> = ({
   firstname,
   lastname,
@@ -89,28 +86,28 @@ const SingleFriend: React.FC<ISingleFriendProps> = ({
   avatarka,
   id,
   deleteButtonHandler,
-  messegeButtonHandler
+  messegeButtonHandler,
 }:ISingleFriendProps) => (
-    <SingleFriendWrapper>
-      <Placer>
-        <FriendAvatarWrapper href="#">
-          <FriendAvatar src={avatarka} alt="there should be avatarka" />
-        </FriendAvatarWrapper>
-        <FriendInfo>
-          <FriendFullName>
-            {firstname}
-            {' '}
-            {lastname}
-          </FriendFullName>
-          <FriendProfession>{profesion}</FriendProfession>
-        </FriendInfo>
-      </Placer>
-      <Placer>
-        <MessageButton onClick={(event) => messegeButtonHandler(event, id)} />
-        <DeleteButton onClick={(event) => deleteButtonHandler(event, id)} />
-      </Placer>
-    </SingleFriendWrapper>
+  <SingleFriendWrapper>
+    <Placer>
+      <FriendAvatarWrapper href="#">
+        <FriendAvatar src={avatarka} alt="there should be avatarka" />
+      </FriendAvatarWrapper>
+      <FriendInfo>
+        <FriendFullName>
+          {firstname}
+          {' '}
+          {lastname}
+        </FriendFullName>
+        <FriendProfession>{profesion}</FriendProfession>
+      </FriendInfo>
+    </Placer>
+    <Placer>
+      <MessageButton onClick={(event) => messegeButtonHandler(event, id)} />
+      <DeleteButton onClick={(event) => deleteButtonHandler(event, id)} />
+    </Placer>
+  </SingleFriendWrapper>
 
-  );
+);
 
 export default SingleFriend;

@@ -57,8 +57,9 @@ const friendsArr: IFriendsArr[] = [
 const Friends: React.FC = () => {
   const [filterString, setfilterString] = useState<string>('');
 
-  const filterInputHandler = 
-  (event: React.ChangeEvent<HTMLInputElement>) => setfilterString(event.target.value.toLowerCase());
+  const filterInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => (
+    setfilterString(event.target.value.toLowerCase())
+  );
 
   const userFiltered = (): IFriendsArr[] => {
     if (filterString.length > 0) {

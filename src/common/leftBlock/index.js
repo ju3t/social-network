@@ -11,8 +11,12 @@ const LeftBlock = ({ messages }) => (
     {!messages && <ModalChat />}
   </LeftBlockContainer>
 );
+LeftBlock.defaultProps = {
+  messages: false,
+};
+
 LeftBlock.propTypes = {
-  messages: PropTypes.bool.isRequired,
+  messages: PropTypes.bool,
 };
 
 export default LeftBlock;

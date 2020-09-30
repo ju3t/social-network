@@ -16,6 +16,7 @@ const Wrapper = styled.div`
   min-height: 79vh;
   margin-top: 10px;
   margin-bottom: 10px;
+  background: #fff;
 `;
 
 const Main = styled.div`
@@ -24,7 +25,7 @@ const Main = styled.div`
   background-position: top, bottom;
   min-height: 79vh;
   min-width: 500px;
-  margin: 30px auto 0;
+  margin: 30px auto 0;  
 `;
 
 const Form = styled.form`
@@ -42,7 +43,9 @@ const InputsArea = styled.div`
 
 const SearchInpit = styled(Input)`
   background-color: rgba(0, 125, 215, 0);
-  padding-bottom: 10px;
+  width: 360px;
+  margin: 15px 20px;
+  padding-bottom: 5px;
   border: none;
   border-bottom: 1px solid #ffb11b;
   outline: none;
@@ -65,8 +68,8 @@ const ButtonSingInUpTxt = styled.button`
   padding: 0;
   border: none;
   border-bottom: ${(props) => (props.selected
-                               ? '2px solid #FFB11B'
-                               : 'none')};
+    ? '2px solid #FFB11B'
+    : 'none')};
   box-shadow: none;
   p {
     color: white;
@@ -87,8 +90,8 @@ const ButtonLeft = styled.button`
   background-color: rgba(0, 125, 215, 0);
   border: none;
   border-bottom: ${(props) => (props.selected
-                               ? '2px solid #FFB11B'
-                               : 'none')};
+    ? '2px solid #FFB11B'
+    : 'none')};
   box-shadow: none;
   margin-right: 35px;
   padding-bottom: 2px;
@@ -168,7 +171,7 @@ const Login = () => {
   };
   return (
     <Wrapper>
-      <img src={logo} alt="" />
+      <img src={logo} alt="logo" />
       <Main>
         {value === true && (
           <Form>
@@ -205,7 +208,6 @@ const Login = () => {
                 <p>Регистрация</p>
               </ButtonSingInUpTxt>
             </ButtonsArea>
-            {' '}
             <InputsArea>
               <SearchInpit placeholder="Введите ваше имя" nostyle="false" />
               <SearchInpit placeholder="Введите ваш e-mail" nostyle="true" />
