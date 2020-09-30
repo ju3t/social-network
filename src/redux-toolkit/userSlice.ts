@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { cloneDeep } from 'lodash';
 import { getUserById, updateUser } from '../services/user-controller';
 import { IUser } from '../types/user';
 import { IStore } from './store';
@@ -46,7 +47,14 @@ const userSlice = createSlice({
       if (state?.data) {
         return state;
       }
-      const newUser: IUser | null = { ...state?.data, status: action.payload };
+      /*
+      Пробовал заставить prettier и eslint игнорировать строчки ниже,
+      прописывать изменение через Object.assign, но линтеры просто переправляют
+      все обратно на spread. Если есть идеи, как обрубить руки линтерам тут, то хорошо бы
+      уменьшить количество кода тут. А пока вот так.
+      */
+      const stateClone = cloneDeep(state) as { data: IUser | null};
+      const newUser: IUser | null = { ...stateClone?.data as IUser, status: action.payload };
       return { ...state, data: newUser };
     },
     [loadUser.rejected.type]: (state, action) => ({
