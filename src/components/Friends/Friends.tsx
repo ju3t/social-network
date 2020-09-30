@@ -1,12 +1,16 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { uniqueId } from 'lodash';
+import { connect, useDispatch } from 'react-redux';
+import { Spin } from 'antd';
 import SingleFriend from './SingleFriend';
 import PageSearchInput from '../../common/Inputs/PageSearch';
-import { IFriendsArr } from './FriendsInterface';
+import { IFrendsProps, IStore } from './FriendsInterface';
+import { IUser } from '../../types/user';
+import { loadFrendsList, setFrendFilter } from '../../redux-toolkit/frendsListSlice';
 
-export const FriendsWrapper = styled.div`
+export const FriendsWrapper = styled.div` 
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
   background: #ffffff;
   font-family: 'Montserrat', sans-serif;
@@ -30,76 +34,75 @@ export const PageMarker = styled.h2`
   background: #ffb11b;
 `;
 
-const friendsArr: IFriendsArr[] = [
-  {
-    firstName: 'Firstname1',
-    lastName: 'Lastname1',
-    profesion: 'profeson 1',
-    avatarka: 'https://dummyimage.com/600x400/000/fff',
-    id: 1,
-  },
-  {
-    firstName: 'Firstname2',
-    lastName: 'Lastname2',
-    profesion: 'profeson 2',
-    avatarka: 'https://dummyimage.com/600x400/000/fff',
-    id: 2,
-  },
-  {
-    firstName: 'Firstname3',
-    lastName: 'Lastname3',
-    profesion: 'profeson 3',
-    avatarka: 'https://dummyimage.com/600x400/000/fff',
-    id: 3,
-  },
-];
+const Friends: React.FC<IFrendsProps> = ({
+  loadFrendsList: _loadFrendsList,
+  frendsList,
+  frendsFilter,
+  loading,
+  error,
+}: IFrendsProps) => {
+  useEffect(() => {
+    _loadFrendsList(2);
+  }, []);
 
-const Friends: React.FC = () => {
-  const [filterString, setfilterString] = useState<string>('');
+  const dispatch = useDispatch();
 
-  const filterInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => (
-    setfilterString(event.target.value.toLowerCase())
+  const filterInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => dispatch(
+    setFrendFilter(event.target.value.toLowerCase()),
   );
 
-  const userFiltered = (): IFriendsArr[] => {
-    if (filterString.length > 0) {
-      return friendsArr.filter(({ firstName, lastName }) => {
+  const userFiltered = (): IUser[] => {
+    if (frendsFilter.length > 0) {
+      return frendsList.filter(({ firstName, lastName }) => {
         const fullName = `${firstName} ${lastName}`.toLowerCase();
-        return fullName.includes(filterString);
+        return fullName.includes(frendsFilter);
       });
     }
-    return friendsArr;
+    return frendsList;
   };
 
   const deleteButtonHandler = (event: React.MouseEvent, id: number) => {
-    console.log(id);
+    console.log('Удалем пользовател из друзей, его id ', id);
   };
 
   const messegeButtonHandler = (event: React.MouseEvent, id: number) => {
     console.log(id);
   };
 
-  console.log(uniqueId());
   return (
     <FriendsWrapper>
       <PageMarker>Друзья</PageMarker>
       <PageSearchInput action={filterInputHandler} placeholder="Начните поиск друзей..." />
-      <div>
-        {userFiltered().map((item, index) => (
-          <SingleFriend
-            key={uniqueId()}
-            deleteButtonHandler={deleteButtonHandler}
-            messegeButtonHandler={messegeButtonHandler}
-            firstname={item.firstName}
-            lastname={item.lastName}
-            profesion={item.profesion}
-            avatarka={item.avatarka}
-            id={index}
-          />
-        ))}
-      </div>
+      {frendsList ? (
+        <div>
+          {userFiltered().map((item) => (
+            <SingleFriend
+              key={uniqueId()}
+              deleteButtonHandler={deleteButtonHandler}
+              messegeButtonHandler={messegeButtonHandler}
+              firstname={item.firstName}
+              lastname={item.lastName}
+              profesion="No field in api"
+              avatarka={item.avatar}
+              id={item.userId}
+            />
+          ))}
+        </div>
+      ) : <Spin size="large" />}
+
     </FriendsWrapper>
   );
 };
 
-export default Friends;
+const mapStateToProps = (state: IStore) => ({
+  frendsList: state.frendList.data,
+  loading: state.frendList.loading,
+  error: state.frendList.error,
+  frendsFilter: state.frendList.frendsFilter,
+});
+
+const mapDispatchToProps = {
+  loadFrendsList,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Friends);
