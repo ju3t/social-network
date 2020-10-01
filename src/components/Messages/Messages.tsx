@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import ScrollBar from 'react-scrollbars-custom';
+import { connect, ConnectedProps } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { RootState } from '../../redux-toolkit/store';
 import moreOptionSrc from '../../img/icons/chat-more-options.svg';
 import MessagesChat from '../../common/chat/messages';
 import massagesClass from './Messages.module.scss';
@@ -8,7 +10,7 @@ import SubmitMessage from '../../common/chat/submit-message';
 import PageSearchInput from '../../common/Inputs/PageSearch';
 import PageWrapper from '../../common/pageWrapper';
 import { groupMessagesByUser } from '../../common/chat/helper';
-import { Ichat } from '../../types/chat';
+import { Ichat, IsingleChat } from '../../types/chat';
 // import {
 //   getChats,
 //   getGroupChats,
@@ -17,42 +19,65 @@ import { Ichat } from '../../types/chat';
 //   setTitleGroup,
 // } from '../../services/chat-controller';
 
-import getChats from './TestAPI/testFetch'; // !! TEST API
+import { getChats, getSingleChats } from '../../services/chat-controller/testFetch'; // !! TEST API
 
 const scrollBarStyles = { width: '100%', height: '100%', paddingRight: 10 };
 
-const Messages: React.FC = () => {
+const mapStateToProps = (state:RootState) => {
+  const { chats, currentChat } = state.chat;
+  const { data } = state.user;
+  return {
+    chats,
+    currentChat,
+    user: data,
+  };
+};
+
+// const mapDispatch = action;
+const connector = connect(mapStateToProps);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+type Props = PropsFromRedux;
+
+const Messages: React.FC<Props> = (props) => {
   const [listChats, setListChats] = useState<Ichat[]>([]);
+  const [currentChat, setCurrentChat] = useState<IsingleChat[]>([]);
+  console.log(props);
 
   useEffect(() => {
-    getChats().then((value) => {
-      setListChats(value);
+    getChats().then((chats) => {
+      setListChats(chats);
+      if (currentChat.length === 0) {
+        getSingleChats(chats[0].id)
+          .then((massages) => {
+            setCurrentChat(massages);
+          })
+          .catch((err) => console.log(err));
+      }
     })
       .catch((err) => console.log(err));
   }, []);
 
-  const renderMessages = () => groupMessagesByUser.map((el) => {
+  const renderMessages = () => currentChat.map((el) => {
     if (el.username === 'bogdan13') {
       return (
-        <div className={massagesClass.messageWrapper} key={el.id}>
-          <MessagesChat messages={el.messages} messagesType="our" />
-          <Link to="/">
-            <img alt="avatar" src={el.image} />
-          </Link>
+        <div className={massagesClass.messageWrapper} key={el.idMassage}>
+          <MessagesChat messages={el.message} messagesType="our" date={el.persistDate} />
+          <img alt="avatar" src={el.userSenderImage} />
         </div>
       );
     }
     return (
-      <div className={massagesClass.messageWrapper} key={el.id}>
-        <Link to="/">
-          <img alt="avatar" src={el.image} />
-        </Link>
-        <MessagesChat messages={el.messages} messagesType="their" />
+      <div className={massagesClass.messageWrapper} key={el.idMassage}>
+        <img alt="avatar" src={el.userSenderImage} />
+        <MessagesChat messages={el.message} messagesType="their" date={el.persistDate} />
       </div>
     );
   });
 
-  const contentChatList = listChats.length === 0 ? <span>Loading...</span>
+  console.log(currentChat);
+
+  const contentChatList = listChats.length === 0 ? <h1>Loading...</h1>
     : listChats.map((chat) => (
       <div key={chat.id} className={massagesClass.selectChatElement}>
         <img
@@ -65,7 +90,6 @@ const Messages: React.FC = () => {
         </div>
       </div>
     ));
-  console.log(contentChatList);
 
   return (
     <PageWrapper messages>
@@ -109,4 +133,4 @@ const Messages: React.FC = () => {
   );
 };
 
-export default Messages;
+export default connector(Messages);

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import axios from 'axios';
-import { IsingleChat, Ichat, IdataBody } from '../types/chat';
+import { IsingleChat, Ichat, IdataBody } from '../../types/chat';
 
 const fetchChat = axios.create({
   baseURL: 'http://91.241.64.178:5561/api/user/',

@@ -31,6 +31,7 @@ export interface IStore {
   }
 }
 export type TypeDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;
 export type TypeThunkAction = ThunkAction<void, TypeRootReducer, null, Action<string>>;
 
 export default store;

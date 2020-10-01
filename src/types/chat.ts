@@ -1,4 +1,6 @@
 export interface IsingleChat {
+  idMassage: number,
+  username: string,
   lastRedactionDate: string,
   persistDate: string,
   mediaDto: ImediaDto[],
