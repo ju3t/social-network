@@ -3,7 +3,7 @@ import { IUser, IUserFriend } from '../../types/user';
 import baseUrl from '../config';
 
 const axios = axiosLib.create();
-axios.interceptors.response.use((response) => response.data);
+axios.interceptors.response.use((response: AxiosResponse) => response.data);
 axios.defaults.baseURL = `${baseUrl}user`;
 
 export async function getUserById(id: number): Promise<AxiosResponse<IUser>> {
@@ -22,8 +22,8 @@ export async function removeUserById(id: number) {
   return axios.delete(`/delete/${id}`);
 }
 
-export async function getFriendsByUserId(id: number): Promise<AxiosResponse<IUserFriend[]>> {
-  return axios.get(`/getFriends/${id}`);
+export async function getFriendsByUserId(id: number) {
+  return axios.get<IUserFriend[]>(`/getFriends/${id}`);
 }
 
 export async function updateUser(data: IUser): Promise<AxiosResponse<IUser>> {
