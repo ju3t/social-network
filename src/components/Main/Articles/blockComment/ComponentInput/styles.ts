@@ -42,7 +42,7 @@ export const BtnOpenNote = styled.button<{ isOpen: boolean }>`
   height: 34px;
   border-radius: 17px;
   background-color: #ffb11b;
-  background-image:url(${openNote});
+  background-image: url(${openNote});
   background-position: center center;
   background-repeat: no-repeat;
   transform: rotate(${({ isOpen }) => (isOpen ? '0' : '180')}deg);

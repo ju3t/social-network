@@ -3,33 +3,30 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { updateStatus } from '../../../../redux-toolkit/userSlice';
 
-import {
-  StatusForm,
-  StatusInput,
-} from './styles';
+import { StatusForm, StatusInput } from './styles';
 
 interface IFormStatus {
-  statusText?: string,
-  updateStatus: (status: string) => void
+  statusText?: string;
+  updateStatus: (status: string) => void;
 }
 
 const FormStatus: React.FC<IFormStatus> = ({ statusText, updateStatus: _updateStatus }) => {
   /*
-  Не использовал Formik, потому что мне необходимо было сделать
-  зависимость от statusText, а Formik принимает лишь initialValue, а после не реагирует
+  Не использовал formik, потому что мне необходимо было сделать
+  зависимость от statusText, а formik принимает лишь initialValue, а после не реагирует
   на пропсы, приходящие снаружи.
-  Плюс особенности Formik тут не особо помогают, так как поле лишь одно, валидировать его
+  Плюс особенности formik тут не особо помогают, так как поле лишь одно, валидировать его
   не надо и дополнительные обертки наворачивать смысла не имеет.
   */
   const [status, setStatus] = useState(statusText || '');
   useEffect(() => {
     setStatus(statusText || '');
   }, [statusText]);
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) : void => {
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
     _updateStatus(status);
   };
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) : void => {
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { value } = event.target;
     const temp = value !== null || value !== undefined ? value : status;
     setStatus(temp);

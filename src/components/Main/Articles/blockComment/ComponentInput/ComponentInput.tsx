@@ -4,12 +4,7 @@ import React, { useCallback } from 'react';
 import { Avatar } from 'antd';
 import { Formik, Field } from 'formik';
 import userFoto from '../../../../../img/userFoto.png';
-import {
-  WrapperForm,
-  Input,
-  BtnSend,
-  BtnOpenNote,
-} from './styles';
+import { WrapperForm, Input, BtnSend, BtnOpenNote } from './styles';
 
 interface Props {
   setIsOpen: (state: boolean) => void;
@@ -25,12 +20,10 @@ const ComponentInput: React.FC<Props> = ({ setIsOpen, isOpen }) => {
       initialValues={{
         inputText: '',
       }}
-      onSubmit={
-        (values, actions) => {
-          alert(`Sending ${values.inputText}`);
-          actions.resetForm();
-        }
-      }
+      onSubmit={(values, actions) => {
+        alert(`Sending ${values.inputText}`);
+        actions.resetForm();
+      }}
     >
       <WrapperForm>
         <Avatar src={userFoto} />

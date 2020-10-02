@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { uniqueId } from 'lodash';
 import { connect, useDispatch } from 'react-redux';
@@ -10,7 +10,7 @@ import { IFrendsProps, IStore } from './FriendsInterface';
 import { IUser } from '../../types/user';
 import { loadFrendsList, setFrendFilter } from '../../redux-toolkit/frendsListSlice';
 
-export const FriendsWrapper = styled.div` 
+export const FriendsWrapper = styled.div`
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
   background: #ffffff;
   font-family: 'Montserrat', sans-serif;
@@ -47,9 +47,9 @@ const Friends: React.FC<IFrendsProps> = ({
 
   const dispatch = useDispatch();
 
-  const filterInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => dispatch(
-    setFrendFilter(event.target.value.toLowerCase()),
-  );
+  const filterInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(setFrendFilter(event.target.value.toLowerCase()));
+  };
 
   const userFiltered = (): IUser[] => {
     if (frendsFilter.length > 0) {
@@ -88,8 +88,9 @@ const Friends: React.FC<IFrendsProps> = ({
             />
           ))}
         </div>
-      ) : <Spin size="large" />}
-
+      ) : (
+        <Spin size="large" />
+      )}
     </FriendsWrapper>
   );
 };

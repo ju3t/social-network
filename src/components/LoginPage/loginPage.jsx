@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import { Input } from 'antd';
 import styled from 'styled-components';
 import jm from '../../common/JM.svg';
@@ -25,10 +27,10 @@ const Main = styled.div`
   background-position: top, bottom;
   min-height: 79vh;
   min-width: 500px;
-  margin: 30px auto 0;  
+  margin: 30px auto 0;
 `;
 
-const Form = styled.form`
+const FormArea = styled.form`
   margin: 100px 0;
   border-radius: 15px;
   background: #111111;
@@ -66,13 +68,8 @@ const ButtonSingInUpTxt = styled.button`
   background-color: rgba(0, 125, 215, 0);
   padding: 0;
   border: none;
-<<<<<<< HEAD
   border-bottom: ${(props) => (props.selected ? '2px solid #FFB11B' : 'none')};
-=======
-  border-bottom: ${(props) => (props.selected
-    ? '2px solid #FFB11B'
-    : 'none')};
->>>>>>> 8a358cb800d658b06359d4bb922cdab0f64a3b08
+
   box-shadow: none;
   p {
     color: white;
@@ -92,13 +89,7 @@ const ButtonSingInUpTxt = styled.button`
 const ButtonLeft = styled.button`
   background-color: rgba(0, 125, 215, 0);
   border: none;
-<<<<<<< HEAD
   border-bottom: ${(props) => (props.selected ? '2px solid #FFB11B' : 'none')};
-=======
-  border-bottom: ${(props) => (props.selected
-    ? '2px solid #FFB11B'
-    : 'none')};
->>>>>>> 8a358cb800d658b06359d4bb922cdab0f64a3b08
   box-shadow: none;
   margin-right: 35px;
   padding-bottom: 2px;
@@ -162,6 +153,38 @@ const Login = () => {
     first: true,
     second: false,
   });
+
+  const regForm = useFormik({
+    initialValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      activeName: 'Active',
+      confirm_password: '',
+    },
+    validationSchema: Yup.object({
+      firstName: Yup.string()
+        .min(3, 'Введите не менее 3 символов')
+        .max(15, 'Имя не должно превышать 15 символов')
+        .required('Заполните поле!'),
+      lastName: Yup.string()
+        .min(3, 'Введите не менее 3 символов')
+        .max(20, 'Фамилия не должна превышать 20 символов')
+        .required('Заполните поле!'),
+      email: Yup.string().email('Не валидный email').required('Заполните поле!'),
+      password: Yup.string()
+        .min(6, 'Пароль должен содержать минимум 6 символов')
+        .required('Заполните поле!'),
+      confirm_password: Yup.string()
+        .oneOf([Yup.ref('password')], 'Пароли не совпадают')
+        .required('Заполните поле!'),
+    }),
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
+
   const selectRegistration = () => {
     setBorder({
       first: false,
@@ -181,7 +204,7 @@ const Login = () => {
       <img src={logo} alt="logo" />
       <Main>
         {value === true && (
-          <Form>
+          <FormArea>
             <ButtonsArea>
               <ButtonSingInUpTxt selected={border.first} onClick={() => selectLogin()}>
                 <p>Вход</p>
@@ -191,8 +214,18 @@ const Login = () => {
               </ButtonSingInUpTxt>
             </ButtonsArea>
             <InputsArea>
-              <SearchInpit placeholder="Введите ваш e-mail" nostyle="false" />
-              <SearchInpit placeholder="Введите ваш пароль" nostyle="true" />
+              <SearchInpit
+                id="email"
+                name="email"
+                placeholder="Введите ваш e-mail"
+                nostyle="false"
+              />
+              <SearchInpit
+                id="password"
+                name="password"
+                placeholder="Введите ваш пароль"
+                nostyle="true"
+              />
             </InputsArea>
             <SubmitArea>
               <button type="button">
@@ -202,11 +235,11 @@ const Login = () => {
             <ForgetPasswordArea>
               <TxtLink href="/">Забыли пароль?</TxtLink>
             </ForgetPasswordArea>
-          </Form>
+          </FormArea>
         )}
 
         {value === false && (
-          <Form>
+          <FormArea onSubmit={regForm.handleSubmit}>
             <ButtonsArea>
               <ButtonSingInUpTxt selected={border.first} onClick={() => selectLogin()}>
                 <p>Вход</p>
@@ -216,17 +249,70 @@ const Login = () => {
               </ButtonSingInUpTxt>
             </ButtonsArea>
             <InputsArea>
-              <SearchInpit placeholder="Введите ваше имя" nostyle="false" />
-              <SearchInpit placeholder="Введите ваш e-mail" nostyle="true" />
-              <SearchInpit placeholder="Придумайте ваш пароль" nostyle="false" />
-              <SearchInpit placeholder="Повторите ваш пароль" nostyle="true" />
+              <SearchInpit
+                id="firstName"
+                name="firstName"
+                placeholder="Введите ваше имя"
+                nostyle="false"
+                value={regForm.values.firstName}
+                onChange={regForm.handleChange}
+              />
+              {regForm.errors.firstName && regForm.touched.firstName && (
+                <p style={{ color: 'red' }}>{regForm.errors.firstName}</p>
+              )}
+              <SearchInpit
+                id="lastName"
+                name="lastName"
+                placeholder="Введите вашу фамилию"
+                nostyle="false"
+                value={regForm.values.lastName}
+                onChange={regForm.handleChange}
+              />
+              {regForm.errors.lastName && regForm.touched.lastName && (
+                <p style={{ color: 'red' }}>{regForm.errors.lastName}</p>
+              )}
+              <SearchInpit
+                id="email"
+                name="email"
+                placeholder="Введите ваш e-mail"
+                nostyle="true"
+                value={regForm.values.email}
+                onChange={regForm.handleChange}
+              />
+              {regForm.errors.email && regForm.touched.email && (
+                <p style={{ color: 'red' }}>{regForm.errors.email}</p>
+              )}
+              <SearchInpit
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Придумайте ваш пароль"
+                nostyle="false"
+                value={regForm.values.password}
+                onChange={regForm.handleChange}
+              />
+              {regForm.errors.password && regForm.touched.password && (
+                <p style={{ color: 'red' }}>{regForm.errors.password}</p>
+              )}
+              <SearchInpit
+                type="password"
+                id="confirm_password"
+                name="confirm_password"
+                placeholder="Повторите ваш пароль"
+                nostyle="true"
+                value={regForm.values.confirm_password}
+                onChange={regForm.handleChange}
+              />
+              {regForm.errors.confirm_password && regForm.touched.confirm_password && (
+                <p style={{ color: 'red' }}>{regForm.errors.confirm_password}</p>
+              )}
             </InputsArea>
             <SubmitArea>
-              <button type="button">
+              <button type="submit">
                 <p>ЗАРЕГИСТРИРОВАТЬСЯ</p>
               </button>
             </SubmitArea>
-          </Form>
+          </FormArea>
         )}
       </Main>
     </Wrapper>

@@ -3,13 +3,7 @@ import React from 'react';
 import { Formik, Field } from 'formik';
 import addFileSrc from '../../../img/icons/add-file.svg';
 
-import {
-  WrapForm,
-  TextWrap,
-  Text,
-  FileIcon,
-  SubmitMessageButton,
-} from './styles';
+import { WrapForm, TextWrap, Text, FileIcon, SubmitMessageButton } from './styles';
 
 export default (): React.FunctionComponentElement<unknown> => (
   <Formik

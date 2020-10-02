@@ -13,7 +13,7 @@ export const TextWrap = styled.div`
   display: flex;
   width: 100%;
   flex-grow: 1;
-  
+
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -22,7 +22,7 @@ export const TextWrap = styled.div`
 export const Text = styled.input`
   height: 3rem;
   border: none;
-  background: #FFF5E3;
+  background: #fff5e3;
   width: 100%;
   padding: 10px 40px 15px 15px;
   border-radius: 15px;

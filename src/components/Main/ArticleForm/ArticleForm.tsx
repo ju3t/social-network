@@ -23,17 +23,9 @@ const ArticleForm: React.FC<Props> = ({ changeOpen, isOpen }): JSX.Element => (
   >
     <ArticleStyledForm isOpen={isOpen}>
       <ArticleName>Название статьи</ArticleName>
-      <Field
-        name="articleName"
-        as={InputName}
-        autoComplete="off"
-      />
+      <Field name="articleName" as={InputName} autoComplete="off" />
       <ArticleName>Текст</ArticleName>
-      <Field
-        name="articleText"
-        rows="12"
-        as={InputText}
-      />
+      <Field name="articleText" rows="12" as={InputText} />
       <ArticleButton className="articleButton" type="submit">
         Опубликовать
       </ArticleButton>
