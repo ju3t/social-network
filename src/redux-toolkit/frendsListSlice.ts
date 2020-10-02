@@ -1,10 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import userController from '../services/user-controller';
-import { IUser } from '../types/user';
+import { AxiosResponse } from 'axios';
+import * as userController from '../services/user-controller';
+import { IUser, IUserFriend } from '../types/user';
 
 const loadFrendsList = createAsyncThunk('frendList/loadFrendsList', async (id: number) => {
-  const response = await userController.getFriendsByUserId(id);
-  const temp: Array<Promise<IUser>> = [];
+  const response = await userController.getFriendsByUserId(id) as unknown as IUserFriend[];
+  const temp: Array<Promise<AxiosResponse<IUser>>> = [];
   response.forEach((item) => temp.push(userController.getUserById(item.friendId)));
   return Promise.all(temp);
 });
