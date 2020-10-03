@@ -1,22 +1,50 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { cloneDeep } from 'lodash';
+import { AxiosResponse } from 'axios';
+import { cloneDeep, fromPairs } from 'lodash';
 import { getUserById, updateUser } from '../services/user-controller';
 import { IUser } from '../types/user';
-import { IStore } from './store';
+import { RootState } from './store';
+import { PostsState } from './postsSlice';
+import { StateChat } from './chatSlice';
+// import { IStore } from './store';
 
 const loadUser = createAsyncThunk('user/loadUser', async (id: number) => {
   const response = await getUserById(id);
   return response;
 });
 
-const updateStatus = createAsyncThunk('user/updateStatus', async (status: string, thunkApi) => {
-  const { user } = thunkApi.getState() as IStore;
-  const newUser = { ...user.data, status, roleName: undefined };
+// !!
+
+type TempState = Pick<RootState, 'user' | 'posts' | 'allAudiosReducer' | 'chat'>;
+
+// !! не смог решить проблему цикличности типов
+
+type CloneRootState = {
+  user: UserState;
+  posts: PostsState;
+  allAudiosReducer: {
+    allAudios: never[];
+    friends: never[];
+    loading: string;
+    msgFetchState: string;
+  };
+  chat: StateChat;
+};
+
+const updateStatus = createAsyncThunk<AxiosResponse<IUser>, string, {state:CloneRootState }>('user/updateStatus', async (status: string, thunkApi) => {
+  const { user } = thunkApi.getState();
+  const newUser = < IUser >{ ...user.data, status, roleName: undefined };
   const response = await updateUser(newUser);
   return response;
 });
 
-const initialState = {
+interface UserState {
+  data: null | IUser,
+  loading: boolean,
+  error: null | Error,
+}
+
+const initialState: UserState = {
   data: null,
   loading: false,
   error: null,
