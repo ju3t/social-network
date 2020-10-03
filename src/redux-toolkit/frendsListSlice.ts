@@ -10,8 +10,15 @@ const loadFrendsList = createAsyncThunk('frendList/loadFrendsList', async (id: n
   return Promise.all(temp);
 });
 
-const initialState = {
-  data: null,
+interface FrendsState {
+  data: IUser[];
+  loading: boolean;
+  error: null | Error;
+  frendsFilter: string;
+}
+
+const initialState: FrendsState = {
+  data: [],
   loading: false,
   error: null,
   frendsFilter: '',
