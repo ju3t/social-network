@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React from 'react';
-import { connect } from 'react-redux';
-import { IStore } from '../../../redux-toolkit/store';
+import { connect, ConnectedProps } from 'react-redux';
+import { RootState } from '../../../redux-toolkit/store';
 
 import photo1 from './img/photo 1.png';
 import photo2 from './img/photo 2.png';
@@ -22,11 +22,16 @@ import BlockNotes from '../Articles/blockNotes/BlockNotes';
 import UserAbout from '../UserAbout';
 import { IUser } from '../../../types/user';
 
-interface IWall {
-  user: IUser | null,
-}
+const mapStateToProps = (state: RootState) => ({
+  user: state.user.data,
+});
 
-const Wall: React.FC<IWall> = ({ user }: IWall) => (
+const connector = connect(mapStateToProps);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+type Props = PropsFromRedux;
+
+const Wall: React.FC<Props> = ({ user }) => (
   <WallContainer>
     <FormStatus statusText={user?.status} />
     <WallInfoBlock>
@@ -53,8 +58,4 @@ const Wall: React.FC<IWall> = ({ user }: IWall) => (
   </WallContainer>
 );
 
-const mapStateToProps = (state: IStore) => ({
-  user: state.user.data,
-});
-
-export default connect(mapStateToProps)(Wall);
+export default connector(Wall);

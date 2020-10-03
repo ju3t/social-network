@@ -3,21 +3,13 @@ import { AxiosResponse } from 'axios';
 import { cloneDeep, fromPairs } from 'lodash';
 import { getUserById, updateUser } from '../services/user-controller';
 import { IUser } from '../types/user';
-import { RootState } from './store';
 import { PostsState } from './postsSlice';
 import { StateChat } from './chatSlice';
-// import { IStore } from './store';
 
 const loadUser = createAsyncThunk('user/loadUser', async (id: number) => {
   const response = await getUserById(id);
   return response;
 });
-
-// !!
-
-type TempState = Pick<RootState, 'user' | 'posts' | 'allAudiosReducer' | 'chat'>;
-
-// !! не смог решить проблему цикличности типов
 
 type CloneRootState = {
   user: UserState;
