@@ -2,11 +2,12 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { uniqueId } from 'lodash';
-import { connect, useDispatch } from 'react-redux';
+import { connect, ConnectedProps, useDispatch } from 'react-redux';
 import { Spin } from 'antd';
+import { RootState } from '../../redux-toolkit/store';
 import SingleFriend from './SingleFriend';
 import PageSearchInput from '../../common/Inputs/PageSearch';
-import { IFrendsProps, IStore } from './FriendsInterface';
+// import { IFrendsProps, IStore } from './FriendsInterface';
 import { IUser } from '../../types/user';
 import { loadFrendsList, setFrendFilter } from '../../redux-toolkit/frendsListSlice';
 
@@ -34,16 +35,31 @@ export const PageMarker = styled.h2`
   background: #ffb11b;
 `;
 
-const Friends: React.FC<IFrendsProps> = ({
+const mapStateToProps = (state: RootState) => ({
+  frendsList: state.frends.data,
+  loading: state.frends.loading,
+  error: state.frends.error,
+  frendsFilter: state.frends.frendsFilter,
+});
+
+const mapDispatch = { loadFrendsList };
+const connector = connect(mapStateToProps, mapDispatch);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+type Props = PropsFromRedux;
+
+const Friends: React.FC<Props> = ({
   loadFrendsList: _loadFrendsList,
   frendsList,
   frendsFilter,
   loading,
   error,
-}: IFrendsProps) => {
+}) => {
   useEffect(() => {
     _loadFrendsList(2);
   }, [_loadFrendsList]);
+  console.log(frendsList);
+  console.log(frendsFilter);
 
   const dispatch = useDispatch();
 
@@ -51,8 +67,9 @@ const Friends: React.FC<IFrendsProps> = ({
     setFrendFilter(event.target.value.toLowerCase()),
   );
 
-  const userFiltered = (): IUser[] => {
-    if (frendsFilter.length > 0) {
+  const userFiltered = () => {
+    console.log('userFiltered');
+    if (frendsFilter.length > 0 && frendsList !== null) {
       return frendsList.filter(({ firstName, lastName }) => {
         const fullName = `${firstName} ${lastName}`.toLowerCase();
         return fullName.includes(frendsFilter);
@@ -73,7 +90,7 @@ const Friends: React.FC<IFrendsProps> = ({
     <FriendsWrapper>
       <PageMarker>Друзья</PageMarker>
       <PageSearchInput action={filterInputHandler} placeholder="Начните поиск друзей..." />
-      {frendsList ? (
+      {frendsList.length === 0 ? (
         <div>
           {userFiltered().map((item) => (
             <SingleFriend
@@ -94,15 +111,4 @@ const Friends: React.FC<IFrendsProps> = ({
   );
 };
 
-const mapStateToProps = (state: IStore) => ({
-  frendsList: state.frendList.data,
-  loading: state.frendList.loading,
-  error: state.frendList.error,
-  frendsFilter: state.frendList.frendsFilter,
-});
-
-const mapDispatchToProps = {
-  loadFrendsList,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Friends);
+export default connector(Friends);

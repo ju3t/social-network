@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
   posts: postsReducer,
   allAudiosReducer,
   chat: chatReducer,
-  frendsReducer,
+  frends: frendsReducer,
 });
 
 export type TypeRootReducer = ReturnType<typeof rootReducer>;
