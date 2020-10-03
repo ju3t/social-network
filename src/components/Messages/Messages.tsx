@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import ScrollBar from 'react-scrollbars-custom';
 import { connect, ConnectedProps } from 'react-redux';
-import { Link } from 'react-router-dom';
+import LoadingBLock from '../../common/loadingBlock/LoadingBlock';
+import ErrorBlock from '../../common/errorBlock/ErrorBlock';
 import { RootState } from '../../redux-toolkit/store';
 import moreOptionSrc from '../../img/icons/chat-more-options.svg';
 import MessagesChat from '../../common/chat/messages';
@@ -9,8 +10,8 @@ import massagesClass from './Messages.module.scss';
 import SubmitMessage from '../../common/chat/submit-message';
 import PageSearchInput from '../../common/Inputs/PageSearch';
 import PageWrapper from '../../common/pageWrapper';
-import { groupMessagesByUser } from '../../common/chat/helper';
 import { Ichat, IsingleChat } from '../../types/chat';
+import * as actions from '../../redux-toolkit/chatSlice';
 // import {
 //   getChats,
 //   getGroupChats,
@@ -18,8 +19,6 @@ import { Ichat, IsingleChat } from '../../types/chat';
 //   removeUserFromChat,
 //   setTitleGroup,
 // } from '../../services/chat-controller';
-
-import { getChats, getSingleChats } from '../../services/chat-controller/testFetch'; // !! TEST API
 
 const scrollBarStyles = { width: '100%', height: '100%', paddingRight: 10 };
 
@@ -33,63 +32,69 @@ const mapStateToProps = (state:RootState) => {
   };
 };
 
-// const mapDispatch = action;
-const connector = connect(mapStateToProps);
+const mapDispatch = actions;
+const connector = connect(mapStateToProps, mapDispatch);
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 type Props = PropsFromRedux;
 
-const Messages: React.FC<Props> = (props) => {
-  const [listChats, setListChats] = useState<Ichat[]>([]);
-  const [currentChat, setCurrentChat] = useState<IsingleChat[]>([]);
-  console.log(props);
+const Messages: React.FC<Props> = ({ chats, currentChat, loadChatsOfUser, loadCurrentChat }) => {
+  useEffect(() => {
+    if (chats.data.length === 0) {
+      loadChatsOfUser();
+    }
+  }, [chats.data.length, loadChatsOfUser]);
 
   useEffect(() => {
-    getChats().then((chats) => {
-      setListChats(chats);
-      if (currentChat.length === 0) {
-        getSingleChats(chats[0].id)
-          .then((massages) => {
-            setCurrentChat(massages);
-          })
-          .catch((err) => console.log(err));
-      }
-    })
-      .catch((err) => console.log(err));
-  }, []);
-
-  const renderMessages = () => currentChat.map((el) => {
-    if (el.username === 'bogdan13') {
-      return (
-        <div className={massagesClass.messageWrapper} key={el.idMassage}>
-          <MessagesChat messages={el.message} messagesType="our" date={el.persistDate} />
-          <img alt="avatar" src={el.userSenderImage} />
-        </div>
-      );
+    if (currentChat.data.length === 0 && chats.data.length !== 0) {
+      loadCurrentChat(chats.data[0].id);
     }
+  }, [chats.data, currentChat.data.length, loadCurrentChat]);
+
+  const renderMessages = () => {
+    if (currentChat.loading) return <LoadingBLock />;
+    if (currentChat.error) return <ErrorBlock />;
     return (
-      <div className={massagesClass.messageWrapper} key={el.idMassage}>
-        <img alt="avatar" src={el.userSenderImage} />
-        <MessagesChat messages={el.message} messagesType="their" date={el.persistDate} />
-      </div>
-    );
-  });
+      currentChat.data.map((el) => {
+        if (el.username === 'bogdan13') {
+          return (
+            <div className={massagesClass.messageWrapper} key={el.idMassage}>
+              <MessagesChat messages={el.message} messagesType="our" date={el.persistDate} />
+              <img alt="avatar" src={el.userSenderImage} />
+            </div>
+          );
+        }
+        return (
+          <div className={massagesClass.messageWrapper} key={el.idMassage}>
+            <img alt="avatar" src={el.userSenderImage} />
+            <MessagesChat messages={el.message} messagesType="their" date={el.persistDate} />
+          </div>
+        );
+      }));
+  };
 
-  console.log(currentChat);
-
-  const contentChatList = listChats.length === 0 ? <h1>Loading...</h1>
-    : listChats.map((chat) => (
-      <div key={chat.id} className={massagesClass.selectChatElement}>
-        <img
-          alt="avatar"
-          src={chat.image}
-        />
-        <div className={massagesClass.selectChatUserInfo}>
-          <span>{chat.title}</span>
-          <p>{chat.lastMessage}</p>
-        </div>
-      </div>
-    ));
+  const renderChatList = () => {
+    if (chats.loading) return <LoadingBLock />;
+    if (chats.error) return <ErrorBlock errorMessage={chats.error.message} />;
+    return (
+      chats.data.map((chat) => (
+        <button
+          key={chat.id}
+          className={massagesClass.selectChatElement}
+          type="button"
+          onClick={() => loadCurrentChat(chat.id)}
+        >
+          <img
+            alt="avatar"
+            src={chat.image}
+          />
+          <div className={massagesClass.selectChatUserInfo}>
+            <span>{chat.title}</span>
+            <p>{chat.lastMessage}</p>
+          </div>
+        </button>
+      )));
+  };
 
   return (
     <PageWrapper messages>
@@ -99,13 +104,13 @@ const Messages: React.FC<Props> = (props) => {
             <PageSearchInput placeholder="Поиск..." />
           </div>
           <div className={massagesClass.selectChatElementsWrapper}>
-            {contentChatList}
+            {renderChatList()}
           </div>
         </div>
 
         <div className={massagesClass.contentWrapper}>
           <div className={massagesClass.contentHeader}>
-            <img alt="avatar" src="https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg" />
+            <img alt="avatar" src="https://st.kp.yandex.net/images/actor_iphone/iphone360_1746394.jpg" />
             <div className={massagesClass.contentUserInfo}>
               <span>Павел Нечаев</span>
               <p>Программист</p>

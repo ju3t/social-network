@@ -52,6 +52,9 @@
   position: relative;
   padding: 30px 85px;
   cursor: pointer;
+  outline: none;
+  background-color: inherit;
+  border: none;
 
   &:hover {
     background-color: #fff5e3;
