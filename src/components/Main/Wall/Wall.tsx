@@ -20,7 +20,6 @@ import WallCreateArticle from '../WallCreateArticle';
 import FormStatus from './FormStatus';
 import BlockNotes from '../Articles/blockNotes/BlockNotes';
 import UserAbout from '../UserAbout';
-import { IUser } from '../../../types/user';
 
 const mapStateToProps = (state: RootState) => ({
   user: state.user.data,

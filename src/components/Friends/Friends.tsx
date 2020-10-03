@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { uniqueId } from 'lodash';
 import { connect, useDispatch } from 'react-redux';
@@ -43,7 +43,7 @@ const Friends: React.FC<IFrendsProps> = ({
 }: IFrendsProps) => {
   useEffect(() => {
     _loadFrendsList(2);
-  }, []);
+  }, [_loadFrendsList]);
 
   const dispatch = useDispatch();
 

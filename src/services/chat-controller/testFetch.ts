@@ -1,5 +1,5 @@
 import { uniqueId } from 'lodash';
-import { IsingleChat, Ichat, IdataBody } from '../../types/chat';
+import { IsingleChat, Ichat } from '../../types/chat';
 
 export async function getChats():Promise<Ichat[]> {
   return new Promise((resolve) => {
@@ -12,14 +12,11 @@ export async function getSingleChats(id:number):Promise<IsingleChat[]> {
     case 1: return new Promise((resolve) => {
       setTimeout(() => resolve(dataMassages1), 200);
     });
-      break;
     case 2: return new Promise((resolve) => {
       setTimeout(() => resolve(dataMassages2), 500);
     });
-      break;
     default:
       return [];
-      break;
   }
 }
 

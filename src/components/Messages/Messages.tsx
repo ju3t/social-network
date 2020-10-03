@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import React, { useEffect } from 'react';
 import ScrollBar from 'react-scrollbars-custom';
 import { connect, ConnectedProps } from 'react-redux';
@@ -10,7 +11,7 @@ import massagesClass from './Messages.module.scss';
 import SubmitMessage from '../../common/chat/submit-message';
 import PageSearchInput from '../../common/Inputs/PageSearch';
 import PageWrapper from '../../common/pageWrapper';
-import { Ichat, IsingleChat } from '../../types/chat';
+// import { Ichat, IsingleChat } from '../../types/chat';
 import * as actions from '../../redux-toolkit/chatSlice';
 // import {
 //   getChats,

@@ -14,6 +14,10 @@ if (process.env.NODE_ENV === 'development' && module.hot) {
   });
 }
 export type TypeDispatch = typeof store.dispatch;
+/*
+Вне папки redux-toolkit использовать ИСКЛЮЧИТЕЛЬНО RootState для типизации стора
+во избежание разночтений.
+*/
 export type RootState = ReturnType<typeof store.getState>;
 export type TypeThunkAction = ThunkAction<void, TypeRootReducer, null, Action<string>>;
 
