@@ -10,7 +10,6 @@ const loadChatsOfUser = createAsyncThunk('chat/loadChatsOfUser', async () => {
 
 const loadCurrentChat = createAsyncThunk('chat/loadCurrentChat', async (id:number) => {
   const response = await getSingleChats(id);
-  console.log(response);
   return response;
 });
 
