@@ -1,22 +1,26 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import Note from '../Note';
 import {
   Wrapper, MenuWrapper, Menu, MenuItem, ComponentSearch, InputSearch, EmptyBlockNotes,
 } from './styles';
-import { IStore } from '../../../../../redux-toolkit/store';
+import { RootState } from '../../../../../redux-toolkit/store';
 import LoadingBlock from '../../../../../common/loadingBlock';
 import ErrorBlock from '../../../../../common/errorBlock';
-import { IDataPost } from '../../../../../types/post';
 
-interface IBlockNotes {
-  posts: IDataPost[],
-  loading: boolean,
-  error: Error
-}
+const mapStateToProps = (state: RootState) => ({
+  posts: state.posts.data,
+  loading: state.posts.loading,
+  error: state.posts.error,
+});
 
-const BlockNotes: React.FC<IBlockNotes> = ({ posts, loading, error }) => {
+const connector = connect(mapStateToProps);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+type Props = PropsFromRedux;
+
+const BlockNotes: React.FC<Props> = ({ posts, loading, error }) => {
   const [isOpenSearch, setIsOpenSearch] = useState(false);
 
   const renderSearch = () => (isOpenSearch ? (
@@ -53,10 +57,4 @@ const BlockNotes: React.FC<IBlockNotes> = ({ posts, loading, error }) => {
   );
 };
 
-const mapStateToProps = (state: IStore) => ({
-  posts: state?.posts?.data,
-  loading: state?.posts?.loading,
-  error: state?.posts?.error,
-});
-
-export default connect(mapStateToProps)(BlockNotes);
+export default connector(BlockNotes);

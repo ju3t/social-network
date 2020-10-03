@@ -1,26 +1,53 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { AxiosResponse } from 'axios';
 import { cloneDeep } from 'lodash';
 import { getUserById, updateUser } from '../services/user-controller';
 import { IUser } from '../types/user';
-import { IStore } from './store';
+import { PostsState } from './postsSlice';
+import { StateChat } from './chatSlice';
 
 const loadUser = createAsyncThunk('user/loadUser', async (id: number) => {
   const response = await getUserById(id);
   return response;
 });
 
-const updateStatus = createAsyncThunk('user/updateStatus', async (status: string, thunkApi) => {
-  const { user } = thunkApi.getState() as IStore;
-  const newUser = { ...user.data, status, roleName: undefined };
-  const response = await updateUser(newUser);
-  return response;
-});
+interface UserState {
+  data: null | IUser,
+  loading: boolean,
+  error: null | Error,
+}
 
-const initialState = {
+const initialState: UserState = {
   data: null,
   loading: false,
   error: null,
 };
+
+/*
+Нужен, чтобы обращаться в createAsyncThunk к thunkApi.
+Так как импортировать уже существующий тип стора не выйдет - создание стора зависит от
+этого файла, - то приходится делать слепок ещё несуществующего стора.
+Если через thunkApi надо будет обратиться куда-то в пределах данного файла -
+модифицируете модель ниже.
+*/
+type CloneRootState = {
+  user: UserState;
+  posts: PostsState;
+  allAudiosReducer: {
+    allAudios: never[];
+    friends: never[];
+    loading: string;
+    msgFetchState: string;
+  };
+  chat: StateChat;
+};
+
+const updateStatus = createAsyncThunk<AxiosResponse<IUser>, string, {state:CloneRootState }>('user/updateStatus', async (status: string, thunkApi) => {
+  const { user } = thunkApi.getState();
+  const newUser = { ...user.data, status, roleName: undefined } as IUser;
+  const response = await updateUser(newUser);
+  return response;
+});
 
 const userSlice = createSlice({
   name: 'user',

@@ -28,7 +28,13 @@ const loadCommentsByPost = createAsyncThunk('posts/loadCommentsByPost', async (i
       ]
 }
  */
-const initialState = {
+export interface PostsState {
+  data: null | IDataPost[],
+  loading: boolean,
+  error: null | Error,
+}
+
+const initialState : PostsState = {
   data: null,
   loading: false,
   error: null,
