@@ -13,6 +13,7 @@ import UserInfoHeader from './UserInfoHeader';
 import Wall from './Wall';
 import ErrorBlock from '../../common/errorBlock';
 import LoadingBlock from '../../common/loadingBlock';
+import { StyledLoadingWrapped } from './styled';
 
 interface MainProps {
   loadUser: (arg: number) => void;
@@ -31,7 +32,6 @@ const Main: React.FC<MainProps> = ({
   }, [_loadUser, _loadPostsByUser]);
   const renderContent = () => {
     if (user) {
-      /* TODO Сделать чтобы statusName помещался в статус */
       return (
         <>
           <UserInfoHeader />
@@ -40,7 +40,7 @@ const Main: React.FC<MainProps> = ({
       );
     }
     if (loading) {
-      return <LoadingBlock />;
+      return <StyledLoadingWrapped><LoadingBlock /></StyledLoadingWrapped>;
     }
     return <ErrorBlock errorMessage={error?.message} />;
   };

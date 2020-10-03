@@ -12,9 +12,12 @@ import { loadCommentsByPost } from '../../../../../redux-toolkit/postsSlice';
 import Comment from '../Comment';
 import ComponentInput from '../ComponentInput';
 import IComment from '../../../../../types/comment';
+import { IUser } from '../../../../../types/user';
+import { IStore } from '../../../../../redux-toolkit/store';
 
 interface IBlockComments {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  user: IUser | null;
   comments?: IComment[];
   id: number;
   isOpen: boolean;
@@ -23,6 +26,7 @@ interface IBlockComments {
 }
 
 const BlockComments: React.FC<IBlockComments> = ({
+  user,
   comments,
   id: postId,
   isOpen,
@@ -47,13 +51,17 @@ const BlockComments: React.FC<IBlockComments> = ({
     <Wrapper>
       <Title>Комментарии</Title>
       { renderComments() }
-      <ComponentInput setIsOpen={setIsOpen} isOpen={isOpen} />
+      <ComponentInput setIsOpen={setIsOpen} isOpen={isOpen} postId={postId} user={user}/>
     </Wrapper>
   );
 };
+
+const mapStateToProps = (state: IStore) => ({
+  user: state?.user?.data
+})
 
 const mapDispatchToProps = {
   loadCommentsByPost,
 };
 
-export default connect(null, mapDispatchToProps)(BlockComments);
+export default connect(mapStateToProps, mapDispatchToProps)(BlockComments);

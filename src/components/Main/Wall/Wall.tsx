@@ -48,7 +48,7 @@ const Wall: React.FC<IWall> = ({ user }: IWall) => (
         </InfoPhotoBlock>
       </WallInfoUserAbout>
     </WallInfoBlock>
-    <WallCreateArticle />
+    <WallCreateArticle user={user} />
     <BlockNotes />
   </WallContainer>
 );

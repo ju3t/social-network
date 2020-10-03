@@ -5,7 +5,6 @@ import actionAddNone from '../../icons/action_addNote.svg';
 import actionLike from '../../icons/action_like.svg';
 import actionComment from '../../icons/action_comment.svg';
 import actionRepost from '../../icons/action_repost.svg';
-import loading from '../../../../../img/LoadingBlock.svg';
 
 export const Wrapper = styled.div`
 position: relative;
@@ -150,14 +149,10 @@ color: black;
 }
 `;
 
-export const NoteLoadingBlock = styled.div`
-  background-image: url(${loading});
-  background-size: contain;
-  width: 50px;
-  height: 50px;
+export const StyledLoadingBlock = styled.div`
+  top: 0;
   right: 0;
-  bottom: 0;
-  transform: translate(3.5em, -3em);
+  transform: translate(-172%, -160%);
   position: absolute;
 `;
 

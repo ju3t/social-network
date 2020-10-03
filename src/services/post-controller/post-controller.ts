@@ -1,5 +1,5 @@
 import axiosLib, { AxiosResponse } from 'axios';
-import { IPost } from '../../types/post';
+import { ICreatePost, IPost } from '../../types/post';
 import IComment from '../../types/comment';
 import baseUrl from '../config';
 
@@ -15,7 +15,7 @@ export async function getAllCommentsByPost(id:number): Promise<AxiosResponse<ICo
   return axios.get(`/${id}/comments`);
 }
 
-export async function createNewPost(data: IPost): Promise<AxiosResponse<IPost>> {
+export async function createNewPost(data: ICreatePost): Promise<AxiosResponse<string>> {
   return axios.post('/create', data);
 }
 

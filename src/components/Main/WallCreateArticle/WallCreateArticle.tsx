@@ -19,14 +19,20 @@ import {
   WallCreateArticleHeaderBlockRight,
 } from '../../../common/styledComponents';
 import ArticleForm from '../ArticleForm';
+import { IUser } from '../../../types/user';
 
 const renderIcons = () => {
   const icons = [photo, music, video, note, dots];
   return icons.map((el) => <IconArticle img={el} key={el} />);
 };
 
-const WallCreateArticle: React.FC = () => {
-  const [isOpen, setOpen] = useState(false);
+interface IWallCreateArticle {
+  user: IUser | null;
+}
+
+const WallCreateArticle: React.FC<IWallCreateArticle> = ({ user }) => {
+  const [ isOpen, setOpen] = useState(false);
+  const [ loading, setLoading ] = useState(false);
 
   const changeOpen = useCallback(
     () => setOpen(false),
@@ -37,6 +43,10 @@ const WallCreateArticle: React.FC = () => {
     () => <IconArticle img={add} onClick={() => setOpen(true)} />,
     [setOpen],
   );
+
+  if (!user) {
+    return null;
+  }
 
   return (
     <WallCreateArticleContainer>
@@ -51,7 +61,12 @@ const WallCreateArticle: React.FC = () => {
           {isOpen ? renderIcons() : renderPlus()}
         </WallCreateArticleHeaderBlockRight>
       </WallCreateArticleHeaderBlock>
-      <ArticleForm isOpen={isOpen} changeOpen={changeOpen} />
+      <ArticleForm 
+      isOpen={isOpen} 
+      loading={loading}
+      changeOpen={changeOpen}
+      setLoading={setLoading} 
+      user={user}/>
     </WallCreateArticleContainer>
   );
 };

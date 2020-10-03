@@ -23,9 +23,10 @@ import {
   TagsList,
   BtnOpenNote,
   TagItem,
-  NoteLoadingBlock,
   NoteErrorBlock,
+  StyledLoadingBlock
 } from './styles';
+import LoadingBlock from 'common/loadingBlock';
 
 interface INote {
   dataPost: IDataPost
@@ -55,12 +56,12 @@ const Note: React.FC<INote> = ({ dataPost }: INote) => {
 
   const renderState = () => {
     if (loading) {
-      return <NoteLoadingBlock />;
+      return <StyledLoadingBlock><LoadingBlock size={60}/></StyledLoadingBlock>;
     }
     if (error) {
       return <NoteErrorBlock> Что-то пошло не так... </NoteErrorBlock>;
     }
-    return null;
+    return renderBlockComments();
   };
 
   const {
@@ -105,7 +106,6 @@ const Note: React.FC<INote> = ({ dataPost }: INote) => {
             <CountAction>{shareAmount || 0}</CountAction>
           </Action>
         </UserActions>
-        {renderState()}
       </WrapperNote>
       <Wrapper>
         <TitleText>{title}</TitleText>
@@ -119,7 +119,7 @@ const Note: React.FC<INote> = ({ dataPost }: INote) => {
             <TagItem key={item.id}>{item.text}</TagItem>
           ))}
         </TagsList>
-        { renderBlockComments() }
+        { renderState() }
       </Wrapper>
     </>
   );
