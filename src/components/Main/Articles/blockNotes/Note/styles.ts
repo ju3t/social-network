@@ -1,11 +1,9 @@
 import styled from 'styled-components';
-import openNote from '../../icons/open_note.svg';
 import closeNote from '../../icons/close_note.svg';
 import actionAddNone from '../../icons/action_addNote.svg';
 import actionLike from '../../icons/action_like.svg';
 import actionComment from '../../icons/action_comment.svg';
 import actionRepost from '../../icons/action_repost.svg';
-import loading from '../../../../../img/LoadingBlock.svg';
 
 export const Wrapper = styled.div`
 position: relative;
@@ -69,6 +67,7 @@ background-color: transparent;
 export const Action = styled.div`
 display: flex;
 align-items: center;
+position: relative;
 &:not(:last-child) {
   margin-right: 45px;
 }
@@ -121,13 +120,13 @@ width: 34px;
 height: 34px;
 border-radius: 17px;
 background-color: #ffb11b;
-background-image: ${({ isOpen }:{ isOpen: boolean}) => (isOpen ? `url(${closeNote})` : `url(${openNote})`)};
+background-image: url(${closeNote});
 background-position: center center;
 background-repeat: no-repeat;
-cursor: pointer;
+transform: rotate(${({ $isOpen }:{ $isOpen: boolean}) => ($isOpen ? '0' : '180')}deg);
+transition: transform .5s;
 border: none;
 position: absolute;
-bottom: 50px;
 right: 0;
 
 &:focus {
@@ -150,23 +149,18 @@ color: black;
 }
 `;
 
-export const NoteLoadingBlock = styled.div`
-  background-image: url(${loading});
-  background-size: contain;
-  width: 50px;
-  height: 50px;
-  right: 0;
-  bottom: 0;
-  transform: translate(3.5em, -3em);
+export const StyledLoadingBlock = styled.div`
+  transform: translateX(-25%);
   position: absolute;
 `;
 
 export const NoteErrorBlock = styled.div`
   position: absolute;
-  transform: translate(3.5em, -3em);
-  right: 0;
-  bottom: 0;
-  border: 1px solid rgba(1,1,1,0.5);
-  color: rgba(1,1,1,0.5);
+  transform: translate(0.5em, -2.5em);
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: 1px solid #ff4d4f;
+  color: #ff4d4f;
+  width: 10em;
   background-color: transparent;
 `;

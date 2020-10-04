@@ -19,22 +19,16 @@ export const InputText = styled.textarea`
     border-radius: 5px;
     border: 1px solid #B2B2B2;
     outline: none !important;
-    font-size: 24px;
+    font-size: 16px;
     resize: none;
 `;
 
-export const ArticleStyledForm = styled(Form)
-  // withConfig не позволяет пропу isOpen пройти дальше styled в Form.
-  // Иначе Form "видит" неподобающий проп и ругается об этом в чат
-  .withConfig({
-    shouldForwardProp: (prop) => !['isOpen'].includes(prop),
-  })<{ isOpen?: boolean }>`
+export const ArticleStyledForm = styled(Form)`
     display: flex;
     flex-direction: column;
     position: relative;
-    opacity: ${({ isOpen }) => (isOpen ? '1' : '0')};
-    height: ${({ isOpen }) => (isOpen ? '100%' : '0px')};
     transition: 1s;
+    color: black;
 `;
 
 export const ArticleButton = styled.button`

@@ -1,9 +1,12 @@
 import { IUser } from './user';
 
-export default interface IComment {
-    id: number,
+export interface ICreateComment {
     comment: string,
+    userDto: IUser
+}
+
+export default interface IComment extends ICreateComment{
+    id: number,
     lastRedactionDate: string,
     persistDate: string,
-    userDto: IUser
 }

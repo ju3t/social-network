@@ -7,8 +7,6 @@ import { Spin } from 'antd';
 import { RootState } from '../../redux-toolkit/store';
 import SingleFriend from './SingleFriend';
 import PageSearchInput from '../../common/Inputs/PageSearch';
-// import { IFrendsProps, IStore } from './FriendsInterface';
-import { IUser } from '../../types/user';
 import { loadFrendsList, setFrendFilter } from '../../redux-toolkit/frendsListSlice';
 
 export const FriendsWrapper = styled.div` 

@@ -11,7 +11,6 @@ import massagesClass from './Messages.module.scss';
 import SubmitMessage from '../../common/chat/submit-message';
 import PageSearchInput from '../../common/Inputs/PageSearch';
 import PageWrapper from '../../common/pageWrapper';
-// import { Ichat, IsingleChat } from '../../types/chat';
 import * as actions from '../../redux-toolkit/chatSlice';
 // import {
 //   getChats,

@@ -11,6 +11,7 @@ import UserInfoHeader from './UserInfoHeader';
 import Wall from './Wall';
 import ErrorBlock from '../../common/errorBlock';
 import LoadingBlock from '../../common/loadingBlock';
+import { StyledLoadingWrapped } from './styled';
 
 const mapStateToProps = (state: RootState) => ({
   user: state.user.data,
@@ -36,7 +37,6 @@ const Main: React.FC<Props> = ({
   }, [_loadUser, _loadPostsByUser]);
   const renderContent = () => {
     if (user) {
-      /* TODO Сделать чтобы statusName помещался в статус */
       return (
         <>
           <UserInfoHeader />
@@ -45,7 +45,7 @@ const Main: React.FC<Props> = ({
       );
     }
     if (loading) {
-      return <LoadingBlock />;
+      return <StyledLoadingWrapped><LoadingBlock /></StyledLoadingWrapped>;
     }
     return <ErrorBlock errorMessage={error?.message} />;
   };

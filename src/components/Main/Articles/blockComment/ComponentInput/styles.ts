@@ -3,6 +3,11 @@ import { Form } from 'formik';
 import openNote from '../../icons/open_note.svg';
 import sendComments from '../../icons/send_comments.svg';
 
+export const StyledLoading = styled.div`
+  transform: translateX(-30px);
+  position: absolute;
+`;
+
 export const WrapperForm = styled(Form)`
   width: 100%;
   display: flex;

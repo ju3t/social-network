@@ -44,7 +44,7 @@ type CloneRootState = {
 
 const updateStatus = createAsyncThunk<AxiosResponse<IUser>, string, {state:CloneRootState }>('user/updateStatus', async (status: string, thunkApi) => {
   const { user } = thunkApi.getState();
-  const newUser = { ...user.data, status, roleName: undefined } as IUser;
+  const newUser = { ...user.data, status, roleName: undefined, activeName: 'Active' } as IUser;
   const response = await updateUser(newUser);
   return response;
 });

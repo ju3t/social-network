@@ -52,7 +52,7 @@ const Wall: React.FC<Props> = ({ user }) => (
         </InfoPhotoBlock>
       </WallInfoUserAbout>
     </WallInfoBlock>
-    <WallCreateArticle />
+    <WallCreateArticle user={user} />
     <BlockNotes />
   </WallContainer>
 );
