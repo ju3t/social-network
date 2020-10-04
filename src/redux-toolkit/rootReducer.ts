@@ -5,7 +5,6 @@ import myAudiosReducer from './audios/myAudiosSlice';
 import { frendsReducer } from './frendsListSlice';
 import { postsReducer } from './postsSlice';
 
-
 const rootReducer = combineReducers({
   user: userReducer,
   posts: postsReducer,

@@ -6,6 +6,8 @@ import styled from 'styled-components';
 import jm from '../../common/JM.svg';
 import sn from '../../common/SN.svg';
 import logo from '../../common/logo.svg';
+import { createNewUser } from '../../services/user-controller/user-controller';
+import { IUser } from '../../types/user';
 
 const Wrapper = styled.div`
   display: flex;
@@ -64,38 +66,18 @@ const ButtonsArea = styled.div`
   justify-content: space-between;
 `;
 
-const ButtonSingInUpTxt = styled.button`
+// eslint-disable-next-line no-unused-vars
+const ButtonSingInUpTxt: any = styled.button`
   background-color: rgba(0, 125, 215, 0);
   padding: 0;
   border: none;
-  border-bottom: ${(props) => (props.selected ? '2px solid #FFB11B' : 'none')};
+  border-bottom: ${({ selected }: any) => (selected ? '2px solid #FFB11B' : 'none')};
 
   box-shadow: none;
   p {
     color: white;
     font-style: normal;
     font-weight: normal;
-    font-size: 26px;
-    line-height: 32px;
-    letter-spacing: 0.1em;
-    margin-bottom: 8px;
-  }
-  &:hover {
-    cursor: pointer;
-  }
-`;
-
-// eslint-disable-next-line no-unused-vars
-const ButtonLeft = styled.button`
-  background-color: rgba(0, 125, 215, 0);
-  border: none;
-  border-bottom: ${(props) => (props.selected ? '2px solid #FFB11B' : 'none')};
-  box-shadow: none;
-  margin-right: 35px;
-  padding-bottom: 2px;
-  p {
-    color: white;
-    font-weight: 500;
     font-size: 26px;
     line-height: 32px;
     letter-spacing: 0.1em;
@@ -147,22 +129,27 @@ const TxtLink = styled.a`
   text-decoration: none;
 `;
 
-const Login = () => {
+const Login: React.FC = (): JSX.Element => {
   const [value, setValue] = useState(true);
   const [border, setBorder] = useState({
     first: true,
     second: false,
   });
 
+  const passReg = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$');
+
+  const initialValues: IUser = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    activeName: 'Active',
+    confirmPassword: '',
+    avatar: '',
+  };
+
   const regForm = useFormik({
-    initialValues: {
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: '',
-      activeName: 'Active',
-      confirm_password: '',
-    },
+    initialValues,
     validationSchema: Yup.object({
       firstName: Yup.string()
         .min(3, 'Введите не менее 3 символов')
@@ -175,13 +162,18 @@ const Login = () => {
       email: Yup.string().email('Не валидный email').required('Заполните поле!'),
       password: Yup.string()
         .min(6, 'Пароль должен содержать минимум 6 символов')
+        .matches(passReg, 'Пароль должен содержать 1 цифру, 1 заглавную и 1 не заглавную букву.')
         .required('Заполните поле!'),
-      confirm_password: Yup.string()
+      confirmPassword: Yup.string()
         .oneOf([Yup.ref('password')], 'Пароли не совпадают')
         .required('Заполните поле!'),
     }),
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: (values: IUser) => {
+      const result = JSON.stringify(values);
+      console.log(result);
+      createNewUser(values)
+        .then(() => alert('Регистрация прошла успешно!'))
+        .catch((e) => alert(`Error ${e.message}`));
     },
   });
 
@@ -214,18 +206,8 @@ const Login = () => {
               </ButtonSingInUpTxt>
             </ButtonsArea>
             <InputsArea>
-              <SearchInpit
-                id="email"
-                name="email"
-                placeholder="Введите ваш e-mail"
-                nostyle="false"
-              />
-              <SearchInpit
-                id="password"
-                name="password"
-                placeholder="Введите ваш пароль"
-                nostyle="true"
-              />
+              <SearchInpit id="email" name="email" placeholder="Введите ваш e-mail" />
+              <SearchInpit id="password" name="password" placeholder="Введите ваш пароль" />
             </InputsArea>
             <SubmitArea>
               <button type="button">
@@ -253,7 +235,6 @@ const Login = () => {
                 id="firstName"
                 name="firstName"
                 placeholder="Введите ваше имя"
-                nostyle="false"
                 value={regForm.values.firstName}
                 onChange={regForm.handleChange}
               />
@@ -264,7 +245,6 @@ const Login = () => {
                 id="lastName"
                 name="lastName"
                 placeholder="Введите вашу фамилию"
-                nostyle="false"
                 value={regForm.values.lastName}
                 onChange={regForm.handleChange}
               />
@@ -275,7 +255,6 @@ const Login = () => {
                 id="email"
                 name="email"
                 placeholder="Введите ваш e-mail"
-                nostyle="true"
                 value={regForm.values.email}
                 onChange={regForm.handleChange}
               />
@@ -287,7 +266,6 @@ const Login = () => {
                 id="password"
                 name="password"
                 placeholder="Придумайте ваш пароль"
-                nostyle="false"
                 value={regForm.values.password}
                 onChange={regForm.handleChange}
               />
@@ -296,15 +274,14 @@ const Login = () => {
               )}
               <SearchInpit
                 type="password"
-                id="confirm_password"
-                name="confirm_password"
+                id="confirmPassword"
+                name="confirmPassword"
                 placeholder="Повторите ваш пароль"
-                nostyle="true"
-                value={regForm.values.confirm_password}
+                value={regForm.values.confirmPassword}
                 onChange={regForm.handleChange}
               />
-              {regForm.errors.confirm_password && regForm.touched.confirm_password && (
-                <p style={{ color: 'red' }}>{regForm.errors.confirm_password}</p>
+              {regForm.errors.confirmPassword && regForm.touched.confirmPassword && (
+                <p style={{ color: 'red' }}>{regForm.errors.confirmPassword}</p>
               )}
             </InputsArea>
             <SubmitArea>

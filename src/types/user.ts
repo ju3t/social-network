@@ -1,5 +1,5 @@
 export interface IUser {
-  userId: number;
+  userId?: any;
   firstName: string;
   lastName: string;
   dateOfBirth?: string;
@@ -8,6 +8,7 @@ export interface IUser {
   avatar: string;
   email?: string;
   password?: string;
+  confirmPassword?: string;
   city?: string;
   linkSite?: string;
   roleName?: string;

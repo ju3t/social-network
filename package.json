@@ -86,6 +86,7 @@
     "@storybook/addon-links": "^5.3.19",
     "@storybook/preset-create-react-app": "^3.1.4",
     "@types/lodash": "^4.14.161",
+    "@types/yup": "^0.29.7",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
     "babel-loader": "^8.1.0",
