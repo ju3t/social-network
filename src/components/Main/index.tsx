@@ -1,11 +1,9 @@
 // eslint-disable-next-line
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import { loadUser } from '../../redux-toolkit/userSlice';
 import { loadPostsByUser } from '../../redux-toolkit/postsSlice';
-import { IStore } from '../../redux-toolkit/store';
-import { IUser } from '../../types/user';
-
+import { RootState } from '../../redux-toolkit/store';
 import Header from '../../common/header';
 import PageWrapper from '../../common/pageWrapper';
 import { MainContainer } from '../../common/styledComponents';
@@ -15,17 +13,24 @@ import ErrorBlock from '../../common/errorBlock';
 import LoadingBlock from '../../common/loadingBlock';
 import { StyledLoadingWrapped } from './styled';
 
-interface MainProps {
-  loadUser: (arg: number) => void;
-  loadPostsByUser: (arg: number) => void;
-  user: IUser;
-  loading: boolean;
-  error: Error;
-}
+const mapStateToProps = (state: RootState) => ({
+  user: state.user.data,
+  loading: state.user.loading,
+  error: state.user.error,
+});
 
-const Main: React.FC<MainProps> = ({
+const mapDispatch = {
+  loadUser,
+  loadPostsByUser,
+};
+const connector = connect(mapStateToProps, mapDispatch);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+type Props = PropsFromRedux;
+
+const Main: React.FC<Props> = ({
   loadUser: _loadUser, loadPostsByUser: _loadPostsByUser, user, loading, error,
-}: MainProps) => {
+}) => {
   useEffect(() => {
     _loadUser(1);
     _loadPostsByUser(1);
@@ -54,15 +59,4 @@ const Main: React.FC<MainProps> = ({
   );
 };
 
-const mapStateToProps = (state: IStore) => ({
-  user: state.user.data,
-  loading: state.user.loading,
-  error: state.user.error,
-});
-
-const mapDispatchToProps = {
-  loadUser,
-  loadPostsByUser,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connector(Main);

@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { Avatar } from 'antd';
 import { Formik, Field } from 'formik';
 import createComment from './createComment';
-import { IUser } from 'types/user';
-import { loadCommentsByPost } from 'redux-toolkit/postsSlice';
+import { IUser } from '../../../../../types/user';
+import { loadCommentsByPost } from '../../../../../redux-toolkit/postsSlice';
 
 import userFoto from '../../../../../img/userFoto.png';
 import {
@@ -14,9 +14,9 @@ import {
   Input,
   BtnSend,
   BtnOpenNote,
-  StyledLoading
+  StyledLoading,
 } from './styles';
-import LoadingBlock from 'common/loadingBlock';
+import LoadingBlock from '../../../../../common/loadingBlock';
 
 interface Props {
   user: IUser;
@@ -26,17 +26,17 @@ interface Props {
   isOpen: boolean;
 }
 
-const ComponentInput: React.FC<Props> = ({ 
+const ComponentInput: React.FC<Props> = ({
   user,
-  postId, 
+  postId,
   setIsOpen,
-  loadCommentsByPost,
-  isOpen
+  loadCommentsByPost: _loadCommentsByPost,
+  isOpen,
 }) => {
   const openOnClick = useCallback(() => {
     setIsOpen(false);
   }, [setIsOpen]);
-  const [ isLoading, setIsLoading ] = useState( false );
+  const [isLoading, setIsLoading] = useState(false);
   return (
     <Formik
       initialValues={{
@@ -46,7 +46,7 @@ const ComponentInput: React.FC<Props> = ({
         async (values, actions) => {
           setIsLoading(true);
           await createComment({ postId, text: values.inputText, user });
-          await loadCommentsByPost(postId);
+          await _loadCommentsByPost(postId);
           setIsLoading(false);
           actions.resetForm();
         }
@@ -69,7 +69,7 @@ const ComponentInput: React.FC<Props> = ({
 };
 
 const mapDispatchToProps = {
-  loadCommentsByPost
-}
+  loadCommentsByPost,
+};
 
 export default connect(null, mapDispatchToProps)(ComponentInput);

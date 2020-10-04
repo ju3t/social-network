@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import {
   Wrapper,
   Title,
@@ -12,22 +12,34 @@ import { loadCommentsByPost } from '../../../../../redux-toolkit/postsSlice';
 import Comment from '../Comment';
 import ComponentInput from '../ComponentInput';
 import IComment from '../../../../../types/comment';
-import { IUser } from '../../../../../types/user';
-import { IStore } from '../../../../../redux-toolkit/store';
+import { RootState } from '../../../../../redux-toolkit/store';
 
-interface IBlockComments {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  user: IUser | null;
+const mapStateToProps = (state: RootState) => ({
+  user: state?.user?.data,
+});
+
+const mapDispatchToProps = {
+  loadCommentsByPost,
+};
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+type IBlockComments = PropsFromRedux & {
   comments?: IComment[];
+  loading: boolean;
+  error: null | Error;
   id: number;
   isOpen: boolean;
   setIsCommentsOpen?: (state: boolean) => void;
-  loadCommentsByPost: (id: number) => void;
-}
+};
 
 const BlockComments: React.FC<IBlockComments> = ({
   user,
   comments,
+  loading,
+  error,
   id: postId,
   isOpen,
   setIsCommentsOpen: setIsOpen,
@@ -51,17 +63,9 @@ const BlockComments: React.FC<IBlockComments> = ({
     <Wrapper>
       <Title>Комментарии</Title>
       { renderComments() }
-      <ComponentInput setIsOpen={setIsOpen} isOpen={isOpen} postId={postId} user={user}/>
+      <ComponentInput setIsOpen={setIsOpen} isOpen={isOpen} postId={postId} user={user} />
     </Wrapper>
   );
 };
 
-const mapStateToProps = (state: IStore) => ({
-  user: state?.user?.data
-})
-
-const mapDispatchToProps = {
-  loadCommentsByPost,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(BlockComments);
+export default connector(BlockComments);

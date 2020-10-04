@@ -309,8 +309,19 @@ export const WallCreateArticleHeaderBlockRight = styled.div`
 
 export const IconArticle = styled.img.attrs<Iimg>((props) => ({ src: props.img }))<Iimg>`
   margin-left: 13px;
-  &:hover {
-    cursor: pointer;
+  cursor: pointer;
+`;
+
+export const IconCross = styled(IconArticle)<{$isOpen: boolean}>`
+  transform: rotate(${({ $isOpen }) => ($isOpen ? '45' : '0')}deg);
+`;
+
+export const WallCreateArticleIconContainer = styled.div<{ $isOpen: boolean }>`
+  overflow: hidden;
+
+  & > * {
+    transition: transform .3s;
+    transform: translate(${({ $isOpen }) => ($isOpen ? '0%' : '80%')});
   }
 `;
 

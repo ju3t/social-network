@@ -10,4 +10,3 @@ export default interface IComment extends ICreateComment{
     lastRedactionDate: string,
     persistDate: string,
 }
-

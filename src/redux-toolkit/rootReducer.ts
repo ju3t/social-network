@@ -4,12 +4,14 @@ import allAudiosReducer from './audios/allAudiosSlice';
 // import myAudiosReducer from './audios/myAudiosSlice';
 import { frendsReducer } from './frendsListSlice';
 import { postsReducer } from './postsSlice';
+import chatReducer from './chatSlice';
 
 const rootReducer = combineReducers({
   user: userReducer,
   posts: postsReducer,
   allAudiosReducer,
-  frendList: frendsReducer
+  chat: chatReducer,
+  frends: frendsReducer,
 });
 
 export type TypeRootReducer = ReturnType<typeof rootReducer>;

@@ -12,11 +12,13 @@ import add from './img/add.svg';
 import {
   AvatarMin,
   IconArticle,
+  IconCross,
   WallCreateArticleContainer,
   WallCreateArticleHeaderBlock,
   WallCreateArticleHeaderBlockLeft,
   WallCreateArticleHeaderBlockLeftText,
   WallCreateArticleHeaderBlockRight,
+  WallCreateArticleIconContainer,
 } from '../../../common/styledComponents';
 import ArticleForm from '../ArticleForm';
 import { IUser } from '../../../types/user';
@@ -31,16 +33,15 @@ interface IWallCreateArticle {
 }
 
 const WallCreateArticle: React.FC<IWallCreateArticle> = ({ user }) => {
-  const [ isOpen, setOpen] = useState(false);
-  const [ loading, setLoading ] = useState(false);
+  const [isOpen, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const changeOpen = useCallback(
     () => setOpen(false),
     [setOpen],
   );
-
-  const renderPlus = useCallback(
-    () => <IconArticle img={add} onClick={() => setOpen(true)} />,
+  const revertOpen = useCallback(
+    () => setOpen((_isOpen) => !_isOpen),
     [setOpen],
   );
 
@@ -58,15 +59,21 @@ const WallCreateArticle: React.FC<IWallCreateArticle> = ({ user }) => {
           </WallCreateArticleHeaderBlockLeftText>
         </WallCreateArticleHeaderBlockLeft>
         <WallCreateArticleHeaderBlockRight>
-          {isOpen ? renderIcons() : renderPlus()}
+          <WallCreateArticleIconContainer $isOpen={isOpen}>
+            <div>
+              <IconCross img={add} onClick={revertOpen} $isOpen={isOpen} />
+              {renderIcons()}
+            </div>
+          </WallCreateArticleIconContainer>
         </WallCreateArticleHeaderBlockRight>
       </WallCreateArticleHeaderBlock>
-      <ArticleForm 
-      isOpen={isOpen} 
-      loading={loading}
-      changeOpen={changeOpen}
-      setLoading={setLoading} 
-      user={user}/>
+      <ArticleForm
+        isOpen={isOpen}
+        loading={loading}
+        changeOpen={changeOpen}
+        setLoading={setLoading}
+        user={user}
+      />
     </WallCreateArticleContainer>
   );
 };

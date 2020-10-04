@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import Login from './components/LoginPage/loginPage';
-import Messages from './components/Messages';
+import Messages from './components/Messages/Messages';
 import Main from './components/Main';
 import Audio from './components/Audio';
 import Friends from './components/Friends';

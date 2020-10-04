@@ -1,6 +1,6 @@
-import addNewCommentToPost from 'services/post-comment-controller';
-import { ICreateComment } from 'types/comment';
-import { IUser } from 'types/user';
+import addNewCommentToPost from '../../../../../services/post-comment-controller';
+import { ICreateComment } from '../../../../../types/comment';
+import { IUser } from '../../../../../types/user';
 
 interface IFuncCreateComment {
     postId: number,

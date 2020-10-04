@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import React, { useState } from 'react';
-
+import React, { useState, useCallback } from 'react';
+import SmoothCollapse from 'react-smooth-collapse';
 import BlockComments from '../../blockComment/BlockComments/BlockComments';
+import LoadingBlock from '../../../../../common/loadingBlock';
 import { IDataPost } from '../../../../../types/post';
 import {
   WrapperNote,
@@ -23,10 +24,9 @@ import {
   TagsList,
   BtnOpenNote,
   TagItem,
+  StyledLoadingBlock,
   NoteErrorBlock,
-  StyledLoadingBlock
 } from './styles';
-import LoadingBlock from 'common/loadingBlock';
 
 interface INote {
   dataPost: IDataPost
@@ -38,32 +38,19 @@ const Note: React.FC<INote> = ({ dataPost }: INote) => {
   } = dataPost;
   const [isOpen, setIsOpen] = useState(false);
   const [isCommentsOpen, setIsCommentsOpen] = useState(Boolean(comments));
-
-  /* Вынес в отдельную функцию, чтобы BlockComments подгружал комменты во время рендера */
-  const renderBlockComments = () => {
-    if (!isCommentsOpen) {
-      return null;
-    }
-    return (
-      <BlockComments
-        isOpen={isCommentsOpen}
-        setIsCommentsOpen={setIsCommentsOpen}
-        id={post.id}
-        comments={comments}
-      />
-    );
-  };
-
-  const renderState = () => {
+  const revertOpen = useCallback(() => setIsOpen((_isOpen) => !_isOpen),
+    [setIsOpen]);
+  const revertCommentsOpen = useCallback(() => setIsCommentsOpen((_isOpen) => !_isOpen),
+    [setIsCommentsOpen]);
+  const renderState = useCallback(() => {
     if (loading) {
-      return <StyledLoadingBlock><LoadingBlock size={60}/></StyledLoadingBlock>;
+      return <StyledLoadingBlock><LoadingBlock size={60} /></StyledLoadingBlock>;
     }
     if (error) {
       return <NoteErrorBlock> Что-то пошло не так... </NoteErrorBlock>;
     }
-    return renderBlockComments();
-  };
-
+    return null;
+  }, [loading, error]);
   const {
     firstName,
     lastName,
@@ -98,8 +85,9 @@ const Note: React.FC<INote> = ({ dataPost }: INote) => {
             <CountAction>{likeAmount || 0}</CountAction>
           </Action>
           <Action>
-            <ActionComment onClick={() => setIsCommentsOpen((state) => !state)} />
+            <ActionComment onClick={revertCommentsOpen} />
             <CountAction>{commentAmount || 0}</CountAction>
+            {renderState()}
           </Action>
           <Action>
             <ActionRepost />
@@ -109,17 +97,29 @@ const Note: React.FC<INote> = ({ dataPost }: INote) => {
       </WrapperNote>
       <Wrapper>
         <TitleText>{title}</TitleText>
-        <Text isOpen={isOpen}>{text}</Text>
+        <SmoothCollapse expanded={isOpen} collapsedHeight="200" heightTransition=".5s">
+          <Text isOpen={isOpen}>{text}</Text>
+        </SmoothCollapse>
         <BtnOpenNote
-          isOpen={isOpen}
-          onClick={() => setIsOpen(!isOpen)}
+          $isOpen={isOpen}
+          onClick={revertOpen}
         />
         <TagsList>
           {tags?.map((item) => (
             <TagItem key={item.id}>{item.text}</TagItem>
           ))}
         </TagsList>
-        { renderState() }
+
+        <SmoothCollapse expanded={isCommentsOpen} heightTransition=".5s">
+          <BlockComments
+            isOpen={isCommentsOpen}
+            setIsCommentsOpen={setIsCommentsOpen}
+            id={post.id}
+            error={error}
+            loading={loading}
+            comments={comments}
+          />
+        </SmoothCollapse>
       </Wrapper>
     </>
   );

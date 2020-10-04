@@ -23,12 +23,10 @@ export const InputText = styled.textarea`
     resize: none;
 `;
 
-export const ArticleStyledForm = styled(Form)<{ $isOpen?: boolean }>`
+export const ArticleStyledForm = styled(Form)`
     display: flex;
     flex-direction: column;
     position: relative;
-    opacity: ${({ $isOpen }) => ($isOpen ? '1' : '0')};
-    height: ${({ $isOpen }) => ($isOpen ? '100%' : '0px')};
     transition: 1s;
     color: black;
 `;
