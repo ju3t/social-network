@@ -1,7 +1,11 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import * as React from 'react';
-import { StyledLoading, StyledWrapped } from './styles';
+import { StyledLoading } from './styles';
 
-const LoadingBLock:React.FC = () => <StyledWrapped><StyledLoading /></StyledWrapped>;
+interface ILoadingBlock {
+    size?: number
+}
+
+const LoadingBLock:React.FC<ILoadingBlock> = ({ size = 150 }) => <StyledLoading $size={size} />;
 
 export default LoadingBLock;

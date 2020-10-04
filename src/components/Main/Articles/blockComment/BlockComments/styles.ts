@@ -26,3 +26,20 @@ text-align: center;
 color: rgba(1,1,1,0.7);
 margin: 30px auto;
 `;
+
+export const StyledLoadingBlock = styled.div`
+  top: 0;
+  right: 0;
+  transform: translate(-172%, -160%);
+  position: absolute;
+`;
+
+export const ErrorBlock = styled.div`
+  position: absolute;
+  transform: translate(3.5em, -3em);
+  right: 0;
+  bottom: 0;
+  border: 1px solid rgba(1,1,1,0.5);
+  color: rgba(1,1,1,0.5);
+  background-color: transparent;
+`;

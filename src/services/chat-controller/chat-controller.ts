@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import axios from 'axios';
-import { IsingleChat, Ichat, IdataBody } from '../types/chat';
+import { IsingleChat, Ichat, IdataBody } from '../../types/chat';
 
 const fetchChat = axios.create({
   baseURL: 'http://91.241.64.178:5561/api/user/',
@@ -12,7 +12,7 @@ export const getSingleChats = async (id: number): Promise<IsingleChat> => {
   return res.data;
 };
 
-export const getChats = async (): Promise<Ichat> => {
+export const getChats = async (): Promise<Ichat[]> => {
   const res = await fetchChat.get('chats');
   return res.data;
 };

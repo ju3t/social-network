@@ -1,6 +1,7 @@
 {
   "extends": [
     "airbnb",
+    "airbnb/hooks",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended"
   ],
@@ -11,6 +12,7 @@
     "jest": true
   },
   "rules": {
+    "import/prefer-default-export": "warn",
     "max-depth": ["warn", 4],
     "id-length": ["warn", { "exceptions": ["i", "j"], "min": 2 }],
     "no-lonely-if": ["error"],
